@@ -1,12 +1,93 @@
 # Security
 
-Security is not a feature you add at the end. These concepts cover how to protect data, control access, and build systems that fail safely.
+Security is not a feature you bolt on after the fact. It's a property of the system's design — how access is controlled, how data is protected, how trust is established between services. Getting this wrong has irreversible consequences: breached user data, regulatory fines, or complete system compromise.
 
-| Topic | One-liner |
+---
+
+## The security model layers
+
+```
+Defense in depth: every layer assumes the layers above it can fail
+
+Layer 1: Identity & Access
+  ├── Authentication (who are you?)
+  │     → Passwords + MFA, OAuth 2.0 tokens, API keys, mTLS
+  └── Authorization (what can you do?)
+        → RBAC, ABAC, policy engines (OPA, Cedar)
+
+Layer 2: API & Network Surface
+  ├── Input validation (reject malformed input before it reaches logic)
+  ├── Rate limiting (prevent abuse and enumeration)
+  ├── TLS everywhere (encrypt in transit)
+  └── Zero Trust (never trust by network position alone)
+
+Layer 3: Data Protection
+  ├── Encryption at rest (AES-256, envelope encryption)
+  ├── Encryption in transit (TLS 1.2+, certificate pinning)
+  └── Data minimization (don't store what you don't need)
+
+Layer 4: Secrets & Credentials
+  ├── Secrets vaults (Vault, AWS Secrets Manager)
+  ├── Rotation (credentials should expire and rotate)
+  └── No credentials in code, environment vars, or logs
+```
+
+---
+
+## Topics in this section
+
+| Topic | What it covers | When it matters |
+|---|---|---|
+| [Authentication & Authorization](authn-authz.md) | Who you are vs what you're allowed to do — RBAC, ABAC, session management | Every system that has users or services |
+| [OAuth 2.0 & JWT](oauth-jwt.md) | Delegated authorization, token flows, JWT validation, refresh tokens | Third-party auth, SSO, mobile apps |
+| [API Security](api-security.md) | Input validation, injection prevention, OWASP API Top 10 | Public APIs, user-facing endpoints |
+| [Encryption](encryption.md) | At-rest and in-transit encryption, key management, envelope encryption | Storing sensitive data, regulatory compliance |
+| [Zero Trust](zero-trust.md) | Never trust, always verify — beyond the perimeter model | Microservices, remote work, cloud-native |
+| [Secrets Management](secrets-management.md) | Vaults, rotation, avoiding credential sprawl | Any service with API keys, DB passwords, or certificates |
+
+---
+
+## Common attack surface
+
+```
+Input attacks
+  ├── SQL injection   → parameterized queries, ORM, never string concat
+  ├── XSS            → escape output, Content-Security-Policy header
+  ├── Command injection → avoid shell execution, validate args
+  └── SSRF           → allowlist internal endpoints, block 169.254/metadata
+
+Auth attacks
+  ├── Broken auth     → brute force, credential stuffing → rate limit + MFA
+  ├── Insecure JWT    → validate signature + expiry + audience + issuer
+  └── Privilege escalation → authorization checks on every action, not just login
+
+API attacks
+  ├── Mass assignment → explicitly allowlist fields, don't bind all request params
+  ├── IDOR           → check ownership, don't trust user-supplied IDs
+  └── Excessive data → return only what client needs, not full DB objects
+
+Supply chain
+  ├── Dependency vulnerabilities → pin versions, audit with `npm audit` / `pip-audit`
+  └── Secret leakage in code    → git-secrets, pre-commit hooks, secret scanning
+```
+
+---
+
+## Interview shortlist
+
+| Question | Key answer |
 |---|---|
-| [Authentication & Authorization](authn-authz.md) | Who you are vs what you're allowed to do |
-| [OAuth 2.0 & JWT](oauth-jwt.md) | Delegated authorization and stateless tokens |
-| [API Security](api-security.md) | Input validation, rate limiting, OWASP API Top 10 |
-| [Encryption](encryption.md) | At-rest, in-transit, key management |
-| [Zero Trust](zero-trust.md) | Never trust, always verify — beyond the perimeter model |
-| [Secrets Management](secrets-management.md) | Vaults, rotation, avoiding credential sprawl |
+| *"How does OAuth 2.0 work?"* | Authorization server issues short-lived access token to client after user consents. Client presents token to resource server. Token contains scopes — resource server validates without calling auth server (JWT). |
+| *"JWT vs opaque tokens — when to use each?"* | JWT: stateless validation (no DB lookup), good for microservices. Opaque: revocable (check DB), better for long-lived sessions where revocation matters. |
+| *"How do you prevent IDOR?"* | Authorization on every action: does this user own this resource? Don't use sequential numeric IDs externally (use UUIDs). Log access for audit. |
+| *"What is Zero Trust?"* | No implicit trust based on network position. Every request authenticated + authorized. mTLS between services. Least privilege. Assume breach: segment and audit. |
+| *"How do you handle secrets in a microservices environment?"* | Central vault (HashiCorp Vault, AWS Secrets Manager). Dynamic secrets with short TTLs. Sidecar injection (Vault Agent). Never in code, env vars, or config files committed to git. |
+
+---
+
+## Related topics
+
+- [Networking: API Gateway](../networking/api-gateway.md) — auth + rate limiting at the edge
+- [API Design: API Security](../api/comparison.md) — protocol-level security considerations
+- [Infrastructure: Service Mesh](../infrastructure/service-mesh.md) — mTLS between services
+- [AWS: Security](../aws/security.md) — IAM, KMS, Secrets Manager, WAF on AWS

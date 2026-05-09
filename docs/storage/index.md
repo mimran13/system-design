@@ -16,3 +16,4 @@ Choosing the right storage is one of the most consequential decisions in any sys
 | [Data Warehousing](data-warehousing.md) | OLAP, columnar storage, analytical workloads |
 | [NewSQL](newsql.md) | CockroachDB, Spanner — ACID + horizontal scale |
 | [Vector Databases](vector-databases.md) | Embeddings, semantic search, RAG — similarity at scale |
+| [Graph Databases](graph-databases.md) | Neo4j, Neptune — traversing relationships at any depth |

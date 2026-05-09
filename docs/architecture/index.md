@@ -31,6 +31,13 @@ Start here — these are the prerequisites for everything else.
 | [Microservices Patterns](microservices-patterns.md) | Decomposition, database-per-service, ACL, sidecar, anti-patterns | Building and operating a microservices system |
 | [Multi-Tenancy](multi-tenancy.md) | Silo / bridge / pool models, tenant isolation, noisy neighbour | Any SaaS product serving multiple customers |
 
+## Platform & data architecture
+
+| Topic | What it is | When it matters |
+|---|---|---|
+| [API-First Design](api-first.md) | Design the API contract before writing code; code generation from OpenAPI | Parallel teams, microservices, platform APIs |
+| [Data Mesh](data-mesh.md) | Federated data ownership — domain teams own their data products | Large org, central data team is a bottleneck |
+
 ## Architectural patterns (data & state)
 
 These live in the Patterns section but are architectural decisions, not just implementation details:

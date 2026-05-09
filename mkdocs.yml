@@ -75,13 +75,22 @@ nav:
   # ── Foundation ────────────────────────────────────────────
   - Fundamentals:
     - fundamentals/index.md
+    - Networking Basics: fundamentals/networking-basics.md
+    - Numbers Every Engineer Should Know: fundamentals/numbers-to-know.md
+    - Latency vs Throughput: fundamentals/latency-throughput.md
+    - Queuing Theory & Little's Law: fundamentals/queuing-theory.md
+    - Back-of-Envelope Estimation: fundamentals/estimation.md
+    - Scalability: fundamentals/scalability.md
+    - Availability & Reliability: fundamentals/availability.md
+    - Fault Tolerance & Resilience: fundamentals/fault-tolerance.md
+    - Concurrency & Locking: fundamentals/concurrency.md
     - ACID vs BASE: fundamentals/acid-vs-base.md
     - CAP Theorem: fundamentals/cap-theorem.md
     - Consistency Models: fundamentals/consistency-models.md
-    - Scalability: fundamentals/scalability.md
-    - Availability & Reliability: fundamentals/availability.md
-    - Latency vs Throughput: fundamentals/latency-throughput.md
-    - Back-of-Envelope Estimation: fundamentals/estimation.md
+    - Database Indexes: fundamentals/database-indexes.md
+    - Storage Engine Internals: fundamentals/storage-internals.md
+    - Probabilistic Data Structures: fundamentals/probabilistic-data-structures.md
+    - Data Encoding & Serialization: fundamentals/serialization.md
 
   - Software Design:
     - software-design/index.md
@@ -89,7 +98,10 @@ nav:
     - SOLID Principles: software-design/solid.md
     - IoC & Dependency Injection: software-design/ioc-di.md
     - Design Patterns (GoF): software-design/design-patterns.md
+    - DDD Tactical Patterns: software-design/ddd-tactical.md
     - Clean Architecture: software-design/clean-architecture.md
+    - Refactoring & Code Smells: software-design/refactoring.md
+    - Error Handling Patterns: software-design/error-handling.md
     - Testing Strategies: software-design/testing-strategies.md
 
   # ── Systems & Architecture ────────────────────────────────
@@ -107,17 +119,21 @@ nav:
     - Backend for Frontend (BFF): architecture/bff.md
     - Microservices Patterns: architecture/microservices-patterns.md
     - Multi-Tenancy: architecture/multi-tenancy.md
+    - API-First Design: architecture/api-first.md
+    - Data Mesh: architecture/data-mesh.md
 
   - Distributed Systems:
     - distributed/index.md
     - The 8 Fallacies: distributed/fallacies.md
     - Consensus (Raft & Paxos): distributed/consensus.md
     - Leader Election: distributed/leader-election.md
+    - Split Brain & Fencing: distributed/split-brain.md
     - Distributed Locks: distributed/distributed-locks.md
     - Quorum (R+W>N): distributed/quorum.md
     - Clocks & Ordering: distributed/clocks.md
     - Distributed Transactions: distributed/distributed-transactions.md
     - Two-Phase Commit: distributed/two-phase-commit.md
+    - Exactly-Once Semantics: distributed/exactly-once.md
     - CRDTs: distributed/crdts.md
     - Gossip Protocol: distributed/gossip.md
     - Service Discovery: distributed/service-discovery.md
@@ -138,6 +154,7 @@ nav:
     - Data Warehousing: storage/data-warehousing.md
     - NewSQL: storage/newsql.md
     - Vector Databases: storage/vector-databases.md
+    - Graph Databases: storage/graph-databases.md
 
   - Caching:
     - caching/index.md
@@ -224,6 +241,17 @@ nav:
     - Service Mesh: infrastructure/service-mesh.md
 
   # ── Specialized & Reference ───────────────────────────────
+  - AI Agents:
+    - agents/index.md
+    - Agent Fundamentals: agents/agent-fundamentals.md
+    - Function Calling & Tool Use: agents/function-calling.md
+    - Building Agents: agents/building-agents.md
+    - Multi-Agent Systems: agents/multi-agent-systems.md
+    - Agent Reliability: agents/agent-reliability.md
+    - "Example: Research Agent": agents/example-research-agent.md
+    - "Example: Data Analysis Agent": agents/example-data-agent.md
+    - "Example: Customer Support Agent": agents/example-customer-support-agent.md
+
   - AI Engineering:
     - ai/index.md
     - LLM Fundamentals: ai/llm-fundamentals.md

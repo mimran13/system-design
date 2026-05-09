@@ -18,6 +18,7 @@ How nodes reach agreement despite failures and network unreliability.
 |---|---|---|
 | [Consensus (Raft & Paxos)](consensus.md) | How nodes agree on a single value despite failures | Distributed databases, replicated state machines |
 | [Leader Election](leader-election.md) | Picking one coordinator and handling its failure | Primary replica selection, job scheduling |
+| [Split Brain & Fencing](split-brain.md) | Two leaders both accepting writes — and fencing tokens to stop it | Any system with leader election |
 | [Distributed Locks](distributed-locks.md) | Mutual exclusion across processes on different machines | Exactly-once processing, preventing double work |
 | [Quorum](quorum.md) | R+W>N — configuring consistency vs availability trade-off | Every distributed DB (Cassandra, DynamoDB, Raft) |
 | [Two-Phase Commit](two-phase-commit.md) | Atomic commit across multiple participants | Cross-DB transactions (use sparingly) |
@@ -30,6 +31,7 @@ Why distributed systems make time and ordering hard, and how to deal with it.
 |---|---|---|
 | [Clocks & Ordering](clocks.md) | Lamport clocks, vector clocks, why wall clocks lie | Event ordering, causality tracking |
 | [Distributed Transactions](distributed-transactions.md) | ACID across multiple services — the full picture | Microservices that span multiple DBs |
+| [Exactly-Once Semantics](exactly-once.md) | At-most-once / at-least-once / exactly-once — tradeoffs and implementation | Payments, Kafka consumers, any stateful processing |
 | [CRDTs](crdts.md) | Data structures that merge automatically without conflicts | Multi-region writes, collaborative editing, offline-first |
 
 ## Membership and discovery

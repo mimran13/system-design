@@ -8,6 +8,14 @@
 
 <div class="grid cards" markdown>
 
+-   :material-robot-outline:{ .lg .middle } **AI Agents**
+
+    ---
+
+    Build agents from scratch — tool use, multi-agent systems, reliability, 3 end-to-end examples
+
+    [:octicons-arrow-right-24: Explore](agents/index.md)
+
 -   :material-brain:{ .lg .middle } **AI Engineering**
 
     ---
