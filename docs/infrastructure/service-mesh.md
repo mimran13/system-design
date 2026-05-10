@@ -374,5 +374,5 @@ Skip service mesh when:
 - [Zero Trust](../security/zero-trust.md) — mTLS is the Zero Trust mechanism
 - [Circuit Breaker](../patterns/circuit-breaker.md) — outlier detection in service mesh
 - [Distributed Tracing](../observability/tracing.md) — context propagation via mesh
-- [Deployments](deployments.md) — canary via VirtualService weight
+- [Deployments](../cicd/deployment-strategies.md) — canary via VirtualService weight
 - [Kubernetes](kubernetes.md) — service mesh runs on top of K8s

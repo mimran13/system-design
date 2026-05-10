@@ -388,4 +388,4 @@ pre-commit install
 - [Encryption](encryption.md) — KMS encrypts secrets at rest
 - [Zero Trust](zero-trust.md) — dynamic credentials are the ZT approach
 - [Authentication & Authorization](authn-authz.md) — credentials used for service auth
-- [Infrastructure as Code](../infrastructure/iac.md) — never put secrets in Terraform/CDK
+- [Infrastructure as Code](../iac/index.md) — never put secrets in Terraform/CDK

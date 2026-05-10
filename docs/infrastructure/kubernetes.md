@@ -483,6 +483,6 @@ metadata:
 
 - [Containers](containers.md) — what K8s orchestrates
 - [Service Mesh](service-mesh.md) — Istio on Kubernetes
-- [CI/CD](cicd.md) — deploying to Kubernetes
-- [Deployments](deployments.md) — K8s deployment strategies
+- [CI/CD](../cicd/index.md) — deploying to Kubernetes
+- [Deployments](../cicd/deployment-strategies.md) — K8s deployment strategies
 - [Zero Trust](../security/zero-trust.md) — NetworkPolicy + RBAC

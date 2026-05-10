@@ -102,4 +102,4 @@ Level 4: Proactive observability
 - [Fundamentals: Availability & Reliability](../fundamentals/availability.md) — what you're measuring against
 - [Patterns: Circuit Breaker](../patterns/circuit-breaker.md) — observability drives the state machine
 - [AWS: Observability](../aws/observability.md) — CloudWatch, X-Ray, OpenTelemetry on AWS
-- [Infrastructure: CI/CD](../infrastructure/cicd.md) — deploy metrics as a feedback loop
+- [CI/CD](../cicd/index.md) — deploy metrics as a feedback loop

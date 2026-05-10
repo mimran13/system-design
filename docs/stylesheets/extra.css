@@ -119,7 +119,7 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 
 /* ─── Top-level section headings ─── */
 .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link {
-  font-size: 0.67rem !important;
+  font-size: 0.72rem !important;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.09em;
@@ -149,7 +149,7 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 
 /* ─── Child page links ─── */
 .md-nav--primary .md-nav .md-nav__link {
-  font-size: 0.75rem !important;
+  font-size: 0.8rem !important;
   color: #1c3f5e !important;
   font-weight: 500;
   padding: 0.32rem 1rem 0.32rem 1.5rem;
@@ -165,10 +165,10 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 /* Active page */
 .md-nav--primary .md-nav .md-nav__item--active > .md-nav__link {
   color: #1a56db !important;
-  background-color: #ffffff !important;
+  background-color: #dbeafe !important;
   font-weight: 600;
-  border-left: 2px solid #1a56db;
-  padding-left: calc(1.5rem - 2px);
+  border-left: 3px solid #1a56db;
+  padding-left: calc(1.5rem - 3px);
   box-shadow: 0 1px 3px rgba(26,86,219,0.10);
 }
 
@@ -199,7 +199,7 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 .md-grid { max-width: 1600px; }
 
 .md-content__inner {
-  max-width: 880px;
+  max-width: 1020px;
   padding: 2rem 2.5rem 4rem;
   margin: 0;
 }
@@ -209,8 +209,8 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
    ═══════════════════════════════════════════════════════════ */
 
 .md-typeset {
-  font-size: 0.8rem;
-  line-height: 1.85;
+  font-size: 0.85rem;
+  line-height: 1.7;
 }
 
 .md-typeset h1 {
@@ -286,10 +286,10 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
   font-size: 0.82em;
   border-radius: 5px;
   padding: 0.15em 0.4em;
-  background-color: #e0f0fb;
-  color: #1a5f8a;
+  background-color: #f1f5f9;
+  color: #0c4a6e;
   font-weight: 500;
-  border: 1px solid #bfd8ef;
+  border: 1px solid #cbd5e1;
 }
 
 [data-md-color-scheme="slate"] .md-typeset code {
@@ -485,7 +485,7 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 
 /* TOC links */
 .md-nav--secondary .md-nav__link {
-  font-size: 0.73rem;
+  font-size: 0.78rem;
   color: #1c3f5e !important;
   font-weight: 500;
   padding: 0.28rem 0.75rem;

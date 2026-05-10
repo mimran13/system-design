@@ -276,4 +276,4 @@ Run in identical environment as the app. Use the same codebase and release. Don'
 - [Containers & Docker](../infrastructure/containers.md) — natural implementation of twelve-factor
 - [Kubernetes](../infrastructure/kubernetes.md) — twelve-factor apps work perfectly in Kubernetes
 - [Hexagonal Architecture](hexagonal.md) — code structure that enables twelve-factor
-- [Infrastructure as Code](../infrastructure/iac.md) — manage environments consistently
+- [Infrastructure as Code](../iac/index.md) — manage environments consistently

@@ -399,4 +399,4 @@ When something goes wrong in production:
 - [Guardrails & Safety](guardrails-safety.md) — safety monitoring
 - [LLM Inference & Serving](llm-inference.md) — infrastructure layer
 - [Observability](../observability/index.md) — general observability patterns that apply here
-- [CI/CD](../infrastructure/cicd.md) — extending standard CI/CD for AI
+- [CI/CD](../cicd/index.md) — extending standard CI/CD for AI

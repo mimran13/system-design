@@ -27,10 +27,9 @@ CI/CD pipeline drives the whole stack:
 |---|---|---|
 | [Containers & Docker](containers.md) | Process isolation, image layering, Dockerfile best practices, multi-stage builds | Packaging any application consistently |
 | [Kubernetes](kubernetes.md) | Pods, Deployments, Services, HPA, RBAC, resource limits | Running containers at scale with self-healing |
-| [CI/CD](cicd.md) | Pipelines from commit to production, branch strategies, quality gates | Every team shipping software repeatedly |
-| [Deployment Strategies](deployments.md) | Blue-green, canary, rolling, feature flags — tradeoffs and rollback | Minimizing deployment risk |
-| [Infrastructure as Code](iac.md) | Terraform, CDK, CloudFormation — why IaC is non-negotiable | Reproducible, auditable infrastructure |
 | [Service Mesh](service-mesh.md) | Istio, Envoy — mTLS, observability, traffic management at the proxy layer | Microservices needing cross-cutting concerns without code changes |
+| [CI/CD →](../cicd/index.md) | (Now its own section) Pipelines, branching, deployment strategies | Every team shipping software repeatedly |
+| [Infrastructure as Code →](../iac/index.md) | (Now its own section) Terraform, CDK, CloudFormation, lifecycle | Reproducible, auditable infrastructure |
 
 ---
 

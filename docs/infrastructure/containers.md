@@ -315,6 +315,6 @@ volumes:
 ## Related topics
 
 - [Kubernetes](kubernetes.md) — orchestrating containers at scale
-- [CI/CD](cicd.md) — building and pushing container images
+- [CI/CD](../cicd/index.md) — building and pushing container images
 - [Service Mesh](service-mesh.md) — Envoy sidecar containers
 - [Security](../security/api-security.md) — container security hardening

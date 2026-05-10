@@ -1,69 +1,105 @@
 # Fundamentals
 
-The theoretical bedrock every system design decision rests on. Master these before diving into architecture, distributed systems, or case studies — they provide the vocabulary and mental models everything else builds on.
+The bedrock concepts that every other section builds on. Numbers, hardware, OS, networking, data structures, distributed systems theory. If you don't have working intuition for these, every higher-level decision (which database, which cache, which protocol) is guessing.
 
-## Network & performance
-
-| Topic | What it is | Why it matters |
-|---|---|---|
-| [Networking Basics](networking-basics.md) | TCP/IP, DNS, HTTP, TLS from the ground up | Every service communicates over a network — understand the substrate |
-| [Numbers Every Engineer Should Know](numbers-to-know.md) | Latency, throughput, and storage reference figures | Fast mental arithmetic for back-of-envelope estimates |
-| [Latency vs Throughput](latency-throughput.md) | Why optimizing one can hurt the other | The central trade-off in every performance decision |
-| [Queuing Theory & Little's Law](queuing-theory.md) | L = λW and the utilization curve | Why 90% CPU feels broken and how to size any system |
-| [Back-of-Envelope Estimation](estimation.md) | QPS, storage, bandwidth calculations | The first thing you do in any system design interview |
-
-## System properties
-
-| Topic | What it is | Why it matters |
-|---|---|---|
-| [Scalability](scalability.md) | Vertical vs horizontal scaling and their limits | How to grow a system when traffic increases |
-| [Availability & Reliability](availability.md) | Nines, SLOs, SLAs, failure budgets | How to reason about and commit to uptime |
-| [Fault Tolerance & Resilience](fault-tolerance.md) | Failure modes, redundancy, graceful degradation | Systems fail — know how to contain and recover |
-| [Concurrency & Locking](concurrency.md) | Threads, race conditions, deadlocks, async I/O | Most production bugs come from incorrect concurrent access |
-
-## Data guarantees
-
-| Topic | What it is | Why it matters |
-|---|---|---|
-| [ACID vs BASE](acid-vs-base.md) | The two consistency philosophies behind every DB choice | Explains why you pick SQL vs NoSQL per use case |
-| [CAP Theorem](cap-theorem.md) | Consistency vs Availability during a partition | Why distributed DBs make fundamentally different trade-offs |
-| [Consistency Models](consistency-models.md) | Linearizable → Sequential → Causal → Eventual | The spectrum between "always fresh" and "eventually synced" |
-
-## Data access & storage
-
-| Topic | What it is | Why it matters |
-|---|---|---|
-| [Database Indexes](database-indexes.md) | B-tree, composite, covering, partial indexes | The single highest-leverage performance tool in any DB |
-| [Storage Engine Internals](storage-internals.md) | LSM trees, WAL, SSTables, compaction, MVCC | Why Cassandra writes fast, why Postgres needs VACUUM |
-| [Probabilistic Data Structures](probabilistic-data-structures.md) | Bloom filters, HyperLogLog, Count-Min Sketch | Approximate answers in constant memory — powers Cassandra, Redis, analytics |
-| [Data Encoding & Serialization](serialization.md) | JSON vs Protobuf vs Avro, schema evolution | How data moves across services and survives version changes |
+This section is grouped into five themes — read top-to-bottom for first time, or jump to the theme that matches your current question.
 
 ---
 
-## Learning order
+## Numbers & Estimation
 
-```
-── Network & Performance ─────────────────────────────────────
-Networking Basics       ← understand the transport layer first
-Numbers to Know         ← calibrate your intuition for scale
-Latency vs Throughput   ← the core performance trade-off
-Queuing Theory          ← math behind capacity and wait times
-Estimation              ← turn numbers into architecture choices
+Quick math, latency intuition, and the throughput / queueing principles that underpin all capacity decisions.
 
-── System Properties ─────────────────────────────────────────
-Scalability             ← how to grow the system
-Availability            ← how to keep it running
-Fault Tolerance         ← how to survive failures
-Concurrency             ← how to handle simultaneous access
+| Topic | What it covers |
+|---|---|
+| [Numbers Every Engineer Should Know](numbers-to-know.md) | Latency reference table — RAM, SSD, disk, network |
+| [Latency vs Throughput](latency-throughput.md) | The tension that shapes most design choices |
+| [Queuing Theory & Little's Law](queuing-theory.md) | Why systems get slow before they fail |
+| [Back-of-Envelope Estimation](estimation.md) | QPS, storage, bandwidth on a napkin |
+| [Time Complexity Cheatsheet](time-complexity.md) | Big-O for the data structures you actually use |
 
-── Data Guarantees ───────────────────────────────────────────
-ACID vs BASE            ← what guarantees does your data store give?
-CAP Theorem             ← what happens when nodes can't talk?
-Consistency Models      ← how stale can data be?
+---
 
-── Data Access & Storage ─────────────────────────────────────
-Database Indexes        ← how to make reads fast
-Storage Internals       ← how databases actually store data
-Probabilistic Structures← approximate counting and membership
-Serialization           ← how data moves across the wire
-```
+## Hardware & OS
+
+The layer beneath your runtime. Memory hierarchy explains every latency number; the OS layer explains every weird performance issue.
+
+| Topic | What it covers |
+|---|---|
+| [Memory Hierarchy & Cache Lines](memory-hierarchy.md) | Why locality dominates Big-O in practice |
+| [Disk and SSD Internals](disk-ssd-internals.md) | Sequential vs random; fsync; write amplification |
+| [Operating System Concepts](os-concepts.md) | Processes, threads, syscalls, page cache, FDs |
+| [Memory Models & Cache Coherency](memory-models.md) | Why concurrent code is hard; happens-before |
+
+---
+
+## Networking
+
+The wire and what runs over it. Most distributed-systems performance issues trace back here.
+
+| Topic | What it covers |
+|---|---|
+| [Networking Basics](networking-basics.md) | OSI, IP, TCP/UDP at a glance |
+| [TCP/UDP Deep Dive](tcp-udp-deep-dive.md) | Handshake, slow start, head-of-line blocking |
+| [TLS and Certificates](tls-certificates.md) | Handshake, PKI, mTLS, modern best practices |
+
+---
+
+## Data
+
+Encoding, hashing, compression, indexing, storage internals, probabilistic structures. Everything about representing and accessing data.
+
+| Topic | What it covers |
+|---|---|
+| [Hashing](hashing.md) | Three families: non-crypto, crypto, password |
+| [Compression](compression.md) | gzip, zstd, brotli, lz4 — when each wins |
+| [Encoding Pitfalls](encoding-pitfalls.md) | Endianness, UTF-8, Base64, varints |
+| [Data Encoding & Serialization](serialization.md) | JSON, Protobuf, Avro, MessagePack |
+| [Probabilistic Data Structures](probabilistic-data-structures.md) | Bloom filters, HyperLogLog |
+| [Database Indexes](database-indexes.md) | B-tree, hash, partial, composite |
+| [Storage Engine Internals](storage-internals.md) | B-tree vs LSM-tree internals |
+
+---
+
+## Distributed Systems Theory
+
+The properties and constraints that govern multi-node systems.
+
+| Topic | What it covers |
+|---|---|
+| [ACID vs BASE](acid-vs-base.md) | Two transactional models |
+| [CAP Theorem](cap-theorem.md) | The C/A choice during partitions |
+| [Consistency Models](consistency-models.md) | Strong → eventual and the spectrum between |
+| [Database Transactions & Isolation](isolation-levels.md) | Read committed, snapshot, serializable, write skew |
+| [Scalability](scalability.md) | Horizontal vs vertical; bottlenecks |
+| [Throughput Limits (Amdahl's & USL)](throughput-limits.md) | Why doubling cores doesn't double throughput |
+| [Availability & Reliability](availability.md) | 9s, MTBF, MTTR |
+| [Fault Tolerance & Resilience](fault-tolerance.md) | Designing for failure |
+| [Failure Modes Catalogue](failure-modes.md) | Crash, omission, gray failure, cascading |
+| [Concurrency & Locking](concurrency.md) | Mutexes, atomics, lock-free patterns |
+| [Hot Partitions & Hotspots](hot-partitions.md) | When sharding doesn't help |
+
+---
+
+## Reading paths
+
+| If you have... | Read first |
+|---|---|
+| 30 minutes | numbers-to-know, CAP theorem, latency-throughput |
+| 2 hours | + queuing theory, isolation levels, memory hierarchy, hashing |
+| A weekend | + everything in Hardware & OS + Distributed Systems Theory |
+
+---
+
+## Interview shortlist
+
+| Question | Section |
+|---|---|
+| *"What's the latency of a memory access vs a disk read?"* | Numbers, Memory Hierarchy |
+| *"Explain CAP."* | CAP Theorem |
+| *"What's the difference between read committed and serializable?"* | Isolation Levels |
+| *"Why does TCP take a round trip before sending data?"* | TCP Deep Dive |
+| *"What's a bloom filter and where would you use one?"* | Probabilistic Data Structures |
+| *"Why doesn't doubling the servers double the throughput?"* | Throughput Limits |
+| *"What's gray failure?"* | Failure Modes |
+| *"How does a hash map handle collisions?"* | Hashing, Time Complexity |

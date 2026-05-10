@@ -21,6 +21,10 @@ theme:
     text: Inter
     code: JetBrains Mono
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.tracking
     - navigation.indexes
     - navigation.path
     - navigation.top
@@ -32,7 +36,9 @@ theme:
     - search.share
     - content.code.copy
     - content.code.annotate
+    - content.code.select
     - content.tabs.link
+    - content.tooltips
     - toc.follow
 
 extra_css:
@@ -75,22 +81,41 @@ nav:
   # ── Foundation ────────────────────────────────────────────
   - Fundamentals:
     - fundamentals/index.md
-    - Networking Basics: fundamentals/networking-basics.md
-    - Numbers Every Engineer Should Know: fundamentals/numbers-to-know.md
-    - Latency vs Throughput: fundamentals/latency-throughput.md
-    - Queuing Theory & Little's Law: fundamentals/queuing-theory.md
-    - Back-of-Envelope Estimation: fundamentals/estimation.md
-    - Scalability: fundamentals/scalability.md
-    - Availability & Reliability: fundamentals/availability.md
-    - Fault Tolerance & Resilience: fundamentals/fault-tolerance.md
-    - Concurrency & Locking: fundamentals/concurrency.md
-    - ACID vs BASE: fundamentals/acid-vs-base.md
-    - CAP Theorem: fundamentals/cap-theorem.md
-    - Consistency Models: fundamentals/consistency-models.md
-    - Database Indexes: fundamentals/database-indexes.md
-    - Storage Engine Internals: fundamentals/storage-internals.md
-    - Probabilistic Data Structures: fundamentals/probabilistic-data-structures.md
-    - Data Encoding & Serialization: fundamentals/serialization.md
+    - Numbers & Estimation:
+      - Numbers Every Engineer Should Know: fundamentals/numbers-to-know.md
+      - Latency vs Throughput: fundamentals/latency-throughput.md
+      - Queuing Theory & Little's Law: fundamentals/queuing-theory.md
+      - Back-of-Envelope Estimation: fundamentals/estimation.md
+      - Time Complexity Cheatsheet: fundamentals/time-complexity.md
+    - Hardware & OS:
+      - Memory Hierarchy & Cache Lines: fundamentals/memory-hierarchy.md
+      - Disk and SSD Internals: fundamentals/disk-ssd-internals.md
+      - Operating System Concepts: fundamentals/os-concepts.md
+      - Memory Models & Cache Coherency: fundamentals/memory-models.md
+    - Networking:
+      - Networking Basics: fundamentals/networking-basics.md
+      - TCP/UDP Deep Dive: fundamentals/tcp-udp-deep-dive.md
+      - TLS and Certificates: fundamentals/tls-certificates.md
+    - Data:
+      - Hashing: fundamentals/hashing.md
+      - Compression: fundamentals/compression.md
+      - Encoding Pitfalls: fundamentals/encoding-pitfalls.md
+      - Data Encoding & Serialization: fundamentals/serialization.md
+      - Probabilistic Data Structures: fundamentals/probabilistic-data-structures.md
+      - Database Indexes: fundamentals/database-indexes.md
+      - Storage Engine Internals: fundamentals/storage-internals.md
+    - Distributed Systems Theory:
+      - ACID vs BASE: fundamentals/acid-vs-base.md
+      - CAP Theorem: fundamentals/cap-theorem.md
+      - Consistency Models: fundamentals/consistency-models.md
+      - Database Transactions & Isolation: fundamentals/isolation-levels.md
+      - Scalability: fundamentals/scalability.md
+      - Throughput Limits (Amdahl's & USL): fundamentals/throughput-limits.md
+      - Availability & Reliability: fundamentals/availability.md
+      - Fault Tolerance & Resilience: fundamentals/fault-tolerance.md
+      - Failure Modes Catalogue: fundamentals/failure-modes.md
+      - Concurrency & Locking: fundamentals/concurrency.md
+      - Hot Partitions & Hotspots: fundamentals/hot-partitions.md
 
   - Software Design:
     - software-design/index.md
@@ -107,20 +132,42 @@ nav:
   # ── Systems & Architecture ────────────────────────────────
   - Software Architecture:
     - architecture/index.md
-    - Layered / N-Tier Architecture: architecture/layered-architecture.md
-    - Monolith vs Microservices: architecture/monolith-vs-microservices.md
-    - Domain-Driven Design: architecture/ddd.md
-    - Hexagonal Architecture: architecture/hexagonal.md
-    - Event-Driven Architecture: architecture/event-driven.md
-    - Service-Oriented Architecture: architecture/soa.md
-    - Serverless Architecture: architecture/serverless.md
-    - Twelve-Factor App: architecture/twelve-factor.md
-    - Strangler Fig Pattern: architecture/strangler-fig.md
-    - Backend for Frontend (BFF): architecture/bff.md
-    - Microservices Patterns: architecture/microservices-patterns.md
-    - Multi-Tenancy: architecture/multi-tenancy.md
-    - API-First Design: architecture/api-first.md
-    - Data Mesh: architecture/data-mesh.md
+    - Decision-Making:
+      - Architectural Decision Records (ADRs): architecture/adrs.md
+      - Fitness Functions: architecture/fitness-functions.md
+      - Evolutionary Architecture: architecture/evolutionary-architecture.md
+      - Quality Attributes: architecture/quality-attributes.md
+      - Capacity Planning & Sizing: architecture/capacity-planning.md
+    - Architectural Styles:
+      - Layered / N-Tier Architecture: architecture/layered-architecture.md
+      - Monolith vs Microservices: architecture/monolith-vs-microservices.md
+      - Modular Monolith: architecture/modular-monolith.md
+      - Service-Oriented Architecture: architecture/soa.md
+      - Hexagonal Architecture: architecture/hexagonal.md
+      - Domain-Driven Design: architecture/ddd.md
+      - Event-Driven Architecture: architecture/event-driven.md
+      - Serverless Architecture: architecture/serverless.md
+      - Pipes and Filters Architecture: architecture/pipes-and-filters.md
+      - Space-Based Architecture: architecture/space-based.md
+      - CQRS & Event Sourcing as Architecture: architecture/cqrs-event-sourcing-architecture.md
+      - Architecture Styles Comparison: architecture/styles-comparison.md
+    - Cross-Cutting Concerns:
+      - Twelve-Factor App: architecture/twelve-factor.md
+      - Backend for Frontend (BFF): architecture/bff.md
+      - API-First Design: architecture/api-first.md
+      - API Versioning at Architecture Level: architecture/api-versioning-architecture.md
+      - Microservices Patterns: architecture/microservices-patterns.md
+      - Choreography vs Orchestration: architecture/choreography-vs-orchestration.md
+      - Coupling & Cohesion at Service Boundaries: architecture/coupling-cohesion-services.md
+      - Multi-Tenancy: architecture/multi-tenancy.md
+    - Distribution & Scale:
+      - Multi-Region Architecture: architecture/multi-region.md
+      - Edge Architecture: architecture/edge-architecture.md
+      - Lambda & Kappa Architectures: architecture/lambda-kappa-architectures.md
+      - Data Mesh: architecture/data-mesh.md
+    - Evolution & Pitfalls:
+      - Strangler Fig Pattern: architecture/strangler-fig.md
+      - Architecture Anti-Patterns: architecture/anti-patterns.md
 
   - Distributed Systems:
     - distributed/index.md
@@ -235,10 +282,36 @@ nav:
     - infrastructure/index.md
     - Containers & Docker: infrastructure/containers.md
     - Kubernetes: infrastructure/kubernetes.md
-    - CI/CD: infrastructure/cicd.md
-    - Deployment Strategies: infrastructure/deployments.md
-    - Infrastructure as Code: infrastructure/iac.md
     - Service Mesh: infrastructure/service-mesh.md
+
+  - IaC:
+    - iac/index.md
+    - Fundamentals: iac/fundamentals.md
+    - Terraform: iac/terraform.md
+    - Terraform in CI/CD Lifecycle: iac/terraform-cicd-lifecycle.md
+    - State Management: iac/state-management.md
+    - Modules & Repository Structure: iac/modules-and-structure.md
+    - AWS CDK: iac/cdk.md
+    - CloudFormation: iac/cloudformation.md
+    - Pulumi & Alternatives: iac/pulumi-and-alternatives.md
+    - Drift Detection: iac/drift-detection.md
+    - Secrets in IaC: iac/secrets-in-iac.md
+    - Testing IaC: iac/testing-iac.md
+    - Best Practices: iac/best-practices.md
+
+  - CI/CD:
+    - cicd/index.md
+    - Fundamentals: cicd/fundamentals.md
+    - Pipelines: cicd/pipelines.md
+    - Branching Strategies: cicd/branching-strategies.md
+    - Build and Test: cicd/build-and-test.md
+    - Artifact Management: cicd/artifact-management.md
+    - Security in CI/CD: cicd/security-in-cicd.md
+    - Deployment Strategies: cicd/deployment-strategies.md
+    - GitOps: cicd/gitops.md
+    - Progressive Delivery: cicd/progressive-delivery.md
+    - AWS CodePipeline: cicd/aws-codepipeline.md
+    - Release Management: cicd/release-management.md
 
   # ── Specialized & Reference ───────────────────────────────
   - AI Agents:

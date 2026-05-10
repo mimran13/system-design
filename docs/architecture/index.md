@@ -1,49 +1,115 @@
 # Software Architecture
 
-Architectural styles define how you structure a system at the macro level — how components are divided, how they communicate, and how they evolve independently. Choosing the wrong architecture at the start is expensive to undo.
+How you organise services, data, and teams determines every later decision — performance, scalability, maintainability, ops cost. This section covers architectural decision-making, the dominant styles, cross-cutting concerns, and the anti-patterns to avoid.
 
-## Foundational patterns
+Grouped into five themes: read top-to-bottom for the full curriculum, or jump to the theme matching your current question.
 
-Start here — these are the prerequisites for everything else.
+---
 
-| Topic | What it is | When it matters |
-|---|---|---|
-| [Layered / N-Tier Architecture](layered-architecture.md) | Presentation → Business → Persistence → DB | Every system has layers. This is the starting point. |
-| [Monolith vs Microservices](monolith-vs-microservices.md) | Single deployable unit vs independently deployed services | The most common architectural decision |
-| [Domain-Driven Design](ddd.md) | Bounded contexts, aggregates, ubiquitous language | Finding service boundaries; complex domains |
-| [Hexagonal Architecture](hexagonal.md) | Ports and adapters — decouple core logic from adapters | Multiple delivery mechanisms; high testability |
+## Decision-Making
 
-## Architectural styles
+How architects actually choose, document, and evolve architecture.
 
-| Topic | What it is | When it matters |
-|---|---|---|
-| [Event-Driven Architecture](event-driven.md) | Components communicate through events, not direct calls | Decoupling, async processing, audit trails |
-| [Service-Oriented Architecture](soa.md) | SOA vs microservices — what changed and what didn't | Understanding legacy enterprise systems |
-| [Serverless Architecture](serverless.md) | Function-level deployment, managed execution, cold starts | Spiky workloads, minimal ops overhead |
-| [Twelve-Factor App](twelve-factor.md) | Methodology for production-ready cloud-native apps | Any app going to prod on cloud |
+| Topic | What it covers |
+|---|---|
+| [Architectural Decision Records (ADRs)](adrs.md) | Capturing decisions so they survive turnover |
+| [Fitness Functions](fitness-functions.md) | Automated checks that prevent architectural drift |
+| [Evolutionary Architecture](evolutionary-architecture.md) | Building for change, not against it |
+| [Quality Attributes](quality-attributes.md) | The "ilities" — performance, security, ops, cost |
+| [Capacity Planning & Sizing](capacity-planning.md) | Sizing infrastructure to projected demand |
 
-## Migration and client patterns
+---
 
-| Topic | What it is | When it matters |
-|---|---|---|
-| [Strangler Fig Pattern](strangler-fig.md) | Incrementally replace a monolith without big-bang rewrite | Any monolith-to-microservices migration |
-| [Backend for Frontend (BFF)](bff.md) | Dedicated backend per client type (web, mobile, partner) | Different clients need different API shapes |
-| [Microservices Patterns](microservices-patterns.md) | Decomposition, database-per-service, ACL, sidecar, anti-patterns | Building and operating a microservices system |
-| [Multi-Tenancy](multi-tenancy.md) | Silo / bridge / pool models, tenant isolation, noisy neighbour | Any SaaS product serving multiple customers |
+## Architectural Styles
 
-## Platform & data architecture
+The major shapes of systems. Most real systems blend several.
 
-| Topic | What it is | When it matters |
-|---|---|---|
-| [API-First Design](api-first.md) | Design the API contract before writing code; code generation from OpenAPI | Parallel teams, microservices, platform APIs |
-| [Data Mesh](data-mesh.md) | Federated data ownership — domain teams own their data products | Large org, central data team is a bottleneck |
+| Topic | What it covers |
+|---|---|
+| [Layered / N-Tier](layered-architecture.md) | Traditional CRUD layered approach |
+| [Monolith vs Microservices](monolith-vs-microservices.md) | The classic decomposition decision |
+| [Modular Monolith](modular-monolith.md) | The "missing middle" — modular, single-deployable |
+| [Service-Oriented (SOA)](soa.md) | Pre-microservices distributed systems |
+| [Hexagonal Architecture](hexagonal.md) | Ports and adapters; isolating the domain |
+| [Domain-Driven Design](ddd.md) | Bounded contexts, ubiquitous language |
+| [Event-Driven Architecture](event-driven.md) | Async events, decoupled producers/consumers |
+| [Serverless Architecture](serverless.md) | Functions-as-a-service, managed runtimes |
+| [Pipes and Filters](pipes-and-filters.md) | Stream processing, ETL, build pipelines |
+| [Space-Based Architecture](space-based.md) | In-memory grids for ultra-high throughput |
+| [CQRS & Event Sourcing as Architecture](cqrs-event-sourcing-architecture.md) | When CQRS+ES becomes the system style |
+| [Architecture Styles Comparison](styles-comparison.md) | Side-by-side trade-offs |
 
-## Architectural patterns (data & state)
+---
 
-These live in the Patterns section but are architectural decisions, not just implementation details:
+## Cross-Cutting Concerns
 
-| Topic | What it is | When it matters |
-|---|---|---|
-| [CQRS](../patterns/cqrs.md) | Separate read and write models | Read/write scaling mismatch; multiple read consumers |
-| [Event Sourcing](../patterns/event-sourcing.md) | Events are the source of truth; state is derived | Audit trail, temporal queries, complex domain |
-| [Saga Pattern](../patterns/saga-pattern.md) | Distributed transactions via compensating actions | Microservices + multi-step transactions |
+Patterns that show up regardless of style.
+
+| Topic | What it covers |
+|---|---|
+| [Twelve-Factor App](twelve-factor.md) | The cloud-native baseline |
+| [Backend for Frontend (BFF)](bff.md) | Tailored APIs per client type |
+| [API-First Design](api-first.md) | Define the contract before implementing |
+| [API Versioning at Architecture Level](api-versioning-architecture.md) | Strategies for evolving public contracts |
+| [Microservices Patterns](microservices-patterns.md) | Service mesh, sidecars, service discovery |
+| [Choreography vs Orchestration](choreography-vs-orchestration.md) | Event-based vs coordinator-driven workflows |
+| [Coupling & Cohesion at Service Boundaries](coupling-cohesion-services.md) | What to manage at the inter-service layer |
+| [Multi-Tenancy](multi-tenancy.md) | Pooled, siloed, hybrid SaaS approaches |
+
+---
+
+## Distribution & Scale
+
+When the system goes global, multi-cloud, or big-data.
+
+| Topic | What it covers |
+|---|---|
+| [Multi-Region Architecture](multi-region.md) | Active-active, active-passive, read replicas |
+| [Edge Architecture](edge-architecture.md) | Compute at CDN PoPs |
+| [Lambda & Kappa Architectures](lambda-kappa-architectures.md) | Big-data batch + stream patterns |
+| [Data Mesh](data-mesh.md) | Domain-oriented decentralised data ownership |
+
+---
+
+## Evolution & Pitfalls
+
+How to evolve architecture safely, and what to recognise when things have gone wrong.
+
+| Topic | What it covers |
+|---|---|
+| [Strangler Fig Pattern](strangler-fig.md) | Migrating without rewrites |
+| [Architecture Anti-Patterns](anti-patterns.md) | Distributed monolith, big ball of mud, cargo cult, others |
+
+---
+
+## Reading paths
+
+| If you have... | Read first |
+|---|---|
+| 30 minutes | ADRs, Quality Attributes, Modular Monolith, Anti-Patterns |
+| 2 hours | + Hexagonal, DDD, Microservices Patterns, Choreography vs Orchestration |
+| A weekend | + everything in Decision-Making + Architectural Styles + Multi-Region |
+
+---
+
+## Interview shortlist
+
+| Question | Section |
+|---|---|
+| *"How would you decide between monolith and microservices?"* | Modular Monolith, Monolith vs Microservices |
+| *"How do you record architectural decisions?"* | ADRs |
+| *"What quality attributes drove the design?"* | Quality Attributes |
+| *"Choreography vs orchestration — which when?"* | Choreography vs Orchestration |
+| *"Distributed monolith — what is it and how do you avoid it?"* | Anti-Patterns, Coupling & Cohesion |
+| *"How do you size a system?"* | Capacity Planning |
+| *"What's CQRS + Event Sourcing actually for?"* | CQRS & ES as Architecture |
+| *"How do you evolve architecture without rewrites?"* | Strangler Fig, Evolutionary Architecture |
+
+---
+
+## Related sections
+
+- [Software Design](../software-design/index.md) — code-level structure that supports good architecture
+- [Distributed Systems](../distributed/index.md) — the theoretical foundation
+- [Patterns](../patterns/index.md) — implementation-level patterns
+- [Microservices ↔ CI/CD](../cicd/index.md) — how architecture meets delivery
