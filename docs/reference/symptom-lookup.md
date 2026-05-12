@@ -1,3 +1,8 @@
+---
+tags:
+  - applied
+---
+
 # Symptom → Concept Lookup
 
 Spot a problem at work, find the right concept fast. This page is **diagnostic-first**: each row is a real-world symptom you'd actually say out loud, mapped to the page that explains the underlying concept and what to do about it.

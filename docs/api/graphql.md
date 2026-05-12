@@ -568,4 +568,4 @@ The gateway stitches responses into a single result. Services evolve independent
 - [REST vs gRPC vs GraphQL](comparison.md) — decision guide
 - [API Gateway](../networking/api-gateway.md) — BFF pattern using GraphQL
 - [WebSockets & SSE](../networking/websockets-sse.md) — GraphQL subscriptions transport
-- [Caching](../storage/caching.md) — GraphQL caching challenges (POST, dynamic queries)
+- [Caching](../caching/index.md) — GraphQL caching challenges (POST, dynamic queries)

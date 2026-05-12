@@ -535,7 +535,7 @@ VPC:           Private subnet, no public access
 
 ## Related topics
 
-- [Caching](../storage/caching.md) — cache-aside, read-through patterns
+- [Caching](../caching/index.md) — cache-aside, read-through patterns
 - [Consistent Hashing](../patterns/consistent-hashing.md) — key distribution across nodes
 - [Distributed Locks](../distributed/distributed-locks.md) — used for cache stampede prevention
 - [Key-Value Stores](../storage/key-value-stores.md) — Redis internals

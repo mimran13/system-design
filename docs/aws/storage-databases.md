@@ -341,4 +341,4 @@ WHERE o.created_at > '2024-01-01';
 - [Relational Databases](../storage/relational-databases.md)
 - [Key-Value Stores](../storage/key-value-stores.md)
 - [Blob Storage](../storage/blob-storage.md)
-- [Caching](../storage/caching.md)
+- [Caching](../caching/index.md)

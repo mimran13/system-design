@@ -776,7 +776,7 @@ Scalability:
 ## Related topics
 
 - [Messaging & Pub/Sub](../messaging/pub-sub.md) — Kafka fanout queue
-- [Caching](../storage/caching.md) — Redis sorted sets for timeline storage
+- [Caching](../caching/index.md) — Redis sorted sets for timeline storage
 - [News Feed](news-feed.md) — similar problem with different constraints (Facebook-style graph)
 - [Notification Service](notification-service.md) — push notifications when followers post
 - [CRDTs](../distributed/crdts.md) — counters for like/retweet counts across regions

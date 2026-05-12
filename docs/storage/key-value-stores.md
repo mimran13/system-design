@@ -217,7 +217,7 @@ Every write to a DynamoDB table can emit a stream event (INSERT/MODIFY/REMOVE). 
 
 ## Related topics
 
-- [Caching](caching.md) — Redis as a cache layer
+- [Caching](../caching/index.md) — Redis as a cache layer
 - [Consistent Hashing](../patterns/consistent-hashing.md) — how Redis Cluster distributes data
 - [Rate Limiting](../patterns/rate-limiting.md) — Redis counters for rate limiting
 - [SQL vs NoSQL](sql-vs-nosql.md) — when KV beats relational

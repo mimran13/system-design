@@ -137,6 +137,6 @@ A system can be high-performance but not scalable (single powerful server). It c
 ## Related topics
 
 - [Load Balancing](../networking/load-balancing.md) — distributing load across instances
-- [Caching](../storage/caching.md) — the fastest scalability win
+- [Caching](../caching/index.md) — the fastest scalability win
 - [Sharding](../patterns/sharding.md) — horizontal partitioning for storage scale
 - [Consistent Hashing](../patterns/consistent-hashing.md) — routing with minimal reshuffling

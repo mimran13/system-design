@@ -173,6 +173,6 @@ This matters for TCP window sizing and large file transfers over high-latency li
 ## Related topics
 
 - [Scalability](scalability.md) — throughput at scale
-- [Caching](../storage/caching.md) — primary latency optimization tool
+- [Caching](../caching/index.md) — primary latency optimization tool
 - [Load Balancing](../networking/load-balancing.md) — distributing to reduce per-server load
 - [SLI, SLO & SLA](../observability/slo-sla.md) — how latency targets are formalized

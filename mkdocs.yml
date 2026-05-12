@@ -70,6 +70,8 @@ markdown_extensions:
 
 plugins:
   - search
+  - tags:
+      tags_file: reference/tags.md
 
 nav:
   - Home: index.md
@@ -104,6 +106,7 @@ nav:
       - Distributed Systems Theory:
         - ACID vs BASE: fundamentals/acid-vs-base.md
         - CAP Theorem: fundamentals/cap-theorem.md
+        - CAP Theorem in Practice: fundamentals/cap-theorem-applied.md
         - Consistency Models: fundamentals/consistency-models.md
         - Database Transactions & Isolation: fundamentals/isolation-levels.md
         - Scalability: fundamentals/scalability.md
@@ -112,6 +115,7 @@ nav:
         - Fault Tolerance & Resilience: fundamentals/fault-tolerance.md
         - Failure Modes Catalogue: fundamentals/failure-modes.md
         - Concurrency & Locking: fundamentals/concurrency.md
+        - Partitioning Fundamentals: fundamentals/partitioning-fundamentals.md
         - Hot Partitions & Hotspots: fundamentals/hot-partitions.md
 
     - Software Design:
@@ -207,9 +211,12 @@ nav:
       - Caching Strategies: caching/caching-strategies.md
       - Eviction Policies: caching/eviction-policies.md
       - Cache Invalidation: caching/cache-invalidation.md
+      - Cache Invalidation in Practice: caching/cache-invalidation-applied.md
       - Distributed Caching: caching/distributed-caching.md
+      - Distributed Cache Best Practices: caching/distributed-cache-best-practices.md
       - Redis Deep Dive: caching/redis.md
       - Cache Patterns & Pitfalls: caching/cache-patterns.md
+      - Cache Hierarchy & Architecture: caching/cache-hierarchy.md
 
   # ─── Communication ─────────────────────────────────────────
   - Communication:
@@ -240,6 +247,9 @@ nav:
       - Event Streaming: messaging/event-streaming.md
       - Kafka Deep Dive: messaging/kafka.md
       - Backpressure: messaging/backpressure.md
+      - Event Payload Design: messaging/event-payload-design.md
+      - Event Schema Evolution: messaging/event-schema-evolution.md
+      - Idempotent Consumers in Production: messaging/idempotent-consumers.md
 
   # ─── Operations ────────────────────────────────────────────
   - Operations:
@@ -257,9 +267,12 @@ nav:
       - Event Sourcing: patterns/event-sourcing.md
       - Consistent Hashing: patterns/consistent-hashing.md
       - Sharding: patterns/sharding.md
+      - Querying Sharded Data: patterns/querying-sharded-data.md
+      - Sharding Best Practices: patterns/sharding-best-practices.md
       - Replication: patterns/replication.md
       - Read Replicas: patterns/read-replicas.md
       - Connection Pooling: patterns/connection-pooling.md
+      - Boring Technology: patterns/boring-tech.md
 
     - Observability:
       - observability/index.md
@@ -314,6 +327,7 @@ nav:
       - GitOps: cicd/gitops.md
       - Progressive Delivery: cicd/progressive-delivery.md
       - AWS CodePipeline: cicd/aws-codepipeline.md
+      - AWS Deployment via GitHub Actions: cicd/aws-deployment-with-github-actions.md
       - Release Management: cicd/release-management.md
 
   # ─── AI ────────────────────────────────────────────────────
@@ -354,6 +368,12 @@ nav:
       - Messaging: aws/messaging.md
       - Observability: aws/observability.md
       - Security: aws/security.md
+    - AWS Service Pickers:
+      - Compute Picker: aws/picker-compute.md
+      - Database Picker: aws/picker-database.md
+      - Messaging Picker: aws/picker-messaging.md
+      - Storage Picker: aws/picker-storage.md
+      - Analytics Picker: aws/picker-analytics.md
 
   # ─── Case Studies ──────────────────────────────────────────
   - Case Studies:
@@ -376,7 +396,15 @@ nav:
 
   # ─── Reference (at the end) ────────────────────────────────
   - Reference:
+    - Reading Paths:
+      - Just the Essentials: paths/essentials.md
+      - Interview Prep (1 Week): paths/interview-prep.md
+      - Building a SaaS: paths/building-saas.md
+      - Monolith → Microservices: paths/monolith-to-microservices.md
+      - Scaling Beyond One Region: paths/scaling-beyond-region.md
     - Symptom → Concept Lookup: reference/symptom-lookup.md
+    - Decision Flowcharts: reference/decision-flowcharts.md
+    - Tags: reference/tags.md
     - Practical Examples:
       - examples/index.md
       - Data Processing: examples/data-processing.md

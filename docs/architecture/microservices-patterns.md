@@ -17,6 +17,44 @@ The [Monolith vs Microservices](monolith-vs-microservices.md) page covers the st
 
 ---
 
+## Cost reality
+
+Going microservices is rarely cheaper than a monolith. Concrete order-of-magnitude (AWS, 2026):
+
+```
+Modular monolith (~5 services-worth of work in one deploy):
+  Compute:           $200-2K/month (1 service, multi-AZ)
+  Database:          $200-1K
+  Observability:     $100-500
+  CI/CD:             essentially free
+  Engineer ops time: ~10% of one engineer
+  ────────────────────────────────────
+  Total:             $500-3.5K/month + 0.1 FTE
+
+Microservices (10 services):
+  Compute:           $2K-10K/month (10 deployments, redundancy)
+  Databases:         $1K-5K (often per-service)
+  Service mesh:      $300-1K (Istio control plane, sidecars)
+  Observability:     $500-3K (more telemetry, distributed tracing)
+  API gateway:       $200-500
+  CI/CD:             10 pipelines × $0 base (more runner minutes)
+  Engineer ops time: ~30-50% of one engineer (dedicated)
+  ────────────────────────────────────
+  Total:             $4K-20K/month + 0.3-0.5 FTE
+
+Microservices (30+ services, larger team):
+  Compute:           $10K-50K/month
+  Databases:         $5K-20K
+  Service mesh + observability + API gateway: $2K-10K
+  Engineer ops time: 1-3 FTE (platform team)
+  ────────────────────────────────────
+  Total:             $20K-100K/month + 1-3 FTE
+```
+
+The platform-team cost (humans operating it) usually outweighs the infrastructure cost. Plan for both.
+
+---
+
 ## Service decomposition
 
 The hardest question in microservices is where to draw the service boundary. Two strategies:

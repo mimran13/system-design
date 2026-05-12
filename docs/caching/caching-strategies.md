@@ -1,6 +1,16 @@
+---
+tags:
+  - interview-critical
+  - applied
+  - for-saas
+---
+
 # Caching Strategies
 
 Caching strategies define *who* is responsible for loading data into the cache and *when* writes propagate to the underlying store. Choosing the wrong strategy is a common source of stale reads, silent data loss, and thundering herds.
+
+!!! tip "Applied companions"
+    For multi-tier hierarchy design (CDN → app → Redis → DB), see **[Cache Hierarchy & Architecture](cache-hierarchy.md)**. For invalidation patterns, see **[Cache Invalidation in Practice](cache-invalidation-applied.md)**.
 
 ## You'll see this when...
 

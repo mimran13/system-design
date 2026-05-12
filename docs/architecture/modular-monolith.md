@@ -1,3 +1,10 @@
+---
+tags:
+  - interview-critical
+  - boring-tech
+  - for-saas
+---
+
 # Modular Monolith
 
 The "third option" between a tangled monolith and full microservices. A modular monolith is **deployed as one unit** but **internally structured as independent modules** with clear boundaries, separate data ownership, and explicit interfaces. It captures most of microservices' organisational benefits without the operational overhead.
@@ -13,6 +20,34 @@ The "third option" between a tangled monolith and full microservices. A modular 
 - Codebase has `modules/`, `domains/`, or `bounded-contexts/` folders with import rules
 - Architects say "we need bounded contexts but don't want to deploy 30 services"
 - Migrating a tangled monolith → "let's modularise first, then consider splitting"
+
+---
+
+## Cost reality
+
+A modular monolith is typically **5-10× cheaper** than microservices at small-to-mid scale (AWS, 2026):
+
+```
+Single-team SaaS, $0-100K ARR:
+  Compute:           1 service in ECS Fargate or App Runner → $50-300/month
+  Database:          One Postgres + read replica → $200-500
+  Cache:             ElastiCache small → $100
+  Observability:     Sentry + a metrics service → $50-200
+  Total infra:       $400-1,100/month
+  Ops effort:        few hours/week
+
+Mid-stage SaaS, $1-10M ARR:
+  Compute:           2-3 monolith instances, multi-AZ → $500-2K/month
+  Database:          Aurora + replicas → $500-2K
+  Cache:             ElastiCache cluster → $300-1K
+  Observability:     Datadog → $500-2K
+  Total infra:       $2K-7K/month
+  Ops effort:        ~0.5 FTE
+```
+
+Same workload as microservices: typically 2-5× more expensive once you add service mesh, multiple databases, API gateway, distributed tracing, and platform team.
+
+The modular monolith carries you a long way. Don't rush past it for non-cost reasons.
 
 ---
 

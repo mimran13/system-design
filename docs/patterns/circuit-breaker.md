@@ -1,3 +1,9 @@
+---
+tags:
+  - interview-critical
+  - applied
+---
+
 # Circuit Breaker
 
 ## What it is

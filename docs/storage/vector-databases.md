@@ -435,4 +435,4 @@ Don't use vector DB when:
 
 - [Search Engines](search-engines.md) — Elasticsearch supports vector search (kNN) alongside traditional full-text
 - [Blob Storage](blob-storage.md) — store raw documents/images in S3; store their embeddings in vector DB
-- [Caching](caching.md) — cache embedding computations (expensive) and frequent query results
+- [Caching](../caching/index.md) — cache embedding computations (expensive) and frequent query results

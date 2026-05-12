@@ -1,4 +1,13 @@
+---
+tags:
+  - interview-critical
+  - for-scale
+---
+
 # Sharding
+
+!!! tip "Applied companions"
+    For **how to query** after sharding (routing, scatter-gather, secondary indexes, cross-shard JOINs), see **[Querying Sharded Data](querying-sharded-data.md)**. For the operational playbook (shard key selection, resharding, observability), see **[Sharding Best Practices](sharding-best-practices.md)**.
 
 ## What it is
 

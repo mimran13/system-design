@@ -1,3 +1,9 @@
+---
+tags:
+  - for-scale
+  - for-saas
+---
+
 # Multi-Region Architecture
 
 Most products start in one region. At some point — global users, disaster recovery, regulatory boundaries — multi-region becomes necessary. The architectural decisions split between **active-active** (every region serves traffic), **active-passive** (one primary, others standby), and various read-replica configurations. Each has very different cost, latency, and consistency profiles.

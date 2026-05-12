@@ -1,3 +1,9 @@
+---
+tags:
+  - interview-critical
+  - for-saas
+---
+
 # SQL vs NoSQL
 
 ## You'll see this when...

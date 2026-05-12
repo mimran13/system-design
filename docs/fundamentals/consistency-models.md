@@ -1,3 +1,9 @@
+---
+tags:
+  - interview-critical
+  - for-scale
+---
+
 # Consistency Models
 
 ## What it is
@@ -183,4 +189,4 @@ Example: N=3, W=2, R=2 → 2+2=4 > 3 ✓ (QUORUM in Cassandra)
 
 - [CAP Theorem](cap-theorem.md) — CP vs AP is a coarse version of this spectrum
 - [Replication](../patterns/replication.md) — consistency model is determined by replication strategy
-- [Caching](../storage/caching.md) — caches are explicitly eventually consistent with their source
+- [Caching](../caching/index.md) — caches are explicitly eventually consistent with their source

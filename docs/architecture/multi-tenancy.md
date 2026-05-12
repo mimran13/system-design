@@ -1,3 +1,9 @@
+---
+tags:
+  - for-saas
+  - applied
+---
+
 # Multi-Tenancy
 
 ## What it is

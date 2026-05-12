@@ -1,3 +1,8 @@
+---
+tags:
+  - interview-critical
+---
+
 # Monolith vs Microservices
 
 ## Monolith

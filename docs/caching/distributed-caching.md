@@ -2,6 +2,9 @@
 
 A distributed cache spans multiple nodes to provide more memory capacity than a single server, survive node failures, and scale read/write throughput horizontally.
 
+!!! tip "Applied companion"
+    For operational reality — clustering, replication, hot-key mitigation, capacity planning, the failure modes — see **[Distributed Cache Best Practices](distributed-cache-best-practices.md)**.
+
 ## Why distribute a cache?
 
 ```

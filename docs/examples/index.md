@@ -1,3 +1,8 @@
+---
+tags:
+  - applied
+---
+
 # Practical Examples
 
 Real-world scenarios with the concepts that fit. Each example weaves together 2-4 patterns from across the repo to solve a concrete problem.

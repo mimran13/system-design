@@ -1,3 +1,9 @@
+---
+tags:
+  - boring-tech
+  - for-saas
+---
+
 # Hexagonal Architecture
 
 ## What it is

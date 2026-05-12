@@ -1,4 +1,13 @@
+---
+tags:
+  - interview-critical
+  - for-scale
+---
+
 # CAP Theorem
+
+!!! tip "Applied companion"
+    For the **practical side** — tunable consistency in Cassandra and DynamoDB, what CP/AP failures look like in code, PACELC walkthrough — see **[CAP Theorem in Practice](cap-theorem-applied.md)**.
 
 ## What it is
 

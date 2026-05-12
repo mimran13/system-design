@@ -315,4 +315,4 @@ Large scale (100+ app servers):
 - [Relational Databases](../storage/relational-databases.md) — why max_connections is a hard limit
 - [Read Replicas](read-replicas.md) — ProxySQL can route reads to replicas automatically
 - [Sharding](sharding.md) — at extreme scale, even pooled connections aren't enough
-- [Caching](../storage/caching.md) — reducing DB load at the query level
+- [Caching](../caching/index.md) — reducing DB load at the query level

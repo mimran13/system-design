@@ -1,3 +1,9 @@
+---
+tags:
+  - interview-critical
+  - applied
+---
+
 # Architecture Anti-Patterns
 
 Pattern names tell you what to do; anti-patterns name what you've already done wrong. Recognising them early — in your own system or in interviews — saves years of cleanup. This page catalogues the most common architectural anti-patterns, what they look like, and the standard fixes.

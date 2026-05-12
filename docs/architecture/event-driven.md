@@ -4,6 +4,11 @@
 
 Event-Driven Architecture (EDA) is an architectural style where components communicate through events — immutable records of things that happened. Producers publish events without knowing who consumes them. Consumers react to events independently.
 
+!!! tip "Applied companions"
+    For payload design (fat vs thin events), see **[Event Payload Design](../messaging/event-payload-design.md)**.
+    For schema evolution, see **[Event Schema Evolution](../messaging/event-schema-evolution.md)**.
+    For consumer-side handling, see **[Idempotent Consumers in Production](../messaging/idempotent-consumers.md)**.
+
 ## You'll see this when...
 
 - Many services need to react when something happens (order placed → email + analytics + inventory + recommendation refresh)
@@ -13,6 +18,31 @@ Event-Driven Architecture (EDA) is an architectural style where components commu
 - Need to add new functionality without modifying existing services (subscribe to existing events)
 - Decoupling teams: "your team doesn't need to know about my service, just consume my events"
 - Real-time analytics fed by event streams alongside transactional writes
+
+## Cost reality
+
+The event-driven backbone has a real infrastructure + ops cost. Rough estimates (AWS, 2026):
+
+```
+Light event-driven (SQS / SNS / EventBridge):
+  Setup time:        days
+  Infra cost:        $20-200/month (often nearly free at low volume)
+  Ops overhead:      negligible
+  
+Mid-tier (Kinesis Data Streams):
+  Setup time:        weeks
+  Infra cost:        $200-1500/month (depends on shard count + retention)
+  Ops overhead:      light — managed service
+  
+Kafka (MSK or self-hosted):
+  Setup time:        weeks-months
+  Infra cost:        $300-3K/month minimum (3-broker cluster + storage)
+  At scale:          $5K-50K+/month
+  Ops overhead:      meaningful — Schema Registry, Connect, KRaft, monitoring
+  Engineer effort:   often a dedicated platform / streaming team at scale
+```
+
+Plus the cognitive cost: eventual consistency, schema evolution, debugging across services, distributed tracing. Don't adopt Kafka for 100 events/sec — SQS/SNS handle that with $20/month and no ops.
 
 ```
 Traditional (request-driven):

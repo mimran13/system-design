@@ -313,7 +313,7 @@ S3 (media) → Lambda (resize) → CloudFront
 
 ## Related topics
 
-- [Caching](../storage/caching.md) — feed cache strategies
+- [Caching](../caching/index.md) — feed cache strategies
 - [Message Queues](../messaging/message-queues.md) — async fan-out
 - [Pub/Sub](../messaging/pub-sub.md) — feed updates
 - [Consistent Hashing](../patterns/consistent-hashing.md) — Redis cluster sharding

@@ -19,6 +19,35 @@ For the pattern-level mechanics, see [CQRS](../patterns/cqrs.md) and [Event Sour
 
 ---
 
+## Cost reality
+
+CQRS+ES is operationally expensive. Rough estimates (AWS, 2026):
+
+```
+CQRS only (no event sourcing):
+  Write store:       $500-3K/month (Postgres / RDS)
+  Event bus:         $200-2K/month (Kafka / Kinesis)
+  Read model store:  $500-2K/month (ES / Redis / second Postgres)
+  Stream processors: $200-1K/month (Flink / Kafka Streams runtime)
+  Observability:     extra spend on tracing + replication lag
+  Ops overhead:      ~0.5 FTE (multiple stores, projection management)
+  Total:             $2K-10K/month + 0.5 FTE
+
+Full CQRS + Event Sourcing:
+  Event store:       $300-2K/month (EventStoreDB / Marten / DynamoDB)
+  + everything above
+  Snapshot infra:    storage + scheduled jobs
+  Schema registry:   meaningful at scale
+  Ops overhead:      ~1 FTE (replay tooling, projection rebuilds, event versioning)
+  Total:             $3K-15K/month + 1 FTE
+```
+
+Compare to a simple Postgres-only design: $200-2K/month, 0.1 FTE. The 5-10× cost is justifiable only when the audit/replay/independent-read-models requirement is real.
+
+Don't adopt CQRS+ES "for scale" or "for cleanliness" — the cost outpaces the benefit at small scale.
+
+---
+
 ## CQRS as architecture
 
 Standard architecture: one model handles both commands (writes) and queries (reads).

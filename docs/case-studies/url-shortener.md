@@ -192,7 +192,7 @@ graph TD
 
 ## Key concepts used
 
-- [Caching](../storage/caching.md) — Redis/DAX cache-aside on redirect path
+- [Caching](../caching/index.md) — Redis/DAX cache-aside on redirect path
 - [Consistent Hashing](../patterns/consistent-hashing.md) — if sharding the KGS key pool
 - [Rate Limiting](../patterns/rate-limiting.md) — prevent abuse of the shorten API
 - [SQL vs NoSQL](../storage/sql-vs-nosql.md) — why DynamoDB fits this access pattern

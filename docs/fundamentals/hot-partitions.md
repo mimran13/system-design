@@ -1,3 +1,9 @@
+---
+tags:
+  - for-scale
+  - applied
+---
+
 # Hot Partitions & Hotspots
 
 Sharding spreads load across N nodes. Hot partitions destroy that promise: one shard receives 50% of traffic while the others sit idle. The system's effective capacity collapses to one shard. This page covers why hotspots happen, how to detect them, and the mitigation patterns.

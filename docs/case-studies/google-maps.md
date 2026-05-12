@@ -601,6 +601,6 @@ Mobile/Web Client
 
 - [CDN](../networking/cdn.md) — tile delivery at scale
 - [Consistent Hashing](../patterns/consistent-hashing.md) — distributing routing servers by region
-- [Caching](../storage/caching.md) — multi-layer tile cache hierarchy
+- [Caching](../caching/index.md) — multi-layer tile cache hierarchy
 - [Distributed Primitives](../distributed/distributed-primitives.md) — geohash spatial indexing
 - [Ride-Sharing](ride-sharing.md) — similar geo-matching problem for driver dispatch

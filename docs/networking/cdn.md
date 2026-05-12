@@ -200,4 +200,4 @@ CloudFront keeps separate caches for each combination.
 - [DNS](dns.md) — DNS routes users to nearest CDN edge
 - [Load Balancing](load-balancing.md) — CDN is L7 load balancing at global scale
 - [Blob Storage](../storage/blob-storage.md) — S3 + CloudFront is the canonical static content pattern
-- [Caching](../storage/caching.md) — CDN is the outermost cache layer
+- [Caching](../caching/index.md) — CDN is the outermost cache layer

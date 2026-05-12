@@ -1,3 +1,8 @@
+---
+tags:
+  - interview-critical
+---
+
 # Numbers Every Engineer Should Know
 
 These numbers — originally popularized by Jeff Dean at Google — give you a fast mental model for back-of-envelope calculations and tradeoff reasoning. Memorize the order of magnitude, not the exact figure.

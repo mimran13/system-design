@@ -237,4 +237,4 @@ WHERE search_vector @@ to_tsquery('english', 'postgresql & index');
 - [SQL vs NoSQL](sql-vs-nosql.md) — when to use relational vs not
 - [Sharding](../patterns/sharding.md) — scaling beyond a single instance
 - [Replication](../patterns/replication.md) — replication patterns and failover
-- [Caching](caching.md) — reducing read load on the database
+- [Caching](../caching/index.md) — reducing read load on the database

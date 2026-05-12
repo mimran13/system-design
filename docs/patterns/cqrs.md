@@ -1,3 +1,9 @@
+---
+tags:
+  - interview-critical
+  - for-scale
+---
+
 # CQRS
 
 ## What it is

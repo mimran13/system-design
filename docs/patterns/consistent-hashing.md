@@ -1,3 +1,9 @@
+---
+tags:
+  - interview-critical
+  - for-scale
+---
+
 # Consistent Hashing
 
 ## You'll see this when...
@@ -220,6 +226,6 @@ def jump_hash(key, num_buckets):
 ## Related topics
 
 - [Sharding](sharding.md) — consistent hashing for database sharding
-- [Caching](../storage/caching.md) — distributed caches use consistent hashing
+- [Caching](../caching/index.md) — distributed caches use consistent hashing
 - [Key-Value Stores](../storage/key-value-stores.md) — Redis Cluster, DynamoDB hash partitioning
 - [Wide-Column Stores](../storage/wide-column-stores.md) — Cassandra's token ring

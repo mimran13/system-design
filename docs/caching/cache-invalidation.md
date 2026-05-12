@@ -4,6 +4,9 @@
 
 Cache invalidation is the problem of ensuring a cache does not serve stale data after the underlying source of truth changes. It is hard because it requires coordinating two separate systems (cache + DB) that can fail independently.
 
+!!! tip "Applied companion"
+    For the **practical patterns** (TTL, write-through, event-driven, versioning) with code examples, see **[Cache Invalidation in Practice](cache-invalidation-applied.md)**.
+
 ## Why it's hard
 
 The core difficulty is the **consistency window** — the gap between a write to the DB and the cache reflecting that write:

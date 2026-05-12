@@ -258,5 +258,5 @@ AWS's fork of Elasticsearch (post-Elastic license change). Fully managed via Ama
 
 - [SQL vs NoSQL](sql-vs-nosql.md) — when to add a search layer
 - [Messaging](../messaging/event-streaming.md) — CDC pipeline for sync
-- [Caching](caching.md) — cache popular search results
+- [Caching](../caching/index.md) — cache popular search results
 - [Search Autocomplete case study](../case-studies/search-autocomplete.md)

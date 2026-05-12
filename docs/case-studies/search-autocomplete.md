@@ -303,7 +303,7 @@ CloudFront (cache top prefixes, 5min TTL)  │
 
 ## Related topics
 
-- [Caching](../storage/caching.md) — multi-level caching strategy
+- [Caching](../caching/index.md) — multi-level caching strategy
 - [CDN](../networking/cdn.md) — edge caching for popular prefixes
 - [Search Engines](../storage/search-engines.md) — Elasticsearch as alternative for richer search
 - [Consistent Hashing](../patterns/consistent-hashing.md) — if sharding the trie
