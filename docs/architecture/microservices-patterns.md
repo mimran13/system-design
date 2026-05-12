@@ -4,6 +4,19 @@ The [Monolith vs Microservices](monolith-vs-microservices.md) page covers the st
 
 ---
 
+## You'll see this when...
+
+- Team grew past ~50 engineers; one codebase doesn't scale organisationally
+- Different services need different scaling characteristics (one needs 1000 instances, one needs 5)
+- Polyglot stack (Python ML service + Go API + Java legacy)
+- Service mesh (Istio, Linkerd), API gateway, service discovery in the stack
+- "Database per service" debates / multiple DBs serving one product
+- Sidecars, circuit breakers, distributed tracing already deployed
+- Independent deploy cadence is a real business need (multiple teams shipping daily)
+- Existing microservices system that needs better patterns to manage complexity
+
+---
+
 ## Service decomposition
 
 The hardest question in microservices is where to draw the service boundary. Two strategies:

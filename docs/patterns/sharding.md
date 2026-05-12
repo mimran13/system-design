@@ -4,6 +4,17 @@
 
 Sharding (horizontal partitioning) splits a database into multiple independent pieces called shards, each storing a subset of the data. Unlike replication (copies of the same data), each shard holds unique data.
 
+## You'll see this when...
+
+- Single Postgres / MySQL is at 80% capacity, growing — vertical scale running out
+- One table is 90% of the database size — needs its own shard
+- Database CPU pegged but queries are fine; pure throughput limit
+- Multi-tenant SaaS: one tenant's data drowns the rest
+- Vitess, Citus, or custom shard router in the stack
+- DynamoDB partition key choice debates ("how do we avoid hot partitions?")
+- "Shard key" appears anywhere in the schema or routing logic
+- Need to keep tenant data per-region (regulatory) — sharding by region
+
 ```
 Without sharding:
   All users → Single DB server → Bottleneck at ~10TB / ~10K write QPS

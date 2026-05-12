@@ -6,6 +6,17 @@ CQRS (Command Query Responsibility Segregation) separates read and write models 
 
 Named after Bertrand Meyer's Command-Query Separation principle: a method should either change state (command) or return data (query), never both.
 
+## You'll see this when...
+
+- Read load is 100× write load; one model serving both is straining
+- The "search" query hits Postgres directly and slows everything; need ElasticSearch read model
+- Reports / analytics fight transactional workload for the same DB
+- Complex aggregations in queries duplicated across many endpoints
+- Materialized views or denormalized read tables have appeared
+- Read side uses Redis / ElasticSearch / read-replica; writes go to Postgres
+- "We need different shapes of the same data for different consumers"
+- Eventual consistency between write and read is acceptable
+
 ## The problem
 
 In a traditional system, the same data model serves both reads and writes:

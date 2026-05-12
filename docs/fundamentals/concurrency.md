@@ -2,6 +2,18 @@
 
 Concurrency is one of the hardest problems in system design. Most production bugs — data corruption, deadlocks, race conditions — come from incorrect concurrent access to shared state.
 
+## You'll see this when...
+
+- Bug only reproduces under high load — classic race condition
+- Counter increments racing — final value wrong
+- Deadlock detected by database / OS
+- Threads stuck waiting forever on a lock
+- Postmortem says "two requests modified the same row simultaneously"
+- Code uses `synchronized`, `Lock`, `Mutex`, `Semaphore`, `atomic`
+- Async code with `await` in unexpected places (race conditions in async too)
+- Worker queue processes the same job twice (no per-job lock)
+- "Works in tests, fails in production" timing bug
+
 ## Concurrency vs Parallelism
 
 ```

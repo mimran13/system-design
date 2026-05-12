@@ -4,6 +4,16 @@
 
 Backoff is the practice of waiting progressively longer between retries. Without backoff, a retrying client hammers a struggling service and prevents recovery.
 
+## You'll see this when...
+
+- Brief outage → all clients retry simultaneously → outage prolonged (thundering herd)
+- "We added retries and now everything is worse"
+- All retries land at exactly the same millisecond — synchronisation problem
+- AWS SDK / gRPC defaults already use backoff with jitter (you may not realise)
+- Postmortems mention "retry storm" or "synchronised retry"
+- Need to recover gracefully from rate-limit (429) responses
+- A queue consumer keeps trying a poison message — needs backoff + DLQ
+
 ## Why backoff matters
 
 ```

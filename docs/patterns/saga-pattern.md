@@ -4,6 +4,16 @@
 
 The Saga pattern manages distributed transactions across multiple services — each service has its own database, so traditional ACID transactions don't work. A saga is a sequence of local transactions, where each transaction publishes an event or sends a command to trigger the next step. If any step fails, compensating transactions undo the previous steps.
 
+## You'll see this when...
+
+- Order placed but payment never charged (or vice versa) — multi-step transaction fell apart mid-way
+- "We need a distributed transaction across services" — usually saga is the answer
+- Workflow with reservation → charge → ship steps, each in its own service
+- Compensating actions like `refund()`, `cancelReservation()`, `releaseInventory()` exist
+- Tools like Temporal, AWS Step Functions, Camunda, Cadence are in the stack
+- An orchestrator service drives a multi-step business process across teams
+- Code has explicit "rollback" logic that runs forward (not DB rollback)
+
 ## The problem it solves
 
 ```

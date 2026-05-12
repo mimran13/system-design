@@ -4,6 +4,16 @@
 
 The Bulkhead pattern isolates elements of a system into pools so that if one fails, the others continue to function. Named after the watertight compartments in a ship's hull — if one compartment floods, the others keep the ship afloat.
 
+## You'll see this when...
+
+- Calls to a slow ML service exhaust threads → unrelated endpoints also fail
+- One tenant's heavy queries lock up the database for everyone
+- A single noisy customer in a SaaS slows everyone else (noisy neighbour)
+- Resilience4j / Hystrix configured with `ThreadPoolBulkhead`
+- Kubernetes pods configured with separate connection pools per dependency
+- AWS Lambda concurrency limits per function (a kind of bulkhead)
+- Engineers solve "service A's outage took down service B" by separating thread pools
+
 ## The problem
 
 Without bulkheads, a slow or failing dependency exhausts shared resources and takes down the entire application:

@@ -4,6 +4,18 @@ The "third option" between a tangled monolith and full microservices. A modular 
 
 ---
 
+## You'll see this when...
+
+- Small-to-mid team (5-50 engineers) wants clean boundaries without microservices ops
+- Team built microservices, hit operational pain, wants to consolidate
+- Spring Modulith, NestJS modules, Django apps with strict boundary enforcement
+- Per-module schema (`orders.*`, `payments.*`) in a shared database
+- Codebase has `modules/`, `domains/`, or `bounded-contexts/` folders with import rules
+- Architects say "we need bounded contexts but don't want to deploy 30 services"
+- Migrating a tangled monolith → "let's modularise first, then consider splitting"
+
+---
+
 ## What it is
 
 ```

@@ -4,6 +4,20 @@ Pattern names tell you what to do; anti-patterns name what you've already done w
 
 ---
 
+## You'll see this when...
+
+- Cross-service deploys are coordinated events, not independent
+- Every PR touches multiple services / repos
+- Onboarding a new engineer takes 6+ months
+- Services share a database (the most common smell)
+- Tech stack chosen by what was popular at conferences
+- 10-person team running 30 microservices, drowning in operational work
+- One service has accreted 50+ tables from various concerns
+- "We rewrote it in $LANG and it's worse" — pattern of rewrites
+- Postmortems repeatedly cite "coupling between A and B" but nothing changes
+
+---
+
 ## Distributed monolith
 
 The most famous and most painful. You split a system into services but didn't reduce coupling.

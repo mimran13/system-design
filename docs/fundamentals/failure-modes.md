@@ -4,6 +4,20 @@ Production systems don't fail like "off." They fail in subtle, partial, lying wa
 
 ---
 
+## You'll see this when...
+
+- Health checks pass but real users report errors (gray failure)
+- Service responds but very slowly (timing failure)
+- Most requests work, 1% fail mysteriously
+- Postmortem says "we didn't know it was failing for 4 hours"
+- Different observers see different states ("it's fine in monitoring, broken to users")
+- Messages disappearing without error (omission failure)
+- Disk full / FD exhaustion / connection pool exhausted on partial paths
+- A node "comes back" after appearing dead → split brain risk
+- Slowdown that gradually cascades through the system over minutes
+
+---
+
 ## The taxonomy
 
 ```

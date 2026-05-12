@@ -1,5 +1,15 @@
 # Consistent Hashing
 
+## You'll see this when...
+
+- Adding a node to your cache cluster moved 90% of keys (cache stampede)
+- Resharding takes hours / data migration is a nightmare
+- Cassandra, DynamoDB, Riak, ScyllaDB — they all use consistent hashing internally
+- Memcached client libraries (libketama) use it for sharding
+- Load balancer with "session affinity" or "sticky sessions" by hash
+- A "ring" or "token" comes up in your data store's docs
+- "Virtual nodes" or "vnodes" mentioned in cluster config
+
 ## The problem
 
 When you have N servers and want to distribute keys across them, the naive approach is:

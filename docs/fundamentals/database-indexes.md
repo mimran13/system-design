@@ -4,6 +4,20 @@ An index is a data structure that lets the database find rows without scanning e
 
 ---
 
+## You'll see this when...
+
+- Query that "should be fast" takes 5 seconds — almost always missing index
+- `EXPLAIN ANALYZE` shows "Seq Scan" on a large table (full table scan)
+- Postgres slow query log keeps showing the same query
+- Adding `WHERE email = ?` clause silently goes from O(log n) to O(n)
+- Database CPU pegged but data volume is small — index issues
+- ORM-generated query that's hard to optimise (N+1, no covering index)
+- "Why is this select-by-id slow?" — primary key index missing or bloated
+- Index rebuild needed (REINDEX, VACUUM FULL) on Postgres
+- Choosing between B-tree, hash, GIN, GiST, BRIN index types
+
+---
+
 ## Why indexes matter
 
 ```sql

@@ -4,6 +4,16 @@
 
 The Outbox pattern guarantees that a database write and a message publish happen atomically — either both succeed or neither does. It solves the dual-write problem in event-driven systems.
 
+## You'll see this when...
+
+- "Order saved but event wasn't published" — dual-write inconsistency
+- DB write succeeded but Kafka publish failed → downstream services missed the event
+- Code has `db.commit(); kafka.publish()` — those aren't atomic
+- An `outbox` or `events_to_publish` table in the schema
+- Debezium or other CDC tool reading the database log to publish events
+- Postmortems mention "data inconsistency between services"
+- Microservices with event-driven architecture have this problem somewhere
+
 ## The dual-write problem
 
 ```python

@@ -4,6 +4,19 @@ When multiple services need to collaborate to complete a workflow, two coordinat
 
 ---
 
+## You'll see this when...
+
+- 12 services subscribe to events, nobody can describe the full workflow (choreography gone wild)
+- Order workflow has explicit steps: reserve → charge → ship → confirm — needs orchestration
+- Compensating actions / rollback logic split across many services
+- Long-running workflows (waits, timers, human approval, retries spanning days)
+- Temporal, AWS Step Functions, Camunda, Cadence, Argo Workflows in the stack
+- Need to see "what's the current state of this workflow run" centrally
+- Adding a new step requires changes to multiple services (sign of choreography pain)
+- Saga implementation needed; deciding between coordinator-driven or event-driven
+
+---
+
 ## The two patterns
 
 ### Choreography

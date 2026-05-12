@@ -2,6 +2,16 @@
 
 Caching strategies define *who* is responsible for loading data into the cache and *when* writes propagate to the underlying store. Choosing the wrong strategy is a common source of stale reads, silent data loss, and thundering herds.
 
+## You'll see this when...
+
+- Database CPU pegged but most queries are read-the-same-data — needs caching
+- Adding Redis / Memcached / DAX to the stack
+- Stale data shown to users after writes — wrong strategy choice
+- "Cache invalidation" debate at architecture review (it's hard for a reason)
+- Read-through, write-through, write-back, cache-aside terminology in design docs
+- Page load: 80% of time is DB queries that change rarely
+- TTL values on cache entries — expiration-based strategy
+
 ## Read strategies
 
 ### Cache-Aside (Lazy Loading)

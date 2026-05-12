@@ -2,6 +2,17 @@
 
 Even a well-designed cache can fail catastrophically under specific access patterns. Understanding these failure modes — and their mitigations — is essential for building resilient systems.
 
+## You'll see this when...
+
+- Popular cache key expires → 1000 concurrent requests all rebuild it (cache stampede)
+- Cache hit rate suddenly drops to 30% → working set grew or cache was flushed
+- "We restarted Redis and the database fell over" — cold cache stampede
+- One product's launch overwhelmed cache → backend exposed
+- Page latency jumps every 5 minutes (TTL synced expirations)
+- Bug: write succeeded but cache shows old value
+- "Snake oil" pattern: every query first checks if user exists → cache miss storm
+- Negative caching missing: same expensive lookup of non-existent key over and over
+
 ## Cache Stampede (Thundering Herd)
 
 ### Problem

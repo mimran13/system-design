@@ -4,6 +4,19 @@ Sharding spreads load across N nodes. Hot partitions destroy that promise: one s
 
 ---
 
+## You'll see this when...
+
+- Cluster shows "20% utilisation" but one shard is at 100%
+- DynamoDB throttling errors despite low overall RCU/WCU usage
+- One celebrity user (Twitter, social) generates more load than the rest combined
+- Cassandra "wide row" warnings; one partition holds millions of rows
+- Time-series data: every write hits "today's" partition, others idle
+- Redis MONITOR shows one key dominating ops/sec
+- AWS DynamoDB "Adaptive Capacity" warnings in console
+- Black Friday: one product's page generates 50% of all reads
+
+---
+
 ## What a hot partition looks like
 
 ```

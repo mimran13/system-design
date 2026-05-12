@@ -4,6 +4,17 @@
 
 Hexagonal Architecture (also called Ports and Adapters) was coined by Alistair Cockburn. The core idea: isolate your business logic from all infrastructure concerns (database, HTTP, message queues, external APIs) by defining explicit ports (interfaces) and adapters (implementations).
 
+## You'll see this when...
+
+- Switching from Postgres to DynamoDB requires touching domain logic — coupling problem
+- Want to swap third-party SDK without rewriting business code
+- Domain logic has `import psycopg2` or `from django.db.models` mixed in
+- Tests need a real database to run — slow, brittle (sign of missing ports/adapters)
+- Folders named `ports/`, `adapters/`, `domain/`, `infrastructure/` in the codebase
+- Team uses Onion / Clean Architecture (similar idea, different name)
+- Heavy use of dependency injection with interfaces for external dependencies
+- Anti-corruption layer wraps an external API to keep its model out of yours
+
 ```
 Traditional Layered (tight coupling):
   HTTP Handler → Service → Repository → PostgreSQL

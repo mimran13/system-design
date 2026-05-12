@@ -17,9 +17,7 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-  font:
-    text: Inter
-    code: JetBrains Mono
+  font: false   # disabled to allow custom Geist fonts via extra.css @import
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -75,280 +73,289 @@ plugins:
 
 nav:
   - Home: index.md
-  - Interview Guide: interview-guide.md
-  - Glossary: glossary.md
 
-  # ── Foundation ────────────────────────────────────────────
-  - Fundamentals:
-    - fundamentals/index.md
-    - Numbers & Estimation:
-      - Numbers Every Engineer Should Know: fundamentals/numbers-to-know.md
-      - Latency vs Throughput: fundamentals/latency-throughput.md
-      - Queuing Theory & Little's Law: fundamentals/queuing-theory.md
-      - Back-of-Envelope Estimation: fundamentals/estimation.md
-      - Time Complexity Cheatsheet: fundamentals/time-complexity.md
-    - Hardware & OS:
-      - Memory Hierarchy & Cache Lines: fundamentals/memory-hierarchy.md
-      - Disk and SSD Internals: fundamentals/disk-ssd-internals.md
-      - Operating System Concepts: fundamentals/os-concepts.md
-      - Memory Models & Cache Coherency: fundamentals/memory-models.md
+  # ─── Foundations ───────────────────────────────────────────
+  - Foundations:
+    - Fundamentals:
+      - fundamentals/index.md
+      - Numbers & Estimation:
+        - Numbers Every Engineer Should Know: fundamentals/numbers-to-know.md
+        - Latency vs Throughput: fundamentals/latency-throughput.md
+        - Queuing Theory & Little's Law: fundamentals/queuing-theory.md
+        - Back-of-Envelope Estimation: fundamentals/estimation.md
+        - Time Complexity Cheatsheet: fundamentals/time-complexity.md
+      - Hardware & OS:
+        - Memory Hierarchy & Cache Lines: fundamentals/memory-hierarchy.md
+        - Disk and SSD Internals: fundamentals/disk-ssd-internals.md
+        - Operating System Concepts: fundamentals/os-concepts.md
+        - Memory Models & Cache Coherency: fundamentals/memory-models.md
+      - Networking:
+        - Networking Basics: fundamentals/networking-basics.md
+        - TCP/UDP Deep Dive: fundamentals/tcp-udp-deep-dive.md
+        - TLS and Certificates: fundamentals/tls-certificates.md
+      - Data:
+        - Hashing: fundamentals/hashing.md
+        - Compression: fundamentals/compression.md
+        - Encoding Pitfalls: fundamentals/encoding-pitfalls.md
+        - Data Encoding & Serialization: fundamentals/serialization.md
+        - Probabilistic Data Structures: fundamentals/probabilistic-data-structures.md
+        - Database Indexes: fundamentals/database-indexes.md
+        - Storage Engine Internals: fundamentals/storage-internals.md
+      - Distributed Systems Theory:
+        - ACID vs BASE: fundamentals/acid-vs-base.md
+        - CAP Theorem: fundamentals/cap-theorem.md
+        - Consistency Models: fundamentals/consistency-models.md
+        - Database Transactions & Isolation: fundamentals/isolation-levels.md
+        - Scalability: fundamentals/scalability.md
+        - Throughput Limits (Amdahl's & USL): fundamentals/throughput-limits.md
+        - Availability & Reliability: fundamentals/availability.md
+        - Fault Tolerance & Resilience: fundamentals/fault-tolerance.md
+        - Failure Modes Catalogue: fundamentals/failure-modes.md
+        - Concurrency & Locking: fundamentals/concurrency.md
+        - Hot Partitions & Hotspots: fundamentals/hot-partitions.md
+
+    - Software Design:
+      - software-design/index.md
+      - Clean Code Principles: software-design/clean-code-principles.md
+      - SOLID Principles: software-design/solid.md
+      - IoC & Dependency Injection: software-design/ioc-di.md
+      - Design Patterns (GoF): software-design/design-patterns.md
+      - DDD Tactical Patterns: software-design/ddd-tactical.md
+      - Clean Architecture: software-design/clean-architecture.md
+      - Refactoring & Code Smells: software-design/refactoring.md
+      - Error Handling Patterns: software-design/error-handling.md
+      - Testing Strategies: software-design/testing-strategies.md
+
+  # ─── Architecture ──────────────────────────────────────────
+  - Architecture:
+    - Software Architecture:
+      - architecture/index.md
+      - Decision-Making:
+        - Architectural Decision Records (ADRs): architecture/adrs.md
+        - Fitness Functions: architecture/fitness-functions.md
+        - Evolutionary Architecture: architecture/evolutionary-architecture.md
+        - Quality Attributes: architecture/quality-attributes.md
+        - Capacity Planning & Sizing: architecture/capacity-planning.md
+      - Architectural Styles:
+        - Layered / N-Tier Architecture: architecture/layered-architecture.md
+        - Monolith vs Microservices: architecture/monolith-vs-microservices.md
+        - Modular Monolith: architecture/modular-monolith.md
+        - Service-Oriented Architecture: architecture/soa.md
+        - Hexagonal Architecture: architecture/hexagonal.md
+        - Domain-Driven Design: architecture/ddd.md
+        - Event-Driven Architecture: architecture/event-driven.md
+        - Serverless Architecture: architecture/serverless.md
+        - Pipes and Filters Architecture: architecture/pipes-and-filters.md
+        - Space-Based Architecture: architecture/space-based.md
+        - CQRS & Event Sourcing as Architecture: architecture/cqrs-event-sourcing-architecture.md
+        - Architecture Styles Comparison: architecture/styles-comparison.md
+      - Cross-Cutting Concerns:
+        - Twelve-Factor App: architecture/twelve-factor.md
+        - Backend for Frontend (BFF): architecture/bff.md
+        - API-First Design: architecture/api-first.md
+        - API Versioning at Architecture Level: architecture/api-versioning-architecture.md
+        - Microservices Patterns: architecture/microservices-patterns.md
+        - Choreography vs Orchestration: architecture/choreography-vs-orchestration.md
+        - Coupling & Cohesion at Service Boundaries: architecture/coupling-cohesion-services.md
+        - Multi-Tenancy: architecture/multi-tenancy.md
+      - Distribution & Scale:
+        - Multi-Region Architecture: architecture/multi-region.md
+        - Edge Architecture: architecture/edge-architecture.md
+        - Lambda & Kappa Architectures: architecture/lambda-kappa-architectures.md
+        - Data Mesh: architecture/data-mesh.md
+      - Evolution & Pitfalls:
+        - Strangler Fig Pattern: architecture/strangler-fig.md
+        - Architecture Anti-Patterns: architecture/anti-patterns.md
+
+    - Distributed Systems:
+      - distributed/index.md
+      - The 8 Fallacies: distributed/fallacies.md
+      - Consensus (Raft & Paxos): distributed/consensus.md
+      - Leader Election: distributed/leader-election.md
+      - Split Brain & Fencing: distributed/split-brain.md
+      - Distributed Locks: distributed/distributed-locks.md
+      - Quorum (R+W>N): distributed/quorum.md
+      - Clocks & Ordering: distributed/clocks.md
+      - Distributed Transactions: distributed/distributed-transactions.md
+      - Two-Phase Commit: distributed/two-phase-commit.md
+      - Exactly-Once Semantics: distributed/exactly-once.md
+      - CRDTs: distributed/crdts.md
+      - Gossip Protocol: distributed/gossip.md
+      - Service Discovery: distributed/service-discovery.md
+      - Failure Detection: distributed/failure-detection.md
+      - Distributed Primitives: distributed/distributed-primitives.md
+
+  # ─── Data ──────────────────────────────────────────────────
+  - Data:
+    - Storage:
+      - storage/index.md
+      - SQL vs NoSQL: storage/sql-vs-nosql.md
+      - Relational Databases: storage/relational-databases.md
+      - Key-Value Stores: storage/key-value-stores.md
+      - Document Stores: storage/document-stores.md
+      - Wide-Column Stores: storage/wide-column-stores.md
+      - Time-Series Databases: storage/time-series-databases.md
+      - Search Engines: storage/search-engines.md
+      - Blob Storage: storage/blob-storage.md
+      - Data Warehousing: storage/data-warehousing.md
+      - NewSQL: storage/newsql.md
+      - Vector Databases: storage/vector-databases.md
+      - Graph Databases: storage/graph-databases.md
+
+    - Caching:
+      - caching/index.md
+      - Caching Strategies: caching/caching-strategies.md
+      - Eviction Policies: caching/eviction-policies.md
+      - Cache Invalidation: caching/cache-invalidation.md
+      - Distributed Caching: caching/distributed-caching.md
+      - Redis Deep Dive: caching/redis.md
+      - Cache Patterns & Pitfalls: caching/cache-patterns.md
+
+  # ─── Communication ─────────────────────────────────────────
+  - Communication:
     - Networking:
-      - Networking Basics: fundamentals/networking-basics.md
-      - TCP/UDP Deep Dive: fundamentals/tcp-udp-deep-dive.md
-      - TLS and Certificates: fundamentals/tls-certificates.md
-    - Data:
-      - Hashing: fundamentals/hashing.md
-      - Compression: fundamentals/compression.md
-      - Encoding Pitfalls: fundamentals/encoding-pitfalls.md
-      - Data Encoding & Serialization: fundamentals/serialization.md
-      - Probabilistic Data Structures: fundamentals/probabilistic-data-structures.md
-      - Database Indexes: fundamentals/database-indexes.md
-      - Storage Engine Internals: fundamentals/storage-internals.md
-    - Distributed Systems Theory:
-      - ACID vs BASE: fundamentals/acid-vs-base.md
-      - CAP Theorem: fundamentals/cap-theorem.md
-      - Consistency Models: fundamentals/consistency-models.md
-      - Database Transactions & Isolation: fundamentals/isolation-levels.md
-      - Scalability: fundamentals/scalability.md
-      - Throughput Limits (Amdahl's & USL): fundamentals/throughput-limits.md
-      - Availability & Reliability: fundamentals/availability.md
-      - Fault Tolerance & Resilience: fundamentals/fault-tolerance.md
-      - Failure Modes Catalogue: fundamentals/failure-modes.md
-      - Concurrency & Locking: fundamentals/concurrency.md
-      - Hot Partitions & Hotspots: fundamentals/hot-partitions.md
+      - networking/index.md
+      - DNS: networking/dns.md
+      - CDN: networking/cdn.md
+      - Load Balancing: networking/load-balancing.md
+      - Proxies: networking/proxies.md
+      - API Gateway: networking/api-gateway.md
+      - WebSockets & SSE: networking/websockets-sse.md
+      - HTTP Versions: networking/http-versions.md
 
-  - Software Design:
-    - software-design/index.md
-    - Clean Code Principles: software-design/clean-code-principles.md
-    - SOLID Principles: software-design/solid.md
-    - IoC & Dependency Injection: software-design/ioc-di.md
-    - Design Patterns (GoF): software-design/design-patterns.md
-    - DDD Tactical Patterns: software-design/ddd-tactical.md
-    - Clean Architecture: software-design/clean-architecture.md
-    - Refactoring & Code Smells: software-design/refactoring.md
-    - Error Handling Patterns: software-design/error-handling.md
-    - Testing Strategies: software-design/testing-strategies.md
+    - API Design:
+      - api/index.md
+      - REST: api/rest.md
+      - gRPC: api/grpc.md
+      - GraphQL: api/graphql.md
+      - REST vs gRPC vs GraphQL: api/comparison.md
+      - Webhooks: api/webhooks.md
+      - API Versioning: api/versioning.md
+      - Pagination: api/pagination.md
 
-  # ── Systems & Architecture ────────────────────────────────
-  - Software Architecture:
-    - architecture/index.md
-    - Decision-Making:
-      - Architectural Decision Records (ADRs): architecture/adrs.md
-      - Fitness Functions: architecture/fitness-functions.md
-      - Evolutionary Architecture: architecture/evolutionary-architecture.md
-      - Quality Attributes: architecture/quality-attributes.md
-      - Capacity Planning & Sizing: architecture/capacity-planning.md
-    - Architectural Styles:
-      - Layered / N-Tier Architecture: architecture/layered-architecture.md
-      - Monolith vs Microservices: architecture/monolith-vs-microservices.md
-      - Modular Monolith: architecture/modular-monolith.md
-      - Service-Oriented Architecture: architecture/soa.md
-      - Hexagonal Architecture: architecture/hexagonal.md
-      - Domain-Driven Design: architecture/ddd.md
-      - Event-Driven Architecture: architecture/event-driven.md
-      - Serverless Architecture: architecture/serverless.md
-      - Pipes and Filters Architecture: architecture/pipes-and-filters.md
-      - Space-Based Architecture: architecture/space-based.md
-      - CQRS & Event Sourcing as Architecture: architecture/cqrs-event-sourcing-architecture.md
-      - Architecture Styles Comparison: architecture/styles-comparison.md
-    - Cross-Cutting Concerns:
-      - Twelve-Factor App: architecture/twelve-factor.md
-      - Backend for Frontend (BFF): architecture/bff.md
-      - API-First Design: architecture/api-first.md
-      - API Versioning at Architecture Level: architecture/api-versioning-architecture.md
-      - Microservices Patterns: architecture/microservices-patterns.md
-      - Choreography vs Orchestration: architecture/choreography-vs-orchestration.md
-      - Coupling & Cohesion at Service Boundaries: architecture/coupling-cohesion-services.md
-      - Multi-Tenancy: architecture/multi-tenancy.md
-    - Distribution & Scale:
-      - Multi-Region Architecture: architecture/multi-region.md
-      - Edge Architecture: architecture/edge-architecture.md
-      - Lambda & Kappa Architectures: architecture/lambda-kappa-architectures.md
-      - Data Mesh: architecture/data-mesh.md
-    - Evolution & Pitfalls:
-      - Strangler Fig Pattern: architecture/strangler-fig.md
-      - Architecture Anti-Patterns: architecture/anti-patterns.md
+    - Messaging & Streaming:
+      - messaging/index.md
+      - Message Queues: messaging/message-queues.md
+      - Pub/Sub: messaging/pub-sub.md
+      - Event Streaming: messaging/event-streaming.md
+      - Kafka Deep Dive: messaging/kafka.md
+      - Backpressure: messaging/backpressure.md
 
-  - Distributed Systems:
-    - distributed/index.md
-    - The 8 Fallacies: distributed/fallacies.md
-    - Consensus (Raft & Paxos): distributed/consensus.md
-    - Leader Election: distributed/leader-election.md
-    - Split Brain & Fencing: distributed/split-brain.md
-    - Distributed Locks: distributed/distributed-locks.md
-    - Quorum (R+W>N): distributed/quorum.md
-    - Clocks & Ordering: distributed/clocks.md
-    - Distributed Transactions: distributed/distributed-transactions.md
-    - Two-Phase Commit: distributed/two-phase-commit.md
-    - Exactly-Once Semantics: distributed/exactly-once.md
-    - CRDTs: distributed/crdts.md
-    - Gossip Protocol: distributed/gossip.md
-    - Service Discovery: distributed/service-discovery.md
-    - Failure Detection: distributed/failure-detection.md
-    - Distributed Primitives: distributed/distributed-primitives.md
+  # ─── Operations ────────────────────────────────────────────
+  - Operations:
+    - Patterns:
+      - patterns/index.md
+      - Rate Limiting: patterns/rate-limiting.md
+      - Circuit Breaker: patterns/circuit-breaker.md
+      - Retry & Timeout: patterns/retry-timeout.md
+      - Backoff Strategies: patterns/backoff.md
+      - Bulkhead: patterns/bulkhead.md
+      - Idempotency: patterns/idempotency.md
+      - Saga Pattern: patterns/saga-pattern.md
+      - Outbox Pattern: patterns/outbox.md
+      - CQRS: patterns/cqrs.md
+      - Event Sourcing: patterns/event-sourcing.md
+      - Consistent Hashing: patterns/consistent-hashing.md
+      - Sharding: patterns/sharding.md
+      - Replication: patterns/replication.md
+      - Read Replicas: patterns/read-replicas.md
+      - Connection Pooling: patterns/connection-pooling.md
 
-  # ── Data Layer ────────────────────────────────────────────
-  - Storage:
-    - storage/index.md
-    - SQL vs NoSQL: storage/sql-vs-nosql.md
-    - Relational Databases: storage/relational-databases.md
-    - Key-Value Stores: storage/key-value-stores.md
-    - Document Stores: storage/document-stores.md
-    - Wide-Column Stores: storage/wide-column-stores.md
-    - Time-Series Databases: storage/time-series-databases.md
-    - Search Engines: storage/search-engines.md
-    - Blob Storage: storage/blob-storage.md
-    - Data Warehousing: storage/data-warehousing.md
-    - NewSQL: storage/newsql.md
-    - Vector Databases: storage/vector-databases.md
-    - Graph Databases: storage/graph-databases.md
+    - Observability:
+      - observability/index.md
+      - Logging: observability/logging.md
+      - Metrics: observability/metrics.md
+      - Distributed Tracing: observability/tracing.md
+      - Alerting: observability/alerting.md
+      - SLI, SLO & SLA: observability/slo-sla.md
+      - On-Call & Incident Management: observability/incident-management.md
 
-  - Caching:
-    - caching/index.md
-    - Caching Strategies: caching/caching-strategies.md
-    - Eviction Policies: caching/eviction-policies.md
-    - Cache Invalidation: caching/cache-invalidation.md
-    - Distributed Caching: caching/distributed-caching.md
-    - Redis Deep Dive: caching/redis.md
-    - Cache Patterns & Pitfalls: caching/cache-patterns.md
+    - Security:
+      - security/index.md
+      - Authentication & Authorization: security/authn-authz.md
+      - OAuth 2.0 & JWT: security/oauth-jwt.md
+      - API Security: security/api-security.md
+      - Encryption: security/encryption.md
+      - Zero Trust: security/zero-trust.md
+      - Secrets Management: security/secrets-management.md
 
-  # ── Communication Layer ───────────────────────────────────
-  - Networking:
-    - networking/index.md
-    - DNS: networking/dns.md
-    - CDN: networking/cdn.md
-    - Load Balancing: networking/load-balancing.md
-    - Proxies: networking/proxies.md
-    - API Gateway: networking/api-gateway.md
-    - WebSockets & SSE: networking/websockets-sse.md
-    - HTTP Versions: networking/http-versions.md
+  # ─── Delivery ──────────────────────────────────────────────
+  - Delivery:
+    - Infrastructure:
+      - infrastructure/index.md
+      - Containers & Docker: infrastructure/containers.md
+      - Kubernetes: infrastructure/kubernetes.md
+      - Service Mesh: infrastructure/service-mesh.md
 
-  - API Design:
-    - api/index.md
-    - REST: api/rest.md
-    - gRPC: api/grpc.md
-    - GraphQL: api/graphql.md
-    - REST vs gRPC vs GraphQL: api/comparison.md
-    - Webhooks: api/webhooks.md
-    - API Versioning: api/versioning.md
-    - Pagination: api/pagination.md
+    - IaC:
+      - iac/index.md
+      - Fundamentals: iac/fundamentals.md
+      - Terraform: iac/terraform.md
+      - Terraform in CI/CD Lifecycle: iac/terraform-cicd-lifecycle.md
+      - State Management: iac/state-management.md
+      - Modules & Repository Structure: iac/modules-and-structure.md
+      - AWS CDK: iac/cdk.md
+      - CloudFormation: iac/cloudformation.md
+      - Pulumi & Alternatives: iac/pulumi-and-alternatives.md
+      - Drift Detection: iac/drift-detection.md
+      - Secrets in IaC: iac/secrets-in-iac.md
+      - Testing IaC: iac/testing-iac.md
+      - Best Practices: iac/best-practices.md
 
-  - Messaging & Streaming:
-    - messaging/index.md
-    - Message Queues: messaging/message-queues.md
-    - Pub/Sub: messaging/pub-sub.md
-    - Event Streaming: messaging/event-streaming.md
-    - Kafka Deep Dive: messaging/kafka.md
-    - Backpressure: messaging/backpressure.md
+    - CI/CD:
+      - cicd/index.md
+      - Fundamentals: cicd/fundamentals.md
+      - Pipelines: cicd/pipelines.md
+      - Branching Strategies: cicd/branching-strategies.md
+      - Build and Test: cicd/build-and-test.md
+      - Artifact Management: cicd/artifact-management.md
+      - Security in CI/CD: cicd/security-in-cicd.md
+      - Deployment Strategies: cicd/deployment-strategies.md
+      - GitOps: cicd/gitops.md
+      - Progressive Delivery: cicd/progressive-delivery.md
+      - AWS CodePipeline: cicd/aws-codepipeline.md
+      - Release Management: cicd/release-management.md
 
-  # ── Reliability & Operations ──────────────────────────────
-  - Patterns:
-    - patterns/index.md
-    - Rate Limiting: patterns/rate-limiting.md
-    - Circuit Breaker: patterns/circuit-breaker.md
-    - Retry & Timeout: patterns/retry-timeout.md
-    - Backoff Strategies: patterns/backoff.md
-    - Bulkhead: patterns/bulkhead.md
-    - Idempotency: patterns/idempotency.md
-    - Saga Pattern: patterns/saga-pattern.md
-    - Outbox Pattern: patterns/outbox.md
-    - CQRS: patterns/cqrs.md
-    - Event Sourcing: patterns/event-sourcing.md
-    - Consistent Hashing: patterns/consistent-hashing.md
-    - Sharding: patterns/sharding.md
-    - Replication: patterns/replication.md
-    - Read Replicas: patterns/read-replicas.md
-    - Connection Pooling: patterns/connection-pooling.md
+  # ─── AI ────────────────────────────────────────────────────
+  - AI:
+    - AI Agents:
+      - agents/index.md
+      - Agent Fundamentals: agents/agent-fundamentals.md
+      - Function Calling & Tool Use: agents/function-calling.md
+      - Building Agents: agents/building-agents.md
+      - Multi-Agent Systems: agents/multi-agent-systems.md
+      - Agent Reliability: agents/agent-reliability.md
+      - "Example: Research Agent": agents/example-research-agent.md
+      - "Example: Data Analysis Agent": agents/example-data-agent.md
+      - "Example: Customer Support Agent": agents/example-customer-support-agent.md
 
-  - Observability:
-    - observability/index.md
-    - Logging: observability/logging.md
-    - Metrics: observability/metrics.md
-    - Distributed Tracing: observability/tracing.md
-    - Alerting: observability/alerting.md
-    - SLI, SLO & SLA: observability/slo-sla.md
-    - On-Call & Incident Management: observability/incident-management.md
+    - AI Engineering:
+      - ai/index.md
+      - LLM Fundamentals: ai/llm-fundamentals.md
+      - Prompt Engineering: ai/prompt-engineering.md
+      - Embeddings & Vector Search: ai/embeddings-vector-search.md
+      - RAG: ai/rag.md
+      - Agents & Tool Use: ai/agents-and-tool-use.md
+      - Agentic Patterns: ai/agentic-patterns.md
+      - Memory Systems: ai/memory-systems.md
+      - Fine-Tuning: ai/fine-tuning.md
+      - LLM Inference & Serving: ai/llm-inference.md
+      - Evaluation: ai/evaluation.md
+      - Guardrails & Safety: ai/guardrails-safety.md
+      - LLMOps: ai/llmops.md
 
-  - Security:
-    - security/index.md
-    - Authentication & Authorization: security/authn-authz.md
-    - OAuth 2.0 & JWT: security/oauth-jwt.md
-    - API Security: security/api-security.md
-    - Encryption: security/encryption.md
-    - Zero Trust: security/zero-trust.md
-    - Secrets Management: security/secrets-management.md
+  # ─── Cloud ─────────────────────────────────────────────────
+  - Cloud:
+    - AWS Mapping:
+      - aws/index.md
+      - Compute: aws/compute.md
+      - Storage & Databases: aws/storage-databases.md
+      - Networking: aws/networking.md
+      - Messaging: aws/messaging.md
+      - Observability: aws/observability.md
+      - Security: aws/security.md
 
-  - Infrastructure:
-    - infrastructure/index.md
-    - Containers & Docker: infrastructure/containers.md
-    - Kubernetes: infrastructure/kubernetes.md
-    - Service Mesh: infrastructure/service-mesh.md
-
-  - IaC:
-    - iac/index.md
-    - Fundamentals: iac/fundamentals.md
-    - Terraform: iac/terraform.md
-    - Terraform in CI/CD Lifecycle: iac/terraform-cicd-lifecycle.md
-    - State Management: iac/state-management.md
-    - Modules & Repository Structure: iac/modules-and-structure.md
-    - AWS CDK: iac/cdk.md
-    - CloudFormation: iac/cloudformation.md
-    - Pulumi & Alternatives: iac/pulumi-and-alternatives.md
-    - Drift Detection: iac/drift-detection.md
-    - Secrets in IaC: iac/secrets-in-iac.md
-    - Testing IaC: iac/testing-iac.md
-    - Best Practices: iac/best-practices.md
-
-  - CI/CD:
-    - cicd/index.md
-    - Fundamentals: cicd/fundamentals.md
-    - Pipelines: cicd/pipelines.md
-    - Branching Strategies: cicd/branching-strategies.md
-    - Build and Test: cicd/build-and-test.md
-    - Artifact Management: cicd/artifact-management.md
-    - Security in CI/CD: cicd/security-in-cicd.md
-    - Deployment Strategies: cicd/deployment-strategies.md
-    - GitOps: cicd/gitops.md
-    - Progressive Delivery: cicd/progressive-delivery.md
-    - AWS CodePipeline: cicd/aws-codepipeline.md
-    - Release Management: cicd/release-management.md
-
-  # ── Specialized & Reference ───────────────────────────────
-  - AI Agents:
-    - agents/index.md
-    - Agent Fundamentals: agents/agent-fundamentals.md
-    - Function Calling & Tool Use: agents/function-calling.md
-    - Building Agents: agents/building-agents.md
-    - Multi-Agent Systems: agents/multi-agent-systems.md
-    - Agent Reliability: agents/agent-reliability.md
-    - "Example: Research Agent": agents/example-research-agent.md
-    - "Example: Data Analysis Agent": agents/example-data-agent.md
-    - "Example: Customer Support Agent": agents/example-customer-support-agent.md
-
-  - AI Engineering:
-    - ai/index.md
-    - LLM Fundamentals: ai/llm-fundamentals.md
-    - Prompt Engineering: ai/prompt-engineering.md
-    - Embeddings & Vector Search: ai/embeddings-vector-search.md
-    - RAG: ai/rag.md
-    - Agents & Tool Use: ai/agents-and-tool-use.md
-    - Agentic Patterns: ai/agentic-patterns.md
-    - Memory Systems: ai/memory-systems.md
-    - Fine-Tuning: ai/fine-tuning.md
-    - LLM Inference & Serving: ai/llm-inference.md
-    - Evaluation: ai/evaluation.md
-    - Guardrails & Safety: ai/guardrails-safety.md
-    - LLMOps: ai/llmops.md
-
-  - AWS Mapping:
-    - aws/index.md
-    - Compute: aws/compute.md
-    - Storage & Databases: aws/storage-databases.md
-    - Networking: aws/networking.md
-    - Messaging: aws/messaging.md
-    - Observability: aws/observability.md
-    - Security: aws/security.md
-
+  # ─── Case Studies ──────────────────────────────────────────
   - Case Studies:
     - case-studies/index.md
     - URL Shortener: case-studies/url-shortener.md
@@ -366,3 +373,17 @@ nav:
     - Payment System: case-studies/payment-system.md
     - Ad Click Tracking: case-studies/ad-click-tracking.md
     - Maps & Navigation (Google Maps): case-studies/google-maps.md
+
+  # ─── Reference (at the end) ────────────────────────────────
+  - Reference:
+    - Symptom → Concept Lookup: reference/symptom-lookup.md
+    - Practical Examples:
+      - examples/index.md
+      - Data Processing: examples/data-processing.md
+      - Real-Time Systems: examples/real-time-systems.md
+      - Payments & Correctness: examples/payments-and-correctness.md
+      - Scaling & Performance: examples/scaling-and-performance.md
+      - Multi-Tenant SaaS: examples/multi-tenant-saas.md
+      - Event-Driven Workflows: examples/event-driven-workflows.md
+    - Interview Guide: interview-guide.md
+    - Glossary: glossary.md

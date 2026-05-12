@@ -6,6 +6,19 @@ For the pattern-level mechanics, see [CQRS](../patterns/cqrs.md) and [Event Sour
 
 ---
 
+## You'll see this when...
+
+- Banking, trading, healthcare — domains with audit/regulatory requirements
+- "We need to know what the data looked like at any point in time"
+- Multiple read models (Postgres for ops, ElasticSearch for search, Redshift for analytics) all derived from same writes
+- EventStoreDB, Axon Framework, Marten, or Eventuous in the stack
+- "Aggregate", "command handler", "event handler", "projection" appear in code
+- Architects mention "DDD aggregates" alongside CQRS
+- Domain has rich behaviour, not just CRUD
+- Need to rebuild analytics views from scratch without touching live system
+
+---
+
 ## CQRS as architecture
 
 Standard architecture: one model handles both commands (writes) and queries (reads).

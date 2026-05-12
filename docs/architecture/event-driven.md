@@ -4,6 +4,16 @@
 
 Event-Driven Architecture (EDA) is an architectural style where components communicate through events — immutable records of things that happened. Producers publish events without knowing who consumes them. Consumers react to events independently.
 
+## You'll see this when...
+
+- Many services need to react when something happens (order placed → email + analytics + inventory + recommendation refresh)
+- Kafka, Pulsar, AWS Kinesis, EventBridge, Google Pub/Sub in the stack
+- Event names like `OrderPlaced`, `UserSignedUp`, `PaymentCharged` flowing through topics
+- Audit / compliance requirement to keep a record of every state change
+- Need to add new functionality without modifying existing services (subscribe to existing events)
+- Decoupling teams: "your team doesn't need to know about my service, just consume my events"
+- Real-time analytics fed by event streams alongside transactional writes
+
 ```
 Traditional (request-driven):
   Order Service → HTTP call → Inventory Service → HTTP call → Notification Service

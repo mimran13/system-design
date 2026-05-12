@@ -1,5 +1,17 @@
 # SQL vs NoSQL
 
+## You'll see this when...
+
+- "We're using NoSQL because it's faster" — usually a tooling, not data, issue
+- Joins becoming awkward in MongoDB / DynamoDB → you needed relational
+- Postgres struggling with 50TB → maybe it's time to consider partitioning or NewSQL
+- Choosing between DynamoDB and RDS for a new service
+- "Schema-less" was a feature; now it's a bug (no schema validation)
+- Multiple NoSQL stores in the stack (MongoDB + Redis + DynamoDB) — fragmented
+- NoSQL chosen for "scale" but write QPS is 100/sec
+- Need ACID transactions across rows in MongoDB → use Postgres
+- Need flexible querying without predefined indexes → use Postgres or DocumentDB
+
 ## The decision framework
 
 Choosing between SQL and NoSQL is not about which is "better" — it's about which fits your access patterns, consistency requirements, and scaling needs.

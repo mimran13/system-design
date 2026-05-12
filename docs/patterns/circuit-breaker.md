@@ -6,6 +6,16 @@ The circuit breaker pattern prevents a service from repeatedly calling a failing
 
 Named after the electrical circuit breaker: when current is too high (overload), the breaker trips (opens) to protect the circuit.
 
+## You'll see this when...
+
+- One slow downstream service is taking down your whole stack
+- A 30-second timeout has 200 threads stuck waiting; your service stops responding
+- "Cascading failure" appears in a postmortem — Service A → B → C all fell over
+- Hystrix, Resilience4j, Polly, or `gobreaker` shows up in the codebase
+- An Istio `DestinationRule` has `outlierDetection` configured
+- AWS App Mesh / Envoy logs show "circuit open" or "outlier detected"
+- Engineers add ad-hoc try/except + counters around external calls (rolling their own)
+
 ## States
 
 ```mermaid

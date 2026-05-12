@@ -1,5 +1,16 @@
 # Retry & Timeout
 
+## You'll see this when...
+
+- A request that "should be quick" hangs for 30+ seconds
+- One transient network blip caused permanent failure (no retry)
+- Threads piling up waiting for downstream → thread pool exhaustion
+- Brief outage triggered a retry storm that prolonged the outage
+- Code uses default HTTP client (no explicit timeout — usually unbounded)
+- AWS SDK retries hidden inside the library; you didn't configure them
+- Logs show "context deadline exceeded" or "DeadlineExceeded" (gRPC)
+- A `retry()` decorator was added without backoff — caused thundering herd
+
 ## Timeouts
 
 A timeout limits how long a caller waits for a response. Without timeouts, a slow downstream causes the caller to block indefinitely, exhausting thread pools and causing cascade failures.

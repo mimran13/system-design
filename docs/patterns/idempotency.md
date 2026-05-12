@@ -11,6 +11,17 @@ HTTP DELETE: idempotent (deleting twice = same end state)
 HTTP POST: NOT idempotent by default (two POST requests = two created records)
 ```
 
+## You'll see this when...
+
+- Stripe / payment APIs require an `Idempotency-Key` header (this is why)
+- Webhook delivered twice → same operation applied twice (double-charge!)
+- Kafka / SQS at-least-once delivery → consumer processes a message twice
+- Retry on a "did it succeed?" call — caller can't tell, retries safely
+- Mobile apps with flaky networks need to re-send confirmations
+- "Customer was charged twice" appears in support tickets
+- Distributed system docs say "ensure consumers are idempotent"
+- Postgres `ON CONFLICT DO NOTHING` or `MERGE` statements
+
 ## Why it matters
 
 ```

@@ -4,6 +4,18 @@
 
 Rate limiting controls the rate of requests a client can make to a service, protecting backends from abuse, ensuring fair usage, and maintaining SLOs when traffic spikes.
 
+## You'll see this when...
+
+- API hammered by a single bad client → others slow down
+- Bot traffic / scraping needs to be capped
+- "We're going to charge per request; need fair-use limits"
+- AWS API Gateway throttling, Cloudflare rate-limiting rules
+- HTTP 429 (Too Many Requests) responses appearing in client logs
+- A token bucket, leaky bucket, or sliding window appears in code
+- Redis key like `rate_limit:user:123` with a counter and TTL
+- Public APIs documenting "100 requests per minute" or similar
+- Need to apply per-user, per-tenant, per-IP limits independently
+
 ## Algorithms
 
 ### Token Bucket

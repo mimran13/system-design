@@ -4,6 +4,16 @@
 
 Instead of storing the current state of an entity, event sourcing stores the sequence of events that led to that state. The current state is derived by replaying all past events. The event log is the source of truth, not the current state.
 
+## You'll see this when...
+
+- Audit / regulatory requirement: "show every change to this record over time"
+- "What did the customer balance look like on March 5th at 2pm?" — temporal queries
+- Need to rebuild a derived view (search index, analytics) from scratch
+- Banking, healthcare, trading, government — domains where audit is mandatory
+- EventStoreDB, Axon, or `events` table with append-only semantics in the codebase
+- Bug discovered: replay events to reproduce production state in staging
+- Complex domain with rich behaviour — DDD aggregate roots emit events
+
 ```
 Traditional (state-based):
   accounts table: { id: 123, balance: 250 }

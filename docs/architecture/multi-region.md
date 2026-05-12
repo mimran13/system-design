@@ -4,6 +4,19 @@ Most products start in one region. At some point — global users, disaster reco
 
 ---
 
+## You'll see this when...
+
+- EU users complain of slow load (300ms+ from US-east region)
+- GDPR / data residency: EU citizen data must stay in EU
+- China requires local data; foreign companies operate via local partners
+- AWS region outage took the whole product down — "we need DR"
+- Compliance audit: "what's your business continuity plan?"
+- Active-active with conflict resolution discussed (CRDTs, last-write-wins, per-record region)
+- Spanner, CockroachDB, YugabyteDB chosen for multi-region SQL
+- Cross-region replication bills surprised the team
+
+---
+
 ## Why multi-region
 
 | Driver | Implication |

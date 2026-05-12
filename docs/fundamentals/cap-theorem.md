@@ -8,6 +8,16 @@ In any distributed data store, you can guarantee at most **2 of 3** properties s
 - **A — Availability**: every request receives a (non-error) response, but it may not be the most recent write
 - **P — Partition Tolerance**: the system continues operating even when network partitions occur
 
+## You'll see this when...
+
+- Choosing a database: "DynamoDB is AP, but Spanner is CP — which fits our use case?"
+- Network partition during a deploy / region issue → behaviour depends on CP vs AP
+- Banking app must reject the transaction (CP); social feed can show stale data (AP)
+- Cassandra docs talk about "tunable consistency" — let you slide on the CAP curve per query
+- "Why is our DynamoDB returning stale reads?" → AP system; use `ConsistentRead=true` if needed
+- Architecture review asks "what happens when this DC fails?"
+- Postmortem: split-brain — both halves of a partition kept accepting writes
+
 ## The catch
 
 **Partition Tolerance is not optional.** Networks fail. In any real distributed system you *must* tolerate partitions. So the real choice is:

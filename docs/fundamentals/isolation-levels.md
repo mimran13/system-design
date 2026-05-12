@@ -4,6 +4,20 @@ ACID's "I" — isolation — has surprising depth. Different databases offer dif
 
 ---
 
+## You'll see this when...
+
+- "Lost update" race condition: two writes both succeeded, only one stuck
+- Negative balances appearing in financial system under load
+- Booking system double-booked a resource (write skew)
+- "Why is this query inconsistent within a transaction?" — Read Committed default
+- `SELECT ... FOR UPDATE` appears in SQL — explicit row locking
+- Postgres `SERIALIZABLE` errors: "could not serialize access due to concurrent update"
+- Long-running transactions blocking VACUUM in Postgres
+- Snapshot Isolation chosen but write skew bugs still appearing
+- Bug only reproduces under load (race condition)
+
+---
+
 ## What isolation means
 
 Multiple transactions running concurrently. Isolation defines what each transaction can see of others' in-flight changes.
