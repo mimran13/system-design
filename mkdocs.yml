@@ -103,6 +103,8 @@ nav:
         - Probabilistic Data Structures: fundamentals/probabilistic-data-structures.md
         - Database Indexes: fundamentals/database-indexes.md
         - Storage Engine Internals: fundamentals/storage-internals.md
+        - Database Internals Deep Dive: fundamentals/database-internals-deep-dive.md
+        - Database Operations at Scale: fundamentals/database-operations-at-scale.md
       - Distributed Systems Theory:
         - ACID vs BASE: fundamentals/acid-vs-base.md
         - CAP Theorem: fundamentals/cap-theorem.md
@@ -165,8 +167,13 @@ nav:
       - Distribution & Scale:
         - Multi-Region Architecture: architecture/multi-region.md
         - Edge Architecture: architecture/edge-architecture.md
+        - Mobile & Edge Specifics: architecture/mobile-edge-specifics.md
         - Lambda & Kappa Architectures: architecture/lambda-kappa-architectures.md
         - Data Mesh: architecture/data-mesh.md
+      - Organisational & Strategic:
+        - Engineering Organisation: architecture/engineering-organisation.md
+        - Architecture Politics: architecture/architecture-politics.md
+        - Cost Engineering: architecture/cost-engineering.md
       - Evolution & Pitfalls:
         - Strangler Fig Pattern: architecture/strangler-fig.md
         - Architecture Anti-Patterns: architecture/anti-patterns.md
@@ -205,6 +212,7 @@ nav:
       - NewSQL: storage/newsql.md
       - Vector Databases: storage/vector-databases.md
       - Graph Databases: storage/graph-databases.md
+      - Modern Data Stack: storage/modern-data-stack.md
 
     - Caching:
       - caching/index.md
@@ -250,6 +258,7 @@ nav:
       - Event Payload Design: messaging/event-payload-design.md
       - Event Schema Evolution: messaging/event-schema-evolution.md
       - Idempotent Consumers in Production: messaging/idempotent-consumers.md
+      - Event Streaming Maturity: messaging/event-streaming-maturity.md
 
   # ─── Operations ────────────────────────────────────────────
   - Operations:
@@ -269,9 +278,11 @@ nav:
       - Sharding: patterns/sharding.md
       - Querying Sharded Data: patterns/querying-sharded-data.md
       - Sharding Best Practices: patterns/sharding-best-practices.md
+      - Sharding Tooling (Vitess / Citus): patterns/sharding-tooling.md
       - Replication: patterns/replication.md
       - Read Replicas: patterns/read-replicas.md
       - Connection Pooling: patterns/connection-pooling.md
+      - Unhappy-Path Engineering: patterns/unhappy-path-engineering.md
       - Boring Technology: patterns/boring-tech.md
 
     - Observability:
@@ -282,6 +293,8 @@ nav:
       - Alerting: observability/alerting.md
       - SLI, SLO & SLA: observability/slo-sla.md
       - On-Call & Incident Management: observability/incident-management.md
+      - Incident Response Craft: observability/incident-response-craft.md
+      - Performance Engineering: observability/performance-engineering.md
 
     - Security:
       - security/index.md
@@ -291,6 +304,8 @@ nav:
       - Encryption: security/encryption.md
       - Zero Trust: security/zero-trust.md
       - Secrets Management: security/secrets-management.md
+      - Threat Modelling: security/threat-modelling.md
+      - Compliance & Regulatory Engineering: security/compliance-regulatory-engineering.md
 
   # ─── Delivery ──────────────────────────────────────────────
   - Delivery:
@@ -357,6 +372,7 @@ nav:
       - Evaluation: ai/evaluation.md
       - Guardrails & Safety: ai/guardrails-safety.md
       - LLMOps: ai/llmops.md
+      - ML in Production (Beyond LLMs): ai/ml-in-production.md
 
   # ─── Cloud ─────────────────────────────────────────────────
   - Cloud:
