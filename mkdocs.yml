@@ -398,6 +398,7 @@ nav:
     - Rate Limiter: case-studies/rate-limiter.md
     - News Feed: case-studies/news-feed.md
     - Chat System: case-studies/chat-system.md
+    - Proptech Chat (Buyer ↔ Seller): case-studies/proptech-chat.md
     - Notification Service: case-studies/notification-service.md
     - Search Autocomplete: case-studies/search-autocomplete.md
     - Video Streaming: case-studies/video-streaming.md
