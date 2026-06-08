@@ -276,6 +276,248 @@ Topics:
 | Search | OpenSearch | Inverted index for FTS; fed from Kafka |
 | SLA / workflow state | Temporal | Durable workflows with timers (alt: own scheduler) |
 
+## Where clients actually connect (the networking story)
+
+The high-level diagram says "Clients → ALB → chat-ws". That hides a lot. Two questions matter:
+
+1. **Where does the WebSocket TCP connection actually terminate?** Not at the ALB — at one specific `chat-ws` pod.
+2. **If user A is connected to pod-1 and user B is connected to pod-7, how does a message from A reach B?** Through a shared bus (Redis Pub/Sub in our design).
+
+### VM deployment vs k8s deployment — what changes
+
+```mermaid
+graph TD
+    subgraph VM["VM / self-managed (the simple mental model)"]
+        C1[Client] -.WSS.-> LB1[Load Balancer<br/>HAProxy / NGINX / ALB]
+        LB1 --> N1[node-1<br/>node app :3000]
+        LB1 --> N2[node-2<br/>node app :3000]
+    end
+
+    subgraph K8S["Kubernetes (what really happens)"]
+        C2[Client] -.WSS.-> ALB2[AWS ALB<br/>public endpoint]
+        ALB2 --> IC[Ingress Controller<br/>or Service of type LoadBalancer<br/>backing the chat-ws Service]
+        IC --> SVC[chat-ws Service<br/>ClusterIP + Endpoints]
+        SVC --> PA[Pod A<br/>chat-ws:8080]
+        SVC --> PB[Pod B<br/>chat-ws:8080]
+        SVC --> PC[Pod C<br/>chat-ws:8080]
+    end
+```
+
+In a plain VM deployment the LB picks a Node, the OS picks a process, and your Node.js app's `httpServer.on('upgrade', ...)` handles the WebSocket. Easy mental model.
+
+In k8s, the **same thing happens**, but there are more layers between the client and your process:
+
+| Layer | Role | What it does for WebSockets |
+|---|---|---|
+| **AWS ALB** (or NLB) | Public entrypoint, TLS termination | Holds the TLS, forwards HTTP/1.1 Upgrade to the target group |
+| **Ingress / LoadBalancer Service** | k8s glue to the cloud LB | Tells AWS "send traffic to these pods on this port" |
+| **chat-ws Service** (ClusterIP) | Stable virtual IP + list of pod IPs | The Service has an `Endpoints` (or `EndpointSlice`) list of pod IPs |
+| **kube-proxy / CNI** | iptables or IPVS rules on each node | Routes the connection to one specific pod |
+| **chat-ws pod (your Node.js app)** | Accepts the upgrade, holds the WebSocket | This is where the long-lived TCP socket actually lives |
+
+The client thinks it's connected to `wss://chat.example.com`. The TCP socket is actually pinned to one specific pod's IP from the moment of the Upgrade. The ALB cannot move it later. **That's the whole reason cross-pod delivery has to exist.**
+
+### The ALB and stickiness — what you must configure
+
+```
+- ALB target group: target type = "ip" (so it routes directly to pod IPs)
+  → without this, ALB sees only Node IPs and double-hops via kube-proxy
+- Listener: HTTPS:443 with TLS cert
+- Protocol forwarded: HTTP/1.1 (WebSocket requires it; HTTP/2 is fine but
+  ALB→target should be HTTP/1.1 for WS frames)
+- Idle timeout: at least 300s (default is 60s — kills idle WS)
+- Stickiness: app cookie OR target group stickiness (duration-based cookie)
+  → reconnects land on the same pod when possible
+```
+
+Stickiness is a *latency optimization*, not a correctness requirement. The design works even if every reconnect lands on a different pod, because pods don't store anything you can't rebuild from Redis.
+
+### How one pod knows about users on another pod
+
+Two designs are common. We're using **(1)** because it's the simplest correct option at our scale.
+
+```mermaid
+graph LR
+    subgraph Option1["Option 1: Redis Pub/Sub (broadcast)"]
+        PA1[Pod A<br/>holds user A's WS] -->|PUBLISH conv:42| RP[Redis Pub/Sub]
+        RP -->|fanout| PB1[Pod B<br/>holds user B's WS]
+        RP -->|fanout| PC1[Pod C<br/>holds nobody for conv:42<br/>filters and drops]
+    end
+
+    subgraph Option2["Option 2: Presence-aware direct routing"]
+        PA2[Pod A] -->|GET presence:userB → pod-B| Pres[(Redis presence)]
+        PA2 -->|HTTP POST /push| PB2[Pod B<br/>holds user B's WS]
+    end
+```
+
+| Option | Pros | Cons |
+|---|---|---|
+| **Pub/Sub (broadcast)** | Simple. Pods are stateless about peers. Naturally handles multiple recipients in a group convo. | Every event hits every pod; doesn't scale to 100K+ msgs/sec on Redis Pub/Sub |
+| **Presence-aware** | Direct, no wasted fanout, scales further | Extra Redis lookup per message, harder when recipient connects to two devices on two pods, more failure modes |
+
+At our scale (~1.2K msgs/sec peak), Redis Pub/Sub is fine. The switch point is around 50-100K msgs/sec on a single Redis node — at that point move to NATS, or to direct routing via gRPC between pods.
+
+### Channel design for pub/sub
+
+Pods don't subscribe to every channel that exists — that would be wasteful. They subscribe only to channels they have a local connection for.
+
+```
+Pod A holds WS for user_42
+  → user_42 is in conversations: conv:100, conv:101, conv:200
+  → Pod A: SUBSCRIBE conv:100  conv:101  conv:200
+
+When user_42 disconnects (or moves to another pod after reconnect):
+  → Pod A: UNSUBSCRIBE the channels no other local user needs
+```
+
+A `chat-ws` pod tracks two in-memory tables:
+
+```
+connections: { user_id → [WebSocket connection objects] }   // one user can be on 2 devices
+channels:    { conv_id → ref_count }                        // how many local users care
+```
+
+On connect: load user's recent conversations from Postgres / Redis, increment `channels[conv_id]`, `SUBSCRIBE` if count went 0→1.
+On disconnect: decrement, `UNSUBSCRIBE` if count went 1→0.
+
+### Full path: user A on Pod 1 sends a message to user B on Pod 7
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant CA as Client A
+    participant ALB as AWS ALB
+    participant P1 as Pod 1 (chat-ws)
+    participant API as chat-api pod
+    participant DDB as DynamoDB
+    participant R as Redis (counters + Pub/Sub)
+    participant P7 as Pod 7 (chat-ws)
+    participant CB as Client B
+
+    Note over CA,P1: Connection setup (one time, persists)
+    CA->>ALB: WSS handshake to chat.example.com
+    ALB->>P1: HTTP/1.1 Upgrade (sticky pick)
+    P1->>R: SUBSCRIBE conv:42 (user A is in conv 42)
+    P1->>R: SET presence:userA → pod-1 EX 60
+    P1-->>CA: 101 Switching Protocols ✅
+
+    Note over CB,P7: User B does the same against Pod 7
+    CB->>ALB: WSS handshake
+    ALB->>P7: Upgrade (different pod)
+    P7->>R: SUBSCRIBE conv:42
+    P7->>R: SET presence:userB → pod-7 EX 60
+
+    Note over CA,CB: Now user A sends a message
+    CA->>P1: WS frame {conv:42, body:"Is this still available?"}
+    P1->>API: gRPC SendMessage (or directly call domain svc)
+    API->>DDB: PUT message (idempotent on client_msg_id)
+    API->>R: HINCRBY unread:userB conv:42 +1; ZADD inbox:userB
+    API->>R: PUBLISH conv:42 {message payload}
+    R-->>P1: fanout (filtered: A is sender, skip)
+    R-->>P7: fanout
+    P7->>P7: lookup connections for users in conv:42 (user B)
+    P7->>CB: WS frame {new_message}
+    CB-->>P7: WS frame {read_receipt}
+    P7->>API: POST /messages/.../read
+    API->>R: HINCRBY unread:userB -1; PUBLISH conv:42 {read}
+    R-->>P1: fanout
+    P1->>CA: WS frame {read receipt for user A's UI}
+```
+
+### Why we don't put chat-api inside the chat-ws pod
+
+Tempting — fewer hops. But:
+
+- **chat-api is stateless and CPU-bound**; chat-ws is stateful and memory/connection-bound. They scale on different signals (CPU vs active connections).
+- **Deployments** of chat-api should be fast and aggressive (rolling, every PR). Deployments of chat-ws need graceful drain windows of 30-60s. Mixing them means every chat-api change drops WS connections.
+- **Blast radius** of a chat-api bug is the request; in a combined pod a bad chat-api change crashes the WS server too.
+
+The pods communicate over the cluster network (gRPC or HTTP). One extra hop in exchange for two clean lifecycles.
+
+### What "Service" actually means here
+
+`chat-ws` is a **Service of type ClusterIP** (or a `headless` Service if you want to bypass kube-proxy). The **LoadBalancer Service** (or an Ingress with an ALB controller) is what gets a public AWS ALB.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: chat-ws
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-attributes: |
+      idle_timeout.timeout_seconds=350
+spec:
+  type: LoadBalancer
+  selector:
+    app: chat-ws
+  ports:
+    - port: 443
+      targetPort: 8080
+      protocol: TCP
+```
+
+Or with an Ingress + AWS Load Balancer Controller (more idiomatic if you have many services):
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chat-ws
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=350
+    alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.type=app_cookie
+spec:
+  rules:
+    - host: chat.example.com
+      http:
+        paths:
+          - path: /ws
+            pathType: Prefix
+            backend:
+              service:
+                name: chat-ws
+                port:
+                  number: 8080
+```
+
+### Graceful pod shutdown — the non-obvious part
+
+When k8s rolls chat-ws (deploy or scale-in), it `SIGTERM`s a pod. If you do nothing, all WS connections drop instantly. Clients reconnect, but for a few seconds presence is wrong and messages are buffered.
+
+The pattern:
+
+```
+1. preStop hook (or SIGTERM handler):
+     - Mark pod NotReady (flip readiness gate → ALB stops sending new connections)
+     - Wait grace period (~5s) for inflight Upgrade handshakes to settle
+2. Close listening socket (refuse new Upgrades)
+3. Send "please reconnect" close frame (code 1012 Service Restart) on every WS
+4. Wait up to terminationGracePeriodSeconds (60s) for clients to reconnect
+5. Exit
+```
+
+Set `terminationGracePeriodSeconds: 60` and have a `PodDisruptionBudget` so the autoscaler / cluster upgrades don't take everyone down at once.
+
+### Sizing intuition for the WS layer
+
+```
+Per-pod connection cap (Node.js with ws library, t3.medium):
+  ~30-50K idle WS connections   (memory-bound, ~100KB per conn including OS buffers)
+  ~5-10K active (msgs/sec per pod)
+
+At peak: 150K concurrent connections / 30K per pod = 5 pods minimum
+Add 50% headroom + AZ spread (3 AZs)            = 9 pods sensible baseline
+
+HPA on a custom metric: active_ws_connections / 25000   (target 80% of cap)
+Not CPU — CPU is misleading for idle WS workloads.
+```
+
 ## Key flows
 
 ### Send message (online recipient)
