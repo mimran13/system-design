@@ -205,6 +205,8 @@
     const article = root.querySelector("article.md-content__inner") ||
                     document.querySelector("article.md-content__inner");
     if (!article || article.querySelector(".sd-reading-time")) return;
+    /* skip landing pages (homepage hero) — reading time is noise there */
+    if (article.querySelector(".home-hero")) return;
     const h1 = article.querySelector("h1");
     if (!h1) return;
 

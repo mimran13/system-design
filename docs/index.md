@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # System Design Encyclopedia
 
 <div class="home-hero" markdown>

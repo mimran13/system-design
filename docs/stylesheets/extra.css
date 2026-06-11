@@ -714,7 +714,17 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
    ═══════════════════════════════════════════════════════════ */
 
 .home-hero {
-  padding: 2.5rem 0 2rem;
+  padding: 0.4rem 0 0.6rem;
+}
+
+/* Homepage: tighten the divider + section spacing so the hero
+   doesn't leave a dead zone before "Start here" */
+article.md-typeset:has(.home-hero) > hr {
+  margin: 1.4em 0;
+}
+
+article.md-typeset:has(.home-hero) > h2 {
+  margin-top: 1.4em;
 }
 
 .home-hero .subtitle {
@@ -1301,6 +1311,14 @@ article.md-typeset > h4 {
 
 [data-md-color-scheme="slate"] .md-typeset .mermaid svg .messageText {
   fill: #d4d4d8 !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .edgeLabel {
+  color: #d4d4d8;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .edgeLabel rect {
+  fill: #111114 !important;
 }
 
 [data-md-color-scheme="slate"] .md-typeset .mermaid svg .activation0,
