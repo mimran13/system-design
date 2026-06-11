@@ -272,6 +272,7 @@ nav:
       - Idempotency: patterns/idempotency.md
       - Saga Pattern: patterns/saga-pattern.md
       - Outbox Pattern: patterns/outbox.md
+      - Durable Workflows (Temporal / Step Functions): patterns/durable-workflows.md
       - CQRS: patterns/cqrs.md
       - Event Sourcing: patterns/event-sourcing.md
       - Consistent Hashing: patterns/consistent-hashing.md

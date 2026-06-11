@@ -405,5 +405,6 @@ graph TD
 
 - [Event-Driven Architecture](event-driven.md) — choreography is event-driven
 - [Saga Pattern](../patterns/saga-pattern.md) — applies to both styles
+- [Durable Workflows](../patterns/durable-workflows.md) — orchestration in practice (Temporal, Step Functions)
 - [Microservices Patterns](microservices-patterns.md) — coordination patterns at scale
 - [CQRS + ES Architecture](cqrs-event-sourcing-architecture.md) — events feed both styles

@@ -277,3 +277,4 @@ Saga orchestrator options on AWS:
 - [Outbox Pattern](outbox.md) — reliable event publishing from DB write
 - [Idempotency](idempotency.md) — required for saga compensation
 - [CQRS](cqrs.md) — often used alongside saga
+- [Durable Workflows](durable-workflows.md) — Temporal / Step Functions as orchestrators for sagas

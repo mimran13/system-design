@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../agent-reliability/">
+        <link rel="prev" href="../outbox/">
       
       
-        <link rel="next" href="../example-data-agent/">
+        <link rel="next" href="../cqrs/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Example: Research Agent - System Design Encyclopedia</title>
+        <title>Durable Workflows (Temporal / Step Functions) - System Design Encyclopedia</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#example-research-agent" class="md-skip">
+        <a href="#durable-workflows" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Example: Research Agent
+              Durable Workflows (Temporal / Step Functions)
             
           </span>
         </div>
@@ -355,6 +355,8 @@
   
   
   
+    
+  
   
     
     
@@ -362,11 +364,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../patterns/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -419,8 +423,6 @@
   
   
   
-    
-  
   
     
     
@@ -428,13 +430,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../agents/" class="md-tabs__link">
           
   
   
@@ -6388,8 +6388,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -6403,19 +6405,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -6433,7 +6438,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -6448,6 +6453,8 @@
                 
   
   
+    
+  
   
   
     
@@ -6505,18 +6512,21 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../patterns/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -6534,13 +6544,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_1" id="__nav_6_1_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -6560,7 +6570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/rate-limiting/" class="md-nav__link">
+      <a href="../rate-limiting/" class="md-nav__link">
         
   
   
@@ -6588,7 +6598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/circuit-breaker/" class="md-nav__link">
+      <a href="../circuit-breaker/" class="md-nav__link">
         
   
   
@@ -6616,7 +6626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/retry-timeout/" class="md-nav__link">
+      <a href="../retry-timeout/" class="md-nav__link">
         
   
   
@@ -6644,7 +6654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/backoff/" class="md-nav__link">
+      <a href="../backoff/" class="md-nav__link">
         
   
   
@@ -6672,7 +6682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/bulkhead/" class="md-nav__link">
+      <a href="../bulkhead/" class="md-nav__link">
         
   
   
@@ -6700,7 +6710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/idempotency/" class="md-nav__link">
+      <a href="../idempotency/" class="md-nav__link">
         
   
   
@@ -6728,7 +6738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/saga-pattern/" class="md-nav__link">
+      <a href="../saga-pattern/" class="md-nav__link">
         
   
   
@@ -6756,7 +6766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/outbox/" class="md-nav__link">
+      <a href="../outbox/" class="md-nav__link">
         
   
   
@@ -6781,10 +6791,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../patterns/durable-workflows/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Durable Workflows (Temporal / Step Functions)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -6800,6 +6837,352 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#youll-see-this-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        You'll see this when...
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem-they-solve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The problem they solve
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-durable-execution-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The durable execution model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The durable execution model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-determinism-constraint-this-trips-everyone-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The determinism constraint (this trips everyone up)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tools-and-which-category-each-belongs-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tools (and which category each belongs to)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temporal-vs-aws-step-functions-head-to-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporal vs AWS Step Functions head-to-head
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Temporal vs AWS Step Functions head-to-head">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#temporal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-step-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS Step Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side-by-side
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pick-temporal-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pick Temporal when
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pick-step-functions-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pick Step Functions when
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-useful-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A useful test
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-not-to-use-a-workflow-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When NOT to use a workflow engine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replacing-the-custom-approach-what-improves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing the custom approach — what improves
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-concerns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational concerns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operational concerns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#versioning-long-running-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning long-running workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-size-and-continue-as-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History size and continue-as-new
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-vs-query-vs-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal vs query vs update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule-storms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schedule storms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-too-large-workflow-death" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History too large = workflow death
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-replay-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local replay debugging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-modes-what-the-engine-doesnt-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure modes — what the engine doesn't fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-specific-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS-specific notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#designing-a-workflow-that-doesnt-fight-the-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Designing a workflow that doesn't fight the engine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anti-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anti-patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interview-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interview angle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -6812,7 +7195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/cqrs/" class="md-nav__link">
+      <a href="../cqrs/" class="md-nav__link">
         
   
   
@@ -6840,7 +7223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/event-sourcing/" class="md-nav__link">
+      <a href="../event-sourcing/" class="md-nav__link">
         
   
   
@@ -6868,7 +7251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/consistent-hashing/" class="md-nav__link">
+      <a href="../consistent-hashing/" class="md-nav__link">
         
   
   
@@ -6896,7 +7279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/sharding/" class="md-nav__link">
+      <a href="../sharding/" class="md-nav__link">
         
   
   
@@ -6924,7 +7307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/querying-sharded-data/" class="md-nav__link">
+      <a href="../querying-sharded-data/" class="md-nav__link">
         
   
   
@@ -6952,7 +7335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/sharding-best-practices/" class="md-nav__link">
+      <a href="../sharding-best-practices/" class="md-nav__link">
         
   
   
@@ -6980,7 +7363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/sharding-tooling/" class="md-nav__link">
+      <a href="../sharding-tooling/" class="md-nav__link">
         
   
   
@@ -7008,7 +7391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/replication/" class="md-nav__link">
+      <a href="../replication/" class="md-nav__link">
         
   
   
@@ -7036,7 +7419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/read-replicas/" class="md-nav__link">
+      <a href="../read-replicas/" class="md-nav__link">
         
   
   
@@ -7064,7 +7447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/connection-pooling/" class="md-nav__link">
+      <a href="../connection-pooling/" class="md-nav__link">
         
   
   
@@ -7092,7 +7475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/unhappy-path-engineering/" class="md-nav__link">
+      <a href="../unhappy-path-engineering/" class="md-nav__link">
         
   
   
@@ -7120,7 +7503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/boring-tech/" class="md-nav__link">
+      <a href="../boring-tech/" class="md-nav__link">
         
   
   
@@ -7184,10 +7567,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -7213,7 +7599,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -7499,10 +7885,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -7528,7 +7917,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -8892,10 +9281,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -8907,22 +9294,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -8940,7 +9324,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -8955,8 +9339,6 @@
                 
   
   
-    
-  
   
   
     
@@ -8988,21 +9370,18 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../agents/" class="md-nav__link ">
               
   
   
@@ -9020,13 +9399,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -9046,7 +9425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../agent-fundamentals/" class="md-nav__link">
+      <a href="../../agents/agent-fundamentals/" class="md-nav__link">
         
   
   
@@ -9074,7 +9453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../function-calling/" class="md-nav__link">
+      <a href="../../agents/function-calling/" class="md-nav__link">
         
   
   
@@ -9102,7 +9481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../building-agents/" class="md-nav__link">
+      <a href="../../agents/building-agents/" class="md-nav__link">
         
   
   
@@ -9130,7 +9509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../multi-agent-systems/" class="md-nav__link">
+      <a href="../../agents/multi-agent-systems/" class="md-nav__link">
         
   
   
@@ -9158,7 +9537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../agent-reliability/" class="md-nav__link">
+      <a href="../../agents/agent-reliability/" class="md-nav__link">
         
   
   
@@ -9183,37 +9562,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Example: Research Agent
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../agents/example-research-agent/" class="md-nav__link">
         
   
   
@@ -9229,92 +9581,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-it-does" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What it does
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#full-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full implementation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sample output
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variations-to-try" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variations to try
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#production-enhancements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Production enhancements
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-topics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related topics
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -9327,7 +9593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../example-data-agent/" class="md-nav__link">
+      <a href="../../agents/example-data-agent/" class="md-nav__link">
         
   
   
@@ -9355,7 +9621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../example-customer-support-agent/" class="md-nav__link">
+      <a href="../../agents/example-customer-support-agent/" class="md-nav__link">
         
   
   
@@ -9429,13 +9695,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -9461,7 +9724,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -11654,10 +11917,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-it-does" class="md-nav__link">
+  <a href="#youll-see-this-when" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What it does
+        You'll see this when...
       
     </span>
   </a>
@@ -11665,10 +11928,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#full-implementation" class="md-nav__link">
+  <a href="#the-problem-they-solve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Full implementation
+        The problem they solve
       
     </span>
   </a>
@@ -11676,10 +11939,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-output" class="md-nav__link">
+  <a href="#the-durable-execution-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sample output
+        The durable execution model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The durable execution model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-determinism-constraint-this-trips-everyone-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The determinism constraint (this trips everyone up)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tools-and-which-category-each-belongs-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tools (and which category each belongs to)
       
     </span>
   </a>
@@ -11687,10 +11978,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#variations-to-try" class="md-nav__link">
+  <a href="#temporal-vs-aws-step-functions-head-to-head" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Variations to try
+        Temporal vs AWS Step Functions head-to-head
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Temporal vs AWS Step Functions head-to-head">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#temporal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-step-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS Step Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side-by-side
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pick-temporal-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pick Temporal when
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pick-step-functions-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pick Step Functions when
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-useful-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A useful test
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-not-to-use-a-workflow-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When NOT to use a workflow engine
       
     </span>
   </a>
@@ -11698,10 +12072,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#production-enhancements" class="md-nav__link">
+  <a href="#replacing-the-custom-approach-what-improves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Production enhancements
+        Replacing the custom approach — what improves
       
     </span>
   </a>
@@ -11709,10 +12083,159 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#related-topics" class="md-nav__link">
+  <a href="#operational-concerns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Related topics
+        Operational concerns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operational concerns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#versioning-long-running-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning long-running workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-size-and-continue-as-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History size and continue-as-new
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-vs-query-vs-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal vs query vs update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule-storms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schedule storms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-too-large-workflow-death" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History too large = workflow death
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-replay-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local replay debugging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-modes-what-the-engine-doesnt-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure modes — what the engine doesn't fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-specific-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS-specific notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#designing-a-workflow-that-doesnt-fight-the-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Designing a workflow that doesn't fight the engine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anti-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anti-patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interview-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interview angle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
       
     </span>
   </a>
@@ -11770,7 +12293,7 @@
         <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
-    AI
+    Operations
   </span>
 
         </a>
@@ -11791,7 +12314,7 @@
         <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
-    AI Agents
+    Patterns
   </span>
 
         </a>
@@ -11808,336 +12331,646 @@
                 
                   
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../reference/tags/#tag:applied" class="md-tag">applied</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../reference/tags/#tag:interview-critical" class="md-tag">interview-critical</a>
+      
+    
+  </nav>
 
 
-<h1 id="example-research-agent">Example: Research Agent<a class="headerlink" href="#example-research-agent" title="Permanent link">&para;</a></h1>
-<p>A research agent that takes a topic, searches the web, reads sources, synthesizes findings, and produces a structured report. This is a realistic end-to-end example you can adapt and run.</p>
-<hr />
-<h2 id="what-it-does">What it does<a class="headerlink" href="#what-it-does" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>User: &quot;Research the current state of quantum computing in 2024&quot;
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Agent:
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  → web_search(&quot;quantum computing breakthroughs 2024&quot;)
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  → web_search(&quot;quantum computing companies market 2024&quot;)
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  → fetch_page(url) to read key articles
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  → web_search(&quot;IBM Google quantum computing progress&quot;)
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  → synthesizes into structured report
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Output: Structured report with summary, key findings, companies, and sources
-</span></code></pre></div>
-<hr />
-<h2 id="full-implementation">Full implementation<a class="headerlink" href="#full-implementation" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">anthropic</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">client</span> <span class="o">=</span> <span class="n">anthropic</span><span class="o">.</span><span class="n">Anthropic</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;ANTHROPIC_API_KEY&quot;</span><span class="p">])</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># ─── Tool implementations ─────────────────────────────────────────────────────</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">web_search</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num_results</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Search the web using Tavily API&quot;&quot;&quot;</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>        <span class="s2">&quot;https://api.tavily.com/search&quot;</span><span class="p">,</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        <span class="n">json</span><span class="o">=</span><span class="p">{</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>            <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TAVILY_API_KEY&quot;</span><span class="p">],</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>            <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>            <span class="s2">&quot;max_results&quot;</span><span class="p">:</span> <span class="n">num_results</span><span class="p">,</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>            <span class="s2">&quot;search_depth&quot;</span><span class="p">:</span> <span class="s2">&quot;basic&quot;</span><span class="p">,</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>            <span class="s2">&quot;include_answer&quot;</span><span class="p">:</span> <span class="kc">True</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>        <span class="p">}</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    <span class="p">)</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    <span class="k">return</span> <span class="p">[</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>        <span class="p">{</span>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">],</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">],</span>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>            <span class="s2">&quot;snippet&quot;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">][:</span><span class="mi">500</span><span class="p">],</span>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>            <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>        <span class="p">}</span>
-</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="p">[])</span>
-</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    <span class="p">]</span>
-</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
-</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>
-</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="k">def</span><span class="w"> </span><span class="nf">fetch_page</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_chars</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fetch and extract text from a webpage&quot;&quot;&quot;</span>
-</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>    <span class="k">try</span><span class="p">:</span>
-</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0&quot;</span><span class="p">})</span>
-</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>        <span class="c1"># In production: use BeautifulSoup or Trafilatura for better extraction</span>
-</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>        <span class="n">text</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="n">max_chars</span><span class="p">]</span>
-</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">}</span>
-</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)}</span>
-</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>
-</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>
-</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="k">def</span><span class="w"> </span><span class="nf">save_report</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">summary</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">key_findings</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>                <span class="n">sections</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">sources</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Save the final report (signals to agent it&#39;s done)&quot;&quot;&quot;</span>
-</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>    <span class="n">report</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
-</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="p">,</span>
-</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>        <span class="s2">&quot;key_findings&quot;</span><span class="p">:</span> <span class="n">key_findings</span><span class="p">,</span>
-</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>        <span class="s2">&quot;sections&quot;</span><span class="p">:</span> <span class="n">sections</span><span class="p">,</span>
-</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>        <span class="s2">&quot;sources&quot;</span><span class="p">:</span> <span class="n">sources</span>
-</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>    <span class="p">}</span>
-</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>    <span class="c1"># In production: save to DB, S3, etc.</span>
-</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;saved&quot;</span><span class="p">,</span> <span class="s2">&quot;report&quot;</span><span class="p">:</span> <span class="n">report</span><span class="p">}</span>
-</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>
-</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>
-</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="c1"># ─── Tool definitions ─────────────────────────────────────────────────────────</span>
-</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>
-</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="n">TOOLS</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>    <span class="p">{</span>
-</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;web_search&quot;</span><span class="p">,</span>
-</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
-</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>            <span class="s2">&quot;Search the web for current information on a topic. &quot;</span>
-</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>            <span class="s2">&quot;Returns titles, URLs, and snippets. &quot;</span>
-</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a>            <span class="s2">&quot;Use multiple targeted searches to cover different angles.&quot;</span>
-</span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>        <span class="p">),</span>
-</span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>        <span class="s2">&quot;input_schema&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a>            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
-</span><span id="__span-1-73"><a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-1-74"><a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Search query&quot;</span><span class="p">},</span>
-</span><span id="__span-1-75"><a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a>                <span class="s2">&quot;num_results&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Number of results (1-10). Default 5.&quot;</span><span class="p">}</span>
-</span><span id="__span-1-76"><a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a>            <span class="p">},</span>
-</span><span id="__span-1-77"><a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">]</span>
-</span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a>        <span class="p">}</span>
-</span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a>    <span class="p">},</span>
-</span><span id="__span-1-80"><a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a>    <span class="p">{</span>
-</span><span id="__span-1-81"><a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;fetch_page&quot;</span><span class="p">,</span>
-</span><span id="__span-1-82"><a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
-</span><span id="__span-1-83"><a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a>            <span class="s2">&quot;Fetch and read the full text of a webpage. &quot;</span>
-</span><span id="__span-1-84"><a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a>            <span class="s2">&quot;Use when a search result snippet doesn&#39;t have enough detail.&quot;</span>
-</span><span id="__span-1-85"><a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a>        <span class="p">),</span>
-</span><span id="__span-1-86"><a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a>        <span class="s2">&quot;input_schema&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-1-87"><a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a>            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
-</span><span id="__span-1-88"><a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a>            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-1-89"><a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a>                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Full URL to fetch&quot;</span><span class="p">},</span>
-</span><span id="__span-1-90"><a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a>                <span class="s2">&quot;max_chars&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Max characters to return. Default 3000.&quot;</span><span class="p">}</span>
-</span><span id="__span-1-91"><a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a>            <span class="p">},</span>
-</span><span id="__span-1-92"><a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
-</span><span id="__span-1-93"><a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a>        <span class="p">}</span>
-</span><span id="__span-1-94"><a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a>    <span class="p">},</span>
-</span><span id="__span-1-95"><a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a>    <span class="p">{</span>
-</span><span id="__span-1-96"><a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;save_report&quot;</span><span class="p">,</span>
-</span><span id="__span-1-97"><a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
-</span><span id="__span-1-98"><a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a>            <span class="s2">&quot;Save the final research report. Call this when you have gathered sufficient information &quot;</span>
-</span><span id="__span-1-99"><a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a>            <span class="s2">&quot;and are ready to present your findings. This is the LAST tool call you make.&quot;</span>
-</span><span id="__span-1-100"><a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a>        <span class="p">),</span>
-</span><span id="__span-1-101"><a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a>        <span class="s2">&quot;input_schema&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-1-102"><a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a>            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
-</span><span id="__span-1-103"><a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a>            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-1-104"><a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a>                <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
-</span><span id="__span-1-105"><a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a>                <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;2-3 sentence executive summary&quot;</span><span class="p">},</span>
-</span><span id="__span-1-106"><a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a>                <span class="s2">&quot;key_findings&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-1-107"><a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a>                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
-</span><span id="__span-1-108"><a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a>                    <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
-</span><span id="__span-1-109"><a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a>                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;5-8 most important findings&quot;</span>
-</span><span id="__span-1-110"><a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a>                <span class="p">},</span>
-</span><span id="__span-1-111"><a id="__codelineno-1-111" name="__codelineno-1-111" href="#__codelineno-1-111"></a>                <span class="s2">&quot;sections&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-1-112"><a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a>                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
-</span><span id="__span-1-113"><a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a>                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Dict of section_name → content for detailed sections&quot;</span>
-</span><span id="__span-1-114"><a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a>                <span class="p">},</span>
-</span><span id="__span-1-115"><a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a>                <span class="s2">&quot;sources&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-1-116"><a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a>                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
-</span><span id="__span-1-117"><a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a>                    <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
-</span><span id="__span-1-118"><a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a>                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;List of URLs used as sources&quot;</span>
-</span><span id="__span-1-119"><a id="__codelineno-1-119" name="__codelineno-1-119" href="#__codelineno-1-119"></a>                <span class="p">}</span>
-</span><span id="__span-1-120"><a id="__codelineno-1-120" name="__codelineno-1-120" href="#__codelineno-1-120"></a>            <span class="p">},</span>
-</span><span id="__span-1-121"><a id="__codelineno-1-121" name="__codelineno-1-121" href="#__codelineno-1-121"></a>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="s2">&quot;key_findings&quot;</span><span class="p">,</span> <span class="s2">&quot;sources&quot;</span><span class="p">]</span>
-</span><span id="__span-1-122"><a id="__codelineno-1-122" name="__codelineno-1-122" href="#__codelineno-1-122"></a>        <span class="p">}</span>
-</span><span id="__span-1-123"><a id="__codelineno-1-123" name="__codelineno-1-123" href="#__codelineno-1-123"></a>    <span class="p">}</span>
-</span><span id="__span-1-124"><a id="__codelineno-1-124" name="__codelineno-1-124" href="#__codelineno-1-124"></a><span class="p">]</span>
-</span><span id="__span-1-125"><a id="__codelineno-1-125" name="__codelineno-1-125" href="#__codelineno-1-125"></a>
-</span><span id="__span-1-126"><a id="__codelineno-1-126" name="__codelineno-1-126" href="#__codelineno-1-126"></a><span class="n">TOOL_FNS</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-1-127"><a id="__codelineno-1-127" name="__codelineno-1-127" href="#__codelineno-1-127"></a>    <span class="s2">&quot;web_search&quot;</span><span class="p">:</span> <span class="n">web_search</span><span class="p">,</span>
-</span><span id="__span-1-128"><a id="__codelineno-1-128" name="__codelineno-1-128" href="#__codelineno-1-128"></a>    <span class="s2">&quot;fetch_page&quot;</span><span class="p">:</span> <span class="n">fetch_page</span><span class="p">,</span>
-</span><span id="__span-1-129"><a id="__codelineno-1-129" name="__codelineno-1-129" href="#__codelineno-1-129"></a>    <span class="s2">&quot;save_report&quot;</span><span class="p">:</span> <span class="n">save_report</span><span class="p">,</span>
-</span><span id="__span-1-130"><a id="__codelineno-1-130" name="__codelineno-1-130" href="#__codelineno-1-130"></a><span class="p">}</span>
-</span><span id="__span-1-131"><a id="__codelineno-1-131" name="__codelineno-1-131" href="#__codelineno-1-131"></a>
-</span><span id="__span-1-132"><a id="__codelineno-1-132" name="__codelineno-1-132" href="#__codelineno-1-132"></a><span class="c1"># ─── System prompt ────────────────────────────────────────────────────────────</span>
-</span><span id="__span-1-133"><a id="__codelineno-1-133" name="__codelineno-1-133" href="#__codelineno-1-133"></a>
-</span><span id="__span-1-134"><a id="__codelineno-1-134" name="__codelineno-1-134" href="#__codelineno-1-134"></a><span class="n">SYSTEM</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;You are a thorough research analyst. When given a research topic:</span>
-</span><span id="__span-1-135"><a id="__codelineno-1-135" name="__codelineno-1-135" href="#__codelineno-1-135"></a>
-</span><span id="__span-1-136"><a id="__codelineno-1-136" name="__codelineno-1-136" href="#__codelineno-1-136"></a><span class="s2">1. Search broadly first — get an overview with 2-3 initial searches</span>
-</span><span id="__span-1-137"><a id="__codelineno-1-137" name="__codelineno-1-137" href="#__codelineno-1-137"></a><span class="s2">2. Identify the most important sub-topics and search each specifically</span>
-</span><span id="__span-1-138"><a id="__codelineno-1-138" name="__codelineno-1-138" href="#__codelineno-1-138"></a><span class="s2">3. Fetch full pages for the most relevant results</span>
-</span><span id="__span-1-139"><a id="__codelineno-1-139" name="__codelineno-1-139" href="#__codelineno-1-139"></a><span class="s2">4. Search for recent developments, key players, statistics, and controversies</span>
-</span><span id="__span-1-140"><a id="__codelineno-1-140" name="__codelineno-1-140" href="#__codelineno-1-140"></a><span class="s2">5. When you have enough information (typically 5-10 searches), call save_report</span>
-</span><span id="__span-1-141"><a id="__codelineno-1-141" name="__codelineno-1-141" href="#__codelineno-1-141"></a>
-</span><span id="__span-1-142"><a id="__codelineno-1-142" name="__codelineno-1-142" href="#__codelineno-1-142"></a><span class="s2">Research quality standards:</span>
-</span><span id="__span-1-143"><a id="__codelineno-1-143" name="__codelineno-1-143" href="#__codelineno-1-143"></a><span class="s2">- Use multiple sources — don&#39;t rely on a single article</span>
-</span><span id="__span-1-144"><a id="__codelineno-1-144" name="__codelineno-1-144" href="#__codelineno-1-144"></a><span class="s2">- Prefer recent sources (2023-2024)</span>
-</span><span id="__span-1-145"><a id="__codelineno-1-145" name="__codelineno-1-145" href="#__codelineno-1-145"></a><span class="s2">- Include specific numbers and data where available</span>
-</span><span id="__span-1-146"><a id="__codelineno-1-146" name="__codelineno-1-146" href="#__codelineno-1-146"></a><span class="s2">- Note areas of uncertainty or conflicting information</span>
-</span><span id="__span-1-147"><a id="__codelineno-1-147" name="__codelineno-1-147" href="#__codelineno-1-147"></a><span class="s2">- Always record source URLs&quot;&quot;&quot;</span>
-</span><span id="__span-1-148"><a id="__codelineno-1-148" name="__codelineno-1-148" href="#__codelineno-1-148"></a>
-</span><span id="__span-1-149"><a id="__codelineno-1-149" name="__codelineno-1-149" href="#__codelineno-1-149"></a><span class="c1"># ─── Agent loop ───────────────────────────────────────────────────────────────</span>
-</span><span id="__span-1-150"><a id="__codelineno-1-150" name="__codelineno-1-150" href="#__codelineno-1-150"></a>
-</span><span id="__span-1-151"><a id="__codelineno-1-151" name="__codelineno-1-151" href="#__codelineno-1-151"></a><span class="k">def</span><span class="w"> </span><span class="nf">run_research_agent</span><span class="p">(</span><span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-1-152"><a id="__codelineno-1-152" name="__codelineno-1-152" href="#__codelineno-1-152"></a>    <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Research this topic thoroughly: </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}]</span>
-</span><span id="__span-1-153"><a id="__codelineno-1-153" name="__codelineno-1-153" href="#__codelineno-1-153"></a>    <span class="n">final_report</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="__span-1-154"><a id="__codelineno-1-154" name="__codelineno-1-154" href="#__codelineno-1-154"></a>    <span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="__span-1-155"><a id="__codelineno-1-155" name="__codelineno-1-155" href="#__codelineno-1-155"></a>
-</span><span id="__span-1-156"><a id="__codelineno-1-156" name="__codelineno-1-156" href="#__codelineno-1-156"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🔍 Starting research on: </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-1-157"><a id="__codelineno-1-157" name="__codelineno-1-157" href="#__codelineno-1-157"></a>
-</span><span id="__span-1-158"><a id="__codelineno-1-158" name="__codelineno-1-158" href="#__codelineno-1-158"></a>    <span class="k">while</span> <span class="n">iteration</span> <span class="o">&lt;</span> <span class="n">max_iterations</span><span class="p">:</span>
-</span><span id="__span-1-159"><a id="__codelineno-1-159" name="__codelineno-1-159" href="#__codelineno-1-159"></a>        <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span id="__span-1-160"><a id="__codelineno-1-160" name="__codelineno-1-160" href="#__codelineno-1-160"></a>
-</span><span id="__span-1-161"><a id="__codelineno-1-161" name="__codelineno-1-161" href="#__codelineno-1-161"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-1-162"><a id="__codelineno-1-162" name="__codelineno-1-162" href="#__codelineno-1-162"></a>            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-opus-4-6&quot;</span><span class="p">,</span>
-</span><span id="__span-1-163"><a id="__codelineno-1-163" name="__codelineno-1-163" href="#__codelineno-1-163"></a>            <span class="n">system</span><span class="o">=</span><span class="n">SYSTEM</span><span class="p">,</span>
-</span><span id="__span-1-164"><a id="__codelineno-1-164" name="__codelineno-1-164" href="#__codelineno-1-164"></a>            <span class="n">max_tokens</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
-</span><span id="__span-1-165"><a id="__codelineno-1-165" name="__codelineno-1-165" href="#__codelineno-1-165"></a>            <span class="n">tools</span><span class="o">=</span><span class="n">TOOLS</span><span class="p">,</span>
-</span><span id="__span-1-166"><a id="__codelineno-1-166" name="__codelineno-1-166" href="#__codelineno-1-166"></a>            <span class="n">messages</span><span class="o">=</span><span class="n">messages</span>
-</span><span id="__span-1-167"><a id="__codelineno-1-167" name="__codelineno-1-167" href="#__codelineno-1-167"></a>        <span class="p">)</span>
-</span><span id="__span-1-168"><a id="__codelineno-1-168" name="__codelineno-1-168" href="#__codelineno-1-168"></a>
-</span><span id="__span-1-169"><a id="__codelineno-1-169" name="__codelineno-1-169" href="#__codelineno-1-169"></a>        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">stop_reason</span> <span class="o">==</span> <span class="s2">&quot;end_turn&quot;</span><span class="p">:</span>
-</span><span id="__span-1-170"><a id="__codelineno-1-170" name="__codelineno-1-170" href="#__codelineno-1-170"></a>            <span class="n">text</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">b</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">)),</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-</span><span id="__span-1-171"><a id="__codelineno-1-171" name="__codelineno-1-171" href="#__codelineno-1-171"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Agent completed (no save_report called)</span><span class="se">\n</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-1-172"><a id="__codelineno-1-172" name="__codelineno-1-172" href="#__codelineno-1-172"></a>            <span class="k">break</span>
-</span><span id="__span-1-173"><a id="__codelineno-1-173" name="__codelineno-1-173" href="#__codelineno-1-173"></a>
-</span><span id="__span-1-174"><a id="__codelineno-1-174" name="__codelineno-1-174" href="#__codelineno-1-174"></a>        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">stop_reason</span> <span class="o">==</span> <span class="s2">&quot;tool_use&quot;</span><span class="p">:</span>
-</span><span id="__span-1-175"><a id="__codelineno-1-175" name="__codelineno-1-175" href="#__codelineno-1-175"></a>            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">})</span>
-</span><span id="__span-1-176"><a id="__codelineno-1-176" name="__codelineno-1-176" href="#__codelineno-1-176"></a>
-</span><span id="__span-1-177"><a id="__codelineno-1-177" name="__codelineno-1-177" href="#__codelineno-1-177"></a>            <span class="n">tool_results</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="__span-1-178"><a id="__codelineno-1-178" name="__codelineno-1-178" href="#__codelineno-1-178"></a>            <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
-</span><span id="__span-1-179"><a id="__codelineno-1-179" name="__codelineno-1-179" href="#__codelineno-1-179"></a>                <span class="k">if</span> <span class="n">block</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="s2">&quot;tool_use&quot;</span><span class="p">:</span>
-</span><span id="__span-1-180"><a id="__codelineno-1-180" name="__codelineno-1-180" href="#__codelineno-1-180"></a>                    <span class="k">continue</span>
-</span><span id="__span-1-181"><a id="__codelineno-1-181" name="__codelineno-1-181" href="#__codelineno-1-181"></a>
-</span><span id="__span-1-182"><a id="__codelineno-1-182" name="__codelineno-1-182" href="#__codelineno-1-182"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [</span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">] → </span><span class="si">{</span><span class="n">block</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">block</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">block</span><span class="o">.</span><span class="n">input</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-</span><span id="__span-1-183"><a id="__codelineno-1-183" name="__codelineno-1-183" href="#__codelineno-1-183"></a>
-</span><span id="__span-1-184"><a id="__codelineno-1-184" name="__codelineno-1-184" href="#__codelineno-1-184"></a>                <span class="k">try</span><span class="p">:</span>
-</span><span id="__span-1-185"><a id="__codelineno-1-185" name="__codelineno-1-185" href="#__codelineno-1-185"></a>                    <span class="n">result</span> <span class="o">=</span> <span class="n">TOOL_FNS</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">name</span><span class="p">](</span><span class="o">**</span><span class="n">block</span><span class="o">.</span><span class="n">input</span><span class="p">)</span>
-</span><span id="__span-1-186"><a id="__codelineno-1-186" name="__codelineno-1-186" href="#__codelineno-1-186"></a>
-</span><span id="__span-1-187"><a id="__codelineno-1-187" name="__codelineno-1-187" href="#__codelineno-1-187"></a>                    <span class="c1"># Check if agent just saved the report</span>
-</span><span id="__span-1-188"><a id="__codelineno-1-188" name="__codelineno-1-188" href="#__codelineno-1-188"></a>                    <span class="k">if</span> <span class="n">block</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;save_report&quot;</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-</span><span id="__span-1-189"><a id="__codelineno-1-189" name="__codelineno-1-189" href="#__codelineno-1-189"></a>                        <span class="n">final_report</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;report&quot;</span><span class="p">)</span>
-</span><span id="__span-1-190"><a id="__codelineno-1-190" name="__codelineno-1-190" href="#__codelineno-1-190"></a>
-</span><span id="__span-1-191"><a id="__codelineno-1-191" name="__codelineno-1-191" href="#__codelineno-1-191"></a>                    <span class="n">tool_results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-</span><span id="__span-1-192"><a id="__codelineno-1-192" name="__codelineno-1-192" href="#__codelineno-1-192"></a>                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;tool_result&quot;</span><span class="p">,</span>
-</span><span id="__span-1-193"><a id="__codelineno-1-193" name="__codelineno-1-193" href="#__codelineno-1-193"></a>                        <span class="s2">&quot;tool_use_id&quot;</span><span class="p">:</span> <span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-</span><span id="__span-1-194"><a id="__codelineno-1-194" name="__codelineno-1-194" href="#__codelineno-1-194"></a>                        <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</span><span id="__span-1-195"><a id="__codelineno-1-195" name="__codelineno-1-195" href="#__codelineno-1-195"></a>                    <span class="p">})</span>
-</span><span id="__span-1-196"><a id="__codelineno-1-196" name="__codelineno-1-196" href="#__codelineno-1-196"></a>                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="__span-1-197"><a id="__codelineno-1-197" name="__codelineno-1-197" href="#__codelineno-1-197"></a>                    <span class="n">tool_results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-</span><span id="__span-1-198"><a id="__codelineno-1-198" name="__codelineno-1-198" href="#__codelineno-1-198"></a>                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;tool_result&quot;</span><span class="p">,</span>
-</span><span id="__span-1-199"><a id="__codelineno-1-199" name="__codelineno-1-199" href="#__codelineno-1-199"></a>                        <span class="s2">&quot;tool_use_id&quot;</span><span class="p">:</span> <span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-</span><span id="__span-1-200"><a id="__codelineno-1-200" name="__codelineno-1-200" href="#__codelineno-1-200"></a>                        <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-</span><span id="__span-1-201"><a id="__codelineno-1-201" name="__codelineno-1-201" href="#__codelineno-1-201"></a>                        <span class="s2">&quot;is_error&quot;</span><span class="p">:</span> <span class="kc">True</span>
-</span><span id="__span-1-202"><a id="__codelineno-1-202" name="__codelineno-1-202" href="#__codelineno-1-202"></a>                    <span class="p">})</span>
-</span><span id="__span-1-203"><a id="__codelineno-1-203" name="__codelineno-1-203" href="#__codelineno-1-203"></a>
-</span><span id="__span-1-204"><a id="__codelineno-1-204" name="__codelineno-1-204" href="#__codelineno-1-204"></a>            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">tool_results</span><span class="p">})</span>
-</span><span id="__span-1-205"><a id="__codelineno-1-205" name="__codelineno-1-205" href="#__codelineno-1-205"></a>
-</span><span id="__span-1-206"><a id="__codelineno-1-206" name="__codelineno-1-206" href="#__codelineno-1-206"></a>            <span class="c1"># If save_report was called, we&#39;re done</span>
-</span><span id="__span-1-207"><a id="__codelineno-1-207" name="__codelineno-1-207" href="#__codelineno-1-207"></a>            <span class="k">if</span> <span class="n">final_report</span><span class="p">:</span>
-</span><span id="__span-1-208"><a id="__codelineno-1-208" name="__codelineno-1-208" href="#__codelineno-1-208"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Report saved after </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
-</span><span id="__span-1-209"><a id="__codelineno-1-209" name="__codelineno-1-209" href="#__codelineno-1-209"></a>                <span class="k">break</span>
-</span><span id="__span-1-210"><a id="__codelineno-1-210" name="__codelineno-1-210" href="#__codelineno-1-210"></a>
-</span><span id="__span-1-211"><a id="__codelineno-1-211" name="__codelineno-1-211" href="#__codelineno-1-211"></a>    <span class="k">return</span> <span class="n">final_report</span> <span class="ow">or</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Agent did not produce a report&quot;</span><span class="p">}</span>
-</span><span id="__span-1-212"><a id="__codelineno-1-212" name="__codelineno-1-212" href="#__codelineno-1-212"></a>
-</span><span id="__span-1-213"><a id="__codelineno-1-213" name="__codelineno-1-213" href="#__codelineno-1-213"></a>
-</span><span id="__span-1-214"><a id="__codelineno-1-214" name="__codelineno-1-214" href="#__codelineno-1-214"></a><span class="c1"># ─── Main ─────────────────────────────────────────────────────────────────────</span>
-</span><span id="__span-1-215"><a id="__codelineno-1-215" name="__codelineno-1-215" href="#__codelineno-1-215"></a>
-</span><span id="__span-1-216"><a id="__codelineno-1-216" name="__codelineno-1-216" href="#__codelineno-1-216"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-</span><span id="__span-1-217"><a id="__codelineno-1-217" name="__codelineno-1-217" href="#__codelineno-1-217"></a>    <span class="n">report</span> <span class="o">=</span> <span class="n">run_research_agent</span><span class="p">(</span><span class="s2">&quot;quantum computing breakthroughs and commercial applications in 2024&quot;</span><span class="p">)</span>
-</span><span id="__span-1-218"><a id="__codelineno-1-218" name="__codelineno-1-218" href="#__codelineno-1-218"></a>
-</span><span id="__span-1-219"><a id="__codelineno-1-219" name="__codelineno-1-219" href="#__codelineno-1-219"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
-</span><span id="__span-1-220"><a id="__codelineno-1-220" name="__codelineno-1-220" href="#__codelineno-1-220"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📄 </span><span class="si">{</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-1-221"><a id="__codelineno-1-221" name="__codelineno-1-221" href="#__codelineno-1-221"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
-</span><span id="__span-1-222"><a id="__codelineno-1-222" name="__codelineno-1-222" href="#__codelineno-1-222"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-1-223"><a id="__codelineno-1-223" name="__codelineno-1-223" href="#__codelineno-1-223"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Key Findings:&quot;</span><span class="p">)</span>
-</span><span id="__span-1-224"><a id="__codelineno-1-224" name="__codelineno-1-224" href="#__codelineno-1-224"></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">finding</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;key_findings&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">):</span>
-</span><span id="__span-1-225"><a id="__codelineno-1-225" name="__codelineno-1-225" href="#__codelineno-1-225"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">finding</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-1-226"><a id="__codelineno-1-226" name="__codelineno-1-226" href="#__codelineno-1-226"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sources (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;sources&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">)</span>
-</span><span id="__span-1-227"><a id="__codelineno-1-227" name="__codelineno-1-227" href="#__codelineno-1-227"></a>    <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">report</span><span class="p">[</span><span class="s1">&#39;sources&#39;</span><span class="p">]:</span>
-</span><span id="__span-1-228"><a id="__codelineno-1-228" name="__codelineno-1-228" href="#__codelineno-1-228"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  • </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span></code></pre></div>
-<hr />
-<h2 id="sample-output">Sample output<a class="headerlink" href="#sample-output" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>🔍 Starting research on: quantum computing breakthroughs and commercial applications in 2024
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  [1] → web_search(quantum computing breakthroughs 2024)
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  [2] → web_search(quantum computing commercial applications companies 2024)
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  [3] → fetch_page(https://www.ibm.com/quantum/news)
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  [4] → web_search(Google quantum advantage 2024 progress)
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  [5] → web_search(quantum computing market size revenue 2024)
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  [6] → fetch_page(https://quantumcomputingreport.com/...)
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>  [7] → web_search(quantum error correction breakthrough 2024)
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>  [8] → save_report(Quantum Computing in 2024: Breakthroughs...)
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>✅ Report saved after 8 iterations
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>============================================================
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>📄 Quantum Computing in 2024: Breakthroughs and Commercial Progress
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>============================================================
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>The quantum computing industry made significant strides in 2024, with major advances
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>in error correction and early commercial deployments. IBM, Google, and IonQ lead
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>hardware development while software ecosystem matures around near-term applications.
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>Key Findings:
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>  1. IBM&#39;s 1,000+ qubit Condor processor achieved new stability benchmarks
-</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>  2. Google demonstrated logical qubit error rates below physical qubit error rates
-</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>  3. Quantum market projected to reach $1.3B by end of 2024 (McKinsey)
-</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>  4. Pharmaceutical companies using quantum simulation for drug discovery
-</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>  5. Financial firms running quantum optimization for portfolio management
-</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>  6. Error correction remains the key bottleneck for fault-tolerant quantum computing
-</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>  7. IonQ and Quantinuum advancing trapped-ion approaches as alternative to superconducting
-</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>  8. First quantum advantage demonstrations in logistics optimization problems
-</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>
-</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>Sources (6):
-</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>  • https://research.ibm.com/quantum-computing
-</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>  • https://quantumai.google/
-</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>  • https://quantumcomputingreport.com/...
-</span></code></pre></div>
-<hr />
-<h2 id="variations-to-try">Variations to try<a class="headerlink" href="#variations-to-try" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Comparative research</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">report</span> <span class="o">=</span> <span class="n">run_research_agent</span><span class="p">(</span><span class="s2">&quot;Compare PostgreSQL vs MongoDB for e-commerce applications in 2024&quot;</span><span class="p">)</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Technical deep-dive</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">report</span> <span class="o">=</span> <span class="n">run_research_agent</span><span class="p">(</span><span class="s2">&quot;How does Kubernetes horizontal pod autoscaling work? Include examples.&quot;</span><span class="p">)</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Market research</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">report</span> <span class="o">=</span> <span class="n">run_research_agent</span><span class="p">(</span><span class="s2">&quot;What are the top AI coding assistant tools in 2024 and how do they compare?&quot;</span><span class="p">)</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># News briefing</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">report</span> <span class="o">=</span> <span class="n">run_research_agent</span><span class="p">(</span><span class="s2">&quot;What happened in the AI industry this week? Key announcements and releases.&quot;</span><span class="p">)</span>
-</span></code></pre></div>
-<hr />
-<h2 id="production-enhancements">Production enhancements<a class="headerlink" href="#production-enhancements" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 1. Add caching — same query shouldn&#39;t hit the web twice</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">cached_search</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">web_search</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># 2. Add cost tracking</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">class</span><span class="w"> </span><span class="nc">TrackedResearchAgent</span><span class="p">:</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">total_searches</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">total_cost</span> <span class="o">=</span> <span class="mf">0.0</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="c1"># ... track tokens and cost per run</span>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c1"># 3. Stream progress to frontend</span>
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stream_research</span><span class="p">(</span><span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">websocket</span><span class="p">):</span>
-</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="k">async</span> <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">research_agent_stream</span><span class="p">(</span><span class="n">topic</span><span class="p">):</span>
-</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>        <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send_json</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>  <span class="c1"># {&quot;type&quot;: &quot;tool_call&quot;, &quot;name&quot;: &quot;web_search&quot;, ...}</span>
-</span></code></pre></div>
-<hr />
-<h2 id="related-topics">Related topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
+
+<h1 id="durable-workflows">Durable Workflows<a class="headerlink" href="#durable-workflows" title="Permanent link">&para;</a></h1>
+<h2 id="youll-see-this-when">You'll see this when...<a class="headerlink" href="#youll-see-this-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../function-calling/">Function Calling</a> — how the tool loop works</li>
-<li><a href="../building-agents/">Building Agents</a> — the Agent class used here</li>
-<li><a href="../agent-reliability/">Agent Reliability</a> — adding budget limits and error handling</li>
-<li><a href="../example-data-agent/">Example: Data Agent</a> — next example</li>
+<li>A business process spans <strong>days or weeks</strong>: "if seller doesn't reply in 48h, escalate"</li>
+<li>A saga has many steps, each with its own retry / compensation logic, and tracking state in your own DB has become a tangle of cron jobs, status columns, and missing edge cases</li>
+<li>You need to <strong>survive a deploy</strong> mid-process without losing the work</li>
+<li>"Retry forever with backoff" or "wait until X happens, but no longer than 7 days" keeps showing up</li>
+<li>You're building human-in-the-loop flows: approvals, KYC reviews, refund cases</li>
+<li>Order processing, onboarding, subscription lifecycle, payment recovery, fraud review</li>
+</ul>
+<p>These are problems regular request/response services handle badly. Workflow engines exist for exactly this shape.</p>
+<h2 id="the-problem-they-solve">The problem they solve<a class="headerlink" href="#the-problem-they-solve" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    A[A long-running business process] --&gt; B{How do I keep state?}
+    B --&gt; C[Custom DB table&lt;br/&gt;status column +&lt;br/&gt;polling cron jobs]
+    B --&gt; D[Step-by-step events&lt;br/&gt;in Kafka with consumers&lt;br/&gt;per step]
+    B --&gt; E[Durable workflow engine]
+
+    C -.problems.-&gt; P1[Missed timers, double-fires,&lt;br/&gt;no replay on crash, observability is on you]
+    D -.problems.-&gt; P2[Coordination logic spread across consumers,&lt;br/&gt;compensation is manual, no central trace]
+    E -.gives.-&gt; G[Single function that&lt;br/&gt;describes the whole process&lt;br/&gt;and survives crashes/deploys]</code></pre>
+<p>The "custom DB + cron" approach <strong>works</strong> at small scale. The cost surfaces later: every new branch is another column, every timer is another cron, every retry is another bug, and the only way to debug an in-flight workflow is to grep logs.</p>
+<h2 id="the-durable-execution-model">The durable execution model<a class="headerlink" href="#the-durable-execution-model" title="Permanent link">&para;</a></h2>
+<p>The single most important concept. Once you understand this, every workflow engine choice falls out of it.</p>
+<p><strong>Idea</strong>: the engine records every <strong>decision</strong> the workflow makes (each step, each timer, each signal received). If the worker process dies, a new worker can rebuild state by <strong>replaying the recorded history</strong> through the same function — re-deriving local variables — and continue from the next un-executed step.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Workflow function (your code):
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    res1 = activity.charge_card(amount)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    sleep(48h)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    if not seller_responded:
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        res2 = activity.send_reminder(seller_id)
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    res3 = activity.complete()
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Engine&#39;s view as it runs:
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    Event 1: WorkflowStarted
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    Event 2: ActivityScheduled(charge_card)
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    Event 3: ActivityCompleted(charge_card, result=&quot;ok&quot;)
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    Event 4: TimerStarted(48h)
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    --- worker dies, deploy happens, new worker picks up ---
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    Replay events 1-4 → local vars reconstructed
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    Event 5: TimerFired
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    Event 6: ActivityScheduled(send_reminder)
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    ...
+</span></code></pre></div>
+<p>The user-facing illusion: you wrote a normal function that "sleeps for 48 hours." The reality: the engine persists every decision; the function can be torn down and brought back any number of times.</p>
+<h3 id="the-determinism-constraint-this-trips-everyone-up">The determinism constraint (this trips everyone up)<a class="headerlink" href="#the-determinism-constraint-this-trips-everyone-up" title="Permanent link">&para;</a></h3>
+<p>Workflow code must be <strong>deterministic</strong>: given the same event history, it must take the same path. Otherwise replay diverges.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ❌ FORBIDDEN inside a workflow:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>         <span class="c1"># changes each replay</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">uid</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>           <span class="c1"># different every call</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>      <span class="c1"># network is non-deterministic</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>     <span class="c1"># need engine-provided random</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>        <span class="c1"># concurrency must use engine primitives</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># ✅ ALL non-determinism goes through &quot;activities&quot;:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">now</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">execute_activity</span><span class="p">(</span><span class="n">get_current_time</span><span class="p">)</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">uid</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">execute_activity</span><span class="p">(</span><span class="n">generate_id</span><span class="p">)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">res</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">execute_activity</span><span class="p">(</span><span class="n">http_get</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Activities are <em>normal</em> code — they can call APIs, generate IDs, hit databases. The engine records their result. On replay, the engine returns the recorded result instead of re-running the activity.</p>
+<p>This is why durable workflows feel like magic and also why they have sharp edges.</p>
+<h2 id="the-tools-and-which-category-each-belongs-to">The tools (and which category each belongs to)<a class="headerlink" href="#the-tools-and-which-category-each-belongs-to" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    Tools[Durable execution / workflow engines] --&gt; App[Application workflows&lt;br/&gt;business processes, sagas, human-in-loop]
+    Tools --&gt; Data[Data workflows&lt;br/&gt;ETL/ELT DAGs, scheduled jobs]
+    Tools --&gt; Container[Container/CI orchestration&lt;br/&gt;k8s-native job graphs]
+
+    App --&gt; Temporal[Temporal]
+    App --&gt; Cadence[Cadence&lt;br/&gt;Uber, OSS predecessor]
+    App --&gt; Step[AWS Step Functions]
+    App --&gt; Camunda[Camunda 8 / Zeebe&lt;br/&gt;BPMN-first, human workflows]
+    App --&gt; Restate[Restate&lt;br/&gt;newer, lighter]
+
+    Data --&gt; Airflow[Apache Airflow]
+    Data --&gt; Prefect[Prefect]
+    Data --&gt; Dagster[Dagster]
+
+    Container --&gt; Argo[Argo Workflows&lt;br/&gt;k8s-native]</code></pre>
+<p>These are <strong>not interchangeable</strong> — they're tuned for different shapes. The mistake to avoid: using Airflow for application workflows or Temporal for data pipelines.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Sweet spot</th>
+<th>Avoid for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Temporal</strong></td>
+<td>Long-running app workflows, sagas, signals, human-in-loop, code-as-workflow</td>
+<td>Pure ETL DAGs (overkill, no scheduling UX)</td>
+</tr>
+<tr>
+<td><strong>AWS Step Functions</strong></td>
+<td>AWS-native orchestration of Lambdas / SDK calls, low-volume to mid</td>
+<td>Heavy code logic inside workflow (verbose ASL), need for local dev</td>
+</tr>
+<tr>
+<td><strong>Cadence</strong></td>
+<td>Older Temporal — same model</td>
+<td>New projects (use Temporal)</td>
+</tr>
+<tr>
+<td><strong>Camunda 8 / Zeebe</strong></td>
+<td>BPMN diagrams, human-task-heavy business workflows, regulated industries</td>
+<td>Pure code workflows (verbose)</td>
+</tr>
+<tr>
+<td><strong>Restate</strong></td>
+<td>Lightweight workflows + RPC + virtual objects</td>
+<td>Mature ecosystem needs</td>
+</tr>
+<tr>
+<td><strong>Airflow</strong></td>
+<td>Daily/hourly batch ETL DAGs, data engineering</td>
+<td>Long-running app workflows, sub-minute latency, signals</td>
+</tr>
+<tr>
+<td><strong>Prefect</strong></td>
+<td>Modern Airflow alternative, Pythonic</td>
+<td>Same as Airflow</td>
+</tr>
+<tr>
+<td><strong>Dagster</strong></td>
+<td>Asset-centric data pipelines, lineage-first</td>
+<td>Application workflows</td>
+</tr>
+<tr>
+<td><strong>Argo Workflows</strong></td>
+<td>k8s-native containerized job graphs, ML pipelines</td>
+<td>App workflows, non-k8s envs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="temporal-vs-aws-step-functions-head-to-head">Temporal vs AWS Step Functions head-to-head<a class="headerlink" href="#temporal-vs-aws-step-functions-head-to-head" title="Permanent link">&para;</a></h2>
+<p>The two real choices for application workflows on most modern teams.</p>
+<h3 id="temporal">Temporal<a class="headerlink" href="#temporal" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Code-as-workflow</strong>: write workflows in Go, Java, Python, TypeScript, .NET. Your IDE, your tests, your existing code patterns.</li>
+<li><strong>Self-host or Temporal Cloud</strong>. Self-hosting means operating a Cassandra/Postgres + history service + matching service cluster.</li>
+<li><strong>Signals, queries, child workflows</strong> as first-class primitives.</li>
+<li><strong>Local dev</strong>: <code>temporal server start-dev</code> — one binary, you can step through workflows locally.</li>
+<li><strong>History size limit</strong>: ~50K events / 50 MB per workflow execution. Long workflows use "continue-as-new" to start fresh.</li>
+<li><strong>Cost model</strong>: self-host (infra cost only) or Temporal Cloud (per-action pricing).</li>
+</ul>
+<h3 id="aws-step-functions">AWS Step Functions<a class="headerlink" href="#aws-step-functions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Workflows defined in ASL</strong> (Amazon States Language — JSON). Or via CDK / SAM / Workflow Studio (drag-and-drop).</li>
+<li><strong>Two flavors</strong>:</li>
+<li><strong>Standard</strong>: durable up to 1 year, at-most-once, exactly-once via idempotency; charged per state transition (~$25 per 1M).</li>
+<li><strong>Express</strong>: up to 5 minutes, at-least-once, charged per request + duration; ~100x cheaper at high volume.</li>
+<li><strong>Native AWS SDK integrations</strong>: call DynamoDB, SQS, SNS, Lambda directly from a state without writing wrapper code.</li>
+<li><strong>Visual UI</strong> for inspection — non-engineers can follow a workflow's progress.</li>
+<li><strong>No local dev story</strong> (LocalStack helps, imperfectly). Workflows are JSON, not your language.</li>
+</ul>
+<h3 id="side-by-side">Side-by-side<a class="headerlink" href="#side-by-side" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Temporal</th>
+<th>Step Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Workflow definition</strong></td>
+<td>Native code</td>
+<td>ASL (JSON) / CDK</td>
+</tr>
+<tr>
+<td><strong>Max workflow duration</strong></td>
+<td>Effectively unbounded (continue-as-new)</td>
+<td>Standard: 1 year, Express: 5 min</td>
+</tr>
+<tr>
+<td><strong>Long sleeps / timers</strong></td>
+<td>First-class (<code>workflow.sleep(30d)</code>)</td>
+<td>First-class (<code>Wait</code> state)</td>
+</tr>
+<tr>
+<td><strong>Signals from outside</strong></td>
+<td><code>workflow.signal(...)</code></td>
+<td><code>SendTaskSuccess</code> or via API</td>
+</tr>
+<tr>
+<td><strong>Human-in-loop</strong></td>
+<td>Signals + queries</td>
+<td>Task token pattern</td>
+</tr>
+<tr>
+<td><strong>Local development</strong></td>
+<td>Excellent</td>
+<td>Poor (no native local)</td>
+</tr>
+<tr>
+<td><strong>Code reuse with services</strong></td>
+<td>Direct (same repo)</td>
+<td>Through Lambda boundaries</td>
+</tr>
+<tr>
+<td><strong>AWS-native integrations</strong></td>
+<td>Through SDK calls in activities</td>
+<td>First-class state types</td>
+</tr>
+<tr>
+<td><strong>Observability</strong></td>
+<td>Web UI + workflow history</td>
+<td>CloudWatch + visual UI</td>
+</tr>
+<tr>
+<td><strong>Cost at low volume</strong></td>
+<td>Cloud has free tier; self-host minimum</td>
+<td>Pay-per-state-transition</td>
+</tr>
+<tr>
+<td><strong>Cost at high volume</strong></td>
+<td>Scales linearly with workers</td>
+<td>Standard gets expensive; Express stays cheap</td>
+</tr>
+<tr>
+<td><strong>Vendor lock-in</strong></td>
+<td>None (OSS)</td>
+<td>AWS</td>
+</tr>
+<tr>
+<td><strong>Team learning curve</strong></td>
+<td>Steep — durable execution mental model</td>
+<td>Moderate — ASL is verbose but constrained</td>
+</tr>
+<tr>
+<td><strong>Best for</strong></td>
+<td>Complex business logic, signal-heavy, multi-language</td>
+<td>AWS-centric stacks, simpler flows, infrequent runs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pick-temporal-when">Pick Temporal when<a class="headerlink" href="#pick-temporal-when" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The workflow is <strong>code-heavy</strong> (lots of branching, computation, complex business rules)</li>
+<li>You want <strong>the same language</strong> as the rest of your services</li>
+<li><strong>Multi-cloud or on-prem</strong> is a constraint</li>
+<li>Workflow patterns include <strong>child workflows, signals, queries</strong> in non-trivial ways</li>
+<li>The team can absorb operating it (or pays for Temporal Cloud)</li>
+</ul>
+<h3 id="pick-step-functions-when">Pick Step Functions when<a class="headerlink" href="#pick-step-functions-when" title="Permanent link">&para;</a></h3>
+<ul>
+<li>You're <strong>already deep in AWS</strong> and want minimal infra to operate</li>
+<li>Workflows are <strong>state-machine-shaped</strong>: linear or branching, modest complexity</li>
+<li>Heavy reliance on <strong>AWS service integrations</strong> (DynamoDB, SQS, Lambda, ECS task)</li>
+<li>The workflow author may be a non-engineer (Workflow Studio)</li>
+<li>You want a <strong>visual diagram</strong> as the source of truth (compliance, audit)</li>
+</ul>
+<h3 id="a-useful-test">A useful test<a class="headerlink" href="#a-useful-test" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>If you can draw the workflow on a whiteboard as a state diagram and it fits → Step Functions is probably fine.
+If you find yourself writing pseudo-code with loops, conditions, and dynamic step counts → Temporal will fit better.</p>
+</blockquote>
+<h2 id="when-not-to-use-a-workflow-engine">When NOT to use a workflow engine<a class="headerlink" href="#when-not-to-use-a-workflow-engine" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Why not</th>
+<th>Use instead</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sub-second request handling</td>
+<td>Workflow engines have per-step overhead</td>
+<td>Regular service code</td>
+</tr>
+<tr>
+<td>Pure synchronous CRUD</td>
+<td>No durable state across time</td>
+<td>API + DB</td>
+</tr>
+<tr>
+<td>One-step "fire and forget"</td>
+<td>Overkill</td>
+<td>Background job / queue</td>
+</tr>
+<tr>
+<td>Pure data ETL DAGs</td>
+<td>Wrong tool category</td>
+<td>Airflow / Dagster / Prefect</td>
+</tr>
+<tr>
+<td>Sub-process inside a single API request</td>
+<td>Latency cost too high</td>
+<td>In-process logic + retry library</td>
+</tr>
+<tr>
+<td>Stateless event consumers</td>
+<td>Don't need replay</td>
+<td>Kafka consumer + idempotency</td>
+</tr>
+<tr>
+<td>Tiny org, three crontabs</td>
+<td>Operating Temporal is a project</td>
+<td>Cron + DB table (graduate later)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule of thumb</strong>: if the longest "wait" in your process is <strong>&lt; 5 seconds</strong>, you don't need a workflow engine. If it's <strong>&gt; 5 minutes</strong>, you probably do.</p>
+<h2 id="replacing-the-custom-approach-what-improves">Replacing the custom approach — what improves<a class="headerlink" href="#replacing-the-custom-approach-what-improves" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph LR
+    Before[Before&lt;br/&gt;custom state machine] --&gt; A1[orders table:&lt;br/&gt;status column,&lt;br/&gt;retry_count,&lt;br/&gt;last_attempted_at]
+    Before --&gt; A2[cron job per timer&lt;br/&gt;different cron per step]
+    Before --&gt; A3[manual compensation&lt;br/&gt;scripts]
+    Before --&gt; A4[on-call greps logs&lt;br/&gt;to debug stuck orders]
+
+    After[After&lt;br/&gt;workflow engine] --&gt; B1[Workflow code&lt;br/&gt;describes the whole process]
+    After --&gt; B2[Engine handles timers]
+    After --&gt; B3[Compensation = catch + activity]
+    After --&gt; B4[Web UI: open this workflow,&lt;br/&gt;see exact step + history]</code></pre>
+<p>The big wins are <strong>observability</strong> and <strong>resilience to deploy</strong>. The custom approach pays you back every day in incidents; the engine pays you back the first time an on-call engineer opens the workflow UI and sees the exact step that failed.</p>
+<h2 id="operational-concerns">Operational concerns<a class="headerlink" href="#operational-concerns" title="Permanent link">&para;</a></h2>
+<h3 id="versioning-long-running-workflows">Versioning long-running workflows<a class="headerlink" href="#versioning-long-running-workflows" title="Permanent link">&para;</a></h3>
+<p>A workflow started two weeks ago is running v1 of your code. Today you deploy v2. The engine will replay the v1 history through your v2 code — if v2 has a different sequence of activity calls, replay fails.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Temporal: workflow.patched() / GetVersion API</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">if</span> <span class="n">workflow</span><span class="o">.</span><span class="n">patched</span><span class="p">(</span><span class="s2">&quot;v2-add-fraud-check&quot;</span><span class="p">):</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">await</span> <span class="n">workflow</span><span class="o">.</span><span class="n">execute_activity</span><span class="p">(</span><span class="n">fraud_check</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">await</span> <span class="n">workflow</span><span class="o">.</span><span class="n">execute_activity</span><span class="p">(</span><span class="n">charge_card</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+</span></code></pre></div>
+<p>This says: workflows that already passed this point use the old path; new workflows take the new path. Critical for any non-trivial change.</p>
+<p><strong>Strategies:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Patched / GetVersion</strong></td>
+<td>Code changes mid-flight workflows</td>
+</tr>
+<tr>
+<td><strong>Drain and re-deploy</strong></td>
+<td>Short workflows (minutes); just wait for them to finish</td>
+</tr>
+<tr>
+<td><strong>Start new workflow with new name</strong></td>
+<td>Breaking changes; old workflow type keeps running until done</td>
+</tr>
+<tr>
+<td><strong>Continue-as-new</strong></td>
+<td>Long-lived workflows that need to pick up code changes routinely</td>
+</tr>
+</tbody>
+</table>
+<h3 id="history-size-and-continue-as-new">History size and continue-as-new<a class="headerlink" href="#history-size-and-continue-as-new" title="Permanent link">&para;</a></h3>
+<p>Each workflow execution has a bounded history (Temporal: ~50K events, ~50 MB). Long-running workflows (a subscription that lasts years) need <strong>continue-as-new</strong>: the workflow finishes itself and starts a fresh execution with the carried-forward state.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@workflow</span><span class="o">.</span><span class="n">defn</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">SubscriptionWorkflow</span><span class="p">:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nd">@workflow</span><span class="o">.</span><span class="n">run</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">SubscriptionState</span><span class="p">):</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>  <span class="c1"># 12 monthly cycles per execution</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>            <span class="k">await</span> <span class="n">workflow</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>            <span class="k">await</span> <span class="n">workflow</span><span class="o">.</span><span class="n">execute_activity</span><span class="p">(</span><span class="n">charge_renewal</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="c1"># restart with carried-over state</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="n">workflow</span><span class="o">.</span><span class="n">continue_as_new</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Step Functions has the same constraint baked in via the 1-year max for Standard; for longer flows you start a new execution.</p>
+<h3 id="signal-vs-query-vs-update">Signal vs query vs update<a class="headerlink" href="#signal-vs-query-vs-update" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Signal</strong>: external event delivered to a running workflow ("the seller responded"). Async, durable.</li>
+<li><strong>Query</strong>: read current workflow state without affecting it ("what step is this order on?"). Sync, side-effect-free.</li>
+<li><strong>Update</strong> (Temporal): synchronous signal — caller gets a response. Use for human-in-loop "approve this" actions.</li>
+</ul>
+<h3 id="schedule-storms">Schedule storms<a class="headerlink" href="#schedule-storms" title="Permanent link">&para;</a></h3>
+<p>A scheduled workflow firing every minute across 10K tenants → 10K simultaneous starts. The engine survives, your downstream activities may not. Add jitter at the schedule level, or stagger via the activity layer (concurrency control / token bucket).</p>
+<h3 id="history-too-large-workflow-death">History too large = workflow death<a class="headerlink" href="#history-too-large-workflow-death" title="Permanent link">&para;</a></h3>
+<p>Avoid:</p>
+<ul>
+<li>Putting large payloads (full PDFs, images) into workflow inputs/outputs — pass references (S3 keys) instead</li>
+<li>Returning large lists from activities — pass them via storage</li>
+<li>Looping for thousands of iterations inside one execution — break with continue-as-new</li>
+</ul>
+<h3 id="local-replay-debugging">Local replay debugging<a class="headerlink" href="#local-replay-debugging" title="Permanent link">&para;</a></h3>
+<p>A great Temporal feature: download the history of a failed workflow, run the current code against it locally, step through to the failure point. Step Functions doesn't have an equivalent — debugging is via CloudWatch Logs.</p>
+<h3 id="failure-modes-what-the-engine-doesnt-fix">Failure modes — what the engine doesn't fix<a class="headerlink" href="#failure-modes-what-the-engine-doesnt-fix" title="Permanent link">&para;</a></h3>
+<p>Workflow engines move state-tracking and timer reliability to the engine. They do <strong>not</strong> make your activities reliable:</p>
+<ul>
+<li>Activities can still time out, throw, or be slow — the engine retries them according to a policy <em>you</em> configure</li>
+<li>Side effects in activities (DB writes, API calls) must still be <strong>idempotent</strong> — replays and retries are guaranteed</li>
+<li>The engine itself can go down; pick a managed tier or treat it as a tier-0 dependency</li>
+</ul>
+<h2 id="aws-specific-notes">AWS-specific notes<a class="headerlink" href="#aws-specific-notes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Step Functions Standard</strong></td>
+<td>Workflows up to 1 year, low-to-mid volume, audit-grade history</td>
+</tr>
+<tr>
+<td><strong>Step Functions Express</strong></td>
+<td>Short-lived (&lt;5 min), high-volume, async or sync, ~100x cheaper</td>
+</tr>
+<tr>
+<td><strong>EventBridge Scheduler</strong></td>
+<td>Cron/one-shot timers ("run this at T+N hours") — <em>not</em> a workflow engine, but pairs well</td>
+</tr>
+<tr>
+<td><strong>SWF (Simple Workflow Service)</strong></td>
+<td>Older, predecessor to Step Functions. <strong>Don't pick this for new work.</strong></td>
+</tr>
+<tr>
+<td><strong>MWAA</strong></td>
+<td>Managed Apache Airflow — for data pipelines, not app workflows</td>
+</tr>
+</tbody>
+</table>
+<p>A common AWS pattern: <strong>Step Functions Standard for the business process; Express for the inner hot-path step</strong>. Standard's per-transition pricing hurts at high request rates; an Express child workflow keeps that volume off the Standard bill.</p>
+<h2 id="designing-a-workflow-that-doesnt-fight-the-engine">Designing a workflow that doesn't fight the engine<a class="headerlink" href="#designing-a-workflow-that-doesnt-fight-the-engine" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keep workflow code <strong>small and deterministic</strong> — orchestration only</td>
+<td>Replay relies on determinism; business logic in activities</td>
+</tr>
+<tr>
+<td>Push side effects into activities, ensure they're <strong>idempotent</strong></td>
+<td>Retries are guaranteed; non-idempotent = duplicates</td>
+</tr>
+<tr>
+<td>Use <strong>continue-as-new</strong> for anything that runs &gt; weeks</td>
+<td>History size kills long executions</td>
+</tr>
+<tr>
+<td>Pass references (S3 keys, IDs) not blobs</td>
+<td>History size</td>
+</tr>
+<tr>
+<td>Use <strong>timeouts</strong> on every activity</td>
+<td>Without them, a stuck dependency hangs the workflow</td>
+</tr>
+<tr>
+<td><strong>Compensation</strong> is just another activity in a <code>try/except</code></td>
+<td>Don't invent a separate framework</td>
+</tr>
+<tr>
+<td>Use <strong>child workflows</strong> for sub-processes with their own state</td>
+<td>History stays small; sub-process can be retried independently</td>
+</tr>
+<tr>
+<td><strong>Don't query workflow state from the workflow</strong> — use queries from outside</td>
+<td>Determinism</td>
+</tr>
+</tbody>
+</table>
+<h2 id="anti-patterns">Anti-patterns<a class="headerlink" href="#anti-patterns" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Why it hurts</th>
+<th>Better</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>time.sleep(...)</code> or <code>datetime.now()</code> inside workflow code</td>
+<td>Breaks determinism; replays diverge</td>
+<td><code>workflow.sleep(...)</code>, activity for current time</td>
+</tr>
+<tr>
+<td>HTTP / DB calls inside workflow function</td>
+<td>Same — non-deterministic</td>
+<td>Wrap in an activity</td>
+</tr>
+<tr>
+<td>Putting an entire JSON document in a signal</td>
+<td>History size + memory</td>
+<td>Pass an ID, fetch in an activity</td>
+</tr>
+<tr>
+<td>Workflow loops over thousands of items</td>
+<td>History blow-up</td>
+<td>Batch activity that processes N at a time, paginate via continue-as-new</td>
+</tr>
+<tr>
+<td>Treating Step Functions Standard as cheap</td>
+<td>$25 per 1M state transitions adds up</td>
+<td>Express for the hot loop</td>
+</tr>
+<tr>
+<td>Using Airflow for application workflows</td>
+<td>Wrong tool category — scheduler-shaped</td>
+<td>Temporal / Step Functions</td>
+</tr>
+<tr>
+<td>Using Temporal for daily data ETL</td>
+<td>Operational overhead with no benefit</td>
+<td>Airflow / Prefect / Dagster</td>
+</tr>
+<tr>
+<td>Workflow code with business rules + side effects mixed</td>
+<td>Hard to test, replay-fragile</td>
+<td>Workflow = orchestration only, activities = behavior</td>
+</tr>
+<tr>
+<td>"Just retry forever" without backoff</td>
+<td>Stuck workflow hammers a dependency</td>
+<td>Retry policy with exponential backoff + max attempts</td>
+</tr>
+<tr>
+<td>No version markers when changing workflow code</td>
+<td>Crashes in-flight workflows on deploy</td>
+<td><code>workflow.patched()</code> / equivalent</td>
+</tr>
+<tr>
+<td>Long-running workflow that never <code>continue_as_new</code>s</td>
+<td>History grows unbounded → engine refuses</td>
+<td>Continue-as-new on a schedule (per month, per N iterations)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quick-reference">Quick reference<a class="headerlink" href="#quick-reference" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Reach for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Long sleep across deploys</td>
+<td>Temporal <code>workflow.sleep</code> or Step Functions <code>Wait</code></td>
+</tr>
+<tr>
+<td>Many-step saga with compensation</td>
+<td>Workflow engine (try/except + compensating activities)</td>
+</tr>
+<tr>
+<td>Wait for external event indefinitely</td>
+<td>Signal (Temporal) or Task Token (Step Functions)</td>
+</tr>
+<tr>
+<td>Human approval step</td>
+<td>Signal + query (Temporal), Task Token (Step Functions), Camunda for BPMN</td>
+</tr>
+<tr>
+<td>AWS-native orchestration with minimal infra</td>
+<td>Step Functions</td>
+</tr>
+<tr>
+<td>Multi-language / multi-cloud</td>
+<td>Temporal</td>
+</tr>
+<tr>
+<td>BPMN / diagram-first / audit-heavy</td>
+<td>Camunda 8</td>
+</tr>
+<tr>
+<td>Scheduled batch data pipeline</td>
+<td>Airflow / Prefect / Dagster</td>
+</tr>
+<tr>
+<td>k8s job graph (containers as steps)</td>
+<td>Argo Workflows</td>
+</tr>
+<tr>
+<td>Cron-like timer without workflow</td>
+<td>EventBridge Scheduler (or just cron)</td>
+</tr>
+<tr>
+<td>5-second sub-process inside a request</td>
+<td>Don't — just do it inline</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interview-angle">Interview angle<a class="headerlink" href="#interview-angle" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">What interviewers are testing</p>
+<p>They want to see you reach for a workflow engine for the right reasons — long sleeps, durable state, multi-step compensation, human-in-loop — and <em>not</em> for the wrong ones (sub-second logic, simple async jobs). They also want to see you know there's a category distinction between application workflow engines and data-pipeline schedulers.</p>
+</div>
+<p><strong>Strong answer pattern:</strong></p>
+<ol>
+<li>Recognize the <strong>shape</strong> of the problem — long-running, multi-step, must survive crashes, signals from outside</li>
+<li>Justify why a regular service + DB + cron isn't enough (observability, missed timers, replay on crash, deploy survival)</li>
+<li>Pick <strong>Temporal</strong> (code-as-workflow, complex logic, multi-language) or <strong>Step Functions</strong> (AWS-native, simpler, less infra) with a reason</li>
+<li>Mention the <strong>determinism constraint</strong> — orchestration in workflow code, side effects in activities, both with idempotency</li>
+<li>Plan for <strong>versioning</strong> (patched / continue-as-new) and <strong>history size</strong> if the workflow is long</li>
+<li>Acknowledge data-pipeline tools (Airflow/Dagster) are a different category</li>
+</ol>
+<p><strong>Common follow-ups:</strong></p>
+<ul>
+<li>"Why not just a status column + cron?" — works at small scale; breaks on observability, missed fires, retries, deploy-time crashes, branching logic</li>
+<li>"What happens if the worker dies mid-workflow?" — engine replays history on another worker; activities that completed return their recorded results; in-flight activity gets retried per policy</li>
+<li>"How do you change workflow code while workflows are still running?" — patched/GetVersion API: gate new behavior so in-flight workflows take the old path</li>
+<li>"Temporal vs Step Functions?" — code complexity, AWS-native or not, infra-operate-or-not, local-dev-needed-or-not</li>
+<li>"When would you NOT use a workflow engine?" — sub-second flows, no state across time, pure data ETL (use Airflow/Dagster instead)</li>
+<li>"How do you handle a workflow that needs to run for 5 years?" — continue-as-new (Temporal) or chained executions (Step Functions); persist long-term state in a regular DB you read on each execution start</li>
+</ul>
+<h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../saga-pattern/">Saga Pattern</a> — workflow engines are one way to implement sagas</li>
+<li><a href="../../architecture/choreography-vs-orchestration/">Choreography vs Orchestration</a> — durable workflows are the orchestration option in practice</li>
+<li><a href="../idempotency/">Idempotency</a> — every activity must be idempotent</li>
+<li><a href="../outbox/">Outbox Pattern</a> — alternative when you mostly need reliable event publishing, not orchestration</li>
+<li><a href="../event-sourcing/">Event Sourcing</a> — adjacent concept; the workflow's event history <em>is</em> event-sourced</li>
+<li><a href="../../messaging/event-streaming-maturity/">Event Streaming Maturity</a> — schema and ordering concerns shared with workflow-driven systems</li>
+<li><a href="../../case-studies/proptech-chat/">Proptech Chat Case Study</a> — uses Temporal for seller SLA workflows</li>
 </ul>
 
 
@@ -12145,6 +12978,9 @@
 
 
 
+
+  
+  
 
 
 
@@ -12176,7 +13012,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../agent-reliability/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Agent Reliability">
+          <a href="../outbox/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Outbox Pattern">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -12186,20 +13022,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Agent Reliability
+                Outbox Pattern
               </div>
             </div>
           </a>
         
         
           
-          <a href="../example-data-agent/" class="md-footer__link md-footer__link--next" aria-label="Next: Example: Data Analysis Agent">
+          <a href="../cqrs/" class="md-footer__link md-footer__link--next" aria-label="Next: CQRS">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Example: Data Analysis Agent
+                CQRS
               </div>
             </div>
             <div class="md-footer__button md-icon">
