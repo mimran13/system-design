@@ -16,3 +16,5 @@ The 6 tag categories:
 Pages can have multiple tags. The auto-generated index below shows every tag with its associated pages.
 
 ---
+
+<!-- material/tags -->

@@ -75,8 +75,7 @@ markdown_extensions:
 
 plugins:
   - search
-  - tags:
-      tags_file: reference/tags.md
+  - tags
   - git-revision-date-localized:
       type: date
       enable_creation_date: false
@@ -126,6 +125,7 @@ nav:
         - Fault Tolerance & Resilience: fundamentals/fault-tolerance.md
         - Failure Modes Catalogue: fundamentals/failure-modes.md
         - Concurrency & Locking: fundamentals/concurrency.md
+        - Concurrency Runtimes in Practice: fundamentals/concurrency-runtimes.md
         - Partitioning Fundamentals: fundamentals/partitioning-fundamentals.md
         - Hot Partitions & Hotspots: fundamentals/hot-partitions.md
 
@@ -173,6 +173,7 @@ nav:
         - Choreography vs Orchestration: architecture/choreography-vs-orchestration.md
         - Coupling & Cohesion at Service Boundaries: architecture/coupling-cohesion-services.md
         - Multi-Tenancy: architecture/multi-tenancy.md
+        - Billing & Metering Engineering: architecture/billing-metering.md
       - Distribution & Scale:
         - Multi-Region Architecture: architecture/multi-region.md
         - Edge Architecture: architecture/edge-architecture.md
@@ -305,6 +306,8 @@ nav:
       - On-Call & Incident Management: observability/incident-management.md
       - Incident Response Craft: observability/incident-response-craft.md
       - Performance Engineering: observability/performance-engineering.md
+      - Load Testing in Practice: observability/load-testing.md
+      - Linux Debugging Toolbox: observability/linux-debugging-toolbox.md
 
     - Security:
       - security/index.md
@@ -316,6 +319,7 @@ nav:
       - Secrets Management: security/secrets-management.md
       - Threat Modelling: security/threat-modelling.md
       - Compliance & Regulatory Engineering: security/compliance-regulatory-engineering.md
+      - Enterprise Auth (SSO / SAML / SCIM): security/enterprise-auth.md
 
   # ─── Delivery ──────────────────────────────────────────────
   - Delivery:
@@ -323,6 +327,7 @@ nav:
       - infrastructure/index.md
       - Containers & Docker: infrastructure/containers.md
       - Kubernetes: infrastructure/kubernetes.md
+      - Kubernetes in Production: infrastructure/kubernetes-in-production.md
       - Service Mesh: infrastructure/service-mesh.md
 
     - IaC:
@@ -351,6 +356,7 @@ nav:
       - Deployment Strategies: cicd/deployment-strategies.md
       - GitOps: cicd/gitops.md
       - Progressive Delivery: cicd/progressive-delivery.md
+      - Feature Flags & Experimentation: cicd/feature-flags-experimentation.md
       - AWS CodePipeline: cicd/aws-codepipeline.md
       - AWS Deployment via GitHub Actions: cicd/aws-deployment-with-github-actions.md
       - Release Management: cicd/release-management.md
