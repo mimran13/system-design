@@ -171,6 +171,30 @@ Use NoSQL if any of these are true:
 4. Pick and justify — "Given high write QPS and a simple key-value access pattern, I'd use DynamoDB"
 5. Mention polyglot if appropriate — "I'd use PostgreSQL for transactional data and Elasticsearch for search"
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why do NoSQL databases avoid joins, and what is the standard workaround?"
+
+    NoSQL pushes joins to the application layer, which turns one SQL query into multiple round trips (the page shows 3 round trips for user → orders → items). The standard workaround is denormalization — embed or duplicate data (e.g. `user_name` inside the order document) so a single lookup returns everything. This trades storage for query performance, which is an acceptable trade in NoSQL. See "The join problem" above.
+
+??? question "Why is 'NoSQL is faster' not a valid justification for choosing it?"
+
+    The choice is not about which is "better" — it's about which fits your access patterns, consistency requirements, and scaling needs. "We're using NoSQL because it's faster" is usually a tooling issue, not a data issue. SQL handles complex relationships, ACID transactions, and ad-hoc queries well; NoSQL wins for key-value access patterns, horizontal write scalability, and massive scale — speed depends on which of those shapes your workload has.
+
+??? question "Your team chose MongoDB 'for scale', but write QPS is around 100/sec and you now need ACID transactions across multiple rows. What's happening?"
+
+    NoSQL was chosen for scale that doesn't exist — the decision checklist says SQL is fine below roughly 10K write QPS and 10TB of data. Needing ACID transactions across rows is a direct signal to use Postgres. While some NoSQL databases now support ACID (MongoDB 4.0+, DynamoDB Transactions), it usually comes with a performance cost — this workload is a natural fit for a relational database.
+
+??? question "Your service stores everything in DynamoDB, and the analytics team complains they can't run ad-hoc reporting queries across entities. What went wrong?"
+
+    Varied, ad-hoc query patterns (reporting, analytics, BI tools) are a 'choose SQL' criterion — NoSQL is built for known access patterns like key or document lookup, not arbitrary cross-entity queries with joins. The fix is polyglot persistence: keep DynamoDB for the high-read KV lookups it's good at, and serve relational/reporting needs from PostgreSQL (or a warehouse), each database doing what it does best.
+
+??? question "An interviewer asks you to choose between DynamoDB and RDS for a new service. What's the strong answer pattern?"
+
+    Justify the choice from access patterns, not familiarity: (1) describe the primary access pattern — key lookup vs relational query; (2) state consistency requirements — is ACID needed?; (3) state scale — QPS and data volume; (4) pick and justify, e.g. "given high write QPS and a simple key-value access pattern, I'd use DynamoDB"; (5) mention polyglot persistence if appropriate, e.g. PostgreSQL for transactional data plus Elasticsearch for search.
+
 ## Related topics
 
 - [Relational Databases](relational-databases.md) — ACID, indexes, replication in depth

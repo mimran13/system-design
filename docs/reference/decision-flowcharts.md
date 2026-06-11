@@ -11,6 +11,47 @@ This page is the **decision-tool complement** to [Symptom → Concept Lookup](sy
 
 Use these as starting points — every real decision has more nuance than a flowchart can carry. Each tree links to the relevant concept pages for depth.
 
+!!! tip "Interactive"
+    Leaf nodes with a dotted underline are clickable — they jump straight to the recommended concept page. Click any diagram to expand it fullscreen.
+
+<div class="sd-mermaid-links" data-links='{
+  "SQL": "../../storage/relational-databases/",
+  "Key-value: DynamoDB, Redis": "../../storage/key-value-stores/",
+  "Document: MongoDB, Firestore": "../../storage/document-stores/",
+  "TSDB: TimescaleDB, ClickHouse": "../../storage/time-series-databases/",
+  "REST broadly understood, easy to consume": "../../api/rest/",
+  "gRPC binary, schema-first, faster": "../../api/grpc/",
+  "GraphQL client specifies fields": "../../api/graphql/",
+  "Stream: Kafka, Kinesis": "../../messaging/event-streaming/",
+  "Pub/Sub: SNS, EventBridge, Redis Pub/Sub": "../../messaging/pub-sub/",
+  "Queue: SQS, RabbitMQ": "../../messaging/message-queues/",
+  "Async with polling or webhook callback": "../../api/webhooks/",
+  "Async message queue": "../../messaging/message-queues/",
+  "Event-driven pub/sub or stream": "../../architecture/event-driven/",
+  "Write-through: write to cache + DB together": "../../caching/caching-strategies/",
+  "Cache-aside app loads on miss": "../../caching/caching-strategies/",
+  "Write-back cache → DB later": "../../caching/caching-strategies/",
+  "Shard by user_id / tenant_id even distribution; natural per-tenant queries": "../../patterns/sharding/",
+  "Shard by content hash even distribution; no natural locality": "../../patterns/consistent-hashing/",
+  "Shard by region/country compliance + locality, but skew risk": "../../architecture/multi-region/",
+  "⚠️ time-based shard = all writes hit latest shard = hot": "../../fundamentals/hot-partitions/",
+  "Combine: shard by metric_name + time bucket": "../../storage/time-series-databases/",
+  "Choreography: services subscribe to events": "../../architecture/event-driven/",
+  "Orchestration: workflow engine like Temporal": "../../patterns/durable-workflows/",
+  "Active-passive warm standby; 1.2-1.5× cost": "../../architecture/multi-region/",
+  "Read replicas in regions + primary for writes": "../../patterns/read-replicas/",
+  "Active-active 2-3× cost; conflict strategy needed": "../../architecture/multi-region/",
+  "Per-tenant region each tenant lives in one region": "../../architecture/multi-tenancy/",
+  "Monolith or modular monolith": "../../architecture/monolith-vs-microservices/",
+  "Modular monolith": "../../architecture/modular-monolith/",
+  "Microservices around bounded contexts": "../../architecture/microservices-patterns/",
+  "Modular monolith is fine forever": "../../architecture/modular-monolith/",
+  "Pure batch: dbt on warehouse, scheduled ETL": "../../storage/modern-data-stack/",
+  "Lambda: batch + stream + serving": "../../architecture/lambda-kappa-architectures/",
+  "Kappa: stream-only with replay": "../../architecture/lambda-kappa-architectures/",
+  "Lakehouse: Delta/Iceberg on S3, both engines access": "../../storage/modern-data-stack/"
+}'></div>
+
 ---
 
 ## 1. SQL or NoSQL?

@@ -498,6 +498,30 @@ PostgreSQL:       async replicas    PostgreSQL replica: eventual (replica lag)
 
 ---
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why does R + W > N guarantee strong consistency in Cassandra?"
+
+    With N replicas, if read quorum plus write quorum exceeds N, every read set must overlap with every write set in at least one replica — so a read is guaranteed to touch at least one node holding the latest write. Example: N=3, W=QUORUM (2), R=QUORUM (2) gives 4 > 3, so reads are strong. W=1 + R=1 = 2 ≤ 3 leaves you with eventual consistency. This combination is how you tune CAP per query.
+
+??? question "Why are multi-region active-active databases like DynamoDB Global Tables almost always eventually consistent across regions?"
+
+    Because strong consistency across regions requires coordinating every write with a leader in another region, adding ~50-200ms of cross-region RTT to each operation — this is the PACELC 'Else: Latency vs Consistency' tradeoff. Eventual consistency lets you write locally in ~5-10ms and propagate asynchronously. Spanner is the notable exception: TrueTime atomic clocks shrink the coordination cost to roughly 10-20ms.
+
+??? question "Your Cassandra read at consistency level QUORUM throws `UnavailableException` — what's happening, and what should your code do?"
+
+    Enough replicas are down or partitioned that a quorum (2 of 3) cannot be reached, and the system is choosing C over A: it refuses to serve potentially stale data rather than answer. This is what a CP failure looks like in code — an explicit error. Your application must decide how to respond: retry, queue the operation, or degrade gracefully.
+
+??? question "You write an item to a DynamoDB Global Table in us-east-1, then immediately read it in eu-west-1 with `ConsistentRead=True` — and get nothing back. Why?"
+
+    Global Tables replicate across regions asynchronously, typically taking ~0.5-2s, so the write simply hasn't arrived in eu-west-1 yet. `ConsistentRead=True` only gives strong consistency within a region — it cannot make cross-region replication synchronous. If you truly need global strong consistency, you need a Spanner-class system (or CockroachDB), or you design your application for eventual consistency.
+
+??? question "An interviewer asks: 'Your client got a timeout on a charge request against a distributed datastore — should it retry?' How do you answer?"
+
+    Only if the operation is idempotent — on a timeout you don't know whether the write actually succeeded, so a naive retry risks a double charge. The fix is idempotency keys: the client sends a unique key, the server records it with the result, and a retry with the same key returns the prior result instead of charging again. This is why Stripe, Square, and AWS all use idempotency keys — it makes AP systems behave reliably from the caller's perspective.
+
 ## Related
 
 - [CAP Theorem](cap-theorem.md) — the foundational theory

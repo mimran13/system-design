@@ -223,6 +223,30 @@ def jump_hash(key, num_buckets):
 4. Apply it to: distributed caches (Redis Cluster), Cassandra, custom sharding
 5. For the interview problem: "I'd use consistent hashing to distribute users across cache nodes so adding a node doesn't invalidate all cached data"
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why does `hash(key) % N` cause massive remapping when N changes, while consistent hashing only remaps ~1/N of keys?"
+
+    With modulo hashing, changing N changes the result of the modulo for nearly every key — going from N=3 to N=4 remaps essentially everything. Consistent hashing places servers and keys on a ring; a key belongs to the next clockwise server. Adding or removing a server only affects the keys between it and its neighbor, so on average only 1/N of keys move.
+
+??? question "Why are virtual nodes needed — what problem do they solve on top of the basic ring?"
+
+    With few physical servers, ring positions are uneven: one server might own 35% of the ring while another owns 15%. Virtual nodes map each physical server to many positions (e.g., 150 per server), so each server's total share averages out to ~1/N of keys regardless of where individual hash positions land.
+
+??? question "You add one node to a 10-node Memcached cluster and the cache hit rate collapses to near zero across all nodes. What's happening?"
+
+    The client is using modulo hashing (`hash(key) % N`), so changing N from 10 to 11 remapped almost every key to a different node — effectively a 100% cache miss. With consistent hashing (e.g., libketama), adding a node would have remapped only ~10% of keys.
+
+??? question "Your team built a basic consistent hash ring with 4 servers and no virtual nodes. One server consistently handles far more traffic than the others. Why, and what's the fix?"
+
+    Without virtual nodes, the 4 hash positions can cluster unevenly — one server may own a much larger arc of the ring (e.g., 35% vs 15%). The fix is virtual nodes: give each server ~150 positions on the ring so load evens out to ~25% each.
+
+??? question "An interviewer asks: are there alternatives to the ring-based approach, and what are their trade-offs?"
+
+    Rendezvous (highest-random-weight) hashing computes a score per server per key and picks the highest — simpler, no ring data structure, better uniformity, but O(N) per lookup so it doesn't suit very large N. Jump consistent hash (Google) is O(log N) time and O(1) space with minimal remapping, good for distributed storage where buckets are numbered.
+
 ## Related topics
 
 - [Sharding](sharding.md) — consistent hashing for database sharding

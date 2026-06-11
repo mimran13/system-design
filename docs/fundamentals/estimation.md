@@ -171,6 +171,30 @@ Network:
 → 10 GB hot cache → fits comfortably in ElastiCache cluster
 ```
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why does the read:write ratio matter more than the raw QPS number for your architecture?"
+
+    Because it drives the architecture choice: a 1000:1 read-heavy system and a 1:1 read-write system need very different designs. Read-heavy points you at caching and read replicas; write-heavy pushes you toward different storage choices entirely. That's why a strong estimation answer always states the ratio explicitly — see the Twitter example above, where reads outnumber writes ~1000:1.
+
+??? question "Why is cache size typically estimated as roughly 20% of the working set?"
+
+    Because of the Pareto principle: roughly 20% of the data serves 80% of the requests, so caching that hot 20% captures most of the benefit. You apply it as `cache size = 20% × working set` — e.g. a 3 TB 30-day working set needs ~600 GB of cache RAM. Remember Redis overhead (~1-2 bytes per byte stored) when sizing the actual allocation.
+
+??? question "You're designing a URL shortener taking 100 million new URLs per day with a 10:1 read:write ratio — what QPS do you plan for?"
+
+    Write QPS = 100M / 86,400 ≈ 1,160 ≈ 1.2K writes/sec, and reads at 10× that ≈ 12K reads/sec. The useful shortcut is seconds per day ≈ 100,000, so 100M/day is roughly 1K/sec. The 10:1 read-heavy ratio then tells you to add caching and read replicas.
+
+??? question "You estimated 100 TB of storage for 5 years, but the provisioned disks are filling about 3× faster than planned — what did you forget?"
+
+    Replication. The 100 TB is logical data size; with 3 replicas the actual disk provisioned is storage × 3 ≈ 300 TB. This is one of the listed estimation gotchas, alongside sizing for average instead of peak load (assume a 2x-10x peak multiplier).
+
+??? question "An interviewer asks you to size storage for a photo service: 1,000 photo uploads/sec at ~300 KB each, retained 5 years. Walk it through."
+
+    Daily storage = 1,000 × 300 KB × 86,400 ≈ 26 TB/day. Over 5 years (~1,825 days) that's roughly 47,000 TB ≈ 47 PB. State the assumptions out loud, round aggressively (accuracy within 10× is sufficient), and note this rules out single-node storage — you're in object-store territory, and ×3 if you count replication.
+
 ## Related topics
 
 - [Scalability](scalability.md) — what to do once you know your numbers

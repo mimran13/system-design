@@ -834,6 +834,34 @@ Things to set:
 - "Why not Cloud Run for the WebSocket gateway?" — request-scoped, ephemeral instances, connection limits; misuse of the platform
 - "How do you protect against scams (sellers asking for off-platform payment)?" — moderation-svc runs on every message async; flagged conversations get warnings and rate limits; ML signal + keyword rules
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why are conversations stored in Postgres but messages in DynamoDB?"
+
+    Conversation metadata is relational (joins to users and listings), modestly sized, and needs ACID for the unique (listing, buyer, seller) constraint — a textbook indexed Postgres workload. Messages are write-heavy, time-ordered, and partitioned by conversation — the textbook DynamoDB shape: partition key = conversation_id, sort key = ULID, plus native TTL for 2-year retention, Streams for downstream consumers, and conditional writes on `client_message_id` for idempotency. Postgres for messages would force partitioning/sharding within a year at 7-10 GB/day.
+
+??? question "Why does cross-pod delivery have to exist at all in the k8s WebSocket design?"
+
+    Because the WebSocket TCP socket is pinned to one specific pod's IP from the moment of the HTTP Upgrade — the ALB cannot move it later. So if user A is connected to pod-1 and user B to pod-7, pod-1 can never write to B's socket directly; the message must travel over a shared bus (Redis Pub/Sub here): the sender's path publishes to channel `conv:{id}`, and pod-7 — subscribed because it holds a local connection for that conversation — delivers the frame to B.
+
+??? question "Your Redis cluster goes down. What happens to unread counts, and can users still send messages?"
+
+    Users can still send messages — DynamoDB is the source of truth and chat-api still acks writes; Redis only holds derived state. Unread counters serve stale or zero values and are rebuilt from the messages table (that rebuildability is the deciding factor for using Redis here), while inbox ordering degrades to Postgres hydration. UX shows stale unread counts until recovery, and a drift-detection job plus event replay handles rebuilding.
+
+??? question "Idle WebSocket clients keep getting disconnected after about 60 seconds even though nothing is erroring. What's misconfigured?"
+
+    The ALB idle timeout — its default is 60 seconds, which kills idle WebSocket connections. The fix is to raise it to at least 300s (the example manifests set `idle_timeout.timeout_seconds=350` via Service/Ingress annotations). The same checklist also requires target type "ip" (route directly to pod IPs instead of double-hopping via kube-proxy) and HTTP/1.1 forwarding for the Upgrade.
+
+??? question "How does the seller-SLA escalation ladder stop firing once the seller actually replies?"
+
+    Via a Temporal workflow signal. A consumer of `chat.message.read` and `chat.message.created` (with sender = seller) signals the running `SellerSLAWorkflow` (`seller_responded`), which cancels the remaining durable timers — push at T+5 min, email at T+30 min, buyer auto-reply at T+2 h, alternative listings at T+24 h, abandoned at T+72 h. This conditional cancellation is exactly what's hard to express with a cron job and a table of pending nudges.
+
+??? question "An interviewer asks: 'Why Temporal for the nudge service instead of a cron job and a table of pending nudges?'"
+
+    Cron + a "due nudges" table works at small scale but is fragile: missed fires, double fires, manual re-firing after crashes, conditional cancellation is hard to express, and observability is a separate problem. Temporal gives durable timers, native signals for cancellation when the seller responds, replay-on-failure, built-in at-least-once execution, and a per-workflow UI. The honest framing: for a small product lean cron; at 1M DAU with multi-step business logic, Temporal pays for itself.
+
 ## Related
 
 - [Chat System](chat-system.md) — generic case study (this page builds on it with proptech constraints)

@@ -276,6 +276,30 @@ spec:
 **Common follow-up:** *"What's the difference between retry and circuit breaker?"*
 > Retry is for transient failures (retry 3 times with backoff). Circuit breaker is for sustained failures — stop retrying entirely and let the dependency recover. Use both: retry first, but if the circuit is open, don't even try.
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why does a circuit breaker fail fast instead of letting each request hit the failing dependency and time out?"
+
+    Slow calls hold threads: 100 concurrent requests each blocked 10 seconds exhausts the caller's thread pool, so the caller goes down too — a cascade failure. With the circuit open, requests fail in ~1ms, the caller stays responsive, and the dependency gets breathing room to recover without constant load.
+
+??? question "Why is the Half-Open state necessary — why not jump straight from Open back to Closed after the timeout?"
+
+    The circuit doesn't know the dependency has recovered; it only knows the timeout (e.g., 30s) expired. Half-Open lets one probe request through to test recovery. If the probe succeeds, the circuit closes; if it fails, the circuit reopens — avoiding a flood of traffic onto a still-broken service.
+
+??? question "Your service has 10 instances. One instance trips its circuit breaker, yet the failing payment service is still getting hammered. What's happening?"
+
+    Circuit breaker state is per-instance by default. Instance 1 saw 5 failures and opened its circuit, but instances 2-10 each track their own counts and keep sending requests. The fix is shared circuit state (e.g., in Redis) or enforcing the circuit breaker at the proxy level with a service mesh like Istio/Envoy (outlierDetection).
+
+??? question "A downstream dependency starts taking 10 seconds per call but still returns 200 OK. Your circuit breaker never opens and your service degrades anyway. What's missing?"
+
+    The breaker is only counting errors, not slow calls — but slow calls are as harmful as failures because they tie up threads. Configure timeout-as-failure (e.g., any call > 2 seconds counts as a failure) or a slow-call rate threshold like Resilience4j's `slowCallRateThreshold` + `slowCallDurationThreshold`.
+
+??? question "An interviewer asks: what's the difference between retry and circuit breaker, and when do you use each?"
+
+    Retry handles transient failures — retry a few times with backoff and the call likely succeeds. A circuit breaker handles sustained failures — stop calling entirely so the dependency can recover. Use both together: retry first, but if the circuit is open, don't even attempt the call.
+
 ## Related topics
 
 - [Bulkhead](bulkhead.md) — complementary pattern for isolation

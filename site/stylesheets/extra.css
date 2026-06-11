@@ -997,3 +997,326 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 .md-typeset h4:hover .headerlink {
   opacity: 1;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   READING ERGONOMICS — cap prose measure, keep figures wide
+   ═══════════════════════════════════════════════════════════ */
+
+/* Only direct children of the article: nested content inside
+   admonitions, grids, tables stays untouched */
+article.md-typeset > p,
+article.md-typeset > ul,
+article.md-typeset > ol,
+article.md-typeset > blockquote,
+article.md-typeset > dl {
+  max-width: 75ch;
+}
+
+/* Headings can match prose width for a clean left rag */
+article.md-typeset > h1,
+article.md-typeset > h2,
+article.md-typeset > h3,
+article.md-typeset > h4 {
+  max-width: 80ch;
+}
+
+/* Tables, code, diagrams, admonitions, grids deliberately stay full width */
+
+/* Reading time under H1 */
+.sd-reading-time {
+  font-size: 0.78rem !important;
+  color: var(--md-default-fg-color--lighter) !important;
+  margin-top: -0.6em !important;
+  margin-bottom: 1.6em !important;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DIAGRAM INTERACTIVITY — expand button, overlay, link nodes
+   ═══════════════════════════════════════════════════════════ */
+
+/* Expand affordance in diagram corner — appears on hover */
+.sd-diagram-expand {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--sd-divider);
+  background: var(--sd-card-bg);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  box-shadow: var(--sd-shadow-sm);
+  z-index: 2;
+}
+
+.md-typeset .mermaid:hover .sd-diagram-expand {
+  opacity: 1;
+}
+
+.sd-diagram-expand:hover {
+  color: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color);
+}
+
+.md-typeset .mermaid {
+  cursor: zoom-in;
+}
+
+/* Fullscreen overlay */
+.sd-diagram-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  background: rgba(10, 10, 13, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.sd-diagram-overlay.open {
+  display: block;
+  animation: sdFade 0.18s ease both;
+}
+
+@keyframes sdFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.sd-diagram-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.sd-diagram-stage svg {
+  background: var(--sd-card-bg);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+  transition: none;
+  will-change: transform;
+}
+
+[data-md-color-scheme="default"] .sd-diagram-stage svg {
+  background: #ffffff;
+}
+
+.sd-diagram-toolbar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sd-diagram-hint {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.55);
+  margin-right: 0.6rem;
+  letter-spacing: 0.01em;
+}
+
+.sd-diagram-btn {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 9px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.sd-diagram-btn:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* Clickable mermaid nodes (via sd-mermaid-links map) */
+.md-typeset .mermaid .sd-node-link {
+  cursor: pointer;
+}
+
+.md-typeset .mermaid .sd-node-link .nodeLabel,
+.md-typeset .mermaid .sd-node-link text {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+.md-typeset .mermaid .sd-node-link:hover rect,
+.md-typeset .mermaid .sd-node-link:hover polygon,
+.md-typeset .mermaid .sd-node-link:hover circle {
+  stroke: var(--md-primary-fg-color) !important;
+  stroke-width: 2px !important;
+  filter: brightness(1.04);
+}
+
+/* Hide the link-map carrier divs */
+.sd-mermaid-links { display: none; }
+
+/* ═══════════════════════════════════════════════════════════
+   MERMAID BRAND THEMING — align with indigo palette
+   Mermaid SVG elements carry stable classes; restyle via CSS.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Flowchart nodes */
+.md-typeset .mermaid svg .node rect,
+.md-typeset .mermaid svg .node polygon,
+.md-typeset .mermaid svg .node circle,
+.md-typeset .mermaid svg .node ellipse {
+  fill: #eef2ff;
+  stroke: #c7d2fe;
+  stroke-width: 1px;
+  rx: 6px;
+}
+
+.md-typeset .mermaid svg .nodeLabel {
+  color: #312e81;
+  font-family: var(--md-text-font) !important;
+}
+
+/* Edges */
+.md-typeset .mermaid svg .edgePath path,
+.md-typeset .mermaid svg .flowchart-link {
+  stroke: #94a3b8 !important;
+}
+
+.md-typeset .mermaid svg .arrowheadPath,
+.md-typeset .mermaid svg marker path {
+  fill: #94a3b8 !important;
+  stroke: none;
+}
+
+.md-typeset .mermaid svg .edgeLabel {
+  background-color: var(--sd-card-bg);
+  color: var(--md-default-fg-color--light);
+  font-family: var(--md-text-font) !important;
+}
+
+.md-typeset .mermaid svg .edgeLabel rect {
+  fill: var(--sd-card-bg) !important;
+}
+
+/* Subgraph clusters */
+.md-typeset .mermaid svg .cluster rect {
+  fill: #f8fafc;
+  stroke: var(--sd-divider);
+  rx: 10px;
+}
+
+.md-typeset .mermaid svg .cluster-label .nodeLabel,
+.md-typeset .mermaid svg .cluster text {
+  color: var(--md-default-fg-color--light);
+  fill: var(--md-default-fg-color--light);
+  font-weight: 600;
+}
+
+/* Sequence diagrams */
+.md-typeset .mermaid svg .actor {
+  fill: #eef2ff !important;
+  stroke: #c7d2fe !important;
+}
+
+.md-typeset .mermaid svg text.actor,
+.md-typeset .mermaid svg .actor-line + text {
+  fill: #312e81 !important;
+  font-family: var(--md-text-font) !important;
+}
+
+.md-typeset .mermaid svg .messageLine0,
+.md-typeset .mermaid svg .messageLine1 {
+  stroke: #64748b !important;
+}
+
+.md-typeset .mermaid svg .messageText {
+  fill: var(--md-default-fg-color) !important;
+  font-family: var(--md-text-font) !important;
+}
+
+.md-typeset .mermaid svg .activation0,
+.md-typeset .mermaid svg .activation1,
+.md-typeset .mermaid svg .activation2 {
+  fill: #e0e7ff !important;
+  stroke: #c7d2fe !important;
+}
+
+.md-typeset .mermaid svg .labelBox {
+  fill: #eef2ff !important;
+  stroke: #c7d2fe !important;
+}
+
+.md-typeset .mermaid svg .labelText,
+.md-typeset .mermaid svg .loopText,
+.md-typeset .mermaid svg .loopText tspan {
+  fill: #4338ca !important;
+}
+
+.md-typeset .mermaid svg .noteText,
+.md-typeset .mermaid svg .note {
+  font-family: var(--md-text-font) !important;
+}
+
+/* Dark scheme adjustments */
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .node rect,
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .node polygon,
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .node circle,
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .node ellipse {
+  fill: rgba(129, 140, 248, 0.12);
+  stroke: rgba(129, 140, 248, 0.35);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .nodeLabel {
+  color: #c7d2fe;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .cluster rect {
+  fill: rgba(255, 255, 255, 0.02);
+  stroke: var(--sd-divider);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .actor {
+  fill: rgba(129, 140, 248, 0.12) !important;
+  stroke: rgba(129, 140, 248, 0.35) !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg text.actor {
+  fill: #c7d2fe !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .messageText {
+  fill: #d4d4d8 !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .activation0,
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .activation1,
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .activation2 {
+  fill: rgba(129, 140, 248, 0.2) !important;
+  stroke: rgba(129, 140, 248, 0.4) !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .labelBox {
+  fill: rgba(129, 140, 248, 0.15) !important;
+  stroke: rgba(129, 140, 248, 0.35) !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .labelText,
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .loopText,
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .loopText tspan {
+  fill: #a5b4fc !important;
+}

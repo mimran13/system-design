@@ -1,6 +1,8 @@
 site_name: System Design Encyclopedia
 site_description: A personal reference for system design concepts, patterns, and interview preparation.
 site_author: Muhammad Imran
+repo_url: https://github.com/mimran13/system-design
+repo_name: mimran13/system-design
 docs_dir: docs
 theme:
   name: material
@@ -42,6 +44,9 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/diagrams.js
+
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -72,6 +77,10 @@ plugins:
   - search
   - tags:
       tags_file: reference/tags.md
+  - git-revision-date-localized:
+      type: date
+      enable_creation_date: false
+      fallback_to_build_date: true
 
 nav:
   - Home: index.md

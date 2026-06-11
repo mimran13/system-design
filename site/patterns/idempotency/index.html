@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -573,6 +585,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -6908,6 +6932,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -11878,6 +11913,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12002,6 +12048,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="idempotency">Idempotency<a class="headerlink" href="#idempotency" title="Permanent link">&para;</a></h1>
@@ -12187,6 +12236,28 @@
 3. For queue consumers: processed events table with deduplication
 4. For database operations: unique constraints, ON CONFLICT DO NOTHING
 5. For sagas: every step and compensation must be idempotent</p>
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why is HTTP POST not idempotent by default, and what's the standard fix for APIs?</summary>
+<p>POST creates a new resource each time, so two retried POSTs create two records (e.g., two orders, two charges) — unlike PUT or DELETE, which leave the same end state when repeated. The fix is the idempotency key pattern: the client generates a unique key (UUID) per logical request, sends it as an <code>Idempotency-Key</code> header, and the server stores the key with the result so duplicates return the original response.</p>
+</details>
+<details class="question">
+<summary>Why must Kafka and SQS consumers be idempotent even if producers send each message exactly once?</summary>
+<p>These systems deliver at-least-once: redeliveries happen on consumer crashes, rebalances, and visibility timeout expiries, so a consumer can receive the same message twice. Each consumer therefore needs its own deduplication — typically a processed_events table checked by event_id before processing, with rows cleaned up after a safe window (e.g., 7 days).</p>
+</details>
+<details class="question">
+<summary>A customer reports being charged twice. Logs show the client got a timeout on POST /payments and retried. What was missing on the server?</summary>
+<p>The server had no idempotency key handling. On timeout the client can't know whether the first request succeeded, so it retries — and without a key check, the server processes the charge again. With the pattern, the retry carries the same key, the server finds it in the idempotency store (e.g., Redis SET NX, or a UNIQUE constraint on idempotency_key), and returns the original response instead of charging again.</p>
+</details>
+<details class="question">
+<summary>A consumer runs <code>UPDATE accounts SET balance = balance - 100 WHERE id = 123</code> and the message is redelivered. What goes wrong and how do you make it safe?</summary>
+<p>The relative update is not idempotent: running it twice deducts 200 instead of 100. Make it safe by recording the transaction — guard the UPDATE with a check against a processed_transactions table (and insert the tx_id with ON CONFLICT DO NOTHING), or design for natural idempotency by setting an absolute value instead of a relative change.</p>
+</details>
+<details class="question">
+<summary>An interviewer asks: how long should you keep idempotency records, and what's the trade-off?</summary>
+<p>Long enough to cover any realistic retry window. Stripe keeps keys 24 hours — the same key within 24h returns the original response, after that it's a new request. For consumer dedup tables, a common window is 7 days; storage cost rises with the window, but a duplicate arriving after expiry will be reprocessed, so you size the window to make that acceptable. SQS FIFO content-based deduplication offers only 5 minutes.</p>
+</details>
 <h2 id="related-topics">Related topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../retry-timeout/">Retry &amp; Timeout</a> — retry requires idempotency</li>
@@ -12202,8 +12273,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 13:21:42 UTC">May 12, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -12300,6 +12389,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

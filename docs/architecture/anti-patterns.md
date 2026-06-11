@@ -532,6 +532,32 @@ These red flags help you ask the right follow-up questions.
 
 ---
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why does splitting a system along technical boundaries (frontend/backend/db) tend to produce a distributed monolith?"
+
+    Because technical layers don't align with business boundaries (bounded contexts), so every feature still cuts across all the pieces. You get services that share a database, deploy together, and form deep synchronous request chains — all the coupling of a monolith plus network overhead. The fix is to identify true boundaries via domain analysis, give each service its own data, and sometimes merge services back together.
+
+??? question "Why is the recommended fix for a big ball of mud slow refactoring rather than a rewrite?"
+
+    Anti-patterns took years to grow and won't disappear in a sprint — the page's fix playbook explicitly says "plan incremental migration — never big-bang rewrite." For a big ball of mud, you establish module boundaries (folders, then enforced via tooling), migrate via strangler fig toward a modular monolith, and add fitness functions to prevent further drift. Rewrites are themselves a recurring failure pattern ("we rewrote it in $LANG and it's worse").
+
+??? question "Your 'microservices' each have their own repo, but Service A reads Service B's tables directly and B's schema changes require coordinated changes in A. What anti-pattern is this, and what's the fix?"
+
+    This is inappropriate intimacy between services (and a symptom of a distributed monolith). The fix: each service owns its tables and others access via API; for read-heavy needs, A can maintain a read replica built from B's events. Migrate via strangler fig — introduce the API, move A from direct DB access to the API, then remove direct DB access.
+
+??? question "Your CI suite takes 60+ minutes, tests are flaky, and 'just rerun it' is normal. What's happening and how do you fix it?"
+
+    This is the reverse pyramid testing anti-pattern: lots of slow end-to-end tests and few unit tests, usually because tests were added under pressure at the wrong layer. Push tests down — most unit, some integration, few e2e — and refactor so pure logic is separated from I/O. Quarantine flaky tests immediately, then fix or delete them.
+
+??? question "An interviewer asks: 'Your team is 5 people running 30 microservices. What's wrong?'"
+
+    Almost certainly premature microservices. At that team size, coordination overhead (inter-service contracts, deploys, observability, on-call) dominates productive work. The fix is to merge tightly-coupled services until the count matches the team's operational capacity — probably ending up with 3-5 services. The architecture must match the team's ability to run it.
+
+---
+
 ## Related topics
 
 - [Modular Monolith](modular-monolith.md) — antidote to premature microservices

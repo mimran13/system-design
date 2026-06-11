@@ -111,6 +111,30 @@ Else:          choose Latency or Consistency
 **Common follow-up:** *"Is Cassandra always AP?"*
 > Not always — Cassandra lets you tune consistency per-query (e.g., `QUORUM` reads/writes). At `ALL` consistency level it behaves like a CP system. The default is AP-leaning.
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why is Partition Tolerance not really optional in a distributed system?"
+
+    Because networks fail — partitions will happen whether you plan for them or not. Any real distributed system must tolerate partitions, so CAP collapses into a binary choice: when a partition occurs, do you sacrifice Consistency or Availability? That makes systems effectively CP or AP, not "CA".
+
+??? question "Why does a CP system return errors or timeouts during a partition instead of just serving the data it has?"
+
+    Because the node cannot verify it holds the most recent write while it's cut off from its peers. Serving the local copy could mean serving stale data, which violates consistency — so a CP system refuses to answer rather than risk being wrong. It stays consistent but becomes unavailable for the duration of the partition.
+
+??? question "Your team uses DynamoDB and users report occasionally seeing stale data right after an update — what's happening, and what's the fix?"
+
+    DynamoDB is an AP system by default: reads are eventually consistent and may come from a replica that hasn't received the latest write yet. For reads that must be fresh, set `ConsistentRead=true`, which switches that request to CP behavior. This is per-request tunable consistency.
+
+??? question "A postmortem reveals that during a network partition, both halves of your cluster kept accepting writes and the data diverged — what is this called, and which CAP choice does it reflect?"
+
+    This is split-brain: each side of the partition continued serving (and accepting writes) independently, which is AP behavior — availability was preserved at the cost of consistency. When the partition heals, the nodes must reconcile the divergent writes (eventual consistency). A CP system would instead have refused writes on the side that lost quorum.
+
+??? question "An interviewer asks: 'Is Cassandra always AP?' How do you answer?"
+
+    Not always — Cassandra offers tunable consistency per query. With `QUORUM` reads/writes you get stronger guarantees, and at consistency level `ALL` it behaves like a CP system. The default configuration is AP-leaning, but you slide along the CAP curve per operation.
+
 ## Related topics
 
 - [Consistency Models](consistency-models.md) — strong, eventual, causal and the spectrum between CP and AP

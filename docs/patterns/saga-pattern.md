@@ -270,6 +270,30 @@ Saga orchestrator options on AWS:
 5. Pair with outbox pattern for reliable event publishing
 6. Mention idempotency — all participants must handle duplicate commands
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why are sagas preferred over 2PC for microservices transactions?"
+
+    2PC blocks: a central coordinator holds locks across synchronous rounds, hurting availability and performance, and it tightly couples every participant to the coordinator. A saga is a sequence of local transactions that is eventually consistent — no blocking, high availability, low coupling via events, with compensating transactions for failure recovery. 2PC is appropriate only within a single database or when strict ACID is unavoidable.
+
+??? question "Why is a compensating transaction a 'semantic undo' rather than a rollback, and what do you do with steps that can't be compensated?"
+
+    A real rollback is impossible across services — each step already committed in its own database. Compensation runs a new forward transaction that semantically reverses the effect: release the payment reservation, release inventory, cancel the shipment. Some steps (a sent email, a push notification) cannot be undone at all; for those, design for idempotency and accept they may fire even if the saga fails — e.g., word the email so it doesn't commit to success.
+
+??? question "An order saga reserved payment, then inventory failed, then the orchestrator crashed. After restart, the payment reservation is never released. What was missing?"
+
+    Saga state persistence. The orchestrator must persist its state (a saga log with each step + status) on every transition, so after a crash it can resume from the last committed step and still send the ReleasePayment compensation. An in-memory-only orchestrator loses track of in-flight sagas and leaves them in inconsistent states.
+
+??? question "The payment service receives the ReservePayment command for the same order twice and creates two reservations. What's the bug?"
+
+    Saga participants get at-least-once delivery, so duplicate commands are expected — every participant must be idempotent. The handler should first check for an existing reservation by order_id and, if found, return success with the existing reservation rather than creating a new one.
+
+??? question "An interviewer asks: choreography or orchestration for a multi-step order saga — which do you pick and why?"
+
+    Orchestration for complex flows: a central orchestrator sends commands and tracks state, giving a clear view of saga progress, easier debugging, and one place for the business logic — at the cost of a central coupling point that can become a god class. Choreography (services react to each other's events) is fully decoupled but makes overall saga state hard to track, can grow circular dependencies, and is difficult to debug. Pair either with the outbox pattern for reliable event publishing.
+
 ## Related topics
 
 - [Distributed Transactions](../distributed/distributed-transactions.md) — why 2PC is avoided

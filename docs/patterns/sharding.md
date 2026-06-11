@@ -232,6 +232,30 @@ Solution: distribute time-based data with hash prefix
 4. Explain cross-shard query strategy
 5. Mention starting with more virtual shards than physical nodes for easier resharding
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why is shard key selection the most critical sharding decision, and what four properties make a good key?"
+
+    A bad shard key creates hot shards and forces cross-shard queries, ruining the benefits of sharding — and it's hard to change later since the key should be immutable. A good key has: high cardinality (user_id, not status), even distribution (not all writes landing on recent timestamps), a match with the access pattern (most queries filter by it), and immutability (changing it would require moving the record).
+
+??? question "Why are cross-shard queries the hardest problem in sharding, and what are the main strategies to handle them?"
+
+    A query that doesn't filter by the shard key (e.g., `WHERE country = 'US'`, a global COUNT, or a JOIN spanning shards) needs data from many shards. Strategies: scatter-gather (query all shards in parallel and merge — expensive), denormalize so common queries stay on one shard, route analytical queries to a separate analytics DB/warehouse, and build a secondary index (e.g., email → user_id) for non-shard-key lookups.
+
+??? question "You range-shard users by user_id across 4 shards. Shard 4 takes 80% of write load while shards 1-3 mostly serve reads. What's happening?"
+
+    The hot shard problem with range sharding: user_ids are assigned sequentially, so every new signup lands in the highest range — shard 4 absorbs nearly all writes. Range keys only work if write load is uniform across the range; otherwise use hash sharding for even distribution, accepting that range queries then span all shards.
+
+??? question "Your users table is sharded by user_id, but the login flow looks users up by email. How do you route that query without hitting every shard?"
+
+    Build a separate secondary index for the non-shard-key lookup: a lookup table (or Elasticsearch) mapping email → user_id. The query becomes two steps — resolve user_id from the index, then route to the correct shard by user_id — avoiding a scatter-gather across all shards.
+
+??? question "An interviewer asks: how would you go from 4 shards to 8 without downtime, and how do you design upfront to make resharding easier?"
+
+    Online resharding: create the 8 new shards, double-write all new writes to both old and new schemes, backfill existing data, switch reads to the new shards, stop double-writes, drop the old shards. To minimize the need for this, start with more virtual shards than physical nodes (e.g., 256 virtual shards on 4 nodes) so adding hardware just moves virtual shards instead of rehashing all data — or use consistent hashing for minimal movement.
+
 ## Related topics
 
 - [Consistent Hashing](consistent-hashing.md) — minimizing data movement on resharding

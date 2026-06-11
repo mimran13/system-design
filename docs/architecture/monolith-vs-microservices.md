@@ -176,6 +176,30 @@ Your architecture will mirror your team structure. Microservices work best when 
 4. Acknowledge the costs of microservices — distributed systems complexity, operational overhead
 5. Mention the Strangler Fig for migration if relevant
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why is 'monolith-first' a valid recommendation when the domain is not yet well understood?"
+
+    Because premature decomposition is expensive — if you don't know the domain, you'll draw service boundaries in the wrong places and pay distributed-systems costs to maintain them. A monolith gives simple development, debugging, and cross-module ACID transactions while you learn where the real boundaries are. You can later extract services based on specific pain rather than guesses.
+
+??? question "Why does Conway's Law matter when choosing between monolith and microservices?"
+
+    Conway's Law says your architecture will mirror your team's communication structure, so microservices work best when team boundaries match service boundaries. If a 5-person team owns 15 microservices, the architecture is wrong for the team size. The page's guidance reflects this: monolith for teams under ~15 engineers, microservices when 30+ engineers have clear domain ownership.
+
+??? question "A memory leak in your monolith's reporting module keeps crashing the entire application, including payments. Which weakness is this, and what does microservices offer instead?"
+
+    This is fault coupling — in a monolith, one module's failure takes down the whole process. Microservices provide fault isolation: a memory leak affects only that service, and circuit breakers prevent a single-service failure from cascading. Fault isolation being critical (e.g., payments can't take down the whole app) is one of the listed reasons to choose microservices.
+
+??? question "Your team decides to break up the monolith. You propose rewriting it as microservices from scratch — why is that the wrong move, and what's the right migration path?"
+
+    Don't rewrite — extract. The path: identify bounded contexts via DDD, modularize the monolith first (strict boundaries, no cross-module DB access), extract the most pain-inducing service first (usually auth, notifications, or the most traffic-heavy component), then use the Strangler Fig pattern — a proxy routes new requests to the new service while legacy traffic still hits the shrinking monolith until it can be retired.
+
+??? question "An interviewer asks you to choose between monolith and microservices for a new product. What does a strong answer look like?"
+
+    Start from requirements: team size, traffic, and domain complexity — don't default to microservices because it sounds sophisticated. Recommend starting with a modular monolith, then extracting microservices based on specific pain: deployment coupling, divergent scale needs, or team autonomy. Acknowledge microservices' costs (distributed-systems complexity, operational overhead) and mention the Strangler Fig for migration.
+
 ## Related topics
 
 - [Event-Driven Architecture](event-driven.md) — how microservices communicate asynchronously

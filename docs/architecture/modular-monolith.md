@@ -405,6 +405,32 @@ Modular monolith wins on most dimensions for small-to-mid teams. Microservices w
 
 ---
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why does a modular monolith capture most of microservices' benefits at a fraction of the cost?"
+
+    Because most architectural problems are about modularity, not deployment topology. A well-modularised single deployable gives you team autonomy, clear boundaries, and independent reasoning per module — without paying for network latency on every call, distributed transactions, service discovery/mesh, database-per-service operations, and cross-service tracing. It's typically 5-10× cheaper than microservices at small-to-mid scale.
+
+??? question "Why must each module own its tables even though all modules share one physical database?"
+
+    Shared tables are the most insidious form of coupling: schema changes break unrelated modules, one module's slow queries hurt everyone, and "quick fix" cross-module reads proliferate. Keeping tables module-private (e.g., schema-per-module with per-user grants) means other modules go through the public API like `payments.get_payment(order_id)` instead of a SQL JOIN. Modules that share tables aren't modules — they're folders.
+
+??? question "Your codebase has clean `orders/`, `payments/`, `inventory/` folders, yet every change still ripples across all three. What went wrong?"
+
+    These are modules in name only — folder names don't enforce boundaries; tooling does. Everything imports everything, including internal classes like repositories, instead of going only through each module's public API. Fix it with enforcement tools like ArchUnit (Java), dependency-cruiser (JS/TS), pylint import constraints, or language module visibility, plus per-module data ownership.
+
+??? question "One module in your modular monolith suddenly needs roughly 1000× more compute than the rest. What do you do?"
+
+    This is exactly the "stops fitting" case: modules with very different scaling profiles justify splitting. Extract that module into its own service via the strangler fig path — replace its in-process API with an HTTP/gRPC adapter, move it to its own deployment unit, and migrate its database later. If the modular structure was real, this split is mechanical; the interface stays the same and only the implementation changes from in-process call to RPC.
+
+??? question "An interviewer asks: 'When would you NOT recommend a modular monolith?'"
+
+    When modules genuinely need different scaling characteristics (one needs 1000 instances, another 5), when the org is large enough that single-deployable coordination becomes a bottleneck (~50+ engineers in one codebase), or when regulatory/security boundaries require physical separation (e.g., PCI scope reduction). It also doesn't fit a mandated multi-language stack. For most teams, though, it's the right starting point and possibly the permanent answer.
+
+---
+
 ## Related topics
 
 - [Monolith vs Microservices](monolith-vs-microservices.md) — the broader debate

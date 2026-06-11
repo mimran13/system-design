@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -571,6 +583,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -11132,6 +11156,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12761,6 +12796,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12859,6 +12905,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="proptech-chat-buyer-seller">Proptech Chat (Buyer ↔ Seller)<a class="headerlink" href="#proptech-chat-buyer-seller" title="Permanent link">&para;</a></h1>
@@ -13998,6 +14047,32 @@ On disconnect: decrement, <code>UNSUBSCRIBE</code> if count went 1→0.</p>
 <li>"Why not Cloud Run for the WebSocket gateway?" — request-scoped, ephemeral instances, connection limits; misuse of the platform</li>
 <li>"How do you protect against scams (sellers asking for off-platform payment)?" — moderation-svc runs on every message async; flagged conversations get warnings and rate limits; ML signal + keyword rules</li>
 </ul>
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why are conversations stored in Postgres but messages in DynamoDB?</summary>
+<p>Conversation metadata is relational (joins to users and listings), modestly sized, and needs ACID for the unique (listing, buyer, seller) constraint — a textbook indexed Postgres workload. Messages are write-heavy, time-ordered, and partitioned by conversation — the textbook DynamoDB shape: partition key = conversation_id, sort key = ULID, plus native TTL for 2-year retention, Streams for downstream consumers, and conditional writes on <code>client_message_id</code> for idempotency. Postgres for messages would force partitioning/sharding within a year at 7-10 GB/day.</p>
+</details>
+<details class="question">
+<summary>Why does cross-pod delivery have to exist at all in the k8s WebSocket design?</summary>
+<p>Because the WebSocket TCP socket is pinned to one specific pod's IP from the moment of the HTTP Upgrade — the ALB cannot move it later. So if user A is connected to pod-1 and user B to pod-7, pod-1 can never write to B's socket directly; the message must travel over a shared bus (Redis Pub/Sub here): the sender's path publishes to channel <code>conv:{id}</code>, and pod-7 — subscribed because it holds a local connection for that conversation — delivers the frame to B.</p>
+</details>
+<details class="question">
+<summary>Your Redis cluster goes down. What happens to unread counts, and can users still send messages?</summary>
+<p>Users can still send messages — DynamoDB is the source of truth and chat-api still acks writes; Redis only holds derived state. Unread counters serve stale or zero values and are rebuilt from the messages table (that rebuildability is the deciding factor for using Redis here), while inbox ordering degrades to Postgres hydration. UX shows stale unread counts until recovery, and a drift-detection job plus event replay handles rebuilding.</p>
+</details>
+<details class="question">
+<summary>Idle WebSocket clients keep getting disconnected after about 60 seconds even though nothing is erroring. What's misconfigured?</summary>
+<p>The ALB idle timeout — its default is 60 seconds, which kills idle WebSocket connections. The fix is to raise it to at least 300s (the example manifests set <code>idle_timeout.timeout_seconds=350</code> via Service/Ingress annotations). The same checklist also requires target type "ip" (route directly to pod IPs instead of double-hopping via kube-proxy) and HTTP/1.1 forwarding for the Upgrade.</p>
+</details>
+<details class="question">
+<summary>How does the seller-SLA escalation ladder stop firing once the seller actually replies?</summary>
+<p>Via a Temporal workflow signal. A consumer of <code>chat.message.read</code> and <code>chat.message.created</code> (with sender = seller) signals the running <code>SellerSLAWorkflow</code> (<code>seller_responded</code>), which cancels the remaining durable timers — push at T+5 min, email at T+30 min, buyer auto-reply at T+2 h, alternative listings at T+24 h, abandoned at T+72 h. This conditional cancellation is exactly what's hard to express with a cron job and a table of pending nudges.</p>
+</details>
+<details class="question">
+<summary>An interviewer asks: 'Why Temporal for the nudge service instead of a cron job and a table of pending nudges?'</summary>
+<p>Cron + a "due nudges" table works at small scale but is fragile: missed fires, double fires, manual re-firing after crashes, conditional cancellation is hard to express, and observability is a separate problem. Temporal gives durable timers, native signals for cancellation when the seller responds, replay-on-failure, built-in at-least-once execution, and a per-workflow UI. The honest framing: for a small product lean cron; at 1M DAU with multi-step business logic, Temporal pays for itself.</p>
+</details>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../chat-system/">Chat System</a> — generic case study (this page builds on it with proptech constraints)</li>
@@ -14017,8 +14092,26 @@ On disconnect: decrement, <code>UNSUBSCRIBE</code> if count went 1→0.</p>
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 8, 2026 12:50:15 UTC">June 8, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -14115,6 +14208,8 @@ On disconnect: decrement, <code>UNSUBSCRIBE</code> if count went 1→0.</p>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

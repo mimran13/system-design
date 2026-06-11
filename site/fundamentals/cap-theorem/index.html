@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -573,6 +585,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -1884,6 +1908,17 @@
     <span class="md-ellipsis">
       
         Interview angle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
       
     </span>
   </a>
@@ -11777,6 +11812,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -11912,6 +11958,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="cap-theorem">CAP Theorem<a class="headerlink" href="#cap-theorem" title="Permanent link">&para;</a></h1>
@@ -12087,6 +12136,28 @@
 <blockquote>
 <p>Not always — Cassandra lets you tune consistency per-query (e.g., <code>QUORUM</code> reads/writes). At <code>ALL</code> consistency level it behaves like a CP system. The default is AP-leaning.</p>
 </blockquote>
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why is Partition Tolerance not really optional in a distributed system?</summary>
+<p>Because networks fail — partitions will happen whether you plan for them or not. Any real distributed system must tolerate partitions, so CAP collapses into a binary choice: when a partition occurs, do you sacrifice Consistency or Availability? That makes systems effectively CP or AP, not "CA".</p>
+</details>
+<details class="question">
+<summary>Why does a CP system return errors or timeouts during a partition instead of just serving the data it has?</summary>
+<p>Because the node cannot verify it holds the most recent write while it's cut off from its peers. Serving the local copy could mean serving stale data, which violates consistency — so a CP system refuses to answer rather than risk being wrong. It stays consistent but becomes unavailable for the duration of the partition.</p>
+</details>
+<details class="question">
+<summary>Your team uses DynamoDB and users report occasionally seeing stale data right after an update — what's happening, and what's the fix?</summary>
+<p>DynamoDB is an AP system by default: reads are eventually consistent and may come from a replica that hasn't received the latest write yet. For reads that must be fresh, set <code>ConsistentRead=true</code>, which switches that request to CP behavior. This is per-request tunable consistency.</p>
+</details>
+<details class="question">
+<summary>A postmortem reveals that during a network partition, both halves of your cluster kept accepting writes and the data diverged — what is this called, and which CAP choice does it reflect?</summary>
+<p>This is split-brain: each side of the partition continued serving (and accepting writes) independently, which is AP behavior — availability was preserved at the cost of consistency. When the partition heals, the nodes must reconcile the divergent writes (eventual consistency). A CP system would instead have refused writes on the side that lost quorum.</p>
+</details>
+<details class="question">
+<summary>An interviewer asks: 'Is Cassandra always AP?' How do you answer?</summary>
+<p>Not always — Cassandra offers tunable consistency per query. With <code>QUORUM</code> reads/writes you get stronger guarantees, and at consistency level <code>ALL</code> it behaves like a CP system. The default configuration is AP-leaning, but you slide along the CAP curve per operation.</p>
+</details>
 <h2 id="related-topics">Related topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../consistency-models/">Consistency Models</a> — strong, eventual, causal and the spectrum between CP and AP</li>
@@ -12101,8 +12172,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 13:21:42 UTC">May 12, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -12199,6 +12288,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

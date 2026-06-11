@@ -231,6 +231,30 @@ def release_payment(order_id):
 4. For database operations: unique constraints, ON CONFLICT DO NOTHING
 5. For sagas: every step and compensation must be idempotent
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why is HTTP POST not idempotent by default, and what's the standard fix for APIs?"
+
+    POST creates a new resource each time, so two retried POSTs create two records (e.g., two orders, two charges) — unlike PUT or DELETE, which leave the same end state when repeated. The fix is the idempotency key pattern: the client generates a unique key (UUID) per logical request, sends it as an `Idempotency-Key` header, and the server stores the key with the result so duplicates return the original response.
+
+??? question "Why must Kafka and SQS consumers be idempotent even if producers send each message exactly once?"
+
+    These systems deliver at-least-once: redeliveries happen on consumer crashes, rebalances, and visibility timeout expiries, so a consumer can receive the same message twice. Each consumer therefore needs its own deduplication — typically a processed_events table checked by event_id before processing, with rows cleaned up after a safe window (e.g., 7 days).
+
+??? question "A customer reports being charged twice. Logs show the client got a timeout on POST /payments and retried. What was missing on the server?"
+
+    The server had no idempotency key handling. On timeout the client can't know whether the first request succeeded, so it retries — and without a key check, the server processes the charge again. With the pattern, the retry carries the same key, the server finds it in the idempotency store (e.g., Redis SET NX, or a UNIQUE constraint on idempotency_key), and returns the original response instead of charging again.
+
+??? question "A consumer runs `UPDATE accounts SET balance = balance - 100 WHERE id = 123` and the message is redelivered. What goes wrong and how do you make it safe?"
+
+    The relative update is not idempotent: running it twice deducts 200 instead of 100. Make it safe by recording the transaction — guard the UPDATE with a check against a processed_transactions table (and insert the tx_id with ON CONFLICT DO NOTHING), or design for natural idempotency by setting an absolute value instead of a relative change.
+
+??? question "An interviewer asks: how long should you keep idempotency records, and what's the trade-off?"
+
+    Long enough to cover any realistic retry window. Stripe keeps keys 24 hours — the same key within 24h returns the original response, after that it's a new request. For consumer dedup tables, a common window is 7 days; storage cost rises with the window, but a duplicate arriving after expiry will be reprocessed, so you size the window to make that acceptable. SQS FIFO content-based deduplication offers only 5 minutes.
+
 ## Related topics
 
 - [Retry & Timeout](retry-timeout.md) — retry requires idempotency

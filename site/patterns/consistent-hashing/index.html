@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -573,6 +585,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -7076,6 +7100,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -11878,6 +11913,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -11995,6 +12041,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="consistent-hashing">Consistent Hashing<a class="headerlink" href="#consistent-hashing" title="Permanent link">&para;</a></h1>
@@ -12170,6 +12219,28 @@
 3. Virtual nodes → even distribution
 4. Apply it to: distributed caches (Redis Cluster), Cassandra, custom sharding
 5. For the interview problem: "I'd use consistent hashing to distribute users across cache nodes so adding a node doesn't invalidate all cached data"</p>
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why does <code>hash(key) % N</code> cause massive remapping when N changes, while consistent hashing only remaps ~1/N of keys?</summary>
+<p>With modulo hashing, changing N changes the result of the modulo for nearly every key — going from N=3 to N=4 remaps essentially everything. Consistent hashing places servers and keys on a ring; a key belongs to the next clockwise server. Adding or removing a server only affects the keys between it and its neighbor, so on average only 1/N of keys move.</p>
+</details>
+<details class="question">
+<summary>Why are virtual nodes needed — what problem do they solve on top of the basic ring?</summary>
+<p>With few physical servers, ring positions are uneven: one server might own 35% of the ring while another owns 15%. Virtual nodes map each physical server to many positions (e.g., 150 per server), so each server's total share averages out to ~1/N of keys regardless of where individual hash positions land.</p>
+</details>
+<details class="question">
+<summary>You add one node to a 10-node Memcached cluster and the cache hit rate collapses to near zero across all nodes. What's happening?</summary>
+<p>The client is using modulo hashing (<code>hash(key) % N</code>), so changing N from 10 to 11 remapped almost every key to a different node — effectively a 100% cache miss. With consistent hashing (e.g., libketama), adding a node would have remapped only ~10% of keys.</p>
+</details>
+<details class="question">
+<summary>Your team built a basic consistent hash ring with 4 servers and no virtual nodes. One server consistently handles far more traffic than the others. Why, and what's the fix?</summary>
+<p>Without virtual nodes, the 4 hash positions can cluster unevenly — one server may own a much larger arc of the ring (e.g., 35% vs 15%). The fix is virtual nodes: give each server ~150 positions on the ring so load evens out to ~25% each.</p>
+</details>
+<details class="question">
+<summary>An interviewer asks: are there alternatives to the ring-based approach, and what are their trade-offs?</summary>
+<p>Rendezvous (highest-random-weight) hashing computes a score per server per key and picks the highest — simpler, no ring data structure, better uniformity, but O(N) per lookup so it doesn't suit very large N. Jump consistent hash (Google) is O(log N) time and O(1) space with minimal remapping, good for distributed storage where buckets are numbered.</p>
+</details>
 <h2 id="related-topics">Related topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../sharding/">Sharding</a> — consistent hashing for database sharding</li>
@@ -12185,8 +12256,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 13:21:42 UTC">May 12, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -12283,6 +12372,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

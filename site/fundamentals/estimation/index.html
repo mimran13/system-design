@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -573,6 +585,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -1079,6 +1103,17 @@
     <span class="md-ellipsis">
       
         Interview angle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
       
     </span>
   </a>
@@ -11843,6 +11878,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -11971,6 +12017,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="back-of-envelope-estimation">Back-of-Envelope Estimation<a class="headerlink" href="#back-of-envelope-estimation" title="Permanent link">&para;</a></h1>
@@ -12151,6 +12200,28 @@
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>→ 100 TB storage → DynamoDB or Cassandra (not single-node SQL)
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>→ 10 GB hot cache → fits comfortably in ElastiCache cluster
 </span></code></pre></div></p>
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why does the read:write ratio matter more than the raw QPS number for your architecture?</summary>
+<p>Because it drives the architecture choice: a 1000:1 read-heavy system and a 1:1 read-write system need very different designs. Read-heavy points you at caching and read replicas; write-heavy pushes you toward different storage choices entirely. That's why a strong estimation answer always states the ratio explicitly — see the Twitter example above, where reads outnumber writes ~1000:1.</p>
+</details>
+<details class="question">
+<summary>Why is cache size typically estimated as roughly 20% of the working set?</summary>
+<p>Because of the Pareto principle: roughly 20% of the data serves 80% of the requests, so caching that hot 20% captures most of the benefit. You apply it as <code>cache size = 20% × working set</code> — e.g. a 3 TB 30-day working set needs ~600 GB of cache RAM. Remember Redis overhead (~1-2 bytes per byte stored) when sizing the actual allocation.</p>
+</details>
+<details class="question">
+<summary>You're designing a URL shortener taking 100 million new URLs per day with a 10:1 read:write ratio — what QPS do you plan for?</summary>
+<p>Write QPS = 100M / 86,400 ≈ 1,160 ≈ 1.2K writes/sec, and reads at 10× that ≈ 12K reads/sec. The useful shortcut is seconds per day ≈ 100,000, so 100M/day is roughly 1K/sec. The 10:1 read-heavy ratio then tells you to add caching and read replicas.</p>
+</details>
+<details class="question">
+<summary>You estimated 100 TB of storage for 5 years, but the provisioned disks are filling about 3× faster than planned — what did you forget?</summary>
+<p>Replication. The 100 TB is logical data size; with 3 replicas the actual disk provisioned is storage × 3 ≈ 300 TB. This is one of the listed estimation gotchas, alongside sizing for average instead of peak load (assume a 2x-10x peak multiplier).</p>
+</details>
+<details class="question">
+<summary>An interviewer asks you to size storage for a photo service: 1,000 photo uploads/sec at ~300 KB each, retained 5 years. Walk it through.</summary>
+<p>Daily storage = 1,000 × 300 KB × 86,400 ≈ 26 TB/day. Over 5 years (~1,825 days) that's roughly 47,000 TB ≈ 47 PB. State the assumptions out loud, round aggressively (accuracy within 10× is sufficient), and note this rules out single-node storage — you're in object-store territory, and ×3 if you count replication.</p>
+</details>
 <h2 id="related-topics">Related topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../scalability/">Scalability</a> — what to do once you know your numbers</li>
@@ -12165,8 +12236,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 13:21:42 UTC">May 12, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -12263,6 +12352,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

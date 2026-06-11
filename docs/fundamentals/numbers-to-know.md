@@ -184,6 +184,30 @@ When you hear a scale figure in an interview, immediately convert:
 
 ---
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why memorize the order of magnitude of these numbers rather than the exact figures?"
+
+    Because their purpose is fast back-of-envelope reasoning and tradeoff comparison, not precision — real numbers depend heavily on hardware, query complexity, and configuration anyway. What matters is the relative ladder: RAM ~0.1 μs, SSD ~0.1 ms (100× RAM), HDD ~10 ms (100× SSD), network 0.5-150 ms depending on distance. Knowing the ratios lets you instantly see which component dominates a design.
+
+??? question "Why does a single cross-continent call dominate a request's latency budget?"
+
+    Because a US → Europe round trip is ~80 ms (US → Asia ~150 ms), while an indexed database read in the same AZ is 1-5 ms and a Redis read ~0.5 ms — one cross-ocean hop costs more than dozens of local operations. With a 500ms SLA, database + network + app logic must all fit inside the budget, so cross-region hops are the first thing to eliminate or cache.
+
+??? question "Your API serves 10,000 QPS with 5 KB average responses — will a 1 Gbps NIC suffice?"
+
+    Bandwidth = 10,000 × 5 KB = 50 MB/s = 400 Mbps. A 1 Gbps NIC (125 MB/s) technically carries this, but per the bandwidth rule you need at least 1 Gbps with ~60% headroom — so you're at the edge, and any traffic growth or a 2-3× peak puts you over. Plan for 10 Gbps (1,250 MB/s) at this scale.
+
+??? question "Your team promises a 99.99% SLA but schedules a 5-minute maintenance window every week — is that feasible?"
+
+    No. Four nines allows only ~1.01 minutes of downtime per week (~52.6 minutes per year), so a single 5-minute weekly window alone blows the budget roughly 5× — before any unplanned incidents. You'd need zero-downtime maintenance, or to commit to 99.9% (10.1 min/week) instead.
+
+??? question "An interviewer says the system has 100M users — what numbers do you state immediately?"
+
+    ~11,500 QPS average (100M users × ~10 req/day ÷ 86,400) and ~30k QPS peak, since peak is typically 2-3× average. Then run the quick sanity checks: that QPS is beyond a single database's comfortable range (>10k), so you need read replicas and caching from the start. Converting stated scale into QPS within seconds is exactly what the interview cheat sheet above is for.
+
 ## Related topics
 
 - [Back-of-Envelope Estimation](estimation.md) — structured estimation framework

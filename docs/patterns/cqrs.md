@@ -231,6 +231,30 @@ Read models:
 4. Build multiple read models for different consumers (search, analytics, user dashboard)
 5. Acknowledge the complexity cost — only worthwhile at scale or in complex domains
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why can't a single data model be fully optimized for both reads and writes?"
+
+    Writes need a normalized, consistent structure with validation and multi-table transactions. Reads — often 90% of traffic — want denormalized, flat, query-shaped views (joins pre-computed, aggregates ready). Indexing and denormalizing for reads degrades write performance and consistency guarantees, so optimizing one side compromises the other. CQRS resolves the conflict by splitting them.
+
+??? question "Why are CQRS read models eventually consistent, and how large is the gap typically?"
+
+    The read side is populated asynchronously: the command writes to the write DB, publishes an event, and a projector consumes that event to update the read model. That pipeline introduces a gap — typically 50-200ms — during which the read model doesn't yet reflect the write. This is the price for independently scalable, query-optimized read models.
+
+??? question "A user submits an order, the API returns success, but when the app immediately queries the order history endpoint the new order is missing. What's happening and how do you handle it?"
+
+    This is the 'read your own writes' problem: the order is in the write DB, but the projector hasn't updated the read model yet (50-200ms gap). Options: return the command result directly from the write side instead of querying the read model, or do a client-side optimistic update and verify against the read model later. Waiting for the projection to confirm works but defeats the async purpose.
+
+??? question "Your team proposes CQRS with Kafka, projectors, and three read stores for a low-traffic user-settings CRUD service. What's your assessment?"
+
+    Overkill. CQRS earns its keep with complex domains, very different read/write scale (e.g., 100:1), or multiple read models for different consumers. For simple CRUD with low traffic, the operational complexity exceeds the benefit — and if you need read-after-write consistency immediately, eventual consistency actively hurts. A single model (or at most 'CQRS-lite' with a cache) is the right call.
+
+??? question "An interviewer asks: do you need Kafka or an event bus to do CQRS?"
+
+    No. CQRS only requires separate read and write models. A 'CQRS-lite' version writes to normalized PostgreSQL and synchronously updates a Redis read cache (or uses CDC) — no async event pipeline. The full event-streaming version (Kafka/EventBridge + projectors) buys multiple independently-built read models, at the cost of eventual consistency and operational complexity.
+
 ## Related topics
 
 - [Event Sourcing](event-sourcing.md) — natural companion to CQRS

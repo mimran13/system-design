@@ -706,6 +706,30 @@ Observability:
 
 ---
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why is exactly-once delivery 'a lie' in distributed message systems?"
+
+    Every distributed message system delivers at-least-once unless you take explicit steps: producers retry after crashing before recording success, consumers crash before committing offsets, and failed offset commits cause re-delivery. Even Kafka's exactly-once semantics (EOS) only covers producers + consumers within Kafka — not external side effects like database writes or API calls. The pragmatic answer is to stop trying to prevent duplicates and design consumers to tolerate them.
+
+??? question "Why is a business-level idempotency key stronger than deduplicating on event_id alone?"
+
+    Because a producer can re-send the same logical event with a *new* event_id — message-level dedup sees a fresh ID and processes it again, which for a payment means a double charge. Deduplicating on the business key (e.g. `payment_id` with `INSERT ... ON CONFLICT DO NOTHING`) catches this because the business key is unchanged. The page recommends combining both layers for defence in depth: event_id dedup catches network duplicates, business-key dedup catches replays.
+
+??? question "Your consumer inserts into the dedup table, then runs multi-step business work, and crashes halfway. On re-delivery the event is skipped — but the work is half-done. What went wrong and how do you fix it?"
+
+    You marked the event as processed before the business work completed — this is Failure 2, the bad case. Fix it with Option A: put the dedup INSERT and all business work in a single DB transaction, so a failure rolls back the dedup record too and the retry runs cleanly. If the work spans systems, use Option B: only mark processed after all steps complete, which requires each step to be individually idempotent.
+
+??? question "One event keeps failing in your consumer, lag is growing, and the whole partition is blocked. What's happening and what's the standard fix?"
+
+    That's a poison message — an event that always fails processing, causing an infinite retry loop that blocks the partition. The standard fix is a Dead Letter Queue: after MAX_RETRIES, send the event to a separate DLQ topic, commit the offset so the partition unblocks, and alert a human to investigate, fix, or replay. Reserve endless retries for transient errors (network, DB down); DLQ schema errors, permanent business failures, and consumer bugs.
+
+??? question "An interviewer asks: 'What's the difference between Kafka exactly-once semantics and idempotent consumers?'"
+
+    Kafka EOS makes the chain consume → produce → commit offset atomic *within Kafka* — consume from topic A, transform, produce to topic B, and commit offsets all happen together or not at all. But it doesn't cover side effects outside Kafka: writes to Postgres or calls to Stripe are still at-least-once. So even with EOS, consumers need idempotency for any non-Kafka work — EOS is one defence; idempotency is the primary one.
+
 ## Related
 
 - [Idempotency](../patterns/idempotency.md) — broader pattern

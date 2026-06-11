@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -573,6 +585,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -2161,6 +2185,17 @@
     <span class="md-ellipsis">
       
         Interview angle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
       
     </span>
   </a>
@@ -12675,6 +12710,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12810,6 +12856,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="database-internals-query-planners-mvcc-and-vacuum">Database Internals: Query Planners, MVCC, and Vacuum<a class="headerlink" href="#database-internals-query-planners-mvcc-and-vacuum" title="Permanent link">&para;</a></h1>
@@ -13450,6 +13499,28 @@
 <p>Hit the diagnostic checklist: pg_stat_statements for which queries got slower; pg_stat_user_tables for dead tuple ratios; pg_stat_activity for long-running transactions or idle-in-transaction. The most common culprits in week-2+ of production are: bloat from long transactions blocking vacuum, autovacuum falling behind on growing tables, missing indexes on queries that now hit larger data, or replication slots accumulating WAL. Each has a specific signature in those queries.</p>
 </blockquote>
 <hr />
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why don't readers and writers block each other in Postgres?</summary>
+<p>Because of MVCC: an UPDATE doesn't modify a row in place — it writes a new row version and marks the old one with <code>xmax</code>, while every row version carries <code>xmin</code>/<code>xmax</code> transaction IDs. Each transaction sees a consistent snapshot defined by which versions are visible to it, so a reader keeps seeing the old version while a writer creates a new one. This is how Postgres implements isolation without locks — and the price is dead row versions that vacuum must clean up later.</p>
+</details>
+<details class="question">
+<summary>Why doesn't a regular VACUUM shrink the table file on disk?</summary>
+<p>Regular VACUUM only marks dead tuples' space as reusable within the table file (and updates the Visibility and Free Space Maps) — it never returns space to the OS. Only VACUUM FULL rewrites the table and shrinks the file, but it takes an ACCESS EXCLUSIVE lock that blocks everything. For production, use pg_repack instead: it rebuilds the table online using triggers to track changes.</p>
+</details>
+<details class="question">
+<summary>EXPLAIN ANALYZE shows <code>rows=10</code> estimated but <code>actual rows=10000000</code> — what's happening, and what do you do?</summary>
+<p>The planner is being misled by bad statistics, so it's choosing plans based on a wildly wrong selectivity estimate. The usual causes: out-of-date statistics after heavy changes (fix with <code>ANALYZE</code>), correlated columns that Postgres assumes are independent (fix with <code>CREATE STATISTICS ... (dependencies)</code>), or too few sample points (raise the column's statistics target, default 100). Comparing estimated vs actual rows is the single most important thing to check in EXPLAIN output.</p>
+</details>
+<details class="question">
+<summary>Autovacuum is running on schedule, but <code>n_dead_tup</code> on your busiest table never goes down — what's happening?</summary>
+<p>Something is holding back the xmin horizon, so vacuum can't declare those tuples dead — some transaction might still need the old versions. The usual culprits: a long-running transaction or an <code>idle in transaction</code> session (check <code>pg_stat_activity</code> ordered by <code>backend_xmin</code>), a stale replication slot accumulating WAL, or <code>hot_standby_feedback = on</code> with a long query on a replica. Kill or fix the blocker; long-term, set <code>idle_in_transaction_session_timeout</code>.</p>
+</details>
+<details class="question">
+<summary>An interviewer asks: 'Our Postgres has been getting slower for weeks. What do you check?' How do you answer?</summary>
+<p>Work the diagnostic checklist: <code>pg_stat_statements</code> to see which queries got slower, <code>pg_stat_user_tables</code> for dead-tuple ratios (bloat), and <code>pg_stat_activity</code> for long-running or idle-in-transaction sessions. The most common week-2+ culprits are bloat from long transactions blocking vacuum, autovacuum falling behind on growing tables (the 20% scale factor default is too lazy for large tables), missing indexes as data grows, or replication slots accumulating WAL. Each has a specific signature in those queries.</p>
+</details>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../storage-internals/">Storage Engine Internals</a> — B-tree vs LSM at conceptual level</li>
@@ -13467,8 +13538,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 19, 2026 15:54:10 UTC">May 19, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -13565,6 +13654,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

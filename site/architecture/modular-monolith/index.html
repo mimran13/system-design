@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -573,6 +585,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -3176,6 +3200,17 @@
     <span class="md-ellipsis">
       
         Interview angle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
       
     </span>
   </a>
@@ -11987,6 +12022,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12129,6 +12175,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="modular-monolith">Modular Monolith<a class="headerlink" href="#modular-monolith" title="Permanent link">&para;</a></h1>
@@ -12508,6 +12557,29 @@
 <p>When modules genuinely need different scaling characteristics (one needs 1000 instances, another needs 5), when the team is large enough that single-deployable coordination becomes a bottleneck (~50+ engineers in one codebase), or when regulatory / security boundaries require physical separation (PCI scope reduction). For most teams, modular monolith is the right starting point and possibly the permanent answer.</p>
 </blockquote>
 <hr />
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why does a modular monolith capture most of microservices' benefits at a fraction of the cost?</summary>
+<p>Because most architectural problems are about modularity, not deployment topology. A well-modularised single deployable gives you team autonomy, clear boundaries, and independent reasoning per module — without paying for network latency on every call, distributed transactions, service discovery/mesh, database-per-service operations, and cross-service tracing. It's typically 5-10× cheaper than microservices at small-to-mid scale.</p>
+</details>
+<details class="question">
+<summary>Why must each module own its tables even though all modules share one physical database?</summary>
+<p>Shared tables are the most insidious form of coupling: schema changes break unrelated modules, one module's slow queries hurt everyone, and "quick fix" cross-module reads proliferate. Keeping tables module-private (e.g., schema-per-module with per-user grants) means other modules go through the public API like <code>payments.get_payment(order_id)</code> instead of a SQL JOIN. Modules that share tables aren't modules — they're folders.</p>
+</details>
+<details class="question">
+<summary>Your codebase has clean <code>orders/</code>, <code>payments/</code>, <code>inventory/</code> folders, yet every change still ripples across all three. What went wrong?</summary>
+<p>These are modules in name only — folder names don't enforce boundaries; tooling does. Everything imports everything, including internal classes like repositories, instead of going only through each module's public API. Fix it with enforcement tools like ArchUnit (Java), dependency-cruiser (JS/TS), pylint import constraints, or language module visibility, plus per-module data ownership.</p>
+</details>
+<details class="question">
+<summary>One module in your modular monolith suddenly needs roughly 1000× more compute than the rest. What do you do?</summary>
+<p>This is exactly the "stops fitting" case: modules with very different scaling profiles justify splitting. Extract that module into its own service via the strangler fig path — replace its in-process API with an HTTP/gRPC adapter, move it to its own deployment unit, and migrate its database later. If the modular structure was real, this split is mechanical; the interface stays the same and only the implementation changes from in-process call to RPC.</p>
+</details>
+<details class="question">
+<summary>An interviewer asks: 'When would you NOT recommend a modular monolith?'</summary>
+<p>When modules genuinely need different scaling characteristics (one needs 1000 instances, another 5), when the org is large enough that single-deployable coordination becomes a bottleneck (~50+ engineers in one codebase), or when regulatory/security boundaries require physical separation (e.g., PCI scope reduction). It also doesn't fit a mandated multi-language stack. For most teams, though, it's the right starting point and possibly the permanent answer.</p>
+</details>
+<hr />
 <h2 id="related-topics">Related topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../monolith-vs-microservices/">Monolith vs Microservices</a> — the broader debate</li>
@@ -12524,8 +12596,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 13:21:42 UTC">May 12, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -12622,6 +12712,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -573,6 +585,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -7169,6 +7193,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12232,6 +12267,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12349,6 +12395,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="durable-workflows">Durable Workflows<a class="headerlink" href="#durable-workflows" title="Permanent link">&para;</a></h1>
@@ -12962,6 +13011,28 @@ If you find yourself writing pseudo-code with loops, conditions, and dynamic ste
 <li>"When would you NOT use a workflow engine?" — sub-second flows, no state across time, pure data ETL (use Airflow/Dagster instead)</li>
 <li>"How do you handle a workflow that needs to run for 5 years?" — continue-as-new (Temporal) or chained executions (Step Functions); persist long-term state in a regular DB you read on each execution start</li>
 </ul>
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why must workflow code be deterministic, while activity code can do anything?</summary>
+<p>The engine recovers a crashed workflow by replaying its recorded event history through the workflow function to re-derive local variables. If the code takes a different path on replay (e.g., <code>datetime.now()</code> or <code>random.choice</code> returns something new), replay diverges from history and fails. Activities are exempt because the engine records their results and returns the recorded value on replay instead of re-running them — so all non-determinism (HTTP calls, IDs, current time) belongs in activities.</p>
+</details>
+<details class="question">
+<summary>Why does a workflow that 'sleeps for 48 hours' survive a deploy or worker crash mid-sleep?</summary>
+<p>The sleep isn't a thread blocking in memory — the engine persists a TimerStarted event in the workflow's history and tears the function down. When the timer fires (even days later, on a different worker after a deploy), the engine replays events 1-N to reconstruct local variables and continues from the next un-executed step. The 'normal function that sleeps' is an illusion built on durable, replayable history.</p>
+</details>
+<details class="question">
+<summary>You deploy v2 of a workflow that adds a fraud-check activity before the charge step. In-flight workflows started under v1 begin failing. What happened and what's the fix?</summary>
+<p>Replay of the v1 history through the v2 code diverges: the history says 'charge_card was the first activity' but the new code schedules fraud_check first. The fix is version markers — <code>workflow.patched("v2-add-fraud-check")</code> / the GetVersion API — so workflows that already passed that point take the old path while new workflows take the new one. Alternatives per the versioning table: drain-and-redeploy for short workflows, or a new workflow type for breaking changes.</p>
+</details>
+<details class="question">
+<summary>A subscription workflow designed to run for years dies after months with the engine refusing to continue. What limit did it hit and how should it have been designed?</summary>
+<p>It hit the history size limit — Temporal allows roughly 50K events / 50 MB per workflow execution, and an unbounded loop of monthly charges grows history forever. The design fix is continue-as-new: the workflow processes a bounded number of iterations (e.g., 12 monthly cycles), then restarts itself as a fresh execution carrying forward its state. Step Functions Standard has the analogous constraint via its 1-year max duration.</p>
+</details>
+<details class="question">
+<summary>An interviewer asks: how do you choose between Temporal and AWS Step Functions?</summary>
+<p>Temporal when the workflow is code-heavy (complex branching, loops, dynamic step counts), you want workflows in the same language as your services, you need signals/queries/child workflows, or multi-cloud is a constraint — accepting you must operate it or pay for Temporal Cloud. Step Functions when you're already deep in AWS, the flow is state-machine-shaped, you lean on native AWS integrations, or you want the visual diagram for audit. The whiteboard test: if it fits as a state diagram, Step Functions is probably fine; if it's pseudo-code with loops and conditions, Temporal fits better.</p>
+</details>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../saga-pattern/">Saga Pattern</a> — workflow engines are one way to implement sagas</li>
@@ -12980,8 +13051,26 @@ If you find yourself writing pseudo-code with loops, conditions, and dynamic ste
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 11, 2026 12:27:11 UTC">June 11, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -13078,6 +13167,8 @@ If you find yourself writing pseudo-code with loops, conditions, and dynamic ste
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

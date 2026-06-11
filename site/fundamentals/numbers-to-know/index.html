@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -573,6 +585,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -1001,6 +1025,17 @@
     <span class="md-ellipsis">
       
         Interview cheat sheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
       
     </span>
   </a>
@@ -11855,6 +11890,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -11983,6 +12029,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="numbers-every-engineer-should-know">Numbers Every Engineer Should Know<a class="headerlink" href="#numbers-every-engineer-should-know" title="Permanent link">&para;</a></h1>
@@ -12402,6 +12451,28 @@
 - Is the QPS within single DB range? (&lt;10k: yes, &gt;50k: need read replicas)
 - Does bandwidth fit a 10Gbps link? (125 MB/s)</p>
 <hr />
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why memorize the order of magnitude of these numbers rather than the exact figures?</summary>
+<p>Because their purpose is fast back-of-envelope reasoning and tradeoff comparison, not precision — real numbers depend heavily on hardware, query complexity, and configuration anyway. What matters is the relative ladder: RAM ~0.1 μs, SSD ~0.1 ms (100× RAM), HDD ~10 ms (100× SSD), network 0.5-150 ms depending on distance. Knowing the ratios lets you instantly see which component dominates a design.</p>
+</details>
+<details class="question">
+<summary>Why does a single cross-continent call dominate a request's latency budget?</summary>
+<p>Because a US → Europe round trip is ~80 ms (US → Asia ~150 ms), while an indexed database read in the same AZ is 1-5 ms and a Redis read ~0.5 ms — one cross-ocean hop costs more than dozens of local operations. With a 500ms SLA, database + network + app logic must all fit inside the budget, so cross-region hops are the first thing to eliminate or cache.</p>
+</details>
+<details class="question">
+<summary>Your API serves 10,000 QPS with 5 KB average responses — will a 1 Gbps NIC suffice?</summary>
+<p>Bandwidth = 10,000 × 5 KB = 50 MB/s = 400 Mbps. A 1 Gbps NIC (125 MB/s) technically carries this, but per the bandwidth rule you need at least 1 Gbps with ~60% headroom — so you're at the edge, and any traffic growth or a 2-3× peak puts you over. Plan for 10 Gbps (1,250 MB/s) at this scale.</p>
+</details>
+<details class="question">
+<summary>Your team promises a 99.99% SLA but schedules a 5-minute maintenance window every week — is that feasible?</summary>
+<p>No. Four nines allows only ~1.01 minutes of downtime per week (~52.6 minutes per year), so a single 5-minute weekly window alone blows the budget roughly 5× — before any unplanned incidents. You'd need zero-downtime maintenance, or to commit to 99.9% (10.1 min/week) instead.</p>
+</details>
+<details class="question">
+<summary>An interviewer says the system has 100M users — what numbers do you state immediately?</summary>
+<p>~11,500 QPS average (100M users × ~10 req/day ÷ 86,400) and ~30k QPS peak, since peak is typically 2-3× average. Then run the quick sanity checks: that QPS is beyond a single database's comfortable range (&gt;10k), so you need read replicas and caching from the start. Converting stated scale into QPS within seconds is exactly what the interview cheat sheet above is for.</p>
+</details>
 <h2 id="related-topics">Related topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../estimation/">Back-of-Envelope Estimation</a> — structured estimation framework</li>
@@ -12417,8 +12488,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 13:21:42 UTC">May 12, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -12515,6 +12604,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

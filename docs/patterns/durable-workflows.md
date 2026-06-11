@@ -364,6 +364,30 @@ A common AWS pattern: **Step Functions Standard for the business process; Expres
 - "When would you NOT use a workflow engine?" — sub-second flows, no state across time, pure data ETL (use Airflow/Dagster instead)
 - "How do you handle a workflow that needs to run for 5 years?" — continue-as-new (Temporal) or chained executions (Step Functions); persist long-term state in a regular DB you read on each execution start
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why must workflow code be deterministic, while activity code can do anything?"
+
+    The engine recovers a crashed workflow by replaying its recorded event history through the workflow function to re-derive local variables. If the code takes a different path on replay (e.g., `datetime.now()` or `random.choice` returns something new), replay diverges from history and fails. Activities are exempt because the engine records their results and returns the recorded value on replay instead of re-running them — so all non-determinism (HTTP calls, IDs, current time) belongs in activities.
+
+??? question "Why does a workflow that 'sleeps for 48 hours' survive a deploy or worker crash mid-sleep?"
+
+    The sleep isn't a thread blocking in memory — the engine persists a TimerStarted event in the workflow's history and tears the function down. When the timer fires (even days later, on a different worker after a deploy), the engine replays events 1-N to reconstruct local variables and continues from the next un-executed step. The 'normal function that sleeps' is an illusion built on durable, replayable history.
+
+??? question "You deploy v2 of a workflow that adds a fraud-check activity before the charge step. In-flight workflows started under v1 begin failing. What happened and what's the fix?"
+
+    Replay of the v1 history through the v2 code diverges: the history says 'charge_card was the first activity' but the new code schedules fraud_check first. The fix is version markers — `workflow.patched("v2-add-fraud-check")` / the GetVersion API — so workflows that already passed that point take the old path while new workflows take the new one. Alternatives per the versioning table: drain-and-redeploy for short workflows, or a new workflow type for breaking changes.
+
+??? question "A subscription workflow designed to run for years dies after months with the engine refusing to continue. What limit did it hit and how should it have been designed?"
+
+    It hit the history size limit — Temporal allows roughly 50K events / 50 MB per workflow execution, and an unbounded loop of monthly charges grows history forever. The design fix is continue-as-new: the workflow processes a bounded number of iterations (e.g., 12 monthly cycles), then restarts itself as a fresh execution carrying forward its state. Step Functions Standard has the analogous constraint via its 1-year max duration.
+
+??? question "An interviewer asks: how do you choose between Temporal and AWS Step Functions?"
+
+    Temporal when the workflow is code-heavy (complex branching, loops, dynamic step counts), you want workflows in the same language as your services, you need signals/queries/child workflows, or multi-cloud is a constraint — accepting you must operate it or pay for Temporal Cloud. Step Functions when you're already deep in AWS, the flow is state-machine-shaped, you lean on native AWS integrations, or you want the visual diagram for audit. The whiteboard test: if it fits as a state diagram, Step Functions is probably fine; if it's pseudo-code with loops and conditions, Temporal fits better.
+
 ## Related
 
 - [Saga Pattern](saga-pattern.md) — workflow engines are one way to implement sagas

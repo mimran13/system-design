@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -573,6 +585,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -2001,6 +2025,17 @@
     <span class="md-ellipsis">
       
         Interview angle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
       
     </span>
   </a>
@@ -11899,6 +11934,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12034,6 +12080,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="consistency-models">Consistency Models<a class="headerlink" href="#consistency-models" title="Permanent link">&para;</a></h1>
@@ -12257,6 +12306,28 @@
 2. State the staleness tolerance — can the user see stale data for 1 second? 10 seconds?
 3. Map to a model — read-your-writes for profile data, eventual for feed rankings, strong for balances
 4. Mention the performance cost — strong consistency = more latency, less throughput</p>
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why is linearizability the most expensive consistency model to provide?</summary>
+<p>Because every operation must appear to take effect instantaneously at a single point in real time, as if there were one global copy of the data — which requires coordination across nodes for every operation. That coordination costs latency and reduces availability. That's why it's reserved for cases that truly need it: distributed locks, leader election, financial transactions (systems like etcd and Zookeeper).</p>
+</details>
+<details class="question">
+<summary>Why is causal consistency a good fit for comment threads and social feeds?</summary>
+<p>Because the guarantee maps to what users actually need: causally related operations (a reply depends on the post it answers) are seen in causal order by all nodes, so nobody ever sees the reply before the post. Concurrent, unrelated operations may still be seen in different orders, which is fine for feeds — and that relaxation makes it cheaper and more available than sequential or linearizable consistency.</p>
+</details>
+<details class="question">
+<summary>A user updates their profile photo, refreshes the page, and still sees the old photo — which consistency guarantee is missing, and how would you fix it?</summary>
+<p>Read-your-writes (session consistency) is being violated: after a write, the same session should always read that value or a newer one, even if other users see the old photo for a while. The fix is to route the user's post-write reads to fresh data — e.g. DynamoDB's <code>ConsistentRead=True</code> for that read, or sticky sessions to the node that took the write.</p>
+</details>
+<details class="question">
+<summary>Your dashboard polls a counter and shows 5, then on the next poll shows 3, then 5 again — which consistency property is violated?</summary>
+<p>Monotonic read consistency: once a client has read a value, it should never read an older one — reads should move forward in time, never backward. Here the client's reads are hitting different replicas with different replication lag, so a later read landed on a staler node. Pinning a client's reads to one replica (or a session guarantee) prevents this.</p>
+</details>
+<details class="question">
+<summary>An interviewer asks: 'How do you choose a consistency model for the system we're designing?' What's the strong answer pattern?</summary>
+<p>First identify the data — user-facing, financial, or analytics. Then state the staleness tolerance: can a user see stale data for 1 second? 10? Map that to a model — read-your-writes for profile updates, eventual for feed rankings, strong/linearizable for balances. Finally name the cost: stronger consistency means more latency and less throughput, so you only pay for it where the data demands it.</p>
+</details>
 <h2 id="related-topics">Related topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../cap-theorem/">CAP Theorem</a> — CP vs AP is a coarse version of this spectrum</li>
@@ -12271,8 +12342,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 13:21:42 UTC">May 12, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -12369,6 +12458,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

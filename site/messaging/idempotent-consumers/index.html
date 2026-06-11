@@ -196,6 +196,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+      </div>
+    
   </nav>
   
     
@@ -573,6 +585,18 @@
     </a>
     System Design Encyclopedia
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimran13/system-design" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimran13/system-design
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -6818,6 +6842,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12446,6 +12481,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#test-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#related" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12563,6 +12609,9 @@
     
   </nav>
 
+
+  
+  
 
 
 <h1 id="idempotent-consumers-in-production">Idempotent Consumers in Production<a class="headerlink" href="#idempotent-consumers-in-production" title="Permanent link">&para;</a></h1>
@@ -13161,6 +13210,28 @@
 <p>Kafka EOS guarantees that within Kafka, the chain of "consume → produce → commit offset" is atomic. If you consume from topic A, transform, produce to topic B, and commit offsets, EOS ensures all three happen together or not at all. But it doesn't cover side effects outside Kafka — if your consumer also writes to Postgres or calls Stripe, those are still at-least-once. So even with EOS, your consumers need idempotency for any non-Kafka work. EOS is one defence; idempotency is the primary one.</p>
 </blockquote>
 <hr />
+<h2 id="test-yourself">Test yourself<a class="headerlink" href="#test-yourself" title="Permanent link">&para;</a></h2>
+<p>Answers are hidden — commit to an answer before expanding.</p>
+<details class="question">
+<summary>Why is exactly-once delivery 'a lie' in distributed message systems?</summary>
+<p>Every distributed message system delivers at-least-once unless you take explicit steps: producers retry after crashing before recording success, consumers crash before committing offsets, and failed offset commits cause re-delivery. Even Kafka's exactly-once semantics (EOS) only covers producers + consumers within Kafka — not external side effects like database writes or API calls. The pragmatic answer is to stop trying to prevent duplicates and design consumers to tolerate them.</p>
+</details>
+<details class="question">
+<summary>Why is a business-level idempotency key stronger than deduplicating on event_id alone?</summary>
+<p>Because a producer can re-send the same logical event with a <em>new</em> event_id — message-level dedup sees a fresh ID and processes it again, which for a payment means a double charge. Deduplicating on the business key (e.g. <code>payment_id</code> with <code>INSERT ... ON CONFLICT DO NOTHING</code>) catches this because the business key is unchanged. The page recommends combining both layers for defence in depth: event_id dedup catches network duplicates, business-key dedup catches replays.</p>
+</details>
+<details class="question">
+<summary>Your consumer inserts into the dedup table, then runs multi-step business work, and crashes halfway. On re-delivery the event is skipped — but the work is half-done. What went wrong and how do you fix it?</summary>
+<p>You marked the event as processed before the business work completed — this is Failure 2, the bad case. Fix it with Option A: put the dedup INSERT and all business work in a single DB transaction, so a failure rolls back the dedup record too and the retry runs cleanly. If the work spans systems, use Option B: only mark processed after all steps complete, which requires each step to be individually idempotent.</p>
+</details>
+<details class="question">
+<summary>One event keeps failing in your consumer, lag is growing, and the whole partition is blocked. What's happening and what's the standard fix?</summary>
+<p>That's a poison message — an event that always fails processing, causing an infinite retry loop that blocks the partition. The standard fix is a Dead Letter Queue: after MAX_RETRIES, send the event to a separate DLQ topic, commit the offset so the partition unblocks, and alert a human to investigate, fix, or replay. Reserve endless retries for transient errors (network, DB down); DLQ schema errors, permanent business failures, and consumer bugs.</p>
+</details>
+<details class="question">
+<summary>An interviewer asks: 'What's the difference between Kafka exactly-once semantics and idempotent consumers?'</summary>
+<p>Kafka EOS makes the chain consume → produce → commit offset atomic <em>within Kafka</em> — consume from topic A, transform, produce to topic B, and commit offsets all happen together or not at all. But it doesn't cover side effects outside Kafka: writes to Postgres or calls to Stripe are still at-least-once. So even with EOS, consumers need idempotency for any non-Kafka work — EOS is one defence; idempotency is the primary one.</p>
+</details>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../patterns/idempotency/">Idempotency</a> — broader pattern</li>
@@ -13180,8 +13251,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 13:21:42 UTC">May 12, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -13278,6 +13367,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/diagrams.js"></script>
       
     
   </body>

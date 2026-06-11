@@ -798,6 +798,30 @@ Different mechanics, same problems. The skills transfer.
 
 ---
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why don't readers and writers block each other in Postgres?"
+
+    Because of MVCC: an UPDATE doesn't modify a row in place — it writes a new row version and marks the old one with `xmax`, while every row version carries `xmin`/`xmax` transaction IDs. Each transaction sees a consistent snapshot defined by which versions are visible to it, so a reader keeps seeing the old version while a writer creates a new one. This is how Postgres implements isolation without locks — and the price is dead row versions that vacuum must clean up later.
+
+??? question "Why doesn't a regular VACUUM shrink the table file on disk?"
+
+    Regular VACUUM only marks dead tuples' space as reusable within the table file (and updates the Visibility and Free Space Maps) — it never returns space to the OS. Only VACUUM FULL rewrites the table and shrinks the file, but it takes an ACCESS EXCLUSIVE lock that blocks everything. For production, use pg_repack instead: it rebuilds the table online using triggers to track changes.
+
+??? question "EXPLAIN ANALYZE shows `rows=10` estimated but `actual rows=10000000` — what's happening, and what do you do?"
+
+    The planner is being misled by bad statistics, so it's choosing plans based on a wildly wrong selectivity estimate. The usual causes: out-of-date statistics after heavy changes (fix with `ANALYZE`), correlated columns that Postgres assumes are independent (fix with `CREATE STATISTICS ... (dependencies)`), or too few sample points (raise the column's statistics target, default 100). Comparing estimated vs actual rows is the single most important thing to check in EXPLAIN output.
+
+??? question "Autovacuum is running on schedule, but `n_dead_tup` on your busiest table never goes down — what's happening?"
+
+    Something is holding back the xmin horizon, so vacuum can't declare those tuples dead — some transaction might still need the old versions. The usual culprits: a long-running transaction or an `idle in transaction` session (check `pg_stat_activity` ordered by `backend_xmin`), a stale replication slot accumulating WAL, or `hot_standby_feedback = on` with a long query on a replica. Kill or fix the blocker; long-term, set `idle_in_transaction_session_timeout`.
+
+??? question "An interviewer asks: 'Our Postgres has been getting slower for weeks. What do you check?' How do you answer?"
+
+    Work the diagnostic checklist: `pg_stat_statements` to see which queries got slower, `pg_stat_user_tables` for dead-tuple ratios (bloat), and `pg_stat_activity` for long-running or idle-in-transaction sessions. The most common week-2+ culprits are bloat from long transactions blocking vacuum, autovacuum falling behind on growing tables (the 20% scale factor default is too lazy for large tables), missing indexes as data grows, or replication slots accumulating WAL. Each has a specific signature in those queries.
+
 ## Related
 
 - [Storage Engine Internals](storage-internals.md) — B-tree vs LSM at conceptual level

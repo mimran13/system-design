@@ -267,6 +267,30 @@ Audit logs:         Write-Around                  (write-once, rarely read)
 4. Choose **write-through** when the data must be fresh immediately after writes
 5. Choose **write-behind** when you need to absorb write spikes and can tolerate brief inconsistency
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why is cache-aside the default choice for general-purpose read-heavy workloads?"
+
+    Three reasons: it only caches data that is actually read, so there's no cache bloat; cache failure is non-fatal because the app falls through to the DB; and the cached data model can differ from the DB schema. The trade-offs are that the first request after a miss is slow and there's a window of stale data between a DB write and the cache refresh.
+
+??? question "Why does write-behind (write-back) risk data loss, and what mitigates it?"
+
+    Write-behind acknowledges the client as soon as the cache accepts the write and flushes to the database asynchronously — so if the cache crashes before flushing, those writes are lost. Mitigation requires a durable write-ahead log or replication; for Redis, the AOF log mitigates the durability risk. That's why it's best for high write throughput with tolerable durability windows, like counters or leaderboards.
+
+??? question "Your log-ingestion pipeline writes millions of audit records that are almost never read, and they're evicting genuinely hot data from the cache. Which strategy fixes this?"
+
+    Write-around: writes go directly to the database, bypassing the cache entirely, and the cache is only populated on subsequent reads. This prevents cache pollution from write-heavy data that won't be read again. The cost is that the first read after a write incurs a cache miss, which is fine for write-once, rarely-read data like audit trails.
+
+??? question "Your homepage content is cached with a TTL, and you observe periodic latency spikes when many entries expire at once. What strategy smooths this out?"
+
+    Refresh-ahead (prefetch): the cache proactively refreshes entries before they expire based on access patterns, so requests for hot keys never see a miss and mass-expiry spikes are smoothed out. The costs are wasted resources when the prediction is wrong and added implementation complexity, which is why it's best for highly predictable, stable hot sets like homepage content or top-N products.
+
+??? question "An interviewer asks: 'Users must see their profile update immediately after saving — which write strategy do you pick, and what does it cost?'"
+
+    Write-through: every write goes synchronously to both the cache and the database before acknowledging the client, so the cache is always consistent with the DB and there are no stale reads after a write. The cost is write latency — cache latency plus DB latency, additive — and the cache gets populated even for data that may never be read again. This matches the strong-answer pattern: choose write-through when data must be fresh immediately after writes.
+
 ## Related topics
 
 - [Cache Invalidation](cache-invalidation.md) — the hardest part of any strategy

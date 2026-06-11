@@ -185,6 +185,30 @@ Example: N=3, W=2, R=2 → 2+2=4 > 3 ✓ (QUORUM in Cassandra)
 3. Map to a model — read-your-writes for profile data, eventual for feed rankings, strong for balances
 4. Mention the performance cost — strong consistency = more latency, less throughput
 
+## Test yourself
+
+Answers are hidden — commit to an answer before expanding.
+
+??? question "Why is linearizability the most expensive consistency model to provide?"
+
+    Because every operation must appear to take effect instantaneously at a single point in real time, as if there were one global copy of the data — which requires coordination across nodes for every operation. That coordination costs latency and reduces availability. That's why it's reserved for cases that truly need it: distributed locks, leader election, financial transactions (systems like etcd and Zookeeper).
+
+??? question "Why is causal consistency a good fit for comment threads and social feeds?"
+
+    Because the guarantee maps to what users actually need: causally related operations (a reply depends on the post it answers) are seen in causal order by all nodes, so nobody ever sees the reply before the post. Concurrent, unrelated operations may still be seen in different orders, which is fine for feeds — and that relaxation makes it cheaper and more available than sequential or linearizable consistency.
+
+??? question "A user updates their profile photo, refreshes the page, and still sees the old photo — which consistency guarantee is missing, and how would you fix it?"
+
+    Read-your-writes (session consistency) is being violated: after a write, the same session should always read that value or a newer one, even if other users see the old photo for a while. The fix is to route the user's post-write reads to fresh data — e.g. DynamoDB's `ConsistentRead=True` for that read, or sticky sessions to the node that took the write.
+
+??? question "Your dashboard polls a counter and shows 5, then on the next poll shows 3, then 5 again — which consistency property is violated?"
+
+    Monotonic read consistency: once a client has read a value, it should never read an older one — reads should move forward in time, never backward. Here the client's reads are hitting different replicas with different replication lag, so a later read landed on a staler node. Pinning a client's reads to one replica (or a session guarantee) prevents this.
+
+??? question "An interviewer asks: 'How do you choose a consistency model for the system we're designing?' What's the strong answer pattern?"
+
+    First identify the data — user-facing, financial, or analytics. Then state the staleness tolerance: can a user see stale data for 1 second? 10? Map that to a model — read-your-writes for profile updates, eventual for feed rankings, strong/linearizable for balances. Finally name the cost: stronger consistency means more latency and less throughput, so you only pay for it where the data demands it.
+
 ## Related topics
 
 - [CAP Theorem](cap-theorem.md) — CP vs AP is a coarse version of this spectrum
