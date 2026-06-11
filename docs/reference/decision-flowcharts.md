@@ -5,7 +5,7 @@ tags:
 
 # Decision Flowcharts
 
-When you're designing rather than diagnosing. 10 decision trees for the most common architectural choices, each with one-line rationale per branch.
+When you're designing rather than diagnosing. 11 decision trees for the most common architectural choices, each with one-line rationale per branch.
 
 This page is the **decision-tool complement** to [Symptom → Concept Lookup](symptom-lookup.md). Symptom Lookup = "I see X, what is it?" Flowcharts = "I'm choosing, what should I pick?"
 
@@ -31,6 +31,10 @@ Use these as starting points — every real decision has more nuance than a flow
   "Write-through: write to cache + DB together": "../../caching/caching-strategies/",
   "Cache-aside app loads on miss": "../../caching/caching-strategies/",
   "Write-back cache → DB later": "../../caching/caching-strategies/",
+  "Partition within the DB native range/list/hash partitioning": "../../fundamentals/partitioning-fundamentals/",
+  "Read replicas + caching before any sharding": "../../patterns/read-replicas/",
+  "Shard across machines app-level, Vitess, or Citus": "../../patterns/sharding-tooling/",
+  "Fix indexes / queries first partitioning won't help": "../../fundamentals/database-internals-deep-dive/",
   "Shard by user_id / tenant_id even distribution; natural per-tenant queries": "../../patterns/sharding/",
   "Shard by content hash even distribution; no natural locality": "../../patterns/consistent-hashing/",
   "Shard by region/country compliance + locality, but skew risk": "../../architecture/multi-region/",
@@ -164,7 +168,42 @@ graph TD
 
 ---
 
-## 6. Sharding key — how do you partition?
+## 6. Partition or shard?
+
+The table is big — do you partition within one database, or shard across machines?
+
+```mermaid
+graph TD
+    A[Big table is slowing down] --> B{Is one machine<br/>actually exhausted?<br/>CPU / IOPS / RAM / storage}
+    B -->|no| C{Queries filter on a<br/>natural key — time, tenant, region?}
+    C -->|yes| D[Partition within the DB<br/>native range/list/hash partitioning]
+    C -->|no| E{Slow because of<br/>old data you never query?}
+    E -->|yes| D
+    E -->|no| F[Fix indexes / queries first<br/>partitioning won't help]
+    B -->|yes| G{Exhausted by reads<br/>or writes?}
+    G -->|reads| H[Read replicas + caching<br/>before any sharding]
+    G -->|writes / storage| I{Clear shard key covering<br/>95%+ of queries?}
+    I -->|yes| J[Shard across machines<br/>app-level, Vitess, or Citus]
+    I -->|no| K[⚠️ Fix the data model first —<br/>sharding without a key is pain]
+```
+
+**Default order**: indexes/queries → partitioning → read replicas + cache → sharding. Each step is ~10x cheaper to operate than the next.
+
+| | Partitioning (one DB) | Sharding (many machines) |
+|---|---|---|
+| **Solves** | Slow scans, bloated indexes, data lifecycle | One machine can't hold the load |
+| **Routing** | DB does it — queries unchanged | App/proxy must route by shard key |
+| **Joins & transactions** | Still work normally | Cross-shard = hard, redesign needed |
+| **Ops cost** | Near zero (native feature) | High — migrations, rebalancing, per-shard failover |
+| **Reach for it when** | Time-series, drop-old-data, query pruning | >5 TB or >10K write QPS with a clear key |
+
+→ [Partitioning Fundamentals](../fundamentals/partitioning-fundamentals.md)
+→ [Sharding](../patterns/sharding.md)
+→ [Sharding Tooling (Vitess / Citus)](../patterns/sharding-tooling.md)
+
+---
+
+## 7. Sharding key — how do you partition?
 
 ```mermaid
 graph TD
@@ -187,7 +226,7 @@ graph TD
 
 ---
 
-## 7. Choreography or orchestration?
+## 8. Choreography or orchestration?
 
 ```mermaid
 graph TD
@@ -209,7 +248,7 @@ graph TD
 
 ---
 
-## 8. Multi-region — active-active, active-passive, or single?
+## 9. Multi-region — active-active, active-passive, or single?
 
 ```mermaid
 graph TD
@@ -229,7 +268,7 @@ graph TD
 
 ---
 
-## 9. Monolith, modular monolith, or microservices?
+## 10. Monolith, modular monolith, or microservices?
 
 ```mermaid
 graph TD
@@ -252,7 +291,7 @@ graph TD
 
 ---
 
-## 10. Lambda, Kappa, or just batch?
+## 11. Lambda, Kappa, or just batch?
 
 ```mermaid
 graph TD

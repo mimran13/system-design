@@ -11281,10 +11281,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-sharding-key-how-do-you-partition" class="md-nav__link">
+  <a href="#6-partition-or-shard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Sharding key — how do you partition?
+        6. Partition or shard?
       
     </span>
   </a>
@@ -11292,10 +11292,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-choreography-or-orchestration" class="md-nav__link">
+  <a href="#7-sharding-key-how-do-you-partition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Choreography or orchestration?
+        7. Sharding key — how do you partition?
       
     </span>
   </a>
@@ -11303,10 +11303,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-multi-region-active-active-active-passive-or-single" class="md-nav__link">
+  <a href="#8-choreography-or-orchestration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Multi-region — active-active, active-passive, or single?
+        8. Choreography or orchestration?
       
     </span>
   </a>
@@ -11314,10 +11314,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-monolith-modular-monolith-or-microservices" class="md-nav__link">
+  <a href="#9-multi-region-active-active-active-passive-or-single" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Monolith, modular monolith, or microservices?
+        9. Multi-region — active-active, active-passive, or single?
       
     </span>
   </a>
@@ -11325,10 +11325,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-lambda-kappa-or-just-batch" class="md-nav__link">
+  <a href="#10-monolith-modular-monolith-or-microservices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Lambda, Kappa, or just batch?
+        10. Monolith, modular monolith, or microservices?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-lambda-kappa-or-just-batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Lambda, Kappa, or just batch?
       
     </span>
   </a>
@@ -11808,10 +11819,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-sharding-key-how-do-you-partition" class="md-nav__link">
+  <a href="#6-partition-or-shard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Sharding key — how do you partition?
+        6. Partition or shard?
       
     </span>
   </a>
@@ -11819,10 +11830,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-choreography-or-orchestration" class="md-nav__link">
+  <a href="#7-sharding-key-how-do-you-partition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Choreography or orchestration?
+        7. Sharding key — how do you partition?
       
     </span>
   </a>
@@ -11830,10 +11841,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-multi-region-active-active-active-passive-or-single" class="md-nav__link">
+  <a href="#8-choreography-or-orchestration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Multi-region — active-active, active-passive, or single?
+        8. Choreography or orchestration?
       
     </span>
   </a>
@@ -11841,10 +11852,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-monolith-modular-monolith-or-microservices" class="md-nav__link">
+  <a href="#9-multi-region-active-active-active-passive-or-single" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Monolith, modular monolith, or microservices?
+        9. Multi-region — active-active, active-passive, or single?
       
     </span>
   </a>
@@ -11852,10 +11863,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-lambda-kappa-or-just-batch" class="md-nav__link">
+  <a href="#10-monolith-modular-monolith-or-microservices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Lambda, Kappa, or just batch?
+        10. Monolith, modular monolith, or microservices?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-lambda-kappa-or-just-batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Lambda, Kappa, or just batch?
       
     </span>
   </a>
@@ -11983,7 +12005,7 @@
 
 
 <h1 id="decision-flowcharts">Decision Flowcharts<a class="headerlink" href="#decision-flowcharts" title="Permanent link">&para;</a></h1>
-<p>When you're designing rather than diagnosing. 10 decision trees for the most common architectural choices, each with one-line rationale per branch.</p>
+<p>When you're designing rather than diagnosing. 11 decision trees for the most common architectural choices, each with one-line rationale per branch.</p>
 <p>This page is the <strong>decision-tool complement</strong> to <a href="../symptom-lookup/">Symptom → Concept Lookup</a>. Symptom Lookup = "I see X, what is it?" Flowcharts = "I'm choosing, what should I pick?"</p>
 <p>Use these as starting points — every real decision has more nuance than a flowchart can carry. Each tree links to the relevant concept pages for depth.</p>
 <div class="admonition tip">
@@ -12007,6 +12029,10 @@
   "Write-through: write to cache + DB together": "../../caching/caching-strategies/",
   "Cache-aside app loads on miss": "../../caching/caching-strategies/",
   "Write-back cache → DB later": "../../caching/caching-strategies/",
+  "Partition within the DB native range/list/hash partitioning": "../../fundamentals/partitioning-fundamentals/",
+  "Read replicas + caching before any sharding": "../../patterns/read-replicas/",
+  "Shard across machines app-level, Vitess, or Citus": "../../patterns/sharding-tooling/",
+  "Fix indexes / queries first partitioning won't help": "../../fundamentals/database-internals-deep-dive/",
   "Shard by user_id / tenant_id even distribution; natural per-tenant queries": "../../patterns/sharding/",
   "Shard by content hash even distribution; no natural locality": "../../patterns/consistent-hashing/",
   "Shard by region/country compliance + locality, but skew risk": "../../architecture/multi-region/",
@@ -12104,7 +12130,62 @@
 <p>→ <a href="../../caching/caching-strategies/">Caching Strategies</a>
 → <a href="../../caching/cache-patterns/">Cache Patterns &amp; Pitfalls</a></p>
 <hr />
-<h2 id="6-sharding-key-how-do-you-partition">6. Sharding key — how do you partition?<a class="headerlink" href="#6-sharding-key-how-do-you-partition" title="Permanent link">&para;</a></h2>
+<h2 id="6-partition-or-shard">6. Partition or shard?<a class="headerlink" href="#6-partition-or-shard" title="Permanent link">&para;</a></h2>
+<p>The table is big — do you partition within one database, or shard across machines?</p>
+<pre class="mermaid"><code>graph TD
+    A[Big table is slowing down] --&gt; B{Is one machine&lt;br/&gt;actually exhausted?&lt;br/&gt;CPU / IOPS / RAM / storage}
+    B --&gt;|no| C{Queries filter on a&lt;br/&gt;natural key — time, tenant, region?}
+    C --&gt;|yes| D[Partition within the DB&lt;br/&gt;native range/list/hash partitioning]
+    C --&gt;|no| E{Slow because of&lt;br/&gt;old data you never query?}
+    E --&gt;|yes| D
+    E --&gt;|no| F[Fix indexes / queries first&lt;br/&gt;partitioning won't help]
+    B --&gt;|yes| G{Exhausted by reads&lt;br/&gt;or writes?}
+    G --&gt;|reads| H[Read replicas + caching&lt;br/&gt;before any sharding]
+    G --&gt;|writes / storage| I{Clear shard key covering&lt;br/&gt;95%+ of queries?}
+    I --&gt;|yes| J[Shard across machines&lt;br/&gt;app-level, Vitess, or Citus]
+    I --&gt;|no| K[⚠️ Fix the data model first —&lt;br/&gt;sharding without a key is pain]</code></pre>
+<p><strong>Default order</strong>: indexes/queries → partitioning → read replicas + cache → sharding. Each step is ~10x cheaper to operate than the next.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Partitioning (one DB)</th>
+<th>Sharding (many machines)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Solves</strong></td>
+<td>Slow scans, bloated indexes, data lifecycle</td>
+<td>One machine can't hold the load</td>
+</tr>
+<tr>
+<td><strong>Routing</strong></td>
+<td>DB does it — queries unchanged</td>
+<td>App/proxy must route by shard key</td>
+</tr>
+<tr>
+<td><strong>Joins &amp; transactions</strong></td>
+<td>Still work normally</td>
+<td>Cross-shard = hard, redesign needed</td>
+</tr>
+<tr>
+<td><strong>Ops cost</strong></td>
+<td>Near zero (native feature)</td>
+<td>High — migrations, rebalancing, per-shard failover</td>
+</tr>
+<tr>
+<td><strong>Reach for it when</strong></td>
+<td>Time-series, drop-old-data, query pruning</td>
+<td>&gt;5 TB or &gt;10K write QPS with a clear key</td>
+</tr>
+</tbody>
+</table>
+<p>→ <a href="../../fundamentals/partitioning-fundamentals/">Partitioning Fundamentals</a>
+→ <a href="../../patterns/sharding/">Sharding</a>
+→ <a href="../../patterns/sharding-tooling/">Sharding Tooling (Vitess / Citus)</a></p>
+<hr />
+<h2 id="7-sharding-key-how-do-you-partition">7. Sharding key — how do you partition?<a class="headerlink" href="#7-sharding-key-how-do-you-partition" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TD
     A[Picking a shard key] --&gt; B{Access pattern}
     B --&gt;|by user/tenant| C[Shard by user_id / tenant_id&lt;br/&gt;even distribution; natural per-tenant queries]
@@ -12120,7 +12201,7 @@
 → <a href="../../patterns/consistent-hashing/">Consistent Hashing</a>
 → <a href="../../fundamentals/hot-partitions/">Hot Partitions</a></p>
 <hr />
-<h2 id="7-choreography-or-orchestration">7. Choreography or orchestration?<a class="headerlink" href="#7-choreography-or-orchestration" title="Permanent link">&para;</a></h2>
+<h2 id="8-choreography-or-orchestration">8. Choreography or orchestration?<a class="headerlink" href="#8-choreography-or-orchestration" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TD
     A[Multi-service workflow] --&gt; B{Workflow has explicit&lt;br/&gt;steps with order?}
     B --&gt;|no, just reactions to events| C[Choreography:&lt;br/&gt;services subscribe to events]
@@ -12135,7 +12216,7 @@
 <p>→ <a href="../../architecture/choreography-vs-orchestration/">Choreography vs Orchestration</a>
 → <a href="../../patterns/saga-pattern/">Saga Pattern</a></p>
 <hr />
-<h2 id="8-multi-region-active-active-active-passive-or-single">8. Multi-region — active-active, active-passive, or single?<a class="headerlink" href="#8-multi-region-active-active-active-passive-or-single" title="Permanent link">&para;</a></h2>
+<h2 id="9-multi-region-active-active-active-passive-or-single">9. Multi-region — active-active, active-passive, or single?<a class="headerlink" href="#9-multi-region-active-active-active-passive-or-single" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TD
     A[Multi-region decision] --&gt; B{Why do you need it?}
     B --&gt;|cost-driven scaling| C[⚠️ Reconsider —&lt;br/&gt;single region scales further than you think]
@@ -12148,7 +12229,7 @@
 <p>→ <a href="../../architecture/multi-region/">Multi-Region Architecture</a>
 → <a href="../../architecture/edge-architecture/">Edge Architecture</a></p>
 <hr />
-<h2 id="9-monolith-modular-monolith-or-microservices">9. Monolith, modular monolith, or microservices?<a class="headerlink" href="#9-monolith-modular-monolith-or-microservices" title="Permanent link">&para;</a></h2>
+<h2 id="10-monolith-modular-monolith-or-microservices">10. Monolith, modular monolith, or microservices?<a class="headerlink" href="#10-monolith-modular-monolith-or-microservices" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TD
     A[Architectural style] --&gt; B{Team size?}
     B --&gt;|1-10 engineers| C[Monolith or&lt;br/&gt;modular monolith]
@@ -12164,7 +12245,7 @@
 <p>→ <a href="../../architecture/monolith-vs-microservices/">Monolith vs Microservices</a>
 → <a href="../../architecture/modular-monolith/">Modular Monolith</a></p>
 <hr />
-<h2 id="10-lambda-kappa-or-just-batch">10. Lambda, Kappa, or just batch?<a class="headerlink" href="#10-lambda-kappa-or-just-batch" title="Permanent link">&para;</a></h2>
+<h2 id="11-lambda-kappa-or-just-batch">11. Lambda, Kappa, or just batch?<a class="headerlink" href="#11-lambda-kappa-or-just-batch" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TD
     A[Big-data architecture] --&gt; B{Need real-time&lt;br/&gt;aggregations?}
     B --&gt;|no, daily refresh fine| C[Pure batch:&lt;br/&gt;dbt on warehouse, scheduled ETL]
@@ -12223,7 +12304,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 13:21:42 UTC">May 12, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 11, 2026 12:53:44 UTC">June 11, 2026</span>
   </span>
 
     
