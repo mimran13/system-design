@@ -259,6 +259,14 @@ Different way to use the encyclopedia depending on what you're trying to do *rig
 
     [:octicons-arrow-right-24: Explore](ai/index.md)
 
+-   :material-bank-outline:{ .lg .middle } **Fintech**
+
+    ---
+
+    Card payment rails, the 3D Secure flow, and the full fintech vocabulary — issuer, acquirer, interchange, settlement.
+
+    [:octicons-arrow-right-24: Explore](fintech/index.md)
+
 -   :material-aws:{ .lg .middle } **AWS Mapping**
 
     ---

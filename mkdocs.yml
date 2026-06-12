@@ -407,6 +407,13 @@ nav:
       - Storage Picker: aws/picker-storage.md
       - Analytics Picker: aws/picker-analytics.md
 
+  # ─── Fintech ───────────────────────────────────────────────
+  - Fintech:
+    - fintech/index.md
+    - Card Payments Fundamentals: fintech/card-payments-fundamentals.md
+    - 3D Secure (3DS) Flow: fintech/3ds-flow.md
+    - Fintech Glossary: fintech/glossary.md
+
   # ─── Case Studies ──────────────────────────────────────────
   - Case Studies:
     - case-studies/index.md
