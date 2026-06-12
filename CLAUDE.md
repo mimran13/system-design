@@ -6,7 +6,8 @@ Personal MkDocs Material reference site for system design concepts, patterns, an
 
 - `mkdocs serve -a 127.0.0.1:8000 --dirty` — dev server (use `--dirty` — full rebuilds take ~40s because of the git-revision-date plugin)
 - `mkdocs build --strict` — what CI runs; warnings fail the build
-- Deploy: push to `main` → GitHub Actions builds and publishes to GitHub Pages. Never commit `site/` (gitignored).
+- The site is **local-only** (viewed via `mkdocs serve`). CI runs the strict build as a link-check gate but does not deploy. Never commit `site/` (gitignored).
+- **Deploying to GitHub Pages later**: the workflow at `.github/workflows/deploy.yml` contains a commented-out, ready-to-go Pages deploy (artifact upload + deploy job). Enable via repo Settings → Pages → Source "GitHub Actions", then uncomment the marked blocks. Caveat: Pages on a free-plan private repo makes the site public.
 
 ## Page contract
 

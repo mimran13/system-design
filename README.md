@@ -27,11 +27,23 @@ A comprehensive personal reference for system design, distributed systems, softw
 ## Running locally
 
 ```bash
-pip install mkdocs-material
-mkdocs serve
+pip install -r requirements.txt
+mkdocs serve --dirty   # --dirty: fast rebuilds (full builds take ~40s due to git-date plugin)
 ```
 
 Open [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+## CI and deployment
+
+The site is **local-only** for now. CI (`.github/workflows/deploy.yml`) runs `mkdocs build --strict` on every push as a link-check gate — broken internal links fail the build — but does not publish anywhere.
+
+**To deploy to GitHub Pages later** (everything is prepared, just disabled):
+
+1. Repo **Settings → Pages → Source → "GitHub Actions"**
+2. In `.github/workflows/deploy.yml`, uncomment the marked blocks (`pages`/`id-token` permissions, the `upload-pages-artifact` step, and the `deploy` job)
+3. Push — the site publishes to `https://<user>.github.io/system-design/` on every push to `main`
+
+> ⚠️ On the free plan, Pages for a **private** repo still publishes the site **publicly**. Access-controlled Pages needs GitHub Enterprise; alternatives with auth: Cloudflare Pages + Access, or an S3 + CloudFront + signed-cookie setup.
 
 ## Structure
 

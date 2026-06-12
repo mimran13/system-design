@@ -1,14 +1,26 @@
-name: Build and deploy site
+name: Build site (link check gate)
+
+# The site is local-only for now: this workflow only validates that the site
+# builds cleanly with --strict (broken links / nav errors fail the build).
+#
+# ── To publish to GitHub Pages later ─────────────────────────────────────
+# 1. Repo Settings → Pages → Source → "GitHub Actions"
+# 2. Uncomment the `pages: write` / `id-token: write` permissions, the
+#    upload-pages-artifact step, and the deploy job below.
+# 3. Push — the site publishes to https://<user>.github.io/system-design/
+# Note: on a private repo with the free plan, Pages makes the site PUBLIC.
+# ──────────────────────────────────────────────────────────────────────────
 
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  # pages: write      # ← uncomment for Pages deploy
+  # id-token: write   # ← uncomment for Pages deploy
 
 concurrency:
   group: pages
@@ -32,16 +44,17 @@ jobs:
 
       - run: mkdocs build --strict
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
+      # ── Uncomment to deploy to GitHub Pages ──
+      # - uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: site
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   steps:
+  #     - id: deployment
+  #       uses: actions/deploy-pages@v4
