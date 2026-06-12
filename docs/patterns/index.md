@@ -4,6 +4,23 @@ Reusable solutions to recurring distributed systems problems. Unlike algorithms 
 
 ---
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Rate Limiting](rate-limiting.md) — the first line of defense; introduces protecting services under load
+2. [Retry & Timeout](retry-timeout.md) — how to handle transient failures without making them worse
+3. [Circuit Breaker](circuit-breaker.md) — builds on retries: when to stop retrying and fail fast
+4. [Idempotency](idempotency.md) — retries create duplicates; this makes them safe
+5. [Sharding](sharding.md) — the core scale pattern: splitting data across nodes
+6. [Replication](replication.md) — sharding's complement: copying data for durability and read scale
+
+**Then, as needed (reference):** [Backoff Strategies](backoff.md), [Bulkhead](bulkhead.md), [Connection Pooling](connection-pooling.md), [Read Replicas](read-replicas.md), [Sharding Best Practices](sharding-best-practices.md), [Querying Sharded Data](querying-sharded-data.md), [Boring Tech](boring-tech.md)
+
+**Advanced — come back later:** [Saga Pattern](saga-pattern.md), [Outbox Pattern](outbox.md), [CQRS](cqrs.md), [Event Sourcing](event-sourcing.md), [Consistent Hashing](consistent-hashing.md), [Sharding Tooling](sharding-tooling.md), [Unhappy-Path Engineering](unhappy-path-engineering.md), [Durable Workflows](durable-workflows.md)
+
+---
+
 ## Pattern categories
 
 ```

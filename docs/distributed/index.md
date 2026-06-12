@@ -4,6 +4,22 @@ The theory and mechanics behind systems that run across multiple nodes. This is 
 
 ---
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [The 8 Fallacies](fallacies.md) — the false assumptions behind every distributed failure; everything else follows from these
+2. [Clocks & Ordering](clocks.md) — why "what happened first" is hard, and the logical clocks that answer it
+3. [Consensus (Raft & Paxos)](consensus.md) — how nodes agree on anything despite failures
+4. [Leader Election](leader-election.md) — the most common application of consensus: picking one coordinator
+5. [Quorum](quorum.md) — the R+W>N knob that trades consistency against availability
+
+**Then, as needed (reference):** [Distributed Locks](distributed-locks.md), [Failure Detection](failure-detection.md), [Service Discovery](service-discovery.md), [Distributed Primitives](distributed-primitives.md)
+
+**Advanced — come back later:** [CRDTs](crdts.md), [Gossip Protocol](gossip.md), [Split Brain & Fencing](split-brain.md), [Exactly-Once Semantics](exactly-once.md), [Two-Phase Commit](two-phase-commit.md), [Distributed Transactions](distributed-transactions.md)
+
+---
+
 ## Start here: why distributed systems are hard
 
 Before anything else, read [The 8 Fallacies](fallacies.md) — the false assumptions that cause every class of distributed system failure. Every topic in this section exists because one of those fallacies is violated in the real world.

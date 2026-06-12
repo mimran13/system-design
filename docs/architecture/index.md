@@ -4,6 +4,23 @@ How you organise services, data, and teams determines every later decision — p
 
 Grouped into five themes: read top-to-bottom for the full curriculum, or jump to the theme matching your current question.
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Quality Attributes](quality-attributes.md) — the vocabulary of trade-offs every later decision is judged by
+2. [Architectural Decision Records (ADRs)](adrs.md) — how to capture decisions before you start making them
+3. [Layered / N-Tier](layered-architecture.md) — the simplest baseline style most systems start from
+4. [Monolith vs Microservices](monolith-vs-microservices.md) — the central decomposition decision
+5. [Modular Monolith](modular-monolith.md) — the pragmatic middle ground most teams should try first
+6. [Domain-Driven Design](ddd.md) — bounded contexts: how to find good service boundaries
+7. [Event-Driven Architecture](event-driven.md) — async decoupling, the other dominant modern style
+8. [Architecture Anti-Patterns](anti-patterns.md) — recognise the failure modes before you build one
+
+**Then, as needed (reference):** [Architecture Styles Comparison](styles-comparison.md), [Twelve-Factor App](twelve-factor.md), [Hexagonal Architecture](hexagonal.md), [Microservices Patterns](microservices-patterns.md), [Choreography vs Orchestration](choreography-vs-orchestration.md), [Multi-Tenancy](multi-tenancy.md), [Capacity Planning & Sizing](capacity-planning.md)
+
+**Advanced — come back later:** [CQRS & Event Sourcing as Architecture](cqrs-event-sourcing-architecture.md), [Multi-Region Architecture](multi-region.md), [Edge Architecture](edge-architecture.md), [Data Mesh](data-mesh.md), [Lambda & Kappa Architectures](lambda-kappa-architectures.md), [Space-Based Architecture](space-based.md), [Evolutionary Architecture](evolutionary-architecture.md), [Strangler Fig Pattern](strangler-fig.md)
+
 ---
 
 ## Decision-Making

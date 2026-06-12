@@ -2,6 +2,20 @@
 
 End-to-end system designs. Each one follows the full interview flow: requirements → estimation → high-level design → deep dive → tradeoffs. Reading these after understanding the underlying concepts is more valuable than reading them first — the goal is to see *why* each decision was made, not memorize a template.
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [URL Shortener](url-shortener.md) — the canonical first design: smallest scope, teaches the full interview flow
+2. [Rate Limiter](rate-limiter.md) — still small, but adds distributed coordination and Redis algorithms
+3. [Chat System](chat-system.md) — first real-time system: WebSockets, ordering, delivery guarantees
+4. [News Feed](news-feed.md) — the classic fan-out read/write tradeoff at scale
+5. [Notification Service](notification-service.md) — async pipelines, at-least-once delivery, and retries
+
+**Then, as needed (reference):** [Search Autocomplete](search-autocomplete.md), [Video Streaming](video-streaming.md), [Ride-Sharing](ride-sharing.md), [Distributed Cache](distributed-cache.md), [Web Crawler](web-crawler.md), [Cloud File Storage (Dropbox)](dropbox.md), [Social Media Feed (Twitter)](twitter.md), [Ad Click Tracking](ad-click-tracking.md)
+
+**Advanced — come back later:** [Payment System](payment-system.md), [Maps & Navigation](google-maps.md), [PropTech Buyer-Seller Chat](proptech-chat.md)
+
 ---
 
 ## The systems

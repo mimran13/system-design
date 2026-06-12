@@ -17,6 +17,14 @@ Curated reading paths instead of a flat index. Pick the one that matches where y
 
 <div class="grid cards" markdown>
 
+-   :material-map-marker-path:{ .lg .middle } **New here? The Curriculum**
+
+    ---
+
+    The full course, zero → staff: 6 levels, a clickable visual roadmap, checkpoints per level. Start here if you're learning, not looking up.
+
+    [:octicons-arrow-right-24: Start the curriculum](paths/curriculum.md)
+
 -   :material-school-outline:{ .lg .middle } **Just the essentials**
 
     ---

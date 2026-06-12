@@ -2,6 +2,20 @@
 
 A practical guide to understanding, building, and running AI agents in production. This section takes you from first principles to working end-to-end examples you can adapt and run.
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Agent Fundamentals](agent-fundamentals.md) — what an agent actually is and when you need one
+2. [Function Calling & Tool Use](function-calling.md) — the core mechanism every agent is built on
+3. [Building Agents](building-agents.md) — write your first agent loop from scratch
+4. [Research Agent](example-research-agent.md) — see a complete, runnable agent end-to-end
+5. [Agent Reliability](agent-reliability.md) — what it takes to make agents production-safe
+
+**Then, as needed (reference):** [Data Analysis Agent](example-data-agent.md), [Customer Support Agent](example-customer-support-agent.md)
+
+**Advanced — come back later:** [Multi-Agent Systems](multi-agent-systems.md)
+
 ## Concepts
 
 | Topic | What you'll learn |

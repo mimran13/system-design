@@ -15,6 +15,18 @@ These roles overlap but have different emphasis:
 
 As a backend engineer, your edge is **systems thinking** — you already know databases, APIs, distributed systems, and observability. AI Engineering layers LLM primitives on top of those skills.
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [LLM Fundamentals](llm-fundamentals.md) — tokens, context windows, sampling: the mental model everything else relies on
+2. [Prompt Engineering](prompt-engineering.md) — the highest-leverage skill once you know how LLMs work
+3. [Embeddings & Vector Search](embeddings-vector-search.md) — the retrieval primitive that powers RAG
+4. [RAG (Retrieval-Augmented Generation)](rag.md) — the most common production LLM pattern, built on embeddings
+5. [Agents & Tool Use](agents-and-tool-use.md) — LLMs that act: the ReAct loop and function calling
+
+**Advanced — come back later:** [Fine-tuning](fine-tuning.md), [LLM Inference & Serving](llm-inference.md), [Evaluation](evaluation.md), [Guardrails & Safety](guardrails-safety.md), [LLMOps](llmops.md), [ML in Production](ml-in-production.md), [Memory Systems](memory-systems.md), [Agentic Patterns](agentic-patterns.md)
+
 ---
 
 ## The AI Engineering stack

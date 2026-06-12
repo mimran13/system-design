@@ -437,6 +437,7 @@ nav:
   # ─── Reference (at the end) ────────────────────────────────
   - Reference:
     - Reading Paths:
+      - "The Curriculum: Zero → Staff": paths/curriculum.md
       - Just the Essentials: paths/essentials.md
       - Interview Prep (1 Week): paths/interview-prep.md
       - Building a SaaS: paths/building-saas.md

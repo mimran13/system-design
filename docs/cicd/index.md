@@ -2,6 +2,21 @@
 
 CI/CD (Continuous Integration / Continuous Delivery / Continuous Deployment) is the practice of automating the build, test, and release pipeline so that every code change is verified and deployable with minimal manual steps. The goal is short feedback loops, low-risk releases, and the ability to ship many times a day instead of once a quarter.
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Fundamentals](fundamentals.md) — CI vs CD vs deployment; the mental model for the rest
+2. [Pipelines](pipelines.md) — concrete tools (GitHub Actions, GitLab CI) that make it real
+3. [Branching Strategies](branching-strategies.md) — how code flows into the pipeline in the first place
+4. [Build and Test](build-and-test.md) — making the pipeline fast and trustworthy
+5. [Artifact Management](artifact-management.md) — what the pipeline produces and how it's versioned
+6. [Deployment Strategies](deployment-strategies.md) — rolling, blue/green, canary: shipping artifacts safely
+
+**Then, as needed (reference):** [AWS CodePipeline](aws-codepipeline.md), [AWS Deployment with GitHub Actions](aws-deployment-with-github-actions.md), [Release Management](release-management.md)
+
+**Advanced — come back later:** [Security in CI/CD](security-in-cicd.md), [GitOps](gitops.md), [Progressive Delivery](progressive-delivery.md), [Feature Flags & Experimentation](feature-flags-experimentation.md)
+
 ---
 
 ## What "CI/CD" actually means

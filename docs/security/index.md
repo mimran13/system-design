@@ -2,6 +2,20 @@
 
 Security is not a feature you bolt on after the fact. It's a property of the system's design — how access is controlled, how data is protected, how trust is established between services. Getting this wrong has irreversible consequences: breached user data, regulatory fines, or complete system compromise.
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Authentication & Authorization](authn-authz.md) — who you are vs what you may do; the foundation everything else assumes
+2. [OAuth 2.0 & JWT](oauth-jwt.md) — the standard token machinery built on those authn/authz concepts
+3. [API Security](api-security.md) — applying auth plus input validation at your real attack surface
+4. [Encryption](encryption.md) — protecting data in transit and at rest once access is controlled
+5. [Secrets Management](secrets-management.md) — keeping the keys to all of the above out of code and logs
+
+**Then, as needed (reference):** [Enterprise Auth](enterprise-auth.md), [Compliance & Regulatory Engineering](compliance-regulatory-engineering.md)
+
+**Advanced — come back later:** [Zero Trust](zero-trust.md), [Threat Modelling](threat-modelling.md)
+
 ---
 
 ## The security model layers

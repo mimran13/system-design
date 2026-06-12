@@ -2,6 +2,21 @@
 
 The foundation before system design. These principles operate at the code and component level — they determine how well a system can evolve, be tested, and be understood by the next engineer.
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Clean Code Principles](clean-code-principles.md) — the vocabulary of good code (DRY, KISS, YAGNI) everything else assumes
+2. [SOLID Principles](solid.md) — why well-structured code is shaped the way it is
+3. [IoC & Dependency Injection](ioc-di.md) — how components connect without coupling; makes SOLID concrete
+4. [Design Patterns (GoF)](design-patterns.md) — proven, named solutions to the recurring problems you now recognize
+5. [Refactoring & Code Smells](refactoring.md) — how to safely move existing code toward those principles
+6. [Testing Strategies](testing-strategies.md) — the safety net that makes refactoring and good design verifiable
+
+**Then, as needed (reference):** [Error Handling Patterns](error-handling.md)
+
+**Advanced — come back later:** [DDD Tactical Patterns](ddd-tactical.md), [Clean Architecture](clean-architecture.md)
+
 ## Principles
 
 | Topic | What you'll learn |

@@ -4,6 +4,23 @@ The bedrock concepts that every other section builds on. Numbers, hardware, OS, 
 
 This section is grouped into five themes — read top-to-bottom for first time, or jump to the theme that matches your current question.
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Numbers Every Engineer Should Know](numbers-to-know.md) — latency intuition is the foundation for every other judgment call
+2. [Latency vs Throughput](latency-throughput.md) — the core tension behind most design trade-offs
+3. [Back-of-Envelope Estimation](estimation.md) — turn those numbers into QPS, storage, and bandwidth sizing
+4. [CAP Theorem](cap-theorem.md) — the constraint that shapes every distributed-system choice
+5. [ACID vs BASE](acid-vs-base.md) — the two transactional worldviews you'll choose between
+6. [Consistency Models](consistency-models.md) — the full spectrum between strong and eventual
+7. [Database Transactions & Isolation](isolation-levels.md) — what databases actually guarantee under concurrency
+8. [Scalability](scalability.md) — horizontal vs vertical, and where bottlenecks hide
+
+**Then, as needed (reference):** [Networking Basics](networking-basics.md), [Hashing](hashing.md), [Time Complexity Cheatsheet](time-complexity.md), [Data Encoding & Serialization](serialization.md), [Compression](compression.md), [Database Indexes](database-indexes.md), [Operating System Concepts](os-concepts.md), [TLS and Certificates](tls-certificates.md)
+
+**Advanced — come back later:** [Queuing Theory & Little's Law](queuing-theory.md), [Throughput Limits (Amdahl's & USL)](throughput-limits.md), [Memory Hierarchy & Cache Lines](memory-hierarchy.md), [Memory Models & Cache Coherency](memory-models.md), [Concurrency & Locking](concurrency.md), [Storage Engine Internals](storage-internals.md), [Failure Modes Catalogue](failure-modes.md), [Hot Partitions & Hotspots](hot-partitions.md), [CAP Theorem Applied](cap-theorem-applied.md)
+
 ---
 
 ## Numbers & Estimation

@@ -4,6 +4,20 @@ Synchronous request/response breaks under three conditions: the downstream is sl
 
 ---
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Message Queues](message-queues.md) — the simplest async building block: point-to-point delivery
+2. [Pub/Sub](pub-sub.md) — extends the queue model to fan-out: many consumers per message
+3. [Event Streaming](event-streaming.md) — the replayable log model and how it differs from queues
+4. [Kafka Deep Dive](kafka.md) — the dominant streaming platform: partitions, consumer groups, offsets
+5. [Idempotent Consumers](idempotent-consumers.md) — at-least-once delivery means duplicates; this is the fix
+
+**Advanced — come back later:** [Backpressure](backpressure.md), [Event Payload Design](event-payload-design.md), [Event Schema Evolution](event-schema-evolution.md), [Event Streaming Maturity](event-streaming-maturity.md)
+
+---
+
 ## Sync vs async — the core trade-off
 
 ```

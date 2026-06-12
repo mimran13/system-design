@@ -2,6 +2,20 @@
 
 Every request a user makes traverses multiple networking layers before hitting your application code. Understanding how these layers work — and where they fail — is essential for designing systems with predictable latency, high availability, and correct behavior under load.
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [DNS](dns.md) — the first hop of every request; nothing connects before a name resolves
+2. [CDN](cdn.md) — the edge layer that decides whether a request even reaches you
+3. [Load Balancing](load-balancing.md) — how traffic spreads across instances once it arrives
+4. [Proxies](proxies.md) — forward vs reverse, and the layer load balancers and gateways are built on
+5. [API Gateway](api-gateway.md) — auth, rate limiting, and routing composed at the entry point
+
+**Then, as needed (reference):** [WebSockets & SSE](websockets-sse.md)
+
+**Advanced — come back later:** [HTTP Versions](http-versions.md)
+
 ---
 
 ## The request path

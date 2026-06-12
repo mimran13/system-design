@@ -2,6 +2,18 @@
 
 Modern infrastructure is code — repeatable, versionable, auditable, and automated. The shift from manually provisioned servers to declarative infrastructure changed what reliability means: consistency (every environment is identical), speed (deploy in minutes, not days), and recovery (rebuild from code, not memory).
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Containers & Docker](containers.md) — how applications are packaged; everything else runs on this
+2. [Kubernetes](kubernetes.md) — orchestrating those containers at scale with self-healing
+3. [Service Mesh](service-mesh.md) — cross-cutting networking concerns layered on top of Kubernetes
+
+**Then, as needed (reference):** [CI/CD](../cicd/index.md), [Infrastructure as Code](../iac/index.md)
+
+**Advanced — come back later:** [Kubernetes in Production](kubernetes-in-production.md)
+
 ---
 
 ## The infrastructure stack

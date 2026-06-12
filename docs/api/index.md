@@ -4,6 +4,20 @@ An API is a contract between a provider and its consumers. Unlike internal imple
 
 ---
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [REST](rest.md) — the default API style; HTTP semantics and resource modeling underpin everything else
+2. [gRPC](grpc.md) — the contrast case: strict contracts, binary protocol, streaming for internal services
+3. [GraphQL](graphql.md) — the third paradigm: client-driven queries and the trade-offs they bring
+4. [REST vs gRPC vs GraphQL](comparison.md) — now that you know all three, the decision framework makes sense
+5. [API Versioning](versioning.md) — every API you ship must evolve without breaking clients
+
+**Then, as needed (reference):** [Pagination](pagination.md), [Webhooks](webhooks.md)
+
+---
+
 ## The API design spectrum
 
 ```

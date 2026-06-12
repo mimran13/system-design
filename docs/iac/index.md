@@ -2,6 +2,22 @@
 
 Infrastructure as Code is the practice of defining and managing infrastructure (servers, networks, databases, load balancers, IAM, DNS) through declarative or imperative code rather than manual provisioning. The goal: infrastructure becomes versioned, reviewable, reproducible, and recoverable — exactly like application code.
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Fundamentals](fundamentals.md) — declarative vs imperative, state, idempotency: the concepts behind every tool
+2. [Terraform](terraform.md) — the dominant multi-cloud tool; makes the fundamentals concrete
+3. [State Management](state-management.md) — the most failure-prone part of Terraform; learn it early
+4. [Terraform in CI/CD Lifecycle](terraform-cicd-lifecycle.md) — how teams actually run plan/review/apply safely
+5. [Modules & Repository Structure](modules-and-structure.md) — organising IaC once it grows beyond one file
+6. [Secrets in IaC](secrets-in-iac.md) — the security non-negotiable: reference, don't embed
+7. [Best Practices](best-practices.md) — tagging, blast radius, environment isolation; ties it all together
+
+**Then, as needed (reference):** [AWS CDK](cdk.md), [CloudFormation](cloudformation.md), [Pulumi & Alternatives](pulumi-and-alternatives.md)
+
+**Advanced — come back later:** [Drift Detection](drift-detection.md), [Testing IaC](testing-iac.md)
+
 ---
 
 ## Why IaC matters

@@ -4,6 +4,21 @@ You can't operate what you can't see. Observability is the practice of understan
 
 The difference between **monitoring** and **observability**: monitoring tells you *when* something is broken (alert fires). Observability tells you *why* (you can debug a novel failure you've never seen before from first principles).
 
+## Suggested reading order
+
+New to this topic? Read these in order — each builds on the previous:
+
+1. [Logging](logging.md) — the baseline signal every service emits; everything else assumes it
+2. [Metrics](metrics.md) — aggregate health (RED/USE): the data behind dashboards and alerts
+3. [Distributed Tracing](tracing.md) — follow one request across services when logs and metrics aren't enough
+4. [Alerting](alerting.md) — turn the three signals into pages a human can act on
+5. [SLI, SLO & SLA](slo-sla.md) — define "reliable enough" so alerts have objective targets
+6. [On-Call & Incident Management](incident-management.md) — the human process when the alerts fire
+
+**Then, as needed (reference):** [Load Testing](load-testing.md), [Linux Debugging Toolbox](linux-debugging-toolbox.md)
+
+**Advanced — come back later:** [Incident Response Craft](incident-response-craft.md), [Performance Engineering](performance-engineering.md)
+
 ---
 
 ## The three pillars
