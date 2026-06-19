@@ -1616,16 +1616,14 @@ article.md-typeset > h4 {
 .md-main { background-color: #f1f5f9; }
 [data-md-color-scheme="slate"] .md-main { background-color: #0a0a0d; }
 
-/* the reading column becomes a white floating panel */
+/* the reading column is white and FLUSH against the sidebar (mockup shell:
+   columns are adjacent, separated only by the sidebar border — no gap) */
 .md-content {
   background-color: var(--md-default-bg-color);
-  border: 1px solid var(--sd-divider);
-  border-radius: 14px;
-  margin: 1.2rem 1rem 2rem;
-  box-shadow: 0 1px 3px rgba(15,23,42,.04), 0 10px 30px -20px rgba(15,23,42,.18);
-}
-[data-md-color-scheme="slate"] .md-content {
-  box-shadow: 0 1px 3px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.6);
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  box-shadow: none;
 }
 
 /* homepage (has .home-hero): keep it white + add the blue hero glow, no panel */
@@ -1646,4 +1644,29 @@ article.md-typeset > h4 {
   border: 0;
   box-shadow: none;
   margin: 0;
+}
+
+/* ════════════════════════════════════════════════════════════
+   BREADCRUMBS (.md-path) — match mockup .crumbs
+   mono, .78rem, gray, "/" separators (not Material's chevron icon)
+   ════════════════════════════════════════════════════════════ */
+.md-path {
+  font-family: var(--md-code-font);
+  font-size: 0.78rem;
+  margin: 0 0 1.4rem;
+  padding: 0;
+}
+.md-path__list { align-items: center; }
+.md-path__item { color: var(--md-default-fg-color--lighter); }
+.md-path__link { color: var(--md-default-fg-color--light); }
+.md-path__link:hover { color: var(--md-primary-fg-color); }
+.md-path__item:not(:first-child)::before {
+  content: "/" !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  background-color: transparent !important;
+  color: var(--md-default-fg-color--lighter);
+  width: auto !important;
+  height: auto !important;
+  margin: 0 0.15rem;
 }
