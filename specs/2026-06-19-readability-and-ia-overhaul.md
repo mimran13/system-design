@@ -428,6 +428,12 @@ Stop. Serve the site, click through Home → Start Here → a topic → a concep
 
 # PHASE B — Information-Architecture Cleanup
 
+**Progress (branch `docs/readability-overhaul`):**
+- [x] B1 — Distributed Systems → Foundations; rename theory subsection (commit `6c530f0`)
+- [x] B2 — split Patterns (Resilience / Data & Scaling); rename Operations tab (commit `f6162aa`)
+- [x] B3 — canonical-home deferral notes for CQRS/ES + Agents (commit `22e90ee`)
+- [x] B4 — differentiate Practical Examples vs Case Studies (commit `d53b6d7`)
+
 **Outcome:** Coherent sections; no topic with two homes. This phase touches `mkdocs.yml` structure and a handful of cross-link/deferral notes. Medium risk (mostly that `--strict` catches a moved/renamed path). No page content is rewritten — pages are RE-HOMED and given short "canonical home" deferral notes.
 
 > **This phase changes site structure. Each task below is a reviewable unit — commit and eyeball the nav after each.** The four problems being fixed (from the review): (1) distributed theory split across two tabs, (2) "Operations" is a weak umbrella, (3) "Patterns" is a grab-bag, (4) CQRS/event-sourcing and agents each have two homes.
