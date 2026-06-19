@@ -567,6 +567,12 @@ Stop. Serve the site; walk the full tab bar and every renamed/moved group. Confi
 
 # PHASE C — Section-Landing Template
 
+**Progress (branch `docs/readability-overhaul`):**
+- [x] C1 — bespoke section + concept-page component CSS (commit `fdcab8b`)
+- [x] C2 — Fundamentals landing as the proof (commit `43fc306`)
+- [x] C3 — rolled out to all 20 remaining section indexes (commit `42cbd28`), verified: 420 card/data-link targets resolve.
+- [ ] **Concept-page components NOT rolled out** — the `.sd-symptom`/`.sd-related` styles exist in CSS but are not yet applied to the ~250 concept pages. This is the deliberately-deferred incremental work (see scope note below). Recommend option 1 (going-forward) or 2 (interview-canon pages only).
+
 **Outcome:** Each major section index opens with a dark hero band + scannable topic cards (the "Section landing" view in `.mockups/inside-pages.html`), instead of dense link tables. Establish the pattern on Fundamentals first, then roll out.
 
 ---
@@ -703,6 +709,10 @@ Do NOT attempt a 250-page rewrite in one task. Recommend option 1 or 2.
 ---
 
 # PHASE D — roadmap.sh-style Visual Paths
+
+**Progress (branch `docs/readability-overhaul`):**
+- [x] D1 — Fundamentals roadmap (committed with C2, `43fc306`)
+- [x] D2 — roadmaps on 19 sections (committed with C3, `42cbd28`). aws picker section intentionally has no roadmap (reference, not a learning path). Verified: every roadmap node label matches its `data-links` key under `canon()`, so all nodes are clickable.
 
 **Outcome:** Major sections open with a clickable Mermaid roadmap (the "Foundations roadmap" in `.mockups/inside-pages.html`). Build over the FINAL (post-Phase-B) structure.
 
