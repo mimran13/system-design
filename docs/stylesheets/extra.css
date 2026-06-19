@@ -392,7 +392,14 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 .md-sidebar--primary .md-sidebar__scrollwrap,
 .md-sidebar--primary .md-sidebar__inner {
   background-color: var(--sd-sidebar-bg) !important;
-  width: 16rem;
+  width: 17rem;
+}
+
+/* Material reserves padding-right: calc(100% - 11.5rem) on the inner (drawer
+   leftover), squeezing the nav into the left ~11.5rem. Remove it so the nav
+   fills the full sidebar width. */
+.md-sidebar--primary .md-sidebar__inner {
+  padding-right: 0 !important;
 }
 
 .md-sidebar--primary {
