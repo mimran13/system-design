@@ -376,12 +376,15 @@ nav:
 
     - AI Engineering:
       - ai/index.md
+      - ML & AI Literacy: ai/ml-literacy.md
       - LLM Fundamentals: ai/llm-fundamentals.md
       - Prompt Engineering: ai/prompt-engineering.md
+      - Working with LLM APIs: ai/working-with-llm-apis.md
       - Embeddings & Vector Search: ai/embeddings-vector-search.md
       - RAG: ai/rag.md
       - Agents & Tool Use: ai/agents-and-tool-use.md
       - Agentic Patterns: ai/agentic-patterns.md
+      - LLM Frameworks: ai/llm-frameworks.md
       - Memory Systems: ai/memory-systems.md
       - Fine-Tuning: ai/fine-tuning.md
       - LLM Inference & Serving: ai/llm-inference.md
@@ -438,6 +441,7 @@ nav:
   - Reference:
     - Reading Paths:
       - "The Curriculum: Zero → Staff": paths/curriculum.md
+      - "The AI Engineer Path: Zero → Production": paths/ai-engineer.md
       - Just the Essentials: paths/essentials.md
       - Interview Prep (1 Week): paths/interview-prep.md
       - Building a SaaS: paths/building-saas.md
