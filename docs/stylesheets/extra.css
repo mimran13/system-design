@@ -1431,3 +1431,59 @@ article.md-typeset > h4 {
 @media screen and (max-width: 59.9375em) {
   .md-typeset .doors { grid-template-columns: 1fr; }
 }
+
+/* ════════════════════════════════════════════════════════════
+   Section-landing template — hero band + topic cards
+   (see .mockups/inside-pages.html → "Section landing")
+   ════════════════════════════════════════════════════════════ */
+.md-typeset .sec-hero {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #e2e8f0; border-radius: 16px; padding: 2rem 2.2rem; margin: 0 0 2rem;
+}
+.md-typeset .sec-hero .ey {
+  font-family: var(--md-code-font, monospace); font-size: .72rem;
+  letter-spacing: .12em; text-transform: uppercase; color: #93c5fd; margin-bottom: .6rem;
+  display: block;
+}
+.md-typeset .sec-hero p, .md-typeset .sec-hero { color: #cbd5e1; }
+.md-typeset .sec-hero strong { color: #fff; }
+.md-typeset .sec-hero a { color: #93c5fd; }
+[data-md-color-scheme="slate"] .md-typeset .sec-hero {
+  background: linear-gradient(135deg, #1e293b, #0a0a0d);
+}
+
+/* Section topic cards */
+.md-typeset .pcards { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin: 1.2rem 0; }
+.md-typeset a.pcard {
+  text-decoration: none; border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 11px; padding: .9rem 1.1rem; background: var(--md-default-bg-color);
+  display: flex; flex-direction: column; gap: .2rem; transition: .15s;
+}
+.md-typeset a.pcard:hover {
+  border-color: var(--md-primary-fg-color); transform: translateY(-2px);
+  box-shadow: 0 14px 28px -18px color-mix(in srgb, var(--md-primary-fg-color) 40%, transparent);
+}
+.md-typeset a.pcard .t { font-weight: 650; color: var(--md-default-fg-color); font-size: .95rem; }
+.md-typeset a.pcard .d { font-size: .83rem; color: var(--md-default-fg-color--lighter); line-height: 1.5; }
+@media screen and (max-width: 44.9375em) { .md-typeset .pcards { grid-template-columns: 1fr; } }
+
+/* ════════════════════════════════════════════════════════════
+   Concept-page components (see .mockups/inside-pages.html → "Concept page")
+   ════════════════════════════════════════════════════════════ */
+.md-typeset .sd-related { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1rem; }
+.md-typeset a.sd-relcard {
+  text-decoration: none; border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 11px; padding: .9rem 1.1rem; background: var(--md-default-bg-color); transition: .15s;
+  display: flex; flex-direction: column; gap: .15rem;
+}
+.md-typeset a.sd-relcard:hover {
+  border-color: var(--md-primary-fg-color); transform: translateY(-2px);
+  box-shadow: 0 14px 28px -18px color-mix(in srgb, var(--md-primary-fg-color) 40%, transparent);
+}
+.md-typeset a.sd-relcard .t { font-weight: 650; color: var(--md-default-fg-color); font-size: .95rem; }
+.md-typeset a.sd-relcard .d { font-size: .82rem; color: var(--md-default-fg-color--lighter); }
+@media screen and (max-width: 44.9375em) { .md-typeset .sd-related { grid-template-columns: 1fr; } }
+
+/* Roadmap (Mermaid) — node classDefs themed for light/dark are inline per diagram;
+   this just gives the roadmap container a little breathing room */
+.md-typeset .sd-roadmap { margin: 1.4rem 0 2rem; }
