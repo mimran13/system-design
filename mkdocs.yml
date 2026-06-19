@@ -84,6 +84,21 @@ plugins:
 nav:
   - Home: index.md
 
+  # ─── Start Here ────────────────────────────────────────────
+  - Start Here:
+    - paths/index.md
+    - Reading Paths:
+      - "The Curriculum: Zero → Staff": paths/curriculum.md
+      - "The AI Engineer Path: Zero → Production": paths/ai-engineer.md
+      - Just the Essentials: paths/essentials.md
+      - Interview Prep (1 Week): paths/interview-prep.md
+      - Building a SaaS: paths/building-saas.md
+      - Monolith → Microservices: paths/monolith-to-microservices.md
+      - Scaling Beyond One Region: paths/scaling-beyond-region.md
+    - Find Your Way:
+      - Symptom → Concept Lookup: reference/symptom-lookup.md
+      - Decision Flowcharts: reference/decision-flowcharts.md
+
   # ─── Foundations ───────────────────────────────────────────
   - Foundations:
     - Fundamentals:
@@ -439,16 +454,6 @@ nav:
 
   # ─── Reference (at the end) ────────────────────────────────
   - Reference:
-    - Reading Paths:
-      - "The Curriculum: Zero → Staff": paths/curriculum.md
-      - "The AI Engineer Path: Zero → Production": paths/ai-engineer.md
-      - Just the Essentials: paths/essentials.md
-      - Interview Prep (1 Week): paths/interview-prep.md
-      - Building a SaaS: paths/building-saas.md
-      - Monolith → Microservices: paths/monolith-to-microservices.md
-      - Scaling Beyond One Region: paths/scaling-beyond-region.md
-    - Symptom → Concept Lookup: reference/symptom-lookup.md
-    - Decision Flowcharts: reference/decision-flowcharts.md
     - Tags: reference/tags.md
     - Practical Examples:
       - examples/index.md
