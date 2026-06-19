@@ -9,31 +9,36 @@ For shorter scenarios that weave 2–4 concepts together (rather than a full des
 
 ## Roadmap
 
-Climb the difficulty ladder top-to-bottom. Dashed branches are reference designs to pick up once the spine clicks.
-
-<div class="sd-mermaid-links" data-links='{
-  "URL Shortener": "url-shortener/",
-  "Rate Limiter": "rate-limiter/",
-  "Chat System": "chat-system/",
-  "News Feed": "news-feed/",
-  "Notification Service": "notification-service/",
-  "Payment System": "payment-system/",
-  "PropTech Buyer-Seller Chat": "proptech-chat/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["URL Shortener"] --> B["Rate Limiter"]
-    B --> C["Chat System"]
-    C --> D["News Feed"]
-    D --> E["Notification Service"]
-    E -.-> E1["Payment System"]
-    C -.-> C1["PropTech Buyer-Seller Chat"]
-    class A,B,C,D,E core
-    class E1,C1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Case Studies roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="url-shortener/"><span class="n">1</span>URL Shortener</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="rate-limiter/"><span class="n">2</span>Rate Limiter</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="chat-system/"><span class="n">3</span>Chat System</a>
+      <div class="rm-branch right"><a class="rm-chip" href="proptech-chat/">PropTech Buyer-Seller Chat</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="news-feed/"><span class="n">4</span>News Feed</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="notification-service/"><span class="n">5</span>Notification Service</a>
+      <div class="rm-branch right"><a class="rm-chip" href="payment-system/">Payment System</a></div>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 

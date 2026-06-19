@@ -12,37 +12,41 @@ These split into two families, reflected in the navigation:
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Rate Limiting": "rate-limiting/",
-  "Retry & Timeout": "retry-timeout/",
-  "Circuit Breaker": "circuit-breaker/",
-  "Idempotency": "idempotency/",
-  "Sharding": "sharding/",
-  "Replication": "replication/",
-  "Backoff Strategies": "backoff/",
-  "Bulkhead": "bulkhead/",
-  "Saga Pattern": "saga-pattern/",
-  "Read Replicas": "read-replicas/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Rate Limiting"] --> B["Retry & Timeout"]
-    B --> C["Circuit Breaker"]
-    C --> D["Idempotency"]
-    D --> E["Sharding"]
-    E --> F["Replication"]
-    B -.-> B1["Backoff Strategies"]
-    C -.-> C1["Bulkhead"]
-    D -.-> D1["Saga Pattern"]
-    F -.-> F1["Read Replicas"]
-    class A,B,C,D,E,F core
-    class B1,C1,D1,F1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Patterns roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="rate-limiting/"><span class="n">1</span>Rate Limiting</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="backoff/">Backoff Strategies</a></div>
+      <a class="rm-node" href="retry-timeout/"><span class="n">2</span>Retry &amp; Timeout</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="circuit-breaker/"><span class="n">3</span>Circuit Breaker</a>
+      <div class="rm-branch right"><a class="rm-chip" href="bulkhead/">Bulkhead</a></div>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="saga-pattern/">Saga Pattern</a></div>
+      <a class="rm-node" href="idempotency/"><span class="n">4</span>Idempotency</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="sharding/"><span class="n">5</span>Sharding</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="read-replicas/">Read Replicas</a></div>
+      <a class="rm-node" href="replication/"><span class="n">6</span>Replication</a>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 

@@ -14,29 +14,32 @@ These are *short, concept-weaving scenarios*. For full end-to-end system designs
 
 ## Roadmap
 
-There is no fixed order — jump to the category matching the problem in front of you. A rough difficulty progression:
-
-<div class="sd-mermaid-links" data-links='{
-  "Data Processing": "data-processing/",
-  "Real-Time Systems": "real-time-systems/",
-  "Payments & Correctness": "payments-and-correctness/",
-  "Scaling & Performance": "scaling-and-performance/",
-  "Multi-Tenant SaaS": "multi-tenant-saas/",
-  "Event-Driven Workflows": "event-driven-workflows/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Data Processing"] --> B["Real-Time Systems"]
-    B --> C["Payments & Correctness"]
-    C --> D["Scaling & Performance"]
-    D -.-> D1["Multi-Tenant SaaS"]
-    D -.-> D2["Event-Driven Workflows"]
-    class A,B,C,D core
-    class D1,D2 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Practical Examples roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="data-processing/"><span class="n">1</span>Data Processing</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="real-time-systems/"><span class="n">2</span>Real-Time Systems</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="payments-and-correctness/"><span class="n">3</span>Payments &amp; Correctness</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="multi-tenant-saas/">Multi-Tenant SaaS</a><a class="rm-chip" href="event-driven-workflows/">Event-Driven Workflows</a></div>
+      <a class="rm-node" href="scaling-and-performance/"><span class="n">4</span>Scaling &amp; Performance</a>
+    </div>
+  </div>
+</div>
 
 ---
 

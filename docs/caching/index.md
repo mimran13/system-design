@@ -7,31 +7,36 @@ Storing copies of data in a fast-access layer so future requests can be served f
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Caching Strategies": "caching-strategies/",
-  "Eviction Policies": "eviction-policies/",
-  "Cache Invalidation": "cache-invalidation/",
-  "Redis Deep Dive": "redis/",
-  "Distributed Caching": "distributed-caching/",
-  "Cache Patterns & Pitfalls": "cache-patterns/",
-  "Cache Hierarchy": "cache-hierarchy/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Caching Strategies"] --> B["Eviction Policies"]
-    B --> C["Cache Invalidation"]
-    C --> D["Redis Deep Dive"]
-    D --> E["Distributed Caching"]
-    C -.-> C1["Cache Patterns & Pitfalls"]
-    A -.-> A1["Cache Hierarchy"]
-    class A,B,C,D,E core
-    class C1,A1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Caching roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="caching-strategies/"><span class="n">1</span>Caching Strategies</a>
+      <div class="rm-branch right"><a class="rm-chip" href="cache-hierarchy/">Cache Hierarchy</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="eviction-policies/"><span class="n">2</span>Eviction Policies</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="cache-invalidation/"><span class="n">3</span>Cache Invalidation</a>
+      <div class="rm-branch right"><a class="rm-chip" href="cache-patterns/">Cache Patterns &amp; Pitfalls</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="redis/"><span class="n">4</span>Redis Deep Dive</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="distributed-caching/"><span class="n">5</span>Distributed Caching</a>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 

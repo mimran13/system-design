@@ -9,23 +9,26 @@ This section is **rails-focused** — the protocols and actors between merchant 
 
 ## Roadmap
 
-Start with the four-party model, then trace authentication, then keep the glossary open as a reference.
-
-<div class="sd-mermaid-links" data-links='{
-  "Card Payments Fundamentals": "card-payments-fundamentals/",
-  "3D Secure Flow": "3ds-flow/",
-  "Fintech Glossary": "glossary/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Card Payments Fundamentals"] --> B["3D Secure Flow"]
-    B -.-> B1["Fintech Glossary"]
-    class A,B core
-    class B1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Fintech roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="card-payments-fundamentals/"><span class="n">1</span>Card Payments Fundamentals</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="glossary/">Fintech Glossary</a></div>
+      <a class="rm-node" href="3ds-flow/"><span class="n">2</span>3D Secure Flow</a>
+    </div>
+  </div>
+</div>
 
 ## The flows
 

@@ -7,29 +7,30 @@ Modern infrastructure is code — repeatable, versionable, auditable, and automa
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Containers and Docker": "containers/",
-  "Kubernetes": "kubernetes/",
-  "Service Mesh": "service-mesh/",
-  "Kubernetes in Production": "kubernetes-in-production/",
-  "CI and CD": "../cicd/",
-  "Infrastructure as Code": "../iac/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Containers and Docker"] --> B["Kubernetes"]
-    B --> C["Service Mesh"]
-    B -.-> B1["Kubernetes in Production"]
-    C -.-> C1["CI and CD"]
-    C -.-> C2["Infrastructure as Code"]
-    class A,B,C core
-    class B1,C1,C2 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Infrastructure roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="containers/"><span class="n">1</span>Containers and Docker</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="kubernetes-in-production/">Kubernetes in Production</a></div>
+      <a class="rm-node" href="kubernetes/"><span class="n">2</span>Kubernetes</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="service-mesh/"><span class="n">3</span>Service Mesh</a>
+      <div class="rm-branch right"><a class="rm-chip" href="../cicd/">CI and CD</a><a class="rm-chip" href="../iac/">Infrastructure as Code</a></div>
+    </div>
+  </div>
+</div>
 
 ## Topics in this section
 

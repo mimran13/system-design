@@ -7,37 +7,40 @@ You can't operate what you can't see. Observability is understanding a system's 
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Logging": "logging/",
-  "Metrics": "metrics/",
-  "Distributed Tracing": "tracing/",
-  "Alerting": "alerting/",
-  "SLI, SLO and SLA": "slo-sla/",
-  "Incident Management": "incident-management/",
-  "Load Testing": "load-testing/",
-  "Linux Debugging": "linux-debugging-toolbox/",
-  "Incident Response Craft": "incident-response-craft/",
-  "Performance Engineering": "performance-engineering/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Logging"] --> B["Metrics"]
-    B --> C["Distributed Tracing"]
-    C --> D["Alerting"]
-    D --> E["SLI, SLO and SLA"]
-    E --> F["Incident Management"]
-    B -.-> B1["Load Testing"]
-    C -.-> C1["Linux Debugging"]
-    F -.-> F1["Incident Response Craft"]
-    B -.-> B2["Performance Engineering"]
-    class A,B,C,D,E,F core
-    class B1,C1,F1,B2 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Observability roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="logging/"><span class="n">1</span>Logging</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="load-testing/">Load Testing</a><a class="rm-chip" href="performance-engineering/">Performance Engineering</a></div>
+      <a class="rm-node" href="metrics/"><span class="n">2</span>Metrics</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="tracing/"><span class="n">3</span>Distributed Tracing</a>
+      <div class="rm-branch right"><a class="rm-chip" href="linux-debugging-toolbox/">Linux Debugging</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="alerting/"><span class="n">4</span>Alerting</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="slo-sla/"><span class="n">5</span>SLI, SLO and SLA</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="incident-response-craft/">Incident Response Craft</a></div>
+      <a class="rm-node" href="incident-management/"><span class="n">6</span>Incident Management</a>
+    </div>
+  </div>
+</div>
 
 ## The signals
 

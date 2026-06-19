@@ -7,41 +7,47 @@ How you organise services, data, and teams determines every later decision — p
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Quality Attributes": "quality-attributes/",
-  "ADRs": "adrs/",
-  "Layered / N-Tier": "layered-architecture/",
-  "Monolith vs Microservices": "monolith-vs-microservices/",
-  "Modular Monolith": "modular-monolith/",
-  "Domain-Driven Design": "ddd/",
-  "Event-Driven Architecture": "event-driven/",
-  "Architecture Anti-Patterns": "anti-patterns/",
-  "Hexagonal Architecture": "hexagonal/",
-  "Microservices Patterns": "microservices-patterns/",
-  "Multi-Region Architecture": "multi-region/",
-  "Strangler Fig Pattern": "strangler-fig/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Quality Attributes"] --> B["ADRs"]
-    B --> C["Layered / N-Tier"]
-    C --> D["Monolith vs Microservices"]
-    D --> E["Modular Monolith"]
-    E --> F["Domain-Driven Design"]
-    F --> G["Event-Driven Architecture"]
-    G --> H["Architecture Anti-Patterns"]
-    C -.-> C1["Hexagonal Architecture"]
-    F -.-> F1["Microservices Patterns"]
-    G -.-> G1["Multi-Region Architecture"]
-    H -.-> H1["Strangler Fig Pattern"]
-    class A,B,C,D,E,F,G,H core
-    class C1,F1,G1,H1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Architecture roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="quality-attributes/"><span class="n">1</span>Quality Attributes</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="adrs/"><span class="n">2</span>ADRs</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="layered-architecture/"><span class="n">3</span>Layered / N-Tier</a>
+      <div class="rm-branch right"><a class="rm-chip" href="hexagonal/">Hexagonal Architecture</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="monolith-vs-microservices/"><span class="n">4</span>Monolith vs Microservices</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="modular-monolith/"><span class="n">5</span>Modular Monolith</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="microservices-patterns/">Microservices Patterns</a></div>
+      <a class="rm-node" href="ddd/"><span class="n">6</span>Domain-Driven Design</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="event-driven/"><span class="n">7</span>Event-Driven Architecture</a>
+      <div class="rm-branch right"><a class="rm-chip" href="multi-region/">Multi-Region Architecture</a></div>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="strangler-fig/">Strangler Fig Pattern</a></div>
+      <a class="rm-node" href="anti-patterns/"><span class="n">8</span>Architecture Anti-Patterns</a>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 

@@ -7,35 +7,39 @@ CI/CD automates the build, test, and release pipeline so every code change is ve
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Fundamentals": "fundamentals/",
-  "Pipelines": "pipelines/",
-  "Branching Strategies": "branching-strategies/",
-  "Build and Test": "build-and-test/",
-  "Artifact Management": "artifact-management/",
-  "Deployment Strategies": "deployment-strategies/",
-  "Security in CI/CD": "security-in-cicd/",
-  "GitOps": "gitops/",
-  "Progressive Delivery": "progressive-delivery/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Fundamentals"] --> B["Pipelines"]
-    B --> C["Branching Strategies"]
-    C --> D["Build and Test"]
-    D --> E["Artifact Management"]
-    E --> F["Deployment Strategies"]
-    D -.-> D1["Security in CI/CD"]
-    F -.-> F1["GitOps"]
-    F -.-> F2["Progressive Delivery"]
-    class A,B,C,D,E,F core
-    class D1,F1,F2 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 CI/CD roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="fundamentals/"><span class="n">1</span>Fundamentals</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="pipelines/"><span class="n">2</span>Pipelines</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="branching-strategies/"><span class="n">3</span>Branching Strategies</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="security-in-cicd/">Security in CI/CD</a></div>
+      <a class="rm-node" href="build-and-test/"><span class="n">4</span>Build and Test</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="artifact-management/"><span class="n">5</span>Artifact Management</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="deployment-strategies/"><span class="n">6</span>Deployment Strategies</a>
+      <div class="rm-branch right"><a class="rm-chip" href="gitops/">GitOps</a><a class="rm-chip" href="progressive-delivery/">Progressive Delivery</a></div>
+    </div>
+  </div>
+</div>
 
 ## Core pipeline topics
 

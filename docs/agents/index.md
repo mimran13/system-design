@@ -7,33 +7,36 @@ A practical guide to understanding, building, and running AI agents in productio
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Agent Fundamentals": "agent-fundamentals/",
-  "Function Calling": "function-calling/",
-  "Building Agents": "building-agents/",
-  "Research Agent": "example-research-agent/",
-  "Agent Reliability": "agent-reliability/",
-  "Data Analysis Agent": "example-data-agent/",
-  "Customer Support Agent": "example-customer-support-agent/",
-  "Multi-Agent Systems": "multi-agent-systems/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Agent Fundamentals"] --> B["Function Calling"]
-    B --> C["Building Agents"]
-    C --> D["Research Agent"]
-    D --> E["Agent Reliability"]
-    C -.-> C1["Data Analysis Agent"]
-    C -.-> C2["Customer Support Agent"]
-    E -.-> E1["Multi-Agent Systems"]
-    class A,B,C,D,E core
-    class C1,C2,E1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 AI Agents roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="agent-fundamentals/"><span class="n">1</span>Agent Fundamentals</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="function-calling/"><span class="n">2</span>Function Calling</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="building-agents/"><span class="n">3</span>Building Agents</a>
+      <div class="rm-branch right"><a class="rm-chip" href="example-data-agent/">Data Analysis Agent</a><a class="rm-chip" href="example-customer-support-agent/">Customer Support Agent</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="example-research-agent/"><span class="n">4</span>Research Agent</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="multi-agent-systems/">Multi-Agent Systems</a></div>
+      <a class="rm-node" href="agent-reliability/"><span class="n">5</span>Agent Reliability</a>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 

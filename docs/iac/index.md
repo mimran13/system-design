@@ -7,37 +7,43 @@ Infrastructure as Code is the practice of defining and managing infrastructure (
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Fundamentals": "fundamentals/",
-  "Terraform": "terraform/",
-  "State Management": "state-management/",
-  "Terraform in CI/CD": "terraform-cicd-lifecycle/",
-  "Modules and Structure": "modules-and-structure/",
-  "Secrets in IaC": "secrets-in-iac/",
-  "Best Practices": "best-practices/",
-  "AWS CDK": "cdk/",
-  "Drift Detection": "drift-detection/",
-  "Testing IaC": "testing-iac/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Fundamentals"] --> B["Terraform"]
-    B --> C["State Management"]
-    C --> D["Terraform in CI/CD"]
-    D --> E["Modules and Structure"]
-    E --> F["Secrets in IaC"]
-    F --> G["Best Practices"]
-    B -.-> B1["AWS CDK"]
-    D -.-> D1["Drift Detection"]
-    G -.-> G1["Testing IaC"]
-    class A,B,C,D,E,F,G core
-    class B1,D1,G1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 IaC roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="fundamentals/"><span class="n">1</span>Fundamentals</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="cdk/">AWS CDK</a></div>
+      <a class="rm-node" href="terraform/"><span class="n">2</span>Terraform</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="state-management/"><span class="n">3</span>State Management</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="drift-detection/">Drift Detection</a></div>
+      <a class="rm-node" href="terraform-cicd-lifecycle/"><span class="n">4</span>Terraform in CI/CD</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="modules-and-structure/"><span class="n">5</span>Modules and Structure</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="secrets-in-iac/"><span class="n">6</span>Secrets in IaC</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="best-practices/"><span class="n">7</span>Best Practices</a>
+      <div class="rm-branch right"><a class="rm-chip" href="testing-iac/">Testing IaC</a></div>
+    </div>
+  </div>
+</div>
 
 ## Core IaC topics
 

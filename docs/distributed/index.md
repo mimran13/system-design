@@ -10,35 +10,37 @@ The theory and mechanics behind systems that run across multiple nodes. This is 
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "The 8 Fallacies": "fallacies/",
-  "Clocks and Ordering": "clocks/",
-  "Consensus (Raft and Paxos)": "consensus/",
-  "Leader Election": "leader-election/",
-  "Quorum": "quorum/",
-  "Distributed Locks": "distributed-locks/",
-  "Failure Detection": "failure-detection/",
-  "Service Discovery": "service-discovery/",
-  "CRDTs": "crdts/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["The 8 Fallacies"] --> B["Clocks and Ordering"]
-    B --> C["Consensus (Raft and Paxos)"]
-    C --> D["Leader Election"]
-    D --> E["Quorum"]
-    C -.-> C1["Distributed Locks"]
-    A -.-> A1["Failure Detection"]
-    A -.-> A2["Service Discovery"]
-    E -.-> E1["CRDTs"]
-    class A,B,C,D,E core
-    class C1,A1,A2,E1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Distributed Systems roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="fallacies/"><span class="n">1</span>The 8 Fallacies</a>
+      <div class="rm-branch right"><a class="rm-chip" href="failure-detection/">Failure Detection</a><a class="rm-chip" href="service-discovery/">Service Discovery</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="clocks/"><span class="n">2</span>Clocks and Ordering</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="consensus/"><span class="n">3</span>Consensus (Raft and Paxos)</a>
+      <div class="rm-branch right"><a class="rm-chip" href="distributed-locks/">Distributed Locks</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="leader-election/"><span class="n">4</span>Leader Election</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="crdts/">CRDTs</a></div>
+      <a class="rm-node" href="quorum/"><span class="n">5</span>Quorum</a>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 

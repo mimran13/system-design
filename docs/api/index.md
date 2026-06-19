@@ -7,31 +7,36 @@ An API is a contract between a provider and its consumers. Unlike internal imple
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "REST": "rest/",
-  "gRPC": "grpc/",
-  "GraphQL": "graphql/",
-  "REST vs gRPC vs GraphQL": "comparison/",
-  "API Versioning": "versioning/",
-  "Pagination": "pagination/",
-  "Webhooks": "webhooks/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["REST"] --> B["gRPC"]
-    B --> C["GraphQL"]
-    C --> D["REST vs gRPC vs GraphQL"]
-    D --> E["API Versioning"]
-    A -.-> A1["Pagination"]
-    E -.-> E1["Webhooks"]
-    class A,B,C,D,E core
-    class A1,E1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 API Design roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="rest/"><span class="n">1</span>REST</a>
+      <div class="rm-branch right"><a class="rm-chip" href="pagination/">Pagination</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="grpc/"><span class="n">2</span>gRPC</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="graphql/"><span class="n">3</span>GraphQL</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="comparison/"><span class="n">4</span>REST vs gRPC vs GraphQL</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="versioning/"><span class="n">5</span>API Versioning</a>
+      <div class="rm-branch right"><a class="rm-chip" href="webhooks/">Webhooks</a></div>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 

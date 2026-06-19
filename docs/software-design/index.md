@@ -7,35 +7,39 @@ The foundation before system design. These principles operate at the code and co
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Clean Code Principles": "clean-code-principles/",
-  "SOLID Principles": "solid/",
-  "IoC & Dependency Injection": "ioc-di/",
-  "Design Patterns (GoF)": "design-patterns/",
-  "Refactoring & Code Smells": "refactoring/",
-  "Testing Strategies": "testing-strategies/",
-  "Error Handling Patterns": "error-handling/",
-  "DDD Tactical Patterns": "ddd-tactical/",
-  "Clean Architecture": "clean-architecture/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Clean Code Principles"] --> B["SOLID Principles"]
-    B --> C["IoC & Dependency Injection"]
-    C --> D["Design Patterns (GoF)"]
-    D --> E["Refactoring & Code Smells"]
-    E --> F["Testing Strategies"]
-    F -.-> F1["Error Handling Patterns"]
-    D -.-> D1["DDD Tactical Patterns"]
-    D -.-> D2["Clean Architecture"]
-    class A,B,C,D,E,F core
-    class F1,D1,D2 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Software Design roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="clean-code-principles/"><span class="n">1</span>Clean Code Principles</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="solid/"><span class="n">2</span>SOLID Principles</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="ioc-di/"><span class="n">3</span>IoC &amp; Dependency Injection</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="design-patterns/"><span class="n">4</span>Design Patterns (GoF)</a>
+      <div class="rm-branch right"><a class="rm-chip" href="ddd-tactical/">DDD Tactical Patterns</a><a class="rm-chip" href="clean-architecture/">Clean Architecture</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="refactoring/"><span class="n">5</span>Refactoring &amp; Code Smells</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="error-handling/">Error Handling Patterns</a></div>
+      <a class="rm-node" href="testing-strategies/"><span class="n">6</span>Testing Strategies</a>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 

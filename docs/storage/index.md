@@ -7,39 +7,40 @@ Choosing the right storage is one of the most consequential decisions in any sys
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Relational Databases": "relational-databases/",
-  "SQL vs NoSQL": "sql-vs-nosql/",
-  "Key-Value Stores": "key-value-stores/",
-  "Document Stores": "document-stores/",
-  "Wide-Column Stores": "wide-column-stores/",
-  "Blob Storage": "blob-storage/",
-  "Search Engines": "search-engines/",
-  "Time-Series Databases": "time-series-databases/",
-  "Graph Databases": "graph-databases/",
-  "NewSQL": "newsql/",
-  "Vector Databases": "vector-databases/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Relational Databases"] --> B["SQL vs NoSQL"]
-    B --> C["Key-Value Stores"]
-    C --> D["Document Stores"]
-    D --> E["Wide-Column Stores"]
-    E --> F["Blob Storage"]
-    B -.-> B1["Search Engines"]
-    B -.-> B2["Time-Series Databases"]
-    B -.-> B3["Graph Databases"]
-    A -.-> A1["NewSQL"]
-    F -.-> F1["Vector Databases"]
-    class A,B,C,D,E,F core
-    class B1,B2,B3,A1,F1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Storage roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="relational-databases/"><span class="n">1</span>Relational Databases</a>
+      <div class="rm-branch right"><a class="rm-chip" href="newsql/">NewSQL</a></div>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="search-engines/">Search Engines</a><a class="rm-chip" href="time-series-databases/">Time-Series Databases</a><a class="rm-chip" href="graph-databases/">Graph Databases</a></div>
+      <a class="rm-node" href="sql-vs-nosql/"><span class="n">2</span>SQL vs NoSQL</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="key-value-stores/"><span class="n">3</span>Key-Value Stores</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="document-stores/"><span class="n">4</span>Document Stores</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="wide-column-stores/"><span class="n">5</span>Wide-Column Stores</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="blob-storage/"><span class="n">6</span>Blob Storage</a>
+      <div class="rm-branch right"><a class="rm-chip" href="vector-databases/">Vector Databases</a></div>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 

@@ -7,35 +7,40 @@ Everything a backend engineer needs to design, build, and operate production AI 
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "LLM Fundamentals": "llm-fundamentals/",
-  "Prompt Engineering": "prompt-engineering/",
-  "Embeddings & Vector Search": "embeddings-vector-search/",
-  "RAG": "rag/",
-  "Agents & Tool Use": "agents-and-tool-use/",
-  "Evaluation": "evaluation/",
-  "Fine-tuning": "fine-tuning/",
-  "Guardrails & Safety": "guardrails-safety/",
-  "LLMOps": "llmops/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["LLM Fundamentals"] --> B["Prompt Engineering"]
-    B --> C["Embeddings & Vector Search"]
-    C --> D["RAG"]
-    D --> E["Agents & Tool Use"]
-    E --> F["Evaluation"]
-    B -.-> B1["Fine-tuning"]
-    E -.-> E1["Guardrails & Safety"]
-    F -.-> F1["LLMOps"]
-    class A,B,C,D,E,F core
-    class B1,E1,F1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 AI Engineering roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="llm-fundamentals/"><span class="n">1</span>LLM Fundamentals</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="fine-tuning/">Fine-tuning</a></div>
+      <a class="rm-node" href="prompt-engineering/"><span class="n">2</span>Prompt Engineering</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="embeddings-vector-search/"><span class="n">3</span>Embeddings &amp; Vector Search</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="rag/"><span class="n">4</span>RAG</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="agents-and-tool-use/"><span class="n">5</span>Agents &amp; Tool Use</a>
+      <div class="rm-branch right"><a class="rm-chip" href="guardrails-safety/">Guardrails &amp; Safety</a></div>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="llmops/">LLMOps</a></div>
+      <a class="rm-node" href="evaluation/"><span class="n">6</span>Evaluation</a>
+    </div>
+  </div>
+</div>
 
 ## What is an AI / LLM / Agentic Engineer?
 

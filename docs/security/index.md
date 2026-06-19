@@ -7,35 +7,38 @@ Security is not a feature you bolt on after the fact. It's a property of the sys
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Authn and Authz": "authn-authz/",
-  "OAuth and JWT": "oauth-jwt/",
-  "API Security": "api-security/",
-  "Encryption": "encryption/",
-  "Secrets Management": "secrets-management/",
-  "Enterprise Auth": "enterprise-auth/",
-  "Compliance": "compliance-regulatory-engineering/",
-  "Zero Trust": "zero-trust/",
-  "Threat Modelling": "threat-modelling/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Authn and Authz"] --> B["OAuth and JWT"]
-    B --> C["API Security"]
-    C --> D["Encryption"]
-    D --> E["Secrets Management"]
-    B -.-> B1["Enterprise Auth"]
-    D -.-> D1["Compliance"]
-    E -.-> E1["Zero Trust"]
-    C -.-> C1["Threat Modelling"]
-    class A,B,C,D,E core
-    class B1,D1,E1,C1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Security roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="authn-authz/"><span class="n">1</span>Authn and Authz</a>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="enterprise-auth/">Enterprise Auth</a></div>
+      <a class="rm-node" href="oauth-jwt/"><span class="n">2</span>OAuth and JWT</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="api-security/"><span class="n">3</span>API Security</a>
+      <div class="rm-branch right"><a class="rm-chip" href="threat-modelling/">Threat Modelling</a></div>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="compliance-regulatory-engineering/">Compliance</a></div>
+      <a class="rm-node" href="encryption/"><span class="n">4</span>Encryption</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="secrets-management/"><span class="n">5</span>Secrets Management</a>
+      <div class="rm-branch right"><a class="rm-chip" href="zero-trust/">Zero Trust</a></div>
+    </div>
+  </div>
+</div>
 
 ## Core security topics
 

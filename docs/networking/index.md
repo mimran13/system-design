@@ -7,31 +7,36 @@ Every request a user makes traverses multiple networking layers before hitting y
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "DNS": "dns/",
-  "CDN": "cdn/",
-  "Load Balancing": "load-balancing/",
-  "Proxies": "proxies/",
-  "API Gateway": "api-gateway/",
-  "WebSockets & SSE": "websockets-sse/",
-  "HTTP Versions": "http-versions/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["DNS"] --> B["CDN"]
-    B --> C["Load Balancing"]
-    C --> D["Proxies"]
-    D --> E["API Gateway"]
-    C -.-> C1["WebSockets & SSE"]
-    E -.-> E1["HTTP Versions"]
-    class A,B,C,D,E core
-    class C1,E1 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Networking roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="dns/"><span class="n">1</span>DNS</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="cdn/"><span class="n">2</span>CDN</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="load-balancing/"><span class="n">3</span>Load Balancing</a>
+      <div class="rm-branch right"><a class="rm-chip" href="websockets-sse/">WebSockets &amp; SSE</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="proxies/"><span class="n">4</span>Proxies</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="api-gateway/"><span class="n">5</span>API Gateway</a>
+      <div class="rm-branch right"><a class="rm-chip" href="http-versions/">HTTP Versions</a></div>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 

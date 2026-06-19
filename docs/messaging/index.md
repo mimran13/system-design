@@ -7,33 +7,35 @@ Synchronous request/response breaks under three conditions: the downstream is sl
 
 ## Roadmap
 
-Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
-
-<div class="sd-mermaid-links" data-links='{
-  "Message Queues": "message-queues/",
-  "Pub/Sub": "pub-sub/",
-  "Event Streaming": "event-streaming/",
-  "Kafka Deep Dive": "kafka/",
-  "Idempotent Consumers": "idempotent-consumers/",
-  "Backpressure": "backpressure/",
-  "Event Payload Design": "event-payload-design/",
-  "Event Schema Evolution": "event-schema-evolution/"
-}'></div>
-
-```mermaid
-flowchart TD
-    A["Message Queues"] --> B["Pub/Sub"]
-    B --> C["Event Streaming"]
-    C --> D["Kafka Deep Dive"]
-    D --> E["Idempotent Consumers"]
-    C -.-> C1["Backpressure"]
-    C -.-> C2["Event Payload Design"]
-    C -.-> C3["Event Schema Evolution"]
-    class A,B,C,D,E core
-    class C1,C2,C3 opt
-    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
-    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Messaging roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>core path</i>
+      <i><span class="sw opt"></span>read as needed</i>
+      <i><span class="sw adv"></span>advanced / later</i>
+    </span>
+  </div>
+  <p class="rm-sub">Follow the spine top-to-bottom your first time. Branches hang off the topic they support — grab them when you need them.</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="message-queues/"><span class="n">1</span>Message Queues</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="pub-sub/"><span class="n">2</span>Pub/Sub</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="event-streaming/"><span class="n">3</span>Event Streaming</a>
+      <div class="rm-branch right"><a class="rm-chip" href="backpressure/">Backpressure</a><a class="rm-chip" href="event-payload-design/">Event Payload Design</a><a class="rm-chip" href="event-schema-evolution/">Event Schema Evolution</a></div>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="kafka/"><span class="n">4</span>Kafka Deep Dive</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="idempotent-consumers/"><span class="n">5</span>Idempotent Consumers</a>
+    </div>
+  </div>
+</div>
 
 ## Suggested reading order
 
