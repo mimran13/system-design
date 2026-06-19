@@ -1598,3 +1598,45 @@ article.md-typeset > h4 {
 [data-md-color-scheme="slate"] .md-typeset a.pcard { background:#18181b; border-color:#27272a; }
 [data-md-color-scheme="slate"] .md-typeset a.pcard .t { color:#fafafa; }
 [data-md-color-scheme="slate"] .md-typeset a.pcard .d { color:#71717a; }
+
+/* ════════════════════════════════════════════════════════════
+   PAGE BACKGROUNDS — match the mockups
+   • homepage: white + faint blue hero glow (homepage-redesign.html .canvas::before)
+   • content pages: #f1f5f9 wash with the content as a white panel (inside-pages.html)
+   ════════════════════════════════════════════════════════════ */
+
+/* content pages sit on the light blue-gray wash */
+.md-main { background-color: #f1f5f9; }
+[data-md-color-scheme="slate"] .md-main { background-color: #0a0a0d; }
+
+/* the reading column becomes a white floating panel */
+.md-content {
+  background-color: var(--md-default-bg-color);
+  border: 1px solid var(--sd-divider);
+  border-radius: 14px;
+  margin: 1.2rem 1rem 2rem;
+  box-shadow: 0 1px 3px rgba(15,23,42,.04), 0 10px 30px -20px rgba(15,23,42,.18);
+}
+[data-md-color-scheme="slate"] .md-content {
+  box-shadow: 0 1px 3px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.6);
+}
+
+/* homepage (has .home-hero): keep it white + add the blue hero glow, no panel */
+.md-main:has(.home-hero) {
+  background:
+    radial-gradient(60% 55% at 30% 0, rgba(37,99,235,.09), transparent 60%),
+    radial-gradient(50% 45% at 82% 4%, rgba(59,130,246,.07), transparent 55%),
+    var(--md-default-bg-color);
+}
+[data-md-color-scheme="slate"] .md-main:has(.home-hero) {
+  background:
+    radial-gradient(60% 55% at 30% 0, rgba(129,140,248,.12), transparent 60%),
+    radial-gradient(50% 45% at 82% 4%, rgba(56,189,248,.08), transparent 55%),
+    var(--md-default-bg-color);
+}
+.md-main:has(.home-hero) .md-content {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  margin: 0;
+}
