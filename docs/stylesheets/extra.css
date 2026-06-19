@@ -1708,3 +1708,25 @@ article.md-typeset > h4 {
 .md-nav--primary .md-nav__item:not(.md-nav__item--nested) > .md-nav__link {
   margin-left: 0.7rem;
 }
+
+/* Section headers that ALSO link to an index page render as div.md-nav__container
+   (a flex wrapper around the index <a> + toggle). Without this, the inner <a>
+   inherits page-link padding on top of the container, pushing the header text
+   RIGHT of its own child items. Render them flush, as gray uppercase labels
+   like the other section labels. */
+.md-nav--primary .md-nav__container {
+  padding: 0 !important;
+  margin: 1.2rem 0 0.1rem 0;
+}
+.md-nav--primary .md-nav__container > .md-nav__link {
+  font-family: var(--md-code-font) !important;
+  font-size: 0.68rem !important;
+  font-weight: 600 !important;
+  color: var(--md-default-fg-color--lighter) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  padding: 0.3rem 0.6rem !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
