@@ -6,8 +6,9 @@
 
 /* Override Material's font with Geist */
 :root {
-  --md-text-font: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --md-code-font: "Geist Mono", "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  /* System font stack — matches the mockups (.mockups/*.html --sans / --mono) */
+  --md-text-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --md-code-font: "SF Mono", ui-monospace, "Cascadia Code", "JetBrains Mono", Menlo, monospace;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -82,9 +83,15 @@
    GLOBAL TYPOGRAPHY
    ═══════════════════════════════════════════════════════════ */
 
+/* Pin the root to 16px so every rem matches the mockup's 16px basis
+   (Material defaults to a 125–150% root, which scaled all the ported
+   rem sizes up by ~25–35%). */
+html {
+  font-size: 100% !important;
+}
+
 body {
   font-family: var(--md-text-font);
-  font-feature-settings: "ss01", "ss03", "cv11";  /* Geist's stylistic alternates */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -92,9 +99,8 @@ body {
 
 .md-typeset {
   font-family: var(--md-text-font);
-  font-size: 0.96rem;
-  line-height: 1.72;
-  font-feature-settings: "ss01", "cv11";
+  font-size: 1rem;        /* 16px, matching the mockup body */
+  line-height: 1.7;
   color: var(--md-default-fg-color);
 }
 
