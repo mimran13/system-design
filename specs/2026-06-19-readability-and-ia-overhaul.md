@@ -18,6 +18,13 @@
 - Keep the current **nested** sidebar (do NOT flatten to one level).
 - **No** reading-time hints (ignore the `7m` pills in the mockups).
 - "Start Here" becomes a top-level nav tab.
+- **Match the mockups closely.** Build the mockups' *bespoke* components (homepage doors with icon tiles + hover reveal, section hero bands, concept-page callouts, Related-as-cards) as custom HTML (`md_in_html`) + CSS in `extra.css` — do NOT settle for Material's default `grid cards` look where the mockup shows something richer. Proven feasible: the homepage doors were rebuilt 1:1 from `.mockups/homepage-redesign.html` and render correctly in MkDocs (see commit `feat(home): bespoke intent doors`). The ONE exception is the **roadmap**, which is built with **Mermaid** (for clickable nodes via `sd-mermaid-links` + maintainability), so it uses the mockup's palette/idea but Mermaid's auto-layout — close, not pixel-identical.
+
+**Authoring convention for bespoke components (since "match closely" is locked):**
+- Put all visual styling in `docs/stylesheets/extra.css`, keyed off semantic classes (`.door`, `.sec-hero`, `.sd-symptom`, `.sd-related`, …). Keep per-page HTML minimal — just the class'd `<div>` scaffold.
+- Use **raw HTML blocks** (no `markdown` attribute) when the component contains nested links or needs exact structure (e.g. the homepage doors) — this avoids Material wrapping links in `<p>` or injecting heading permalinks. Use `md_in_html` with `markdown` only when the inner content is plain prose.
+- Reuse existing CSS variables (`--md-primary-fg-color`, `--md-default-fg-color*`, `--md-accent-fg-color`, `--sd-*`) so light/dark both work. Verify every new component in BOTH palettes.
+- Inline SVG icons (stroke `currentColor`) are acceptable for full control where Material's `:material-*:` icons fight the layout; otherwise prefer Material icons for consistency.
 
 ---
 
@@ -42,7 +49,15 @@
 
 # PHASE A — Quick Wins (homepage + Start Here tab + typography)
 
-**Outcome:** The "lost in a sea of information" entry problem is solved. Low risk, ~half a day. Three tasks, then a STOP gate.
+**Outcome:** The "lost in a sea of information" entry problem is solved. Low risk, ~half a day. Then a STOP gate.
+
+**Progress (branch `docs/readability-overhaul`):**
+- [x] A1 — Start Here top-level tab + `paths/index.md` landing (commit `9594624`)
+- [x] A2 — homepage hero-CTA / browse-chip CSS (commit `a7818ed`)
+- [x] A3 — homepage rewrite: hero + CTA + chips (commit `00d3f56`)
+- [x] A4 — body `0.96rem` + H2 `1.6em`/`3.2em` air (commit `92ce00a`)
+- [x] A5 — bespoke intent doors (commit `2f8ad90`) — added per "match closely" decision
+- [ ] A6 — (optional) gradient hero headline to fully match the mockup hero
 
 ---
 
@@ -400,6 +415,12 @@ git commit -m "feat(theme): larger body text and more air above H2 section break
 
 ---
 
+### Task A5: Bespoke intent doors (DONE — recorded for completeness)
+
+**Files:** `docs/index.md` (replace the `## What are you here to do?` grid-cards block), `docs/stylesheets/extra.css` (append `.doors`/`.door` styles).
+
+Replaced Material `grid cards` with the mockup's door design: a `.doors` 3-col grid of `.door` cards, each a raw-HTML block (no `markdown` attr → avoids `<p>`-wrapped links) containing an inline-SVG `.door-icon` tile, an `<h3>`, a `<p>`, and a `<ul>` of real internal links. CSS adds the hover lift, the `::before` top-border gradient reveal, the icon tile (`color-mix` on `--md-primary-fg-color`), and a dashed divider above the link list. Verified in light + dark, `--strict` green. This is the proof that bespoke components match the mockups in real MkDocs.
+
 ### 🛑 PHASE A GATE
 Stop. Serve the site, click through Home → Start Here → a topic → a concept page. Confirm with the user before starting Phase B. Phase A is independently shippable.
 
@@ -544,15 +565,17 @@ Stop. Serve the site; walk the full tab bar and every renamed/moved group. Confi
 
 ---
 
-### Task C1: Add section-landing CSS components
+### Task C1: Add section-landing AND concept-page bespoke CSS components
+
+Per the "match closely" decision, this task lands ALL the bespoke component styles from `.mockups/inside-pages.html` (both the "Section landing" and "Concept page" views), so later content tasks only add class'd HTML scaffold.
 
 **Files:** Modify `docs/stylesheets/extra.css` (append a commented block at the end).
 
-- [ ] **Step 1:** Append:
+- [ ] **Step 1:** Append the section-landing styles:
 
 ```css
 /* ════════════════════════════════════════════════════════════
-   Section-landing template — hero band + topic cards
+   Section-landing template — hero band
    (see .mockups/inside-pages.html → "Section landing")
    ════════════════════════════════════════════════════════════ */
 .md-typeset .sec-hero {
@@ -562,16 +585,69 @@ Stop. Serve the site; walk the full tab bar and every renamed/moved group. Confi
 .md-typeset .sec-hero .ey {
   font-family: var(--md-code-font, monospace); font-size: .72rem;
   letter-spacing: .12em; text-transform: uppercase; color: #93c5fd; margin-bottom: .6rem;
+  display: block;
 }
-.md-typeset .sec-hero p { color: #cbd5e1; max-width: 44em; margin: .3rem 0 0; }
+.md-typeset .sec-hero p,
+.md-typeset .sec-hero { color: #cbd5e1; }
+.md-typeset .sec-hero strong { color: #fff; }
 [data-md-color-scheme="slate"] .md-typeset .sec-hero {
-  background: linear-gradient(135deg, #1e293b, #0f172a);
+  background: linear-gradient(135deg, #1e293b, #0a0a0d);
 }
 ```
 
-> Topic cards reuse the existing Material `grid cards` component already styled in this file — no new card CSS needed. The hero band is the only new element.
+For section **topic cards**: build them as bespoke `.pcard` cards (matching the mockup's two-up cards with a quiet description), NOT plain Material grid cards, since the mockup shows a richer card. Reuse the `.door`-style hover (lift + border). Add:
 
-- [ ] **Step 2: Verify** `mkdocs build --strict`. **Commit** — `git commit -m "feat(theme): section-landing hero band style"`
+```css
+/* Section topic cards */
+.md-typeset .pcards { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin: 1.2rem 0; }
+.md-typeset a.pcard {
+  text-decoration: none; border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 11px; padding: .9rem 1.1rem; background: var(--md-default-bg-color);
+  display: flex; flex-direction: column; gap: .2rem; transition: .15s;
+}
+.md-typeset a.pcard:hover {
+  border-color: var(--md-primary-fg-color); transform: translateY(-2px);
+  box-shadow: 0 14px 28px -18px color-mix(in srgb, var(--md-primary-fg-color) 40%, transparent);
+}
+.md-typeset a.pcard .t { font-weight: 650; color: var(--md-default-fg-color); font-size: .95rem; }
+.md-typeset a.pcard .d { font-size: .83rem; color: var(--md-default-fg-color--lighter); line-height: 1.5; }
+@media screen and (max-width: 44.9375em) { .md-typeset .pcards { grid-template-columns: 1fr; } }
+```
+
+- [ ] **Step 2:** Append the concept-page component styles (lede, "You'll see this when" callout, Related-as-cards):
+
+```css
+/* ════════════════════════════════════════════════════════════
+   Concept-page components (see .mockups/inside-pages.html → "Concept page")
+   ════════════════════════════════════════════════════════════ */
+/* "You'll see this when…" recognition callout */
+.md-typeset .sd-symptom {
+  margin: 1.8rem 0; border: 1px solid color-mix(in srgb, var(--md-accent-fg-color) 35%, transparent);
+  background: color-mix(in srgb, var(--md-accent-fg-color) 6%, var(--md-default-bg-color));
+  border-radius: 14px; padding: 1.2rem 1.5rem;
+}
+.md-typeset .sd-symptom > .h {
+  display: flex; align-items: center; gap: .5rem; font-weight: 700;
+  color: var(--md-accent-fg-color); margin-bottom: .4rem; font-size: .95rem;
+}
+/* Related-as-cards */
+.md-typeset .sd-related { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1rem; }
+.md-typeset a.sd-relcard {
+  text-decoration: none; border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 11px; padding: .9rem 1.1rem; background: var(--md-default-bg-color); transition: .15s;
+}
+.md-typeset a.sd-relcard:hover {
+  border-color: var(--md-primary-fg-color); transform: translateY(-2px);
+  box-shadow: 0 14px 28px -18px color-mix(in srgb, var(--md-primary-fg-color) 40%, transparent);
+}
+.md-typeset a.sd-relcard .t { font-weight: 650; color: var(--md-default-fg-color); font-size: .95rem; }
+.md-typeset a.sd-relcard .d { font-size: .82rem; color: var(--md-default-fg-color--lighter); }
+@media screen and (max-width: 44.9375em) { .md-typeset .sd-related { grid-template-columns: 1fr; } }
+```
+
+> NOTE: the "Test yourself" `???`/`!!! tip` interview admonition and the diagram zoom toolbar are already styled in `extra.css` / `diagrams.js` — do NOT rebuild those. Only the symptom callout, related-cards, section hero, and topic cards are new.
+
+- [ ] **Step 3: Verify** `mkdocs build --strict`. **Visual check** both palettes. **Commit** — `git commit -m "feat(theme): bespoke section-landing + concept-page component styles"`
 
 ---
 
@@ -590,7 +666,7 @@ The concepts every other section builds on — numbers, hardware, OS, networking
 </div>
 ```
 
-- [ ] **Step 2:** Convert the existing theme link-tables into Material `grid cards` (one card per page, two-up). Keep the existing "Suggested reading order", "Reading paths", and "Interview shortlist" sections below the cards. (Reuse the exact page titles/links already present in the file so no links break.)
+- [ ] **Step 2:** Convert the existing theme link-tables into bespoke `.pcards` (from Task C1), one `.pcard` per page, two-up — NOT Material grid cards. Each card: `<a class="pcard" href="..."><span class="t">Title</span><span class="d">one-line description</span></a>`, wrapped in `<div class="pcards">`. Keep the existing "Suggested reading order", "Reading paths", and "Interview shortlist" sections below the cards. (Reuse the exact page titles/links already present in the file so no links break.)
 
 - [ ] **Step 3: Verify** `mkdocs build --strict` + visual check against the mockup.
 
@@ -610,7 +686,13 @@ Stop. Show the user the new Fundamentals landing. Get explicit approval BEFORE r
 Target index pages (the ~16 that map to homepage chips):
 `software-design`, `architecture`, `distributed`, `storage`, `caching`, `networking`, `api`, `messaging`, `patterns`, `observability`, `security`, `infrastructure`, `iac`, `cicd`, `agents`, `ai`, `aws`, `fintech`, `case-studies`.
 
-For each: pick an `ey` eyebrow label matching its parent tab, write a one-paragraph hero intro, convert link tables to grid cards. Verify `mkdocs build --strict` after each. Commit message pattern: `feat(<section>): apply section-landing template`.
+For each: pick an `ey` eyebrow label matching its parent tab, write a one-paragraph hero intro, convert link tables to `.pcards`. Verify `mkdocs build --strict` after each. Commit message pattern: `feat(<section>): apply section-landing template`.
+
+**Scope note on the concept-page components (symptom callout + Related-as-cards):** these are ~250 pages. Applying the bespoke `.sd-symptom`/`.sd-related` markup to every page is a large, separate, INCREMENTAL effort — NOT part of the C3 rollout. Options, to decide with the user when we get here:
+1. **Going-forward convention** — apply bespoke components only to new/edited pages; old pages keep their current `## You'll see this when...` heading + Related list (which still render fine, just less styled).
+2. **Targeted rollout** — convert only the high-traffic pages (the ~25 interview-canon pages) to the bespoke callout/cards.
+3. **Full rollout** — all pages, done in section-sized batches over time.
+Do NOT attempt a 250-page rewrite in one task. Recommend option 1 or 2.
 
 ---
 
