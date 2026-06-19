@@ -396,7 +396,7 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 }
 
 .md-sidebar--primary {
-  border-right: 1px solid var(--sd-chrome-border);
+  border-right: none;   /* separator is drawn on .md-content's left edge (full height) */
 }
 
 /* Main content area — pure white, contrasts with chrome */
@@ -438,8 +438,8 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 
 /* Inset the whole primary nav from the sidebar edge (mockup .side padding) */
 .md-nav--primary {
-  padding-left: 0.8rem !important;
-  padding-right: 0.8rem !important;
+  padding-left: 1.1rem !important;   /* mockup .side horizontal padding */
+  padding-right: 1.1rem !important;
 }
 
 /* Flat nav — no indentation rail, links sit flush-left like the mockup .side */
@@ -1638,11 +1638,13 @@ article.md-typeset > h4 {
 .md-main { background-color: #f1f5f9; }
 [data-md-color-scheme="slate"] .md-main { background-color: #0a0a0d; }
 
-/* the reading column is white and FLUSH against the sidebar (mockup shell:
-   columns are adjacent, separated only by the sidebar border — no gap) */
+/* the reading column is white and FLUSH against the sidebar, with the
+   separator drawn on ITS left edge — full body height (Material's sidebar is
+   only as tall as its nav, so a sidebar border-right wouldn't reach bottom) */
 .md-content {
   background-color: var(--md-default-bg-color);
   border: none;
+  border-left: 1px solid var(--md-default-fg-color--lightest);  /* #e4e4e7 = mockup --line */
   border-radius: 0;
   margin: 0;
   box-shadow: none;
