@@ -409,7 +409,7 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
   text-transform: none;
   letter-spacing: -0.005em;
   color: var(--md-default-fg-color) !important;
-  padding: 0.55rem 1rem;
+  padding: 0.55rem 0.6rem;
   margin-top: 0.6rem;
   border-radius: 0;
 }
@@ -423,12 +423,12 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
   color: var(--md-primary-fg-color) !important;
 }
 
-/* Vertical rail under nested groups (Linear-style guide) */
+/* Flat nav — no indentation rail, links sit flush-left like the mockup .side */
 .md-nav--primary .md-nav .md-nav__list {
   position: relative;
-  margin-left: 0.5rem;
-  padding-left: 0.75rem;
-  border-left: 1px solid var(--sd-sidebar-rail);
+  margin-left: 0;
+  padding-left: 0;
+  border-left: none;
 }
 
 /* ─── Child page links (default) ─── */
@@ -455,8 +455,8 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
   font-size: 0.86rem !important;
   color: var(--md-default-fg-color) !important;
   letter-spacing: -0.01em;
-  padding: 0.5rem 0.85rem 0.45rem 0.85rem;
-  margin: 0.6rem 0.4rem 0.15rem 0;
+  padding: 0.5rem 0.6rem 0.45rem 0.6rem;
+  margin: 1rem 0.4rem 0.15rem 0;
   text-transform: none;
 }
 
