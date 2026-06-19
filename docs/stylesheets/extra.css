@@ -218,77 +218,94 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   HEADER — minimal, clean (no more gradient blue)
+   HEADER — blue chrome, matching .mockups/*.html
    ═══════════════════════════════════════════════════════════ */
 
 .md-header {
-  background-color: var(--sd-chrome-bg) !important;
-  color: var(--md-default-fg-color) !important;
-  border-bottom: 1px solid var(--sd-chrome-border);
+  background-color: #2563eb !important;   /* --blue */
+  color: #ffffff !important;
+  border-bottom: none;
   box-shadow: none;
 }
 
 [data-md-color-scheme="slate"] .md-header {
-  background-color: var(--sd-chrome-bg) !important;
-  border-bottom-color: var(--sd-chrome-border);
+  background-color: #0f172a !important;
+  border-bottom: 1px solid #1e293b;
 }
 
 .md-header__title {
   font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--md-default-fg-color) !important;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  color: #ffffff !important;
+  letter-spacing: -0.02em;
 }
 
 .md-header__button {
-  color: var(--md-default-fg-color--light) !important;
+  color: #ffffff !important;
 }
 
 .md-header__button:hover {
-  color: var(--md-default-fg-color) !important;
+  color: #ffffff !important;
+  opacity: 0.85;
 }
 
-/* Search input — modern, no harsh blue */
+/* Search input — translucent white on the blue bar (mockup .search) */
 .md-search__input {
-  border-radius: 10px !important;
+  border-radius: 8px !important;
   font-size: 0.83rem;
   font-weight: 400;
-  background-color: var(--md-code-bg-color) !important;
-  border: 1px solid var(--sd-divider) !important;
-  color: var(--md-default-fg-color) !important;
+  background-color: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
   transition: all 0.15s ease;
 }
 
 .md-search__input:hover {
-  border-color: var(--md-default-fg-color--lighter) !important;
+  background-color: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
 .md-search__input:focus {
-  border-color: var(--md-primary-fg-color) !important;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #ffffff !important;
+  color: #18181b !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2) !important;
 }
 
 .md-search__input::placeholder {
+  color: #dbeafe !important;
+}
+
+.md-search__input:focus::placeholder {
   color: var(--md-default-fg-color--lighter) !important;
 }
 
 .md-search__icon {
+  color: #dbeafe !important;
+}
+
+.md-search__input:focus ~ .md-search__icon {
   color: var(--md-default-fg-color--light) !important;
 }
 
-/* Tabs */
+[data-md-color-scheme="slate"] .md-search__input {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+/* Tabs — blue-dark bar, matching mockup .chrome-tabs */
 .md-tabs {
-  background-color: var(--sd-chrome-bg) !important;
-  color: var(--md-default-fg-color) !important;
-  border-bottom: 1px solid var(--sd-chrome-border);
+  background-color: #1d4ed8 !important;   /* --blue-dark */
+  color: #ffffff !important;
+  border-bottom: none;
 }
 
 [data-md-color-scheme="slate"] .md-tabs {
-  background-color: var(--sd-chrome-bg) !important;
+  background-color: #0a0a0d !important;
 }
 
 .md-tabs__link {
-  color: var(--md-default-fg-color--light) !important;
+  color: #bfdbfe !important;
   font-size: 0.8rem;
   font-weight: 500;
   opacity: 1;
@@ -299,7 +316,16 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 
 .md-tabs__link:hover,
 .md-tabs__link--active {
-  color: var(--md-primary-fg-color) !important;
+  color: #ffffff !important;
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link {
+  color: #a1a1aa !important;
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link:hover,
+[data-md-color-scheme="slate"] .md-tabs__link--active {
+  color: #ffffff !important;
 }
 
 .md-tabs__link--active {
@@ -335,7 +361,7 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
   left: 0.7rem;
   right: 0.7rem;
   height: 2px;
-  background: var(--md-primary-fg-color);
+  background: #ffffff;
   border-radius: 2px 2px 0 0;
 }
 
