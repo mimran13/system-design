@@ -20,35 +20,37 @@ hide:
 
 ## What are you here to do?
 
-<div class="grid cards" markdown>
-
--   :material-school-outline:{ .lg .middle } **Learn it**
-
-    ---
-
-    Follow an ordered route instead of a flat index. Build real intuition, level by level.
-
-    [:octicons-arrow-right-24: Reading paths](paths/index.md)
-
--   :material-magnify:{ .lg .middle } **Look something up**
-
-    ---
-
-    A symptom at work, or a decision to make right now? Jump straight to the answer.
-
-    [:octicons-arrow-right-24: Symptom lookup](reference/symptom-lookup.md) ·
-    [Decision flowcharts](reference/decision-flowcharts.md) ·
-    [Glossary](glossary.md)
-
--   :material-presentation:{ .lg .middle } **Prep for an interview**
-
-    ---
-
-    The framework, what interviewers test for, and 15 worked end-to-end designs.
-
-    [:octicons-arrow-right-24: Interview guide](interview-guide.md) ·
-    [Case studies](case-studies/index.md)
-
+<div class="doors">
+  <div class="door">
+    <span class="door-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+    <h3>Learn it</h3>
+    <p>Follow an ordered route instead of a flat index. Build real intuition, level by level.</p>
+    <ul>
+      <li><a href="paths/curriculum/">The Curriculum — zero → staff</a></li>
+      <li><a href="paths/essentials/">Just the Essentials</a></li>
+      <li><a href="paths/ai-engineer/">The AI Engineer path</a></li>
+    </ul>
+  </div>
+  <div class="door">
+    <span class="door-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
+    <h3>Look something up</h3>
+    <p>A symptom at work, or a decision to make right now? Jump straight to the answer.</p>
+    <ul>
+      <li><a href="reference/symptom-lookup/">Symptom → Concept lookup</a></li>
+      <li><a href="reference/decision-flowcharts/">Decision flowcharts</a></li>
+      <li><a href="glossary/">Glossary</a></li>
+    </ul>
+  </div>
+  <div class="door">
+    <span class="door-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v12H3z"/><path d="M8 20h8M12 16v4"/></svg></span>
+    <h3>Prep for an interview</h3>
+    <p>The framework, what interviewers test for, and 15 worked end-to-end designs.</p>
+    <ul>
+      <li><a href="interview-guide/">Interview guide + framework</a></li>
+      <li><a href="paths/interview-prep/">Interview prep — 1 week</a></li>
+      <li><a href="case-studies/">15 case studies</a></li>
+    </ul>
+  </div>
 </div>
 
 ---

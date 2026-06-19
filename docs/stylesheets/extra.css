@@ -1382,3 +1382,52 @@ article.md-typeset > h4 {
   border-color: var(--md-primary-fg-color); color: var(--md-primary-fg-color);
   transform: translateY(-1px);
 }
+
+/* Bespoke homepage "intent doors" — match .mockups/homepage-redesign.html */
+.md-typeset .doors {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin: 1.4rem 0;
+}
+.md-typeset .door {
+  position: relative; border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 16px; padding: 1.6rem 1.5rem 1.4rem;
+  background: var(--md-default-bg-color);
+  transition: transform .2s cubic-bezier(.2,.7,.3,1), border-color .2s, box-shadow .2s;
+  overflow: hidden;
+}
+.md-typeset .door::before {
+  content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 100%;
+  background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
+  transform: scaleX(0); transform-origin: left; transition: transform .25s;
+}
+.md-typeset .door:hover {
+  transform: translateY(-4px); border-color: var(--md-primary-fg-color--light);
+  box-shadow: 0 20px 40px -22px color-mix(in srgb, var(--md-primary-fg-color) 45%, transparent);
+}
+.md-typeset .door:hover::before { transform: scaleX(1); }
+.md-typeset .door .door-icon {
+  display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 11px;
+  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, transparent);
+  color: var(--md-primary-fg-color); margin-bottom: 1rem;
+}
+.md-typeset .door .door-icon svg { width: 1.4rem; height: 1.4rem; }
+.md-typeset .door h3 {
+  margin: 0 0 .35rem; font-size: 1.12rem; font-weight: 700; letter-spacing: -.02em;
+}
+.md-typeset .door > p {
+  margin: 0; font-size: .9rem; line-height: 1.55; color: var(--md-default-fg-color--light);
+}
+.md-typeset .door ul {
+  margin: 1rem 0 0; padding: 1rem 0 0; list-style: none;
+  border-top: 1px dashed var(--md-default-fg-color--lightest);
+}
+.md-typeset .door li { margin: .4rem 0; font-size: .86rem; }
+.md-typeset .door li::before { content: none; }
+.md-typeset .door li a {
+  text-decoration: none; color: var(--md-default-fg-color--light);
+  display: inline-flex; gap: .45rem; align-items: baseline;
+}
+.md-typeset .door li a::before { content: "›"; color: var(--md-primary-fg-color); font-weight: 700; }
+.md-typeset .door li a:hover { color: var(--md-primary-fg-color); }
+@media screen and (max-width: 59.9375em) {
+  .md-typeset .doors { grid-template-columns: 1fr; }
+}
