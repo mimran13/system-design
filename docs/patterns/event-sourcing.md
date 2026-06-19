@@ -1,5 +1,7 @@
 # Event Sourcing
 
+> Pattern mechanics here. For the system-wide architectural view, see [CQRS & Event Sourcing as Architecture](../architecture/cqrs-event-sourcing-architecture.md).
+
 ## What it is
 
 Instead of storing the current state of an entity, event sourcing stores the sequence of events that led to that state. The current state is derived by replaying all past events. The event log is the source of truth, not the current state.

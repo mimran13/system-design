@@ -1,5 +1,8 @@
 # Agentic Patterns
 
+!!! info "See also"
+    This page is the LLM-engineering view of agents. For the full treatment — fundamentals, multi-agent systems, reliability, and worked examples — see the [AI Agents](../agents/index.md) section.
+
 As agent tasks grow in complexity, single-agent ReAct loops become insufficient. These patterns address parallelism, specialisation, reliability, and coordination across multiple agents.
 
 ## Pattern overview

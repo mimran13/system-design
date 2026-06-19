@@ -1,5 +1,8 @@
 # Agents & Tool Use
 
+!!! info "See also"
+    This page is the LLM-engineering view of agents. For the full treatment — fundamentals, multi-agent systems, reliability, and worked examples — see the [AI Agents](../agents/index.md) section.
+
 An AI agent is a system where an LLM drives a reasoning loop — deciding what actions to take, executing them via tools, observing results, and iterating until a goal is reached. Tool use (function calling) is the mechanism that connects the LLM's reasoning to the real world.
 
 ## What makes something an "agent"?

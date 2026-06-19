@@ -2,7 +2,8 @@
 
 CQRS (Command Query Responsibility Segregation) and Event Sourcing are often introduced as patterns. At larger scale and complexity, they become **the** architecture — shaping the entire system, not just one feature. This page focuses on the architectural framing: when CQRS+ES is the *style* of a system, the consequences, and the trade-offs.
 
-For the pattern-level mechanics, see [CQRS](../patterns/cqrs.md) and [Event Sourcing](../patterns/event-sourcing.md).
+!!! abstract "Scope of this page"
+    This is the **architecture-level** view — when CQRS/Event Sourcing reshape a whole system. For the pattern mechanics in isolation, see [CQRS](../patterns/cqrs.md) and [Event Sourcing](../patterns/event-sourcing.md).
 
 ---
 

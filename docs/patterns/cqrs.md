@@ -6,6 +6,8 @@ tags:
 
 # CQRS
 
+> Pattern mechanics here. For the system-wide architectural view, see [CQRS & Event Sourcing as Architecture](../architecture/cqrs-event-sourcing-architecture.md).
+
 ## What it is
 
 CQRS (Command Query Responsibility Segregation) separates read and write models into distinct systems. The write side accepts commands and enforces business rules. The read side provides optimized query models. They're eventually consistent with each other.
