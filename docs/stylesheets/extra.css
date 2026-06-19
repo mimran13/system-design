@@ -1693,3 +1693,9 @@ article.md-typeset > h4 {
   height: auto !important;
   margin: 0 0.15rem;
 }
+
+/* Page entries sit indented from their section labels (mockup .side:
+   labels flush-left, links stepped in) */
+.md-nav--primary .md-nav__item:not(.md-nav__item--nested) > .md-nav__link {
+  margin-left: 0.7rem;
+}
