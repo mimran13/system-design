@@ -519,12 +519,18 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 
 .md-content__inner {
   max-width: 1080px;
-  padding: 2.5rem 3rem 4rem;
+  padding: 0.8rem 3rem 4rem;   /* top space is provided by the breadcrumb */
   margin: 0;
 }
 
+/* content area touches the chrome — no gap (mockup) */
 .md-main__inner {
-  margin-top: 1rem;
+  margin-top: 0;
+}
+
+/* homepage has no breadcrumb, so restore its top breathing room */
+.md-main:has(.home-hero) .md-content__inner {
+  padding-top: 2.5rem;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1653,8 +1659,9 @@ article.md-typeset > h4 {
 .md-path {
   font-family: var(--md-code-font);
   font-size: 0.78rem;
-  margin: 0 0 1.4rem;
-  padding: 0;
+  margin: 0;
+  padding: 1.6rem 3rem 0;   /* align left with the body (3rem) + top space */
+  max-width: 1080px;
 }
 .md-path__list { align-items: center; }
 .md-path__item { color: var(--md-default-fg-color--lighter); }
