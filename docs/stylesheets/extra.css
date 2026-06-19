@@ -239,6 +239,11 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
   border-bottom: 1px solid #1e293b;
 }
 
+/* Full-width header content at 1.4rem inset — matches the tab bar + mockup */
+.md-header__inner {
+  padding: 0 1.4rem;
+}
+
 .md-header__title {
   font-size: 0.92rem;
   font-weight: 700;
@@ -348,11 +353,11 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
   height: 2.4rem;
 }
 
-/* Shrink inner padding of tab bar so more tabs fit */
+/* Full-width tab bar at 1.4rem inset — aligns with the header (mockup) */
 .md-tabs .md-grid {
-  max-width: 1600px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  max-width: none;
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
 }
 
 /* Active tab gets a soft underline indicator */
