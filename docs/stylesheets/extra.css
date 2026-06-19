@@ -38,11 +38,11 @@
   --md-typeset-a-color:           #2563eb;
 
   /* Custom semantic tokens used below */
-  --sd-sidebar-bg:                #f7f8fa;
-  --sd-sidebar-active-bg:         #eef2ff;
-  --sd-sidebar-active-text:       #3730a3;
-  --sd-sidebar-hover-bg:          #eef0f3;
-  --sd-sidebar-rail:              #e0e3e8;
+  --sd-sidebar-bg:                #ffffff;            /* mockup .side is white */
+  --sd-sidebar-active-bg:         rgba(37,99,235,0.1);/* mockup .side a.active */
+  --sd-sidebar-active-text:       #2563eb;
+  --sd-sidebar-hover-bg:          #f8fafc;            /* mockup --wash */
+  --sd-sidebar-rail:              #e4e4e7;
   --sd-divider:                   #e5e7eb;
   --sd-card-bg:                   #ffffff;
   --sd-shadow-sm:                 0 1px 2px rgba(15,23,42,0.04);
@@ -434,11 +434,11 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 /* ─── Child page links (default) ─── */
 .md-nav--primary .md-nav .md-nav__link {
   font-family: var(--md-text-font);
-  font-size: 0.83rem !important;
-  color: var(--md-default-fg-color--light) !important;
+  font-size: 0.86rem !important;        /* mockup .side font-size */
+  color: var(--md-default-fg-color--light) !important;  /* #52525b = mockup --ink-2 */
   font-weight: 400;
-  padding: 0.36rem 0.85rem;
-  border-radius: 6px;
+  padding: 0.32rem 0.6rem;              /* mockup .side a padding */
+  border-radius: 7px;                   /* mockup .side a radius */
   margin: 0.08rem 0.4rem 0.08rem 0;
   letter-spacing: -0.005em;
 }
@@ -473,15 +473,16 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 /* ─── Inner sub-groups (Numbers & Estimation, Hardware & OS, etc.) ─── */
 /* These are the second-level nested groups inside Fundamentals etc. */
 .md-nav--primary .md-nav .md-nav__item--nested > .md-nav__link {
+  font-family: var(--md-code-font) !important;   /* mockup .side h4 = mono */
   font-weight: 600 !important;
-  font-size: 0.78rem !important;
-  color: var(--md-default-fg-color--light) !important;
+  font-size: 0.68rem !important;
+  color: var(--md-default-fg-color--lighter) !important;  /* #a1a1aa = mockup --ink-3 */
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.55rem 0.85rem 0.3rem 0.85rem;
+  letter-spacing: 0.1em;
+  padding: 0.55rem 0.6rem 0.3rem 0.6rem;
   margin-top: 0.7rem;
   margin-bottom: 0.05rem;
-  opacity: 0.85;
+  opacity: 1;
 }
 
 .md-nav--primary .md-nav .md-nav__item--nested > .md-nav__link:hover {
@@ -495,10 +496,10 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 .md-nav--primary .md-nav .md-nav__link--active {
   color: var(--sd-sidebar-active-text) !important;
   background-color: var(--sd-sidebar-active-bg) !important;
-  font-weight: 500;
+  font-weight: 600;
   border-left: none;
-  padding-left: 0.85rem;
-  box-shadow: var(--sd-shadow-sm);
+  padding-left: 0.6rem;
+  box-shadow: none;
 }
 
 .md-nav--primary .md-nav { background-color: transparent !important; }
