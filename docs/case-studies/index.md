@@ -2,6 +2,8 @@
 
 End-to-end system designs. Each one follows the full interview flow: requirements → estimation → high-level design → deep dive → tradeoffs. Reading these after understanding the underlying concepts is more valuable than reading them first — the goal is to see *why* each decision was made, not memorize a template.
 
+For shorter scenarios that weave 2–4 concepts together (rather than a full design), see [Practical Examples](../examples/index.md).
+
 ## Suggested reading order
 
 New to this topic? Read these in order — each builds on the previous:

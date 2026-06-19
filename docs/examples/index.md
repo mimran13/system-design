@@ -9,6 +9,8 @@ Real-world scenarios with the concepts that fit. Each example weaves together 2-
 
 This is the **applicative** side of the encyclopedia: not "what is concept X?" but "we have problem Y at work — what fits, why, and what to watch out for?"
 
+These are *short, concept-weaving scenarios*. For full end-to-end system designs (requirements → estimation → architecture → deep dive), see [Case Studies](../case-studies/index.md).
+
 ---
 
 ## How to use this section
