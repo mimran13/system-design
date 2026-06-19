@@ -423,6 +423,12 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
   color: var(--md-primary-fg-color) !important;
 }
 
+/* Inset the whole primary nav from the sidebar edge (mockup .side padding) */
+.md-nav--primary {
+  padding-left: 0.8rem !important;
+  padding-right: 0.8rem !important;
+}
+
 /* Flat nav — no indentation rail, links sit flush-left like the mockup .side */
 .md-nav--primary .md-nav .md-nav__list {
   position: relative;
