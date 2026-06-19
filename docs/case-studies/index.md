@@ -1,8 +1,39 @@
 # Case Studies
 
-End-to-end system designs. Each one follows the full interview flow: requirements → estimation → high-level design → deep dive → tradeoffs. Reading these after understanding the underlying concepts is more valuable than reading them first — the goal is to see *why* each decision was made, not memorize a template.
+<div class="sec-hero" markdown>
+<span class="ey">Case Studies · end-to-end designs</span>
+End-to-end system designs. Each follows the full interview flow: requirements → estimation → high-level design → deep dive → tradeoffs. Read these after the underlying concepts — the goal is to see why each decision was made, not memorize a template.
+</div>
 
 For shorter scenarios that weave 2–4 concepts together (rather than a full design), see [Practical Examples](../examples/index.md).
+
+## Roadmap
+
+Climb the difficulty ladder top-to-bottom. Dashed branches are reference designs to pick up once the spine clicks.
+
+<div class="sd-mermaid-links" data-links='{
+  "URL Shortener": "url-shortener/",
+  "Rate Limiter": "rate-limiter/",
+  "Chat System": "chat-system/",
+  "News Feed": "news-feed/",
+  "Notification Service": "notification-service/",
+  "Payment System": "payment-system/",
+  "PropTech Buyer-Seller Chat": "proptech-chat/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["URL Shortener"] --> B["Rate Limiter"]
+    B --> C["Chat System"]
+    C --> D["News Feed"]
+    D --> E["Notification Service"]
+    E -.-> E1["Payment System"]
+    C -.-> C1["PropTech Buyer-Seller Chat"]
+    class A,B,C,D,E core
+    class E1,C1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ## Suggested reading order
 
@@ -22,23 +53,36 @@ New to this topic? Read these in order — each builds on the previous:
 
 ## The systems
 
-| System | Difficulty | Key concepts |
-|---|---|---|
-| [URL Shortener](url-shortener.md) | Starter | Hashing (MD5/base62), cache-aside, 301 vs 302, single-write DB |
-| [Rate Limiter](rate-limiter.md) | Starter | Token bucket, Redis counters, sliding window log, distributed coordination |
-| [News Feed](news-feed.md) | Medium | Fan-out on write vs read, ranking signals, Redis sorted sets, CDN |
-| [Chat System](chat-system.md) | Medium | WebSockets, message ordering, delivery receipts, presence detection |
-| [Notification Service](notification-service.md) | Medium | Pub/Sub, at-least-once delivery, retry with backoff, device token management |
-| [Search Autocomplete](search-autocomplete.md) | Medium | Trie, top-K with heap, prefix caching, real-time vs offline updates |
-| [Video Streaming](video-streaming.md) | Medium | CDN edge caching, HLS chunking, adaptive bitrate, blob storage |
-| [Ride-Sharing](ride-sharing.md) | Medium | Geohashing, location update pipeline, ETA computation, dispatch matching |
-| [Distributed Cache](distributed-cache.md) | Medium | LRU implementation, consistent hashing, hot key mitigation, stampede |
-| [Web Crawler](web-crawler.md) | Hard | URL frontier (priority queue), politeness delay, Bloom dedup, distributed workers |
-| [Cloud File Storage (Dropbox)](dropbox.md) | Hard | Content-addressed chunking, block dedup, delta sync, conflict resolution |
-| [Social Media Feed (Twitter)](twitter.md) | Hard | Fan-out celebrity problem, Snowflake IDs, timeline caching, trending topics |
-| [Payment System](payment-system.md) | Hard | Double-entry ledger, idempotency key, reconciliation, exactly-once |
-| [Ad Click Tracking](ad-click-tracking.md) | Hard | Extreme write volume (1M+ RPS), Kafka pipeline, Bloom dedup, ClickHouse |
-| [Maps & Navigation](google-maps.md) | Hard | Tile serving at scale, graph routing (A*, Contraction Hierarchies), live traffic |
+**Starter**
+
+<div class="pcards">
+<a class="pcard" href="url-shortener/"><span class="t">URL Shortener</span><span class="d">Hashing (MD5/base62), cache-aside, 301 vs 302, single-write DB</span></a>
+<a class="pcard" href="rate-limiter/"><span class="t">Rate Limiter</span><span class="d">Token bucket, Redis counters, sliding window log, distributed coordination</span></a>
+</div>
+
+**Medium**
+
+<div class="pcards">
+<a class="pcard" href="news-feed/"><span class="t">News Feed</span><span class="d">Fan-out on write vs read, ranking signals, Redis sorted sets, CDN</span></a>
+<a class="pcard" href="chat-system/"><span class="t">Chat System</span><span class="d">WebSockets, message ordering, delivery receipts, presence detection</span></a>
+<a class="pcard" href="notification-service/"><span class="t">Notification Service</span><span class="d">Pub/Sub, at-least-once delivery, retry with backoff, device token management</span></a>
+<a class="pcard" href="search-autocomplete/"><span class="t">Search Autocomplete</span><span class="d">Trie, top-K with heap, prefix caching, real-time vs offline updates</span></a>
+<a class="pcard" href="video-streaming/"><span class="t">Video Streaming</span><span class="d">CDN edge caching, HLS chunking, adaptive bitrate, blob storage</span></a>
+<a class="pcard" href="ride-sharing/"><span class="t">Ride-Sharing</span><span class="d">Geohashing, location update pipeline, ETA computation, dispatch matching</span></a>
+<a class="pcard" href="distributed-cache/"><span class="t">Distributed Cache</span><span class="d">LRU implementation, consistent hashing, hot key mitigation, stampede</span></a>
+</div>
+
+**Hard**
+
+<div class="pcards">
+<a class="pcard" href="web-crawler/"><span class="t">Web Crawler</span><span class="d">URL frontier (priority queue), politeness delay, Bloom dedup, distributed workers</span></a>
+<a class="pcard" href="dropbox/"><span class="t">Cloud File Storage (Dropbox)</span><span class="d">Content-addressed chunking, block dedup, delta sync, conflict resolution</span></a>
+<a class="pcard" href="twitter/"><span class="t">Social Media Feed (Twitter)</span><span class="d">Fan-out celebrity problem, Snowflake IDs, timeline caching, trending topics</span></a>
+<a class="pcard" href="payment-system/"><span class="t">Payment System</span><span class="d">Double-entry ledger, idempotency key, reconciliation, exactly-once</span></a>
+<a class="pcard" href="ad-click-tracking/"><span class="t">Ad Click Tracking</span><span class="d">Extreme write volume (1M+ RPS), Kafka pipeline, Bloom dedup, ClickHouse</span></a>
+<a class="pcard" href="google-maps/"><span class="t">Maps & Navigation</span><span class="d">Tile serving at scale, graph routing (A*, Contraction Hierarchies), live traffic</span></a>
+<a class="pcard" href="proptech-chat/"><span class="t">PropTech Buyer-Seller Chat</span><span class="d">End-to-end real-time chat: storage choices, presence, SLA escalation, networking</span></a>
+</div>
 
 ---
 

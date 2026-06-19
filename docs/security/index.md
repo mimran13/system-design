@@ -1,6 +1,64 @@
 # Security
 
+<div class="sec-hero" markdown>
+<span class="ey">Reliability & Operations · defense</span>
 Security is not a feature you bolt on after the fact. It's a property of the system's design — how access is controlled, how data is protected, how trust is established between services. Getting this wrong has irreversible consequences: breached user data, regulatory fines, or complete system compromise.
+</div>
+
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "Authn and Authz": "authn-authz/",
+  "OAuth and JWT": "oauth-jwt/",
+  "API Security": "api-security/",
+  "Encryption": "encryption/",
+  "Secrets Management": "secrets-management/",
+  "Enterprise Auth": "enterprise-auth/",
+  "Compliance": "compliance-regulatory-engineering/",
+  "Zero Trust": "zero-trust/",
+  "Threat Modelling": "threat-modelling/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Authn and Authz"] --> B["OAuth and JWT"]
+    B --> C["API Security"]
+    C --> D["Encryption"]
+    D --> E["Secrets Management"]
+    B -.-> B1["Enterprise Auth"]
+    D -.-> D1["Compliance"]
+    E -.-> E1["Zero Trust"]
+    C -.-> C1["Threat Modelling"]
+    class A,B,C,D,E core
+    class B1,D1,E1,C1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
+
+## Core security topics
+
+Identity, tokens, API surface, data protection, and the keys to all of it.
+
+<div class="pcards">
+<a class="pcard" href="authn-authz/"><span class="t">Authentication & Authorization</span><span class="d">Who you are vs what you're allowed to do — RBAC, ABAC, session management</span></a>
+<a class="pcard" href="oauth-jwt/"><span class="t">OAuth 2.0 & JWT</span><span class="d">Delegated authorization, token flows, JWT validation, refresh tokens</span></a>
+<a class="pcard" href="api-security/"><span class="t">API Security</span><span class="d">Input validation, injection prevention, OWASP API Top 10</span></a>
+<a class="pcard" href="encryption/"><span class="t">Encryption</span><span class="d">At-rest and in-transit encryption, key management, envelope encryption</span></a>
+<a class="pcard" href="zero-trust/"><span class="t">Zero Trust</span><span class="d">Never trust, always verify — beyond the perimeter model</span></a>
+<a class="pcard" href="secrets-management/"><span class="t">Secrets Management</span><span class="d">Vaults, rotation, avoiding credential sprawl</span></a>
+</div>
+
+## Going deeper
+
+Enterprise-scale auth, regulatory engineering, and proactive threat work.
+
+<div class="pcards">
+<a class="pcard" href="enterprise-auth/"><span class="t">Enterprise Auth</span><span class="d">SAML, SSO, SCIM, directory integration at org scale</span></a>
+<a class="pcard" href="compliance-regulatory-engineering/"><span class="t">Compliance & Regulatory Engineering</span><span class="d">Building systems that satisfy SOC 2, GDPR, PCI</span></a>
+<a class="pcard" href="threat-modelling/"><span class="t">Threat Modelling</span><span class="d">STRIDE and reasoning about attackers before they show up</span></a>
+</div>
 
 ## Suggested reading order
 

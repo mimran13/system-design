@@ -1,8 +1,39 @@
 # Messaging & Streaming
 
+<div class="sec-hero" markdown>
+<span class="ey">Communication · async backbone</span>
 Synchronous request/response breaks under three conditions: the downstream is slow, the downstream is unavailable, or load spikes beyond what the downstream can absorb. Messaging decouples producers from consumers in time and space — the producer doesn't wait, the consumer processes when it's ready, and the broker absorbs bursts.
+</div>
 
----
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "Message Queues": "message-queues/",
+  "Pub/Sub": "pub-sub/",
+  "Event Streaming": "event-streaming/",
+  "Kafka Deep Dive": "kafka/",
+  "Idempotent Consumers": "idempotent-consumers/",
+  "Backpressure": "backpressure/",
+  "Event Payload Design": "event-payload-design/",
+  "Event Schema Evolution": "event-schema-evolution/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Message Queues"] --> B["Pub/Sub"]
+    B --> C["Event Streaming"]
+    C --> D["Kafka Deep Dive"]
+    D --> E["Idempotent Consumers"]
+    C -.-> C1["Backpressure"]
+    C -.-> C2["Event Payload Design"]
+    C -.-> C3["Event Schema Evolution"]
+    class A,B,C,D,E core
+    class C1,C2,C3 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ## Suggested reading order
 
@@ -38,15 +69,28 @@ Asynchronous (messaging):
 
 ---
 
-## Topics in this section
+## Messaging models
 
-| Topic | What it covers | When it matters |
-|---|---|---|
-| [Message Queues](message-queues.md) | Point-to-point async delivery, SQS, RabbitMQ, visibility timeout | Task queues, job processing, decoupling services |
-| [Pub/Sub](pub-sub.md) | Fan-out to multiple consumers, SNS, Google Pub/Sub | Event notifications, broadcasting state changes |
-| [Event Streaming](event-streaming.md) | Replayable, ordered log — Kafka vs SQS conceptual difference | Audit trails, CDC, event sourcing, analytics pipelines |
-| [Kafka Deep Dive](kafka.md) | Topics, partitions, consumer groups, offsets, exactly-once | High-throughput streaming, durable event log |
-| [Backpressure](backpressure.md) | What happens when consumers are slower than producers | Any async pipeline — preventing OOM and queue blowup |
+The three delivery shapes — point-to-point, fan-out, and the replayable log — plus the dominant streaming platform.
+
+<div class="pcards">
+<a class="pcard" href="message-queues/"><span class="t">Message Queues</span><span class="d">Point-to-point async delivery, SQS, RabbitMQ, visibility timeout</span></a>
+<a class="pcard" href="pub-sub/"><span class="t">Pub/Sub</span><span class="d">Fan-out to multiple consumers, SNS, Google Pub/Sub</span></a>
+<a class="pcard" href="event-streaming/"><span class="t">Event Streaming</span><span class="d">Replayable, ordered log — Kafka vs SQS conceptual difference</span></a>
+<a class="pcard" href="kafka/"><span class="t">Kafka Deep Dive</span><span class="d">Topics, partitions, consumer groups, offsets, exactly-once</span></a>
+</div>
+
+## Consuming reliably
+
+Correctness and flow control once messages are flowing — duplicates, slow consumers, payload and schema design.
+
+<div class="pcards">
+<a class="pcard" href="idempotent-consumers/"><span class="t">Idempotent Consumers</span><span class="d">At-least-once delivery means duplicates — the dedup fix</span></a>
+<a class="pcard" href="backpressure/"><span class="t">Backpressure</span><span class="d">What happens when consumers are slower than producers</span></a>
+<a class="pcard" href="event-payload-design/"><span class="t">Event Payload Design</span><span class="d">Fat vs thin events, what to put on the wire</span></a>
+<a class="pcard" href="event-schema-evolution/"><span class="t">Event Schema Evolution</span><span class="d">Changing event shapes without breaking consumers</span></a>
+<a class="pcard" href="event-streaming-maturity/"><span class="t">Event Streaming Maturity</span><span class="d">From first topic to org-wide streaming platform</span></a>
+</div>
 
 ---
 

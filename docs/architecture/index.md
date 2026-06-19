@@ -1,8 +1,47 @@
 # Software Architecture
 
+<div class="sec-hero" markdown>
+<span class="ey">Architecture · designing systems</span>
 How you organise services, data, and teams determines every later decision — performance, scalability, maintainability, ops cost. This section covers architectural decision-making, the dominant styles, cross-cutting concerns, and the anti-patterns to avoid.
+</div>
 
-Grouped into five themes: read top-to-bottom for the full curriculum, or jump to the theme matching your current question.
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "Quality Attributes": "quality-attributes/",
+  "ADRs": "adrs/",
+  "Layered / N-Tier": "layered-architecture/",
+  "Monolith vs Microservices": "monolith-vs-microservices/",
+  "Modular Monolith": "modular-monolith/",
+  "Domain-Driven Design": "ddd/",
+  "Event-Driven Architecture": "event-driven/",
+  "Architecture Anti-Patterns": "anti-patterns/",
+  "Hexagonal Architecture": "hexagonal/",
+  "Microservices Patterns": "microservices-patterns/",
+  "Multi-Region Architecture": "multi-region/",
+  "Strangler Fig Pattern": "strangler-fig/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Quality Attributes"] --> B["ADRs"]
+    B --> C["Layered / N-Tier"]
+    C --> D["Monolith vs Microservices"]
+    D --> E["Modular Monolith"]
+    E --> F["Domain-Driven Design"]
+    F --> G["Event-Driven Architecture"]
+    G --> H["Architecture Anti-Patterns"]
+    C -.-> C1["Hexagonal Architecture"]
+    F -.-> F1["Microservices Patterns"]
+    G -.-> G1["Multi-Region Architecture"]
+    H -.-> H1["Strangler Fig Pattern"]
+    class A,B,C,D,E,F,G,H core
+    class C1,F1,G1,H1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ## Suggested reading order
 
@@ -21,83 +60,71 @@ New to this topic? Read these in order — each builds on the previous:
 
 **Advanced — come back later:** [CQRS & Event Sourcing as Architecture](cqrs-event-sourcing-architecture.md), [Multi-Region Architecture](multi-region.md), [Edge Architecture](edge-architecture.md), [Data Mesh](data-mesh.md), [Lambda & Kappa Architectures](lambda-kappa-architectures.md), [Space-Based Architecture](space-based.md), [Evolutionary Architecture](evolutionary-architecture.md), [Strangler Fig Pattern](strangler-fig.md)
 
----
-
 ## Decision-Making
 
 How architects actually choose, document, and evolve architecture.
 
-| Topic | What it covers |
-|---|---|
-| [Architectural Decision Records (ADRs)](adrs.md) | Capturing decisions so they survive turnover |
-| [Fitness Functions](fitness-functions.md) | Automated checks that prevent architectural drift |
-| [Evolutionary Architecture](evolutionary-architecture.md) | Building for change, not against it |
-| [Quality Attributes](quality-attributes.md) | The "ilities" — performance, security, ops, cost |
-| [Capacity Planning & Sizing](capacity-planning.md) | Sizing infrastructure to projected demand |
-
----
+<div class="pcards">
+<a class="pcard" href="adrs/"><span class="t">Architectural Decision Records (ADRs)</span><span class="d">Capturing decisions so they survive turnover</span></a>
+<a class="pcard" href="fitness-functions/"><span class="t">Fitness Functions</span><span class="d">Automated checks that prevent architectural drift</span></a>
+<a class="pcard" href="evolutionary-architecture/"><span class="t">Evolutionary Architecture</span><span class="d">Building for change, not against it</span></a>
+<a class="pcard" href="quality-attributes/"><span class="t">Quality Attributes</span><span class="d">The "ilities" — performance, security, ops, cost</span></a>
+<a class="pcard" href="capacity-planning/"><span class="t">Capacity Planning & Sizing</span><span class="d">Sizing infrastructure to projected demand</span></a>
+</div>
 
 ## Architectural Styles
 
 The major shapes of systems. Most real systems blend several.
 
-| Topic | What it covers |
-|---|---|
-| [Layered / N-Tier](layered-architecture.md) | Traditional CRUD layered approach |
-| [Monolith vs Microservices](monolith-vs-microservices.md) | The classic decomposition decision |
-| [Modular Monolith](modular-monolith.md) | The "missing middle" — modular, single-deployable |
-| [Service-Oriented (SOA)](soa.md) | Pre-microservices distributed systems |
-| [Hexagonal Architecture](hexagonal.md) | Ports and adapters; isolating the domain |
-| [Domain-Driven Design](ddd.md) | Bounded contexts, ubiquitous language |
-| [Event-Driven Architecture](event-driven.md) | Async events, decoupled producers/consumers |
-| [Serverless Architecture](serverless.md) | Functions-as-a-service, managed runtimes |
-| [Pipes and Filters](pipes-and-filters.md) | Stream processing, ETL, build pipelines |
-| [Space-Based Architecture](space-based.md) | In-memory grids for ultra-high throughput |
-| [CQRS & Event Sourcing as Architecture](cqrs-event-sourcing-architecture.md) | When CQRS+ES becomes the system style |
-| [Architecture Styles Comparison](styles-comparison.md) | Side-by-side trade-offs |
-
----
+<div class="pcards">
+<a class="pcard" href="layered-architecture/"><span class="t">Layered / N-Tier</span><span class="d">Traditional CRUD layered approach</span></a>
+<a class="pcard" href="monolith-vs-microservices/"><span class="t">Monolith vs Microservices</span><span class="d">The classic decomposition decision</span></a>
+<a class="pcard" href="modular-monolith/"><span class="t">Modular Monolith</span><span class="d">The "missing middle" — modular, single-deployable</span></a>
+<a class="pcard" href="soa/"><span class="t">Service-Oriented (SOA)</span><span class="d">Pre-microservices distributed systems</span></a>
+<a class="pcard" href="hexagonal/"><span class="t">Hexagonal Architecture</span><span class="d">Ports and adapters; isolating the domain</span></a>
+<a class="pcard" href="ddd/"><span class="t">Domain-Driven Design</span><span class="d">Bounded contexts, ubiquitous language</span></a>
+<a class="pcard" href="event-driven/"><span class="t">Event-Driven Architecture</span><span class="d">Async events, decoupled producers/consumers</span></a>
+<a class="pcard" href="serverless/"><span class="t">Serverless Architecture</span><span class="d">Functions-as-a-service, managed runtimes</span></a>
+<a class="pcard" href="pipes-and-filters/"><span class="t">Pipes and Filters</span><span class="d">Stream processing, ETL, build pipelines</span></a>
+<a class="pcard" href="space-based/"><span class="t">Space-Based Architecture</span><span class="d">In-memory grids for ultra-high throughput</span></a>
+<a class="pcard" href="cqrs-event-sourcing-architecture/"><span class="t">CQRS & Event Sourcing as Architecture</span><span class="d">When CQRS+ES becomes the system style</span></a>
+<a class="pcard" href="styles-comparison/"><span class="t">Architecture Styles Comparison</span><span class="d">Side-by-side trade-offs</span></a>
+</div>
 
 ## Cross-Cutting Concerns
 
 Patterns that show up regardless of style.
 
-| Topic | What it covers |
-|---|---|
-| [Twelve-Factor App](twelve-factor.md) | The cloud-native baseline |
-| [Backend for Frontend (BFF)](bff.md) | Tailored APIs per client type |
-| [API-First Design](api-first.md) | Define the contract before implementing |
-| [API Versioning at Architecture Level](api-versioning-architecture.md) | Strategies for evolving public contracts |
-| [Microservices Patterns](microservices-patterns.md) | Service mesh, sidecars, service discovery |
-| [Choreography vs Orchestration](choreography-vs-orchestration.md) | Event-based vs coordinator-driven workflows |
-| [Coupling & Cohesion at Service Boundaries](coupling-cohesion-services.md) | What to manage at the inter-service layer |
-| [Multi-Tenancy](multi-tenancy.md) | Pooled, siloed, hybrid SaaS approaches |
-
----
+<div class="pcards">
+<a class="pcard" href="twelve-factor/"><span class="t">Twelve-Factor App</span><span class="d">The cloud-native baseline</span></a>
+<a class="pcard" href="bff/"><span class="t">Backend for Frontend (BFF)</span><span class="d">Tailored APIs per client type</span></a>
+<a class="pcard" href="api-first/"><span class="t">API-First Design</span><span class="d">Define the contract before implementing</span></a>
+<a class="pcard" href="api-versioning-architecture/"><span class="t">API Versioning at Architecture Level</span><span class="d">Strategies for evolving public contracts</span></a>
+<a class="pcard" href="microservices-patterns/"><span class="t">Microservices Patterns</span><span class="d">Service mesh, sidecars, service discovery</span></a>
+<a class="pcard" href="choreography-vs-orchestration/"><span class="t">Choreography vs Orchestration</span><span class="d">Event-based vs coordinator-driven workflows</span></a>
+<a class="pcard" href="coupling-cohesion-services/"><span class="t">Coupling & Cohesion at Service Boundaries</span><span class="d">What to manage at the inter-service layer</span></a>
+<a class="pcard" href="multi-tenancy/"><span class="t">Multi-Tenancy</span><span class="d">Pooled, siloed, hybrid SaaS approaches</span></a>
+</div>
 
 ## Distribution & Scale
 
 When the system goes global, multi-cloud, or big-data.
 
-| Topic | What it covers |
-|---|---|
-| [Multi-Region Architecture](multi-region.md) | Active-active, active-passive, read replicas |
-| [Edge Architecture](edge-architecture.md) | Compute at CDN PoPs |
-| [Lambda & Kappa Architectures](lambda-kappa-architectures.md) | Big-data batch + stream patterns |
-| [Data Mesh](data-mesh.md) | Domain-oriented decentralised data ownership |
-
----
+<div class="pcards">
+<a class="pcard" href="multi-region/"><span class="t">Multi-Region Architecture</span><span class="d">Active-active, active-passive, read replicas</span></a>
+<a class="pcard" href="edge-architecture/"><span class="t">Edge Architecture</span><span class="d">Compute at CDN PoPs</span></a>
+<a class="pcard" href="lambda-kappa-architectures/"><span class="t">Lambda & Kappa Architectures</span><span class="d">Big-data batch + stream patterns</span></a>
+<a class="pcard" href="data-mesh/"><span class="t">Data Mesh</span><span class="d">Domain-oriented decentralised data ownership</span></a>
+</div>
 
 ## Evolution & Pitfalls
 
 How to evolve architecture safely, and what to recognise when things have gone wrong.
 
-| Topic | What it covers |
-|---|---|
-| [Strangler Fig Pattern](strangler-fig.md) | Migrating without rewrites |
-| [Architecture Anti-Patterns](anti-patterns.md) | Distributed monolith, big ball of mud, cargo cult, others |
-
----
+<div class="pcards">
+<a class="pcard" href="strangler-fig/"><span class="t">Strangler Fig Pattern</span><span class="d">Migrating without rewrites</span></a>
+<a class="pcard" href="anti-patterns/"><span class="t">Architecture Anti-Patterns</span><span class="d">Distributed monolith, big ball of mud, cargo cult, others</span></a>
+</div>
 
 ## Reading paths
 
@@ -106,8 +133,6 @@ How to evolve architecture safely, and what to recognise when things have gone w
 | 30 minutes | ADRs, Quality Attributes, Modular Monolith, Anti-Patterns |
 | 2 hours | + Hexagonal, DDD, Microservices Patterns, Choreography vs Orchestration |
 | A weekend | + everything in Decision-Making + Architectural Styles + Multi-Region |
-
----
 
 ## Interview shortlist
 
@@ -121,8 +146,6 @@ How to evolve architecture safely, and what to recognise when things have gone w
 | *"How do you size a system?"* | Capacity Planning |
 | *"What's CQRS + Event Sourcing actually for?"* | CQRS & ES as Architecture |
 | *"How do you evolve architecture without rewrites?"* | Strangler Fig, Evolutionary Architecture |
-
----
 
 ## Related sections
 

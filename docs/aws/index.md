@@ -1,6 +1,9 @@
 # AWS Mapping
 
-AWS offers hundreds of services. This section maps system design concepts to concrete AWS services — useful for both real architecture decisions and the AWS Solutions Architect exam. Each page answers: *which service fits which problem, what are the key configuration decisions, and what gotchas come up in practice.*
+<div class="sec-hero" markdown>
+<span class="ey">Cloud · service mapping</span>
+AWS offers hundreds of services. This section maps system design concepts to concrete AWS services — useful for both real architecture decisions and the Solutions Architect exam. Each page answers: which service fits which problem, what the key configuration decisions are, and what gotchas come up in practice.
+</div>
 
 ---
 
@@ -54,14 +57,14 @@ Security
 
 ## Topics in this section
 
-| Topic | What it covers |
-|---|---|
-| [Compute](compute.md) | EC2, ECS, Lambda, EKS — when to use each, instance types, scaling |
-| [Storage & Databases](storage-databases.md) | S3, RDS, Aurora, DynamoDB, ElastiCache, Redshift — selection guide |
-| [Networking](networking.md) | VPC design, Route 53, CloudFront, ALB/NLB, PrivateLink |
-| [Messaging](messaging.md) | SQS, SNS, EventBridge, Kinesis, MSK — async patterns on AWS |
-| [Observability](observability.md) | CloudWatch, X-Ray, OpenTelemetry on AWS — what to instrument |
-| [Security](security.md) | IAM, KMS, Secrets Manager, WAF, Shield — defense in depth on AWS |
+<div class="pcards">
+<a class="pcard" href="compute/"><span class="t">Compute</span><span class="d">EC2, ECS, Lambda, EKS — when to use each, instance types, scaling</span></a>
+<a class="pcard" href="storage-databases/"><span class="t">Storage & Databases</span><span class="d">S3, RDS, Aurora, DynamoDB, ElastiCache, Redshift — selection guide</span></a>
+<a class="pcard" href="networking/"><span class="t">Networking</span><span class="d">VPC design, Route 53, CloudFront, ALB/NLB, PrivateLink</span></a>
+<a class="pcard" href="messaging/"><span class="t">Messaging</span><span class="d">SQS, SNS, EventBridge, Kinesis, MSK — async patterns on AWS</span></a>
+<a class="pcard" href="observability/"><span class="t">Observability</span><span class="d">CloudWatch, X-Ray, OpenTelemetry on AWS — what to instrument</span></a>
+<a class="pcard" href="security/"><span class="t">Security</span><span class="d">IAM, KMS, Secrets Manager, WAF, Shield — defense in depth on AWS</span></a>
+</div>
 
 ---
 

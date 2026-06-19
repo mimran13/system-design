@@ -1,6 +1,68 @@
 # CI/CD
 
-CI/CD (Continuous Integration / Continuous Delivery / Continuous Deployment) is the practice of automating the build, test, and release pipeline so that every code change is verified and deployable with minimal manual steps. The goal is short feedback loops, low-risk releases, and the ability to ship many times a day instead of once a quarter.
+<div class="sec-hero" markdown>
+<span class="ey">Delivery · ship safely</span>
+CI/CD automates the build, test, and release pipeline so every code change is verified and deployable with minimal manual steps. The goal: short feedback loops, low-risk releases, and the ability to ship many times a day instead of once a quarter.
+</div>
+
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "Fundamentals": "fundamentals/",
+  "Pipelines": "pipelines/",
+  "Branching Strategies": "branching-strategies/",
+  "Build and Test": "build-and-test/",
+  "Artifact Management": "artifact-management/",
+  "Deployment Strategies": "deployment-strategies/",
+  "Security in CI/CD": "security-in-cicd/",
+  "GitOps": "gitops/",
+  "Progressive Delivery": "progressive-delivery/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Fundamentals"] --> B["Pipelines"]
+    B --> C["Branching Strategies"]
+    C --> D["Build and Test"]
+    D --> E["Artifact Management"]
+    E --> F["Deployment Strategies"]
+    D -.-> D1["Security in CI/CD"]
+    F -.-> F1["GitOps"]
+    F -.-> F2["Progressive Delivery"]
+    class A,B,C,D,E,F core
+    class D1,F1,F2 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
+
+## Core pipeline topics
+
+The mental model, the tools, and how code flows from commit to production.
+
+<div class="pcards">
+<a class="pcard" href="fundamentals/"><span class="t">Fundamentals</span><span class="d">CI vs CD, pipeline stages, quality gates, build vs deploy</span></a>
+<a class="pcard" href="pipelines/"><span class="t">Pipelines</span><span class="d">GitHub Actions, GitLab CI, CircleCI, Jenkins — concrete examples</span></a>
+<a class="pcard" href="branching-strategies/"><span class="t">Branching Strategies</span><span class="d">Trunk-based, GitFlow, GitHub Flow, release branches</span></a>
+<a class="pcard" href="build-and-test/"><span class="t">Build and Test</span><span class="d">Test pyramid in CI, caching, parallelism, fast feedback</span></a>
+<a class="pcard" href="artifact-management/"><span class="t">Artifact Management</span><span class="d">Image registries, semver vs SHA, retention, immutability</span></a>
+<a class="pcard" href="deployment-strategies/"><span class="t">Deployment Strategies</span><span class="d">Rolling, blue/green, canary, feature flags</span></a>
+</div>
+
+## Going deeper
+
+Securing the pipeline, GitOps delivery, and automated progressive rollout.
+
+<div class="pcards">
+<a class="pcard" href="security-in-cicd/"><span class="t">Security in CI/CD</span><span class="d">SAST, DAST, SCA, image scanning, signing, secrets scanning</span></a>
+<a class="pcard" href="gitops/"><span class="t">GitOps</span><span class="d">ArgoCD, Flux, pull-based deploys for Kubernetes</span></a>
+<a class="pcard" href="progressive-delivery/"><span class="t">Progressive Delivery</span><span class="d">Argo Rollouts, Flagger, automated canary analysis</span></a>
+<a class="pcard" href="feature-flags-experimentation/"><span class="t">Feature Flags & Experimentation</span><span class="d">Decouple deploy from release; gradual rollout by cohort</span></a>
+<a class="pcard" href="aws-codepipeline/"><span class="t">AWS CodePipeline</span><span class="d">CodeBuild, CodeDeploy, CodePipeline</span></a>
+<a class="pcard" href="aws-deployment-with-github-actions/"><span class="t">AWS Deployment with GitHub Actions</span><span class="d">OIDC auth, deploying to AWS from GitHub Actions</span></a>
+<a class="pcard" href="release-management/"><span class="t">Release Management</span><span class="d">Versioning, changelogs, release notes, rollback playbooks</span></a>
+</div>
 
 ## Suggested reading order
 

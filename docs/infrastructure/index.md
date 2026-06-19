@@ -1,6 +1,53 @@
 # Infrastructure
 
+<div class="sec-hero" markdown>
+<span class="ey">Delivery · where it runs</span>
 Modern infrastructure is code — repeatable, versionable, auditable, and automated. The shift from manually provisioned servers to declarative infrastructure changed what reliability means: consistency (every environment is identical), speed (deploy in minutes, not days), and recovery (rebuild from code, not memory).
+</div>
+
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "Containers and Docker": "containers/",
+  "Kubernetes": "kubernetes/",
+  "Service Mesh": "service-mesh/",
+  "Kubernetes in Production": "kubernetes-in-production/",
+  "CI and CD": "../cicd/",
+  "Infrastructure as Code": "../iac/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Containers and Docker"] --> B["Kubernetes"]
+    B --> C["Service Mesh"]
+    B -.-> B1["Kubernetes in Production"]
+    C -.-> C1["CI and CD"]
+    C -.-> C2["Infrastructure as Code"]
+    class A,B,C core
+    class B1,C1,C2 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
+
+## Topics in this section
+
+How applications are packaged, orchestrated, and connected at scale.
+
+<div class="pcards">
+<a class="pcard" href="containers/"><span class="t">Containers & Docker</span><span class="d">Process isolation, image layering, Dockerfile best practices, multi-stage builds</span></a>
+<a class="pcard" href="kubernetes/"><span class="t">Kubernetes</span><span class="d">Pods, Deployments, Services, HPA, RBAC, resource limits</span></a>
+<a class="pcard" href="service-mesh/"><span class="t">Service Mesh</span><span class="d">Istio, Envoy — mTLS, observability, traffic management at the proxy layer</span></a>
+<a class="pcard" href="kubernetes-in-production/"><span class="t">Kubernetes in Production</span><span class="d">Running clusters for real: scaling, upgrades, failure modes</span></a>
+</div>
+
+## Adjacent sections
+
+<div class="pcards">
+<a class="pcard" href="../cicd/"><span class="t">CI/CD</span><span class="d">Pipelines, branching, deployment strategies — drives the whole stack</span></a>
+<a class="pcard" href="../iac/"><span class="t">Infrastructure as Code</span><span class="d">Terraform, CDK, CloudFormation — reproducible, auditable infrastructure</span></a>
+</div>
 
 ## Suggested reading order
 

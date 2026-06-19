@@ -1,6 +1,37 @@
 # Networking
 
+<div class="sec-hero" markdown>
+<span class="ey">Communication · the wire</span>
 Every request a user makes traverses multiple networking layers before hitting your application code. Understanding how these layers work — and where they fail — is essential for designing systems with predictable latency, high availability, and correct behavior under load.
+</div>
+
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "DNS": "dns/",
+  "CDN": "cdn/",
+  "Load Balancing": "load-balancing/",
+  "Proxies": "proxies/",
+  "API Gateway": "api-gateway/",
+  "WebSockets & SSE": "websockets-sse/",
+  "HTTP Versions": "http-versions/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["DNS"] --> B["CDN"]
+    B --> C["Load Balancing"]
+    C --> D["Proxies"]
+    D --> E["API Gateway"]
+    C -.-> C1["WebSockets & SSE"]
+    E -.-> E1["HTTP Versions"]
+    class A,B,C,D,E core
+    class C1,E1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ## Suggested reading order
 
@@ -35,17 +66,26 @@ Each hop adds latency. Each hop is a failure point. Designing well means placing
 
 ---
 
-## Topics in this section
+## The request path
 
-| Topic | What it covers | When it matters |
-|---|---|---|
-| [DNS](dns.md) | Name resolution, TTLs, routing tricks | Every system — the first hop before any connection |
-| [CDN](cdn.md) | Edge caching, push vs pull, invalidation | Static assets, global latency reduction, DDoS absorption |
-| [Load Balancing](load-balancing.md) | L4 vs L7, algorithms, sticky sessions, health checks | Any multi-instance deployment |
-| [Proxies](proxies.md) | Forward vs reverse proxy, what each solves | TLS termination, egress control, caching |
-| [API Gateway](api-gateway.md) | Auth, rate limiting, routing, observability at the edge | Public APIs, microservices entry point |
-| [WebSockets & SSE](websockets-sse.md) | Persistent connections for real-time data push | Chat, live feeds, collaborative editing |
-| [HTTP Versions](http-versions.md) | HTTP/1.1 vs HTTP/2 vs HTTP/3 — multiplexing, QUIC | Performance tuning, gRPC, high-concurrency APIs |
+Each topic below maps to a hop on the path a request takes from the user to your application code.
+
+<div class="pcards">
+<a class="pcard" href="dns/"><span class="t">DNS</span><span class="d">Name resolution, TTLs, routing tricks — the first hop before any connection</span></a>
+<a class="pcard" href="cdn/"><span class="t">CDN</span><span class="d">Edge caching, push vs pull, invalidation, DDoS absorption</span></a>
+<a class="pcard" href="load-balancing/"><span class="t">Load Balancing</span><span class="d">L4 vs L7, algorithms, sticky sessions, health checks</span></a>
+<a class="pcard" href="proxies/"><span class="t">Proxies</span><span class="d">Forward vs reverse proxy, what each solves</span></a>
+<a class="pcard" href="api-gateway/"><span class="t">API Gateway</span><span class="d">Auth, rate limiting, routing, observability at the edge</span></a>
+</div>
+
+## Real-time & protocols
+
+Persistent connections and the evolution of HTTP itself — reach for these once the basic request path is clear.
+
+<div class="pcards">
+<a class="pcard" href="websockets-sse/"><span class="t">WebSockets & SSE</span><span class="d">Persistent connections for real-time data push — chat, live feeds, collaboration</span></a>
+<a class="pcard" href="http-versions/"><span class="t">HTTP Versions</span><span class="d">HTTP/1.1 vs HTTP/2 vs HTTP/3 — multiplexing, QUIC</span></a>
+</div>
 
 ---
 

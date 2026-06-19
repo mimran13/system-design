@@ -1,37 +1,38 @@
 # Fintech
 
+<div class="sec-hero" markdown>
+<span class="ey">Fintech · money movement</span>
 The flows behind moving money: how card payments actually work end to end, what happens in the seconds between "Pay now" and "Order confirmed", and the regulatory machinery (SCA, PSD2, PCI-DSS) that shapes the architecture.
+</div>
 
 This section is **rails-focused** — the protocols and actors between merchant and bank. For designing your own payment *system* (ledger, idempotency, reconciliation), see the [Payment System case study](../case-studies/payment-system.md). For charging customers as a SaaS, see [Billing & Metering](../architecture/billing-metering.md).
 
+## Roadmap
+
+Start with the four-party model, then trace authentication, then keep the glossary open as a reference.
+
+<div class="sd-mermaid-links" data-links='{
+  "Card Payments Fundamentals": "card-payments-fundamentals/",
+  "3D Secure Flow": "3ds-flow/",
+  "Fintech Glossary": "glossary/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Card Payments Fundamentals"] --> B["3D Secure Flow"]
+    B -.-> B1["Fintech Glossary"]
+    class A,B core
+    class B1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
+
 ## The flows
 
-<div class="grid cards" markdown>
-
--   :material-credit-card-outline:{ .lg .middle } **Card Payments Fundamentals**
-
-    ---
-
-    The four-party model, authorization vs capture vs settlement, interchange, chargebacks, tokenization. The foundation every other flow builds on.
-
-    [:octicons-arrow-right-24: Read](card-payments-fundamentals.md)
-
--   :material-shield-check-outline:{ .lg .middle } **3D Secure (3DS) Flow**
-
-    ---
-
-    Why Amazon shows "waiting" while Revolut pings your phone — the full authentication flow: frictionless vs challenge, ACS, liability shift, SCA.
-
-    [:octicons-arrow-right-24: Read](3ds-flow.md)
-
--   :material-book-alphabet:{ .lg .middle } **Fintech Glossary**
-
-    ---
-
-    Every term for review: issuer, acquirer, interchange, clearing, CIT/MIT, nostro/vostro, EMI, rails — grouped by category.
-
-    [:octicons-arrow-right-24: Read](glossary.md)
-
+<div class="pcards">
+<a class="pcard" href="card-payments-fundamentals/"><span class="t">Card Payments Fundamentals</span><span class="d">The four-party model, authorization vs capture vs settlement, interchange, chargebacks, tokenization — the foundation every other flow builds on</span></a>
+<a class="pcard" href="3ds-flow/"><span class="t">3D Secure (3DS) Flow</span><span class="d">Why Amazon shows "waiting" while Revolut pings your phone — frictionless vs challenge, ACS, liability shift, SCA</span></a>
+<a class="pcard" href="glossary/"><span class="t">Fintech Glossary</span><span class="d">Every term for review: issuer, acquirer, interchange, clearing, CIT/MIT, nostro/vostro, EMI, rails — grouped by category</span></a>
 </div>
 
 ## How the pieces fit

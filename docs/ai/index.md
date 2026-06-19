@@ -1,6 +1,41 @@
 # AI Engineering
 
-This section covers everything a backend engineer needs to design, build, and operate production AI systems — from understanding how LLMs work to building reliable agentic pipelines at scale.
+<div class="sec-hero" markdown>
+<span class="ey">AI · LLM engineering</span>
+Everything a backend engineer needs to design, build, and operate production AI systems — from how LLMs work to building reliable agentic pipelines at scale. Your edge is systems thinking; this section layers LLM primitives on top of it.
+</div>
+
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "LLM Fundamentals": "llm-fundamentals/",
+  "Prompt Engineering": "prompt-engineering/",
+  "Embeddings & Vector Search": "embeddings-vector-search/",
+  "RAG": "rag/",
+  "Agents & Tool Use": "agents-and-tool-use/",
+  "Evaluation": "evaluation/",
+  "Fine-tuning": "fine-tuning/",
+  "Guardrails & Safety": "guardrails-safety/",
+  "LLMOps": "llmops/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["LLM Fundamentals"] --> B["Prompt Engineering"]
+    B --> C["Embeddings & Vector Search"]
+    C --> D["RAG"]
+    D --> E["Agents & Tool Use"]
+    E --> F["Evaluation"]
+    B -.-> B1["Fine-tuning"]
+    E -.-> E1["Guardrails & Safety"]
+    F -.-> F1["LLMOps"]
+    class A,B,C,D,E,F core
+    class B1,E1,F1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ## What is an AI / LLM / Agentic Engineer?
 
@@ -27,132 +62,48 @@ New to this topic? Read these in order — each builds on the previous:
 
 **Advanced — come back later:** [Fine-tuning](fine-tuning.md), [LLM Inference & Serving](llm-inference.md), [Evaluation](evaluation.md), [Guardrails & Safety](guardrails-safety.md), [LLMOps](llmops.md), [ML in Production](ml-in-production.md), [Memory Systems](memory-systems.md), [Agentic Patterns](agentic-patterns.md)
 
----
+## Foundations
 
-## The AI Engineering stack
+The mental model and the highest-leverage skill on top of it.
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                     Applications                         │
-│         Chatbots · Copilots · Autonomous Agents          │
-├─────────────────────────────────────────────────────────┤
-│                  Orchestration Layer                      │
-│     Agent loops · Tool routing · Memory · Planning       │
-├──────────────────┬──────────────────────────────────────┤
-│   Retrieval      │         LLM APIs                      │
-│   Vector DBs     │   OpenAI · Anthropic · Gemini         │
-│   RAG pipelines  │   Self-hosted (vLLM, Ollama)          │
-├──────────────────┴──────────────────────────────────────┤
-│                  Foundation Models                        │
-│     GPT-4 · Claude · Gemini · Llama · Mistral            │
-├─────────────────────────────────────────────────────────┤
-│               Infrastructure & LLMOps                    │
-│   Evals · Observability · Cost management · CI/CD        │
-└─────────────────────────────────────────────────────────┘
-```
+<div class="pcards">
+<a class="pcard" href="ml-literacy/"><span class="t">ML Literacy</span><span class="d">Pre-LLM ML foundation: what you need before the LLM layer</span></a>
+<a class="pcard" href="llm-fundamentals/"><span class="t">LLM Fundamentals</span><span class="d">Transformers, tokens, context window, temperature, sampling strategies</span></a>
+<a class="pcard" href="prompt-engineering/"><span class="t">Prompt Engineering</span><span class="d">System prompts, few-shot, chain-of-thought, structured output, prompt injection</span></a>
+<a class="pcard" href="working-with-llm-apis/"><span class="t">Working with LLM APIs</span><span class="d">Playground → production: SDK patterns, streaming, tools, caching</span></a>
+</div>
 
----
+## Retrieval & RAG
 
-## Topics in this section
+The retrieval primitive and the production pattern built on it.
 
-<div class="grid cards" markdown>
+<div class="pcards">
+<a class="pcard" href="embeddings-vector-search/"><span class="t">Embeddings & Vector Search</span><span class="d">Embedding models, similarity metrics, HNSW, IVF, approximate nearest neighbour</span></a>
+<a class="pcard" href="rag/"><span class="t">RAG (Retrieval-Augmented Generation)</span><span class="d">Chunking, retrieval pipelines, reranking, hybrid search, advanced RAG patterns</span></a>
+</div>
 
--   :material-brain:{ .lg .middle } **LLM Fundamentals**
+## Agents
 
-    ---
+LLMs that act, the patterns that coordinate them, and how they remember.
 
-    Transformers, tokens, context window, temperature, sampling strategies
+<div class="pcards">
+<a class="pcard" href="agents-and-tool-use/"><span class="t">Agents & Tool Use</span><span class="d">ReAct loop, function calling, planning, agent architectures</span></a>
+<a class="pcard" href="agentic-patterns/"><span class="t">Agentic Patterns</span><span class="d">Orchestrator-worker, parallelization, reflection, multi-agent coordination</span></a>
+<a class="pcard" href="memory-systems/"><span class="t">Memory Systems</span><span class="d">In-context, external, episodic, and semantic memory for long-running agents</span></a>
+<a class="pcard" href="llm-frameworks/"><span class="t">LLM Frameworks</span><span class="d">LangChain/LangGraph landscape — start raw, adopt selectively</span></a>
+</div>
 
-    [:octicons-arrow-right-24: Read](llm-fundamentals.md)
+## Production & Operations
 
--   :material-comment-text-outline:{ .lg .middle } **Prompt Engineering**
+Fine-tuning, serving, evaluation, safety, and operating it all.
 
-    ---
-
-    System prompts, few-shot, chain-of-thought, structured output, prompt injection
-
-    [:octicons-arrow-right-24: Read](prompt-engineering.md)
-
--   :material-vector-line:{ .lg .middle } **Embeddings & Vector Search**
-
-    ---
-
-    Embedding models, similarity metrics, HNSW, IVF, approximate nearest neighbour
-
-    [:octicons-arrow-right-24: Read](embeddings-vector-search.md)
-
--   :material-file-search-outline:{ .lg .middle } **RAG (Retrieval-Augmented Generation)**
-
-    ---
-
-    Chunking, retrieval pipelines, reranking, hybrid search, advanced RAG patterns
-
-    [:octicons-arrow-right-24: Read](rag.md)
-
--   :material-robot-outline:{ .lg .middle } **Agents & Tool Use**
-
-    ---
-
-    ReAct loop, function calling, planning, agent architectures
-
-    [:octicons-arrow-right-24: Read](agents-and-tool-use.md)
-
--   :material-graph-outline:{ .lg .middle } **Agentic Patterns**
-
-    ---
-
-    Orchestrator-worker, parallelization, reflection, multi-agent coordination
-
-    [:octicons-arrow-right-24: Read](agentic-patterns.md)
-
--   :material-memory:{ .lg .middle } **Memory Systems**
-
-    ---
-
-    In-context, external, episodic, and semantic memory for long-running agents
-
-    [:octicons-arrow-right-24: Read](memory-systems.md)
-
--   :material-tune:{ .lg .middle } **Fine-tuning**
-
-    ---
-
-    SFT, LoRA, RLHF, DPO — when to fine-tune vs RAG vs prompting
-
-    [:octicons-arrow-right-24: Read](fine-tuning.md)
-
--   :material-server-outline:{ .lg .middle } **LLM Inference & Serving**
-
-    ---
-
-    KV cache, continuous batching, quantization, speculative decoding, vLLM
-
-    [:octicons-arrow-right-24: Read](llm-inference.md)
-
--   :material-clipboard-check-outline:{ .lg .middle } **Evaluation**
-
-    ---
-
-    Evals, RAGAS, benchmarks, model-as-judge, regression testing
-
-    [:octicons-arrow-right-24: Read](evaluation.md)
-
--   :material-shield-alert-outline:{ .lg .middle } **Guardrails & Safety**
-
-    ---
-
-    Prompt injection, hallucination mitigation, content moderation, output validation
-
-    [:octicons-arrow-right-24: Read](guardrails-safety.md)
-
--   :material-wrench-outline:{ .lg .middle } **LLMOps**
-
-    ---
-
-    Model versioning, cost management, observability, CI/CD for AI systems
-
-    [:octicons-arrow-right-24: Read](llmops.md)
-
+<div class="pcards">
+<a class="pcard" href="fine-tuning/"><span class="t">Fine-tuning</span><span class="d">SFT, LoRA, RLHF, DPO — when to fine-tune vs RAG vs prompting</span></a>
+<a class="pcard" href="llm-inference/"><span class="t">LLM Inference & Serving</span><span class="d">KV cache, continuous batching, quantization, speculative decoding, vLLM</span></a>
+<a class="pcard" href="evaluation/"><span class="t">Evaluation</span><span class="d">Evals, RAGAS, benchmarks, model-as-judge, regression testing</span></a>
+<a class="pcard" href="guardrails-safety/"><span class="t">Guardrails & Safety</span><span class="d">Prompt injection, hallucination mitigation, content moderation, output validation</span></a>
+<a class="pcard" href="llmops/"><span class="t">LLMOps</span><span class="d">Model versioning, cost management, observability, CI/CD for AI systems</span></a>
+<a class="pcard" href="ml-in-production/"><span class="t">ML in Production</span><span class="d">Serving, monitoring, and drift for ML systems in production</span></a>
 </div>
 
 ---

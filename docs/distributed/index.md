@@ -1,11 +1,44 @@
 # Distributed Systems
 
+<div class="sec-hero" markdown>
+<span class="ey">Foundations · distributed theory</span>
 The theory and mechanics behind systems that run across multiple nodes. This is where reliability, consistency, and fault tolerance are won or lost.
+</div>
 
 !!! info "Where this fits"
     This section covers distributed-systems **mechanisms** (consensus, leader election, locks, clocks, CRDTs). For the **properties** they provide — CAP, consistency models, ACID vs BASE, isolation — see [Reliability & Consistency Theory](../fundamentals/index.md#reliability-consistency-theory).
 
----
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "The 8 Fallacies": "fallacies/",
+  "Clocks and Ordering": "clocks/",
+  "Consensus (Raft and Paxos)": "consensus/",
+  "Leader Election": "leader-election/",
+  "Quorum": "quorum/",
+  "Distributed Locks": "distributed-locks/",
+  "Failure Detection": "failure-detection/",
+  "Service Discovery": "service-discovery/",
+  "CRDTs": "crdts/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["The 8 Fallacies"] --> B["Clocks and Ordering"]
+    B --> C["Consensus (Raft and Paxos)"]
+    C --> D["Leader Election"]
+    D --> E["Quorum"]
+    C -.-> C1["Distributed Locks"]
+    A -.-> A1["Failure Detection"]
+    A -.-> A2["Service Discovery"]
+    E -.-> E1["CRDTs"]
+    class A,B,C,D,E core
+    class C1,A1,A2,E1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ## Suggested reading order
 
@@ -21,57 +54,51 @@ New to this topic? Read these in order — each builds on the previous:
 
 **Advanced — come back later:** [CRDTs](crdts.md), [Gossip Protocol](gossip.md), [Split Brain & Fencing](split-brain.md), [Exactly-Once Semantics](exactly-once.md), [Two-Phase Commit](two-phase-commit.md), [Distributed Transactions](distributed-transactions.md)
 
----
-
 ## Start here: why distributed systems are hard
 
 Before anything else, read [The 8 Fallacies](fallacies.md) — the false assumptions that cause every class of distributed system failure. Every topic in this section exists because one of those fallacies is violated in the real world.
-
----
 
 ## Coordination and agreement
 
 How nodes reach agreement despite failures and network unreliability.
 
-| Topic | What it is | When it matters |
-|---|---|---|
-| [Consensus (Raft & Paxos)](consensus.md) | How nodes agree on a single value despite failures | Distributed databases, replicated state machines |
-| [Leader Election](leader-election.md) | Picking one coordinator and handling its failure | Primary replica selection, job scheduling |
-| [Split Brain & Fencing](split-brain.md) | Two leaders both accepting writes — and fencing tokens to stop it | Any system with leader election |
-| [Distributed Locks](distributed-locks.md) | Mutual exclusion across processes on different machines | Exactly-once processing, preventing double work |
-| [Quorum](quorum.md) | R+W>N — configuring consistency vs availability trade-off | Every distributed DB (Cassandra, DynamoDB, Raft) |
-| [Two-Phase Commit](two-phase-commit.md) | Atomic commit across multiple participants | Cross-DB transactions (use sparingly) |
+<div class="pcards">
+<a class="pcard" href="consensus/"><span class="t">Consensus (Raft & Paxos)</span><span class="d">How nodes agree on a single value despite failures</span></a>
+<a class="pcard" href="leader-election/"><span class="t">Leader Election</span><span class="d">Picking one coordinator and handling its failure</span></a>
+<a class="pcard" href="split-brain/"><span class="t">Split Brain & Fencing</span><span class="d">Two leaders both accepting writes — and fencing tokens to stop it</span></a>
+<a class="pcard" href="distributed-locks/"><span class="t">Distributed Locks</span><span class="d">Mutual exclusion across processes on different machines</span></a>
+<a class="pcard" href="quorum/"><span class="t">Quorum</span><span class="d">R+W>N — configuring consistency vs availability trade-off</span></a>
+<a class="pcard" href="two-phase-commit/"><span class="t">Two-Phase Commit</span><span class="d">Atomic commit across multiple participants (use sparingly)</span></a>
+</div>
 
 ## Consistency and time
 
 Why distributed systems make time and ordering hard, and how to deal with it.
 
-| Topic | What it is | When it matters |
-|---|---|---|
-| [Clocks & Ordering](clocks.md) | Lamport clocks, vector clocks, why wall clocks lie | Event ordering, causality tracking |
-| [Distributed Transactions](distributed-transactions.md) | ACID across multiple services — the full picture | Microservices that span multiple DBs |
-| [Exactly-Once Semantics](exactly-once.md) | At-most-once / at-least-once / exactly-once — tradeoffs and implementation | Payments, Kafka consumers, any stateful processing |
-| [CRDTs](crdts.md) | Data structures that merge automatically without conflicts | Multi-region writes, collaborative editing, offline-first |
+<div class="pcards">
+<a class="pcard" href="clocks/"><span class="t">Clocks & Ordering</span><span class="d">Lamport clocks, vector clocks, why wall clocks lie</span></a>
+<a class="pcard" href="distributed-transactions/"><span class="t">Distributed Transactions</span><span class="d">ACID across multiple services — the full picture</span></a>
+<a class="pcard" href="exactly-once/"><span class="t">Exactly-Once Semantics</span><span class="d">At-most-once / at-least-once / exactly-once trade-offs</span></a>
+<a class="pcard" href="crdts/"><span class="t">CRDTs</span><span class="d">Data structures that merge automatically without conflicts</span></a>
+</div>
 
 ## Membership and discovery
 
 How nodes find each other and detect failures.
 
-| Topic | What it is | When it matters |
-|---|---|---|
-| [Service Discovery](service-discovery.md) | How services find each other in dynamic environments | Any microservices deployment |
-| [Gossip Protocol](gossip.md) | Epidemic information dissemination at scale | Membership management, failure detection |
-| [Failure Detection](failure-detection.md) | Heartbeats, phi accrual, cost of false positives | Any system requiring liveness detection |
+<div class="pcards">
+<a class="pcard" href="service-discovery/"><span class="t">Service Discovery</span><span class="d">How services find each other in dynamic environments</span></a>
+<a class="pcard" href="gossip/"><span class="t">Gossip Protocol</span><span class="d">Epidemic information dissemination at scale</span></a>
+<a class="pcard" href="failure-detection/"><span class="t">Failure Detection</span><span class="d">Heartbeats, phi accrual, cost of false positives</span></a>
+</div>
 
 ## Algorithms and data structures
 
 Space-efficient probabilistic structures that power real distributed systems.
 
-| Topic | What it is | When it matters |
-|---|---|---|
-| [Distributed Primitives](distributed-primitives.md) | Bloom filter, Merkle tree, HyperLogLog, Count-Min Sketch | Cassandra internals, Redis, analytics, crawlers |
-
----
+<div class="pcards">
+<a class="pcard" href="distributed-primitives/"><span class="t">Distributed Primitives</span><span class="d">Bloom filter, Merkle tree, HyperLogLog, Count-Min Sketch</span></a>
+</div>
 
 ## Concept map
 

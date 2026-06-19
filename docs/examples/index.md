@@ -5,11 +5,38 @@ tags:
 
 # Practical Examples
 
-Real-world scenarios with the concepts that fit. Each example weaves together 2-4 patterns from across the repo to solve a concrete problem.
-
-This is the **applicative** side of the encyclopedia: not "what is concept X?" but "we have problem Y at work — what fits, why, and what to watch out for?"
+<div class="sec-hero" markdown>
+<span class="ey">Reference · applied scenarios</span>
+Real-world scenarios with the concepts that fit. Each example weaves together 2–4 patterns from across the repo to solve a concrete problem — the applicative side of the encyclopedia: not "what is concept X?" but "we have problem Y at work — what fits, why, and what to watch out for?"
+</div>
 
 These are *short, concept-weaving scenarios*. For full end-to-end system designs (requirements → estimation → architecture → deep dive), see [Case Studies](../case-studies/index.md).
+
+## Roadmap
+
+There is no fixed order — jump to the category matching the problem in front of you. A rough difficulty progression:
+
+<div class="sd-mermaid-links" data-links='{
+  "Data Processing": "data-processing/",
+  "Real-Time Systems": "real-time-systems/",
+  "Payments & Correctness": "payments-and-correctness/",
+  "Scaling & Performance": "scaling-and-performance/",
+  "Multi-Tenant SaaS": "multi-tenant-saas/",
+  "Event-Driven Workflows": "event-driven-workflows/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Data Processing"] --> B["Real-Time Systems"]
+    B --> C["Payments & Correctness"]
+    C --> D["Scaling & Performance"]
+    D -.-> D1["Multi-Tenant SaaS"]
+    D -.-> D2["Event-Driven Workflows"]
+    class A,B,C,D core
+    class D1,D2 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ---
 
@@ -32,14 +59,14 @@ Read the scenario → form your own answer → compare with the reasoning. That'
 
 ## Categories
 
-| Category | Scenarios |
-|---|---|
-| [Data Processing](data-processing.md) | Large file ingest, ETL pipelines, streaming aggregation, search indexing |
-| [Real-Time Systems](real-time-systems.md) | Chat, live notifications, presence/online status, collaborative editing |
-| [Payments & Correctness](payments-and-correctness.md) | Idempotent payment, multi-step checkout, refund flow, audit trail |
-| [Scaling & Performance](scaling-and-performance.md) | Hot keys, write-heavy workloads, social timeline, search at scale |
-| [Multi-Tenant SaaS](multi-tenant-saas.md) | Tenant isolation, noisy neighbour, per-region tenants, billing |
-| [Event-Driven Workflows](event-driven-workflows.md) | CQRS in context, event sourcing for audit, saga for order workflow |
+<div class="pcards">
+<a class="pcard" href="data-processing/"><span class="t">Data Processing</span><span class="d">Large file ingest, ETL pipelines, streaming aggregation, search indexing</span></a>
+<a class="pcard" href="real-time-systems/"><span class="t">Real-Time Systems</span><span class="d">Chat, live notifications, presence/online status, collaborative editing</span></a>
+<a class="pcard" href="payments-and-correctness/"><span class="t">Payments & Correctness</span><span class="d">Idempotent payment, multi-step checkout, refund flow, audit trail</span></a>
+<a class="pcard" href="scaling-and-performance/"><span class="t">Scaling & Performance</span><span class="d">Hot keys, write-heavy workloads, social timeline, search at scale</span></a>
+<a class="pcard" href="multi-tenant-saas/"><span class="t">Multi-Tenant SaaS</span><span class="d">Tenant isolation, noisy neighbour, per-region tenants, billing</span></a>
+<a class="pcard" href="event-driven-workflows/"><span class="t">Event-Driven Workflows</span><span class="d">CQRS in context, event sourcing for audit, saga for order workflow</span></a>
+</div>
 
 ---
 

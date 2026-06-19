@@ -1,8 +1,37 @@
 # API Design
 
+<div class="sec-hero" markdown>
+<span class="ey">Communication · contracts</span>
 An API is a contract between a provider and its consumers. Unlike internal implementation details, API decisions have long lifetimes — every endpoint, field name, and error code becomes a commitment the moment a client depends on it. Designing APIs well means designing for evolution.
+</div>
 
----
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "REST": "rest/",
+  "gRPC": "grpc/",
+  "GraphQL": "graphql/",
+  "REST vs gRPC vs GraphQL": "comparison/",
+  "API Versioning": "versioning/",
+  "Pagination": "pagination/",
+  "Webhooks": "webhooks/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["REST"] --> B["gRPC"]
+    B --> C["GraphQL"]
+    C --> D["REST vs gRPC vs GraphQL"]
+    D --> E["API Versioning"]
+    A -.-> A1["Pagination"]
+    E -.-> E1["Webhooks"]
+    class A,B,C,D,E core
+    class A1,E1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ## Suggested reading order
 
@@ -34,17 +63,26 @@ No single winner — the right choice depends on client type, performance requir
 
 ---
 
-## Topics in this section
+## API styles
 
-| Topic | What it covers | When it matters |
-|---|---|---|
-| [REST](rest.md) | Constraints, HTTP semantics, resource modeling, HATEOAS | Public APIs, browser clients, broad ecosystem |
-| [gRPC](grpc.md) | Protobuf, HTTP/2, unary/streaming, code generation | Internal microservices, low-latency RPC, mobile |
-| [GraphQL](graphql.md) | Schemas, resolvers, N+1 problem, subscriptions, persisted queries | BFF pattern, complex client queries, rapid UI iteration |
-| [REST vs gRPC vs GraphQL](comparison.md) | Decision framework with concrete tradeoffs | Choosing the right protocol for the job |
-| [Webhooks](webhooks.md) | Push-based event delivery, retries, verification | Integrations, event-driven partners, async notifications |
-| [API Versioning](versioning.md) | URI, header, content-type strategies — and deprecation | Any API with external consumers |
-| [Pagination](pagination.md) | Offset, cursor, keyset — why cursor wins at scale | Any list endpoint with more than a few hundred records |
+The three paradigms and the framework for choosing between them.
+
+<div class="pcards">
+<a class="pcard" href="rest/"><span class="t">REST</span><span class="d">Constraints, HTTP semantics, resource modeling, HATEOAS</span></a>
+<a class="pcard" href="grpc/"><span class="t">gRPC</span><span class="d">Protobuf, HTTP/2, unary/streaming, code generation</span></a>
+<a class="pcard" href="graphql/"><span class="t">GraphQL</span><span class="d">Schemas, resolvers, N+1 problem, subscriptions, persisted queries</span></a>
+<a class="pcard" href="comparison/"><span class="t">REST vs gRPC vs GraphQL</span><span class="d">Decision framework with concrete tradeoffs</span></a>
+</div>
+
+## Lifecycle & delivery
+
+How APIs evolve, traverse large result sets, and push events — the concerns that outlive the initial design.
+
+<div class="pcards">
+<a class="pcard" href="versioning/"><span class="t">API Versioning</span><span class="d">URI, header, content-type strategies — and deprecation</span></a>
+<a class="pcard" href="pagination/"><span class="t">Pagination</span><span class="d">Offset, cursor, keyset — why cursor wins at scale</span></a>
+<a class="pcard" href="webhooks/"><span class="t">Webhooks</span><span class="d">Push-based event delivery, retries, verification</span></a>
+</div>
 
 ---
 

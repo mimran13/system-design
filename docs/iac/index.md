@@ -1,6 +1,69 @@
 # Infrastructure as Code (IaC)
 
+<div class="sec-hero" markdown>
+<span class="ey">Delivery · infra as code</span>
 Infrastructure as Code is the practice of defining and managing infrastructure (servers, networks, databases, load balancers, IAM, DNS) through declarative or imperative code rather than manual provisioning. The goal: infrastructure becomes versioned, reviewable, reproducible, and recoverable — exactly like application code.
+</div>
+
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "Fundamentals": "fundamentals/",
+  "Terraform": "terraform/",
+  "State Management": "state-management/",
+  "Terraform in CI/CD": "terraform-cicd-lifecycle/",
+  "Modules and Structure": "modules-and-structure/",
+  "Secrets in IaC": "secrets-in-iac/",
+  "Best Practices": "best-practices/",
+  "AWS CDK": "cdk/",
+  "Drift Detection": "drift-detection/",
+  "Testing IaC": "testing-iac/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Fundamentals"] --> B["Terraform"]
+    B --> C["State Management"]
+    C --> D["Terraform in CI/CD"]
+    D --> E["Modules and Structure"]
+    E --> F["Secrets in IaC"]
+    F --> G["Best Practices"]
+    B -.-> B1["AWS CDK"]
+    D -.-> D1["Drift Detection"]
+    G -.-> G1["Testing IaC"]
+    class A,B,C,D,E,F,G core
+    class B1,D1,G1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
+
+## Core IaC topics
+
+First principles, the dominant tool, and how to run it safely as a team.
+
+<div class="pcards">
+<a class="pcard" href="fundamentals/"><span class="t">Fundamentals</span><span class="d">Declarative vs imperative, mutable vs immutable, state, idempotency</span></a>
+<a class="pcard" href="terraform/"><span class="t">Terraform</span><span class="d">HCL, providers, resources, modules, the dominant multi-cloud tool</span></a>
+<a class="pcard" href="terraform-cicd-lifecycle/"><span class="t">Terraform in CI/CD Lifecycle</span><span class="d">End-to-end: PR → plan → review → apply → drift → rollback</span></a>
+<a class="pcard" href="state-management/"><span class="t">State Management</span><span class="d">Remote state, locking, workspaces, state surgery, migration</span></a>
+<a class="pcard" href="modules-and-structure/"><span class="t">Modules & Repository Structure</span><span class="d">Module design, monorepo vs polyrepo, environment layout</span></a>
+<a class="pcard" href="secrets-in-iac/"><span class="t">Secrets in IaC</span><span class="d">Reference don't embed; Secrets Manager, Vault, SOPS, SSM</span></a>
+<a class="pcard" href="best-practices/"><span class="t">Best Practices</span><span class="d">Tagging, versioning, blast radius, environment isolation</span></a>
+</div>
+
+## Tools & reference
+
+The other tools and the practices that keep reality in sync with code.
+
+<div class="pcards">
+<a class="pcard" href="cdk/"><span class="t">AWS CDK</span><span class="d">Define infra in TypeScript/Python, AWS-native abstractions</span></a>
+<a class="pcard" href="cloudformation/"><span class="t">CloudFormation</span><span class="d">AWS native IaC, deeply integrated with AWS services</span></a>
+<a class="pcard" href="pulumi-and-alternatives/"><span class="t">Pulumi & Alternatives</span><span class="d">Pulumi, Crossplane, Ansible — when to pick each</span></a>
+<a class="pcard" href="drift-detection/"><span class="t">Drift Detection</span><span class="d">What drift is, how to detect and prevent it</span></a>
+<a class="pcard" href="testing-iac/"><span class="t">Testing IaC</span><span class="d">terraform validate, tflint, Checkov, Terratest, OPA, Sentinel</span></a>
+</div>
 
 ## Suggested reading order
 

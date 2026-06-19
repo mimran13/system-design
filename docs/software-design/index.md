@@ -1,6 +1,41 @@
 # Software Design
 
+<div class="sec-hero" markdown>
+<span class="ey">Foundations · code craft</span>
 The foundation before system design. These principles operate at the code and component level — they determine how well a system can evolve, be tested, and be understood by the next engineer.
+</div>
+
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "Clean Code Principles": "clean-code-principles/",
+  "SOLID Principles": "solid/",
+  "IoC & Dependency Injection": "ioc-di/",
+  "Design Patterns (GoF)": "design-patterns/",
+  "Refactoring & Code Smells": "refactoring/",
+  "Testing Strategies": "testing-strategies/",
+  "Error Handling Patterns": "error-handling/",
+  "DDD Tactical Patterns": "ddd-tactical/",
+  "Clean Architecture": "clean-architecture/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Clean Code Principles"] --> B["SOLID Principles"]
+    B --> C["IoC & Dependency Injection"]
+    C --> D["Design Patterns (GoF)"]
+    D --> E["Refactoring & Code Smells"]
+    E --> F["Testing Strategies"]
+    F -.-> F1["Error Handling Patterns"]
+    D -.-> D1["DDD Tactical Patterns"]
+    D -.-> D2["Clean Architecture"]
+    class A,B,C,D,E,F core
+    class F1,D1,D2 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ## Suggested reading order
 
@@ -19,45 +54,33 @@ New to this topic? Read these in order — each builds on the previous:
 
 ## Principles
 
-| Topic | What you'll learn |
-|---|---|
-| [Clean Code Principles](clean-code-principles.md) | DRY, KISS, YAGNI, SoC, Law of Demeter |
-| [SOLID Principles](solid.md) | The 5 principles every OOP design is judged by |
-| [IoC & Dependency Injection](ioc-di.md) | Inversion of control, DI containers, pure DI |
+The vocabulary and structure that everything else assumes — what makes code good and why it's shaped the way it is.
+
+<div class="pcards">
+<a class="pcard" href="clean-code-principles/"><span class="t">Clean Code Principles</span><span class="d">DRY, KISS, YAGNI, SoC, Law of Demeter</span></a>
+<a class="pcard" href="solid/"><span class="t">SOLID Principles</span><span class="d">The 5 principles every OOP design is judged by</span></a>
+<a class="pcard" href="ioc-di/"><span class="t">IoC & Dependency Injection</span><span class="d">Inversion of control, DI containers, pure DI</span></a>
+</div>
 
 ## Patterns & modeling
 
-| Topic | What you'll learn |
-|---|---|
-| [Design Patterns (GoF)](design-patterns.md) | Creational, structural, behavioral patterns with intent |
-| [DDD Tactical Patterns](ddd-tactical.md) | Entities, Value Objects, Aggregates, Repositories, Domain Events |
-| [Clean Architecture](clean-architecture.md) | Dependency rule, ports & adapters, layered rings |
+Proven solutions to recurring problems, modeling the domain in code, and organizing it all at scale.
+
+<div class="pcards">
+<a class="pcard" href="design-patterns/"><span class="t">Design Patterns (GoF)</span><span class="d">Creational, structural, behavioral patterns with intent</span></a>
+<a class="pcard" href="ddd-tactical/"><span class="t">DDD Tactical Patterns</span><span class="d">Entities, Value Objects, Aggregates, Repositories, Domain Events</span></a>
+<a class="pcard" href="clean-architecture/"><span class="t">Clean Architecture</span><span class="d">Dependency rule, ports & adapters, layered rings</span></a>
+</div>
 
 ## Craft
 
-| Topic | What you'll learn |
-|---|---|
-| [Refactoring & Code Smells](refactoring.md) | Recognizing and safely fixing bad code |
-| [Error Handling Patterns](error-handling.md) | Result types, fail-fast, error propagation, boundary translation |
-| [Testing Strategies](testing-strategies.md) | Testing pyramid, test doubles, contract testing, integration tests |
+Improving existing code safely, making failure a first-class citizen, and verifying it all works.
 
----
-
-## Learning order
-
-```
-Clean Code Principles       ← what makes good code
-SOLID Principles            ← why code is structured that way
-IoC & Dependency Injection  ← how components connect without coupling
-        ↓
-Design Patterns             ← proven solutions to recurring problems
-DDD Tactical Patterns       ← modeling the domain in code
-Clean Architecture          ← organizing it all at scale
-        ↓
-Refactoring & Code Smells   ← improving existing code safely
-Error Handling              ← making failure a first-class citizen
-Testing Strategies          ← verifying it all works
-```
+<div class="pcards">
+<a class="pcard" href="refactoring/"><span class="t">Refactoring & Code Smells</span><span class="d">Recognizing and safely fixing bad code</span></a>
+<a class="pcard" href="error-handling/"><span class="t">Error Handling Patterns</span><span class="d">Result types, fail-fast, error propagation, boundary translation</span></a>
+<a class="pcard" href="testing-strategies/"><span class="t">Testing Strategies</span><span class="d">Testing pyramid, test doubles, contract testing, integration tests</span></a>
+</div>
 
 ---
 

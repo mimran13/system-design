@@ -1,6 +1,37 @@
 # Caching
 
-Caching is the practice of storing copies of data in a fast-access layer so future requests can be served faster. It is one of the highest-leverage techniques in system design — used at every layer from CPU registers to global CDN edges.
+<div class="sec-hero" markdown>
+<span class="ey">Data · speed & freshness</span>
+Storing copies of data in a fast-access layer so future requests can be served faster — one of the highest-leverage techniques in system design, used at every layer from CPU registers to global CDN edges.
+</div>
+
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "Caching Strategies": "caching-strategies/",
+  "Eviction Policies": "eviction-policies/",
+  "Cache Invalidation": "cache-invalidation/",
+  "Redis Deep Dive": "redis/",
+  "Distributed Caching": "distributed-caching/",
+  "Cache Patterns & Pitfalls": "cache-patterns/",
+  "Cache Hierarchy": "cache-hierarchy/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Caching Strategies"] --> B["Eviction Policies"]
+    B --> C["Cache Invalidation"]
+    C --> D["Redis Deep Dive"]
+    D --> E["Distributed Caching"]
+    C -.-> C1["Cache Patterns & Pitfalls"]
+    A -.-> A1["Cache Hierarchy"]
+    class A,B,C,D,E core
+    class C1,A1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ## Suggested reading order
 
@@ -55,14 +86,16 @@ Each layer adds latency but increases durability and consistency. Pick the right
 
 ## Topics in this section
 
-| Topic | What it covers |
-|---|---|
-| [Caching Strategies](caching-strategies.md) | Cache-aside, read-through, write-through, write-behind, refresh-ahead |
-| [Eviction Policies](eviction-policies.md) | LRU, LFU, ARC, TTL, FIFO — when and why to use each |
-| [Cache Invalidation](cache-invalidation.md) | TTL, event-driven, versioning, the two-phase problem |
-| [Distributed Caching](distributed-caching.md) | Sharding, replication, Redis Cluster, consistency |
-| [Redis Deep Dive](redis.md) | Data structures, persistence, clustering, pub/sub, use cases |
-| [Cache Patterns & Pitfalls](cache-patterns.md) | Stampede, penetration, avalanche, warming strategies |
+The full toolkit — strategies, eviction, invalidation, distribution, and the pitfalls that bite in production.
+
+<div class="pcards">
+<a class="pcard" href="caching-strategies/"><span class="t">Caching Strategies</span><span class="d">Cache-aside, read-through, write-through, write-behind, refresh-ahead</span></a>
+<a class="pcard" href="eviction-policies/"><span class="t">Eviction Policies</span><span class="d">LRU, LFU, ARC, TTL, FIFO — when and why to use each</span></a>
+<a class="pcard" href="cache-invalidation/"><span class="t">Cache Invalidation</span><span class="d">TTL, event-driven, versioning, the two-phase problem</span></a>
+<a class="pcard" href="distributed-caching/"><span class="t">Distributed Caching</span><span class="d">Sharding, replication, Redis Cluster, consistency</span></a>
+<a class="pcard" href="redis/"><span class="t">Redis Deep Dive</span><span class="d">Data structures, persistence, clustering, pub/sub, use cases</span></a>
+<a class="pcard" href="cache-patterns/"><span class="t">Cache Patterns & Pitfalls</span><span class="d">Stampede, penetration, avalanche, warming strategies</span></a>
+</div>
 
 ## The three cache problems (interview shortlist)
 

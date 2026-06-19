@@ -1,6 +1,39 @@
 # AI Agents
 
-A practical guide to understanding, building, and running AI agents in production. This section takes you from first principles to working end-to-end examples you can adapt and run.
+<div class="sec-hero" markdown>
+<span class="ey">AI · autonomous systems</span>
+A practical guide to understanding, building, and running AI agents in production — from first principles (the agent loop, tool use) to working end-to-end examples you can adapt and run.
+</div>
+
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "Agent Fundamentals": "agent-fundamentals/",
+  "Function Calling": "function-calling/",
+  "Building Agents": "building-agents/",
+  "Research Agent": "example-research-agent/",
+  "Agent Reliability": "agent-reliability/",
+  "Data Analysis Agent": "example-data-agent/",
+  "Customer Support Agent": "example-customer-support-agent/",
+  "Multi-Agent Systems": "multi-agent-systems/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Agent Fundamentals"] --> B["Function Calling"]
+    B --> C["Building Agents"]
+    C --> D["Research Agent"]
+    D --> E["Agent Reliability"]
+    C -.-> C1["Data Analysis Agent"]
+    C -.-> C2["Customer Support Agent"]
+    E -.-> E1["Multi-Agent Systems"]
+    class A,B,C,D,E core
+    class C1,C2,E1 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
 
 ## Suggested reading order
 
@@ -18,41 +51,32 @@ New to this topic? Read these in order — each builds on the previous:
 
 ## Concepts
 
-| Topic | What you'll learn |
-|---|---|
-| [Agent Fundamentals](agent-fundamentals.md) | The agent loop, four core components, types of agents, when to use one |
-| [Function Calling & Tool Use](function-calling.md) | How to give agents tools, tool design principles, parallel calls |
+The agent loop and the mechanism it runs on.
+
+<div class="pcards">
+<a class="pcard" href="agent-fundamentals/"><span class="t">Agent Fundamentals</span><span class="d">The agent loop, four core components, types of agents, when to use one</span></a>
+<a class="pcard" href="function-calling/"><span class="t">Function Calling & Tool Use</span><span class="d">How to give agents tools, tool design principles, parallel calls</span></a>
+</div>
 
 ## Building
 
-| Topic | What you'll learn |
-|---|---|
-| [Building Agents](building-agents.md) | Agent class from scratch, memory, structured output, framework comparison |
-| [Multi-Agent Systems](multi-agent-systems.md) | Orchestrator/worker, pipelines, critic loops, CrewAI, AutoGen |
-| [Agent Reliability](agent-reliability.md) | Budget limits, HITL, prompt injection defense, sandboxing, observability |
+From a from-scratch agent class to coordinating several agents safely.
+
+<div class="pcards">
+<a class="pcard" href="building-agents/"><span class="t">Building Agents</span><span class="d">Agent class from scratch, memory, structured output, framework comparison</span></a>
+<a class="pcard" href="multi-agent-systems/"><span class="t">Multi-Agent Systems</span><span class="d">Orchestrator/worker, pipelines, critic loops, CrewAI, AutoGen</span></a>
+<a class="pcard" href="agent-reliability/"><span class="t">Agent Reliability</span><span class="d">Budget limits, HITL, prompt injection defense, sandboxing, observability</span></a>
+</div>
 
 ## End-to-End Examples
 
-| Example | What it demonstrates |
-|---|---|
-| [Research Agent](example-research-agent.md) | Web search + synthesis → structured report. Run it in 5 minutes. |
-| [Data Analysis Agent](example-data-agent.md) | Natural language → SQL + Python → insights + charts |
-| [Customer Support Agent](example-customer-support-agent.md) | Order lookup, refunds, escalation to human — full conversation flow |
+Complete, runnable agents you can adapt.
 
----
-
-## Learning path
-
-```
-1. Agent Fundamentals     ← what an agent is and when to use one
-2. Function Calling       ← how tools work (the core mechanism)
-3. Building Agents        ← write your first agent from scratch
-4. Run: Research Agent    ← see a real agent working end-to-end
-5. Run: Data Agent        ← agents with code execution
-6. Multi-Agent Systems    ← coordinate multiple agents
-7. Run: Support Agent     ← agent with escalation and safety
-8. Agent Reliability      ← making agents production-safe
-```
+<div class="pcards">
+<a class="pcard" href="example-research-agent/"><span class="t">Research Agent</span><span class="d">Web search + synthesis → structured report. Run it in 5 minutes.</span></a>
+<a class="pcard" href="example-data-agent/"><span class="t">Data Analysis Agent</span><span class="d">Natural language → SQL + Python → insights + charts</span></a>
+<a class="pcard" href="example-customer-support-agent/"><span class="t">Customer Support Agent</span><span class="d">Order lookup, refunds, escalation to human — full conversation flow</span></a>
+</div>
 
 ---
 

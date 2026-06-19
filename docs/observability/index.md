@@ -1,8 +1,67 @@
 # Observability
 
-You can't operate what you can't see. Observability is the practice of understanding a system's internal state purely from its external outputs — without modifying the system or guessing what's happening inside.
+<div class="sec-hero" markdown>
+<span class="ey">Reliability & Operations · seeing in</span>
+You can't operate what you can't see. Observability is understanding a system's internal state purely from its external outputs — logs, metrics, traces. Monitoring tells you *when* something is broken; observability tells you *why*, so you can debug a novel failure you've never seen before from first principles.
+</div>
 
-The difference between **monitoring** and **observability**: monitoring tells you *when* something is broken (alert fires). Observability tells you *why* (you can debug a novel failure you've never seen before from first principles).
+## Roadmap
+
+Follow the spine top-to-bottom your first time. Dashed branches hang off the topic they support — grab them when you need them.
+
+<div class="sd-mermaid-links" data-links='{
+  "Logging": "logging/",
+  "Metrics": "metrics/",
+  "Distributed Tracing": "tracing/",
+  "Alerting": "alerting/",
+  "SLI, SLO and SLA": "slo-sla/",
+  "Incident Management": "incident-management/",
+  "Load Testing": "load-testing/",
+  "Linux Debugging": "linux-debugging-toolbox/",
+  "Incident Response Craft": "incident-response-craft/",
+  "Performance Engineering": "performance-engineering/"
+}'></div>
+
+```mermaid
+flowchart TD
+    A["Logging"] --> B["Metrics"]
+    B --> C["Distributed Tracing"]
+    C --> D["Alerting"]
+    D --> E["SLI, SLO and SLA"]
+    E --> F["Incident Management"]
+    B -.-> B1["Load Testing"]
+    C -.-> C1["Linux Debugging"]
+    F -.-> F1["Incident Response Craft"]
+    B -.-> B2["Performance Engineering"]
+    class A,B,C,D,E,F core
+    class B1,C1,F1,B2 opt
+    classDef core fill:#2563eb,stroke:#1d4ed8,color:#fff;
+    classDef opt fill:#ffffff,stroke:#a1a1aa,color:#18181b;
+```
+
+## The signals
+
+The data you instrument and the practices that turn it into operable systems.
+
+<div class="pcards">
+<a class="pcard" href="logging/"><span class="t">Logging</span><span class="d">Structured logs, log levels, correlation IDs, sampling, retention</span></a>
+<a class="pcard" href="metrics/"><span class="t">Metrics</span><span class="d">Counters, gauges, histograms, RED method, USE method</span></a>
+<a class="pcard" href="tracing/"><span class="t">Distributed Tracing</span><span class="d">Spans, trace context propagation, sampling strategies</span></a>
+<a class="pcard" href="alerting/"><span class="t">Alerting</span><span class="d">What to page on, alert fatigue, SLO-based alerts</span></a>
+<a class="pcard" href="slo-sla/"><span class="t">SLI, SLO & SLA</span><span class="d">Define and measure reliability targets, error budgets</span></a>
+<a class="pcard" href="incident-management/"><span class="t">On-Call & Incident Management</span><span class="d">Runbooks, postmortems, escalation policies</span></a>
+</div>
+
+## Going deeper
+
+Reference and advanced craft once the signals are in place.
+
+<div class="pcards">
+<a class="pcard" href="load-testing/"><span class="t">Load Testing</span><span class="d">Find limits before production does</span></a>
+<a class="pcard" href="linux-debugging-toolbox/"><span class="t">Linux Debugging Toolbox</span><span class="d">strace, perf, tcpdump and the rest of the kit</span></a>
+<a class="pcard" href="incident-response-craft/"><span class="t">Incident Response Craft</span><span class="d">The skilled practice of running an incident well</span></a>
+<a class="pcard" href="performance-engineering/"><span class="t">Performance Engineering</span><span class="d">Systematic latency and throughput tuning</span></a>
+</div>
 
 ## Suggested reading order
 
