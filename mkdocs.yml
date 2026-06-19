@@ -285,9 +285,9 @@ nav:
       - Idempotent Consumers in Production: messaging/idempotent-consumers.md
       - Event Streaming Maturity: messaging/event-streaming-maturity.md
 
-  # ─── Operations ────────────────────────────────────────────
-  - Operations:
-    - Patterns:
+  # ─── Reliability & Operations ──────────────────────────────
+  - Reliability & Operations:
+    - Resilience Patterns:
       - patterns/index.md
       - Rate Limiting: patterns/rate-limiting.md
       - Circuit Breaker: patterns/circuit-breaker.md
@@ -298,6 +298,10 @@ nav:
       - Saga Pattern: patterns/saga-pattern.md
       - Outbox Pattern: patterns/outbox.md
       - Durable Workflows (Temporal / Step Functions): patterns/durable-workflows.md
+      - Unhappy-Path Engineering: patterns/unhappy-path-engineering.md
+      - Boring Technology: patterns/boring-tech.md
+
+    - Data & Scaling Patterns:
       - CQRS: patterns/cqrs.md
       - Event Sourcing: patterns/event-sourcing.md
       - Consistent Hashing: patterns/consistent-hashing.md
@@ -308,8 +312,6 @@ nav:
       - Replication: patterns/replication.md
       - Read Replicas: patterns/read-replicas.md
       - Connection Pooling: patterns/connection-pooling.md
-      - Unhappy-Path Engineering: patterns/unhappy-path-engineering.md
-      - Boring Technology: patterns/boring-tech.md
 
     - Observability:
       - observability/index.md
