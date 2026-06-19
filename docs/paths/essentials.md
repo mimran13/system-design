@@ -86,7 +86,7 @@ After this path, three good directions:
 |---|---|
 | **Build something real** | [Building a SaaS path](building-saas.md) |
 | **Prep for interviews** | [Interview Prep path](interview-prep.md) |
-| **Go deeper on a specific area** | [Browse by Topic](../index.md#browse-by-topic) on the home page |
+| **Go deeper on a specific area** | [Browse by Topic](../index.md#or-browse-by-topic) on the home page |
 
 Or jump to [Symptom → Concept Lookup](../reference/symptom-lookup.md) when you next hit a problem at work — the encyclopedia is built to be reached for, not read end-to-end.
 
@@ -94,6 +94,6 @@ Or jump to [Symptom → Concept Lookup](../reference/symptom-lookup.md) when you
 
 ## Related
 
-- [Reading paths overview](../index.md#start-here)
+- [Reading paths overview](index.md)
 - [Practical Examples](../examples/index.md) — once you know the concepts, see them combined
 - [Glossary](../glossary.md) — one-line refresher of any term

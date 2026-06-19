@@ -128,7 +128,7 @@ nav:
         - Storage Engine Internals: fundamentals/storage-internals.md
         - Database Internals Deep Dive: fundamentals/database-internals-deep-dive.md
         - Database Operations at Scale: fundamentals/database-operations-at-scale.md
-      - Distributed Systems Theory:
+      - Reliability & Consistency Theory:
         - ACID vs BASE: fundamentals/acid-vs-base.md
         - CAP Theorem: fundamentals/cap-theorem.md
         - CAP Theorem in Practice: fundamentals/cap-theorem-applied.md
@@ -143,6 +143,24 @@ nav:
         - Concurrency Runtimes in Practice: fundamentals/concurrency-runtimes.md
         - Partitioning Fundamentals: fundamentals/partitioning-fundamentals.md
         - Hot Partitions & Hotspots: fundamentals/hot-partitions.md
+
+    - Distributed Systems:
+      - distributed/index.md
+      - The 8 Fallacies: distributed/fallacies.md
+      - Consensus (Raft & Paxos): distributed/consensus.md
+      - Leader Election: distributed/leader-election.md
+      - Split Brain & Fencing: distributed/split-brain.md
+      - Distributed Locks: distributed/distributed-locks.md
+      - Quorum (R+W>N): distributed/quorum.md
+      - Clocks & Ordering: distributed/clocks.md
+      - Distributed Transactions: distributed/distributed-transactions.md
+      - Two-Phase Commit: distributed/two-phase-commit.md
+      - Exactly-Once Semantics: distributed/exactly-once.md
+      - CRDTs: distributed/crdts.md
+      - Gossip Protocol: distributed/gossip.md
+      - Service Discovery: distributed/service-discovery.md
+      - Failure Detection: distributed/failure-detection.md
+      - Distributed Primitives: distributed/distributed-primitives.md
 
     - Software Design:
       - software-design/index.md
@@ -202,24 +220,6 @@ nav:
       - Evolution & Pitfalls:
         - Strangler Fig Pattern: architecture/strangler-fig.md
         - Architecture Anti-Patterns: architecture/anti-patterns.md
-
-    - Distributed Systems:
-      - distributed/index.md
-      - The 8 Fallacies: distributed/fallacies.md
-      - Consensus (Raft & Paxos): distributed/consensus.md
-      - Leader Election: distributed/leader-election.md
-      - Split Brain & Fencing: distributed/split-brain.md
-      - Distributed Locks: distributed/distributed-locks.md
-      - Quorum (R+W>N): distributed/quorum.md
-      - Clocks & Ordering: distributed/clocks.md
-      - Distributed Transactions: distributed/distributed-transactions.md
-      - Two-Phase Commit: distributed/two-phase-commit.md
-      - Exactly-Once Semantics: distributed/exactly-once.md
-      - CRDTs: distributed/crdts.md
-      - Gossip Protocol: distributed/gossip.md
-      - Service Discovery: distributed/service-discovery.md
-      - Failure Detection: distributed/failure-detection.md
-      - Distributed Primitives: distributed/distributed-primitives.md
 
   # ─── Data ──────────────────────────────────────────────────
   - Data:

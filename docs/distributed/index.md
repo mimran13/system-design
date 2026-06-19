@@ -2,6 +2,9 @@
 
 The theory and mechanics behind systems that run across multiple nodes. This is where reliability, consistency, and fault tolerance are won or lost.
 
+!!! info "Where this fits"
+    This section covers distributed-systems **mechanisms** (consensus, leader election, locks, clocks, CRDTs). For the **properties** they provide — CAP, consistency models, ACID vs BASE, isolation — see [Reliability & Consistency Theory](../fundamentals/index.md#reliability-consistency-theory).
+
 ---
 
 ## Suggested reading order

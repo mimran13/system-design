@@ -78,9 +78,9 @@ Encoding, hashing, compression, indexing, storage internals, probabilistic struc
 
 ---
 
-## Distributed Systems Theory
+## Reliability & Consistency Theory
 
-The properties and constraints that govern multi-node systems.
+The properties and constraints that govern multi-node systems. For the *mechanisms* that implement these properties — consensus, leader election, locks, clocks, CRDTs — see [Distributed Systems](../distributed/index.md).
 
 | Topic | What it covers |
 |---|---|
@@ -104,7 +104,7 @@ The properties and constraints that govern multi-node systems.
 |---|---|
 | 30 minutes | numbers-to-know, CAP theorem, latency-throughput |
 | 2 hours | + queuing theory, isolation levels, memory hierarchy, hashing |
-| A weekend | + everything in Hardware & OS + Distributed Systems Theory |
+| A weekend | + everything in Hardware & OS + Reliability & Consistency Theory |
 
 ---
 
