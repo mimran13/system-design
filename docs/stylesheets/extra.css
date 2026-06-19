@@ -239,9 +239,10 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
   border-bottom: 1px solid #1e293b;
 }
 
-/* Full-width header content at 1.4rem inset — matches the tab bar + mockup */
+/* Full-width header content at 1.4rem inset + taller bar (mockup .chrome-top
+   has .7rem vertical padding, making it ~3.2rem tall vs Material's ~2.4rem) */
 .md-header__inner {
-  padding: 0 1.4rem;
+  padding: 0.6rem 1.4rem;
 }
 
 .md-header__title {
@@ -260,9 +261,14 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
   opacity: 0.85;
 }
 
-/* Search input — translucent white on the blue bar (mockup .search) */
+/* Search box — translucent white on the blue bar (mockup .search) */
+.md-search__form {
+  height: 2rem;
+  border-radius: 8px;
+}
 .md-search__input {
   border-radius: 8px !important;
+  height: 2rem;
   font-size: 0.83rem;
   font-weight: 400;
   background-color: rgba(255, 255, 255, 0.16) !important;
