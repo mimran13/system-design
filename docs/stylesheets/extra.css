@@ -1338,3 +1338,47 @@ article.md-typeset > h4 {
 [data-md-color-scheme="slate"] .md-typeset .mermaid svg .loopText tspan {
   fill: #a5b4fc !important;
 }
+
+/* ════════════════════════════════════════════════════════════
+   Homepage redesign — hero CTA, intent doors, browse chips
+   (see .mockups/homepage-redesign.html for the visual target)
+   ════════════════════════════════════════════════════════════ */
+
+/* Single dominant call-to-action */
+.md-typeset .hero-cta-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem;
+  margin: 2rem 0 1.4rem;
+}
+.md-typeset a.hero-cta {
+  display: inline-flex; align-items: center; gap: .7rem; text-decoration: none;
+  background: var(--md-primary-fg-color); color: #fff; font-weight: 600;
+  font-size: 1.02rem; letter-spacing: -.01em; padding: .9rem 1.6rem; border-radius: 12px;
+  box-shadow: 0 12px 28px -8px color-mix(in srgb, var(--md-primary-fg-color) 55%, transparent);
+  transition: transform .18s cubic-bezier(.2,.7,.3,1), box-shadow .18s;
+}
+.md-typeset a.hero-cta:hover { transform: translateY(-2px); }
+.md-typeset a.hero-cta .sub { font-weight: 400; font-size: .82rem; opacity: .85; }
+.md-typeset a.hero-ghost {
+  text-decoration: none; color: var(--md-default-fg-color--light);
+  font-size: .92rem; font-weight: 500;
+}
+.md-typeset a.hero-ghost:hover { color: var(--md-primary-fg-color); }
+.md-typeset .hero-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem 1.4rem;
+  font-size: .78rem; color: var(--md-default-fg-color--lighter);
+  font-family: var(--md-code-font, monospace); margin-top: .4rem;
+}
+.md-typeset .hero-meta b { color: var(--md-default-fg-color--light); font-weight: 600; }
+
+/* Demoted "browse by topic" chip cloud */
+.md-typeset .browse-chips { display: flex; flex-wrap: wrap; gap: .55rem; margin: 1rem 0; }
+.md-typeset a.browse-chip {
+  text-decoration: none; font-size: .85rem; color: var(--md-default-fg-color--light);
+  font-weight: 500; background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest); border-radius: 999px;
+  padding: .4rem .9rem; transition: .15s;
+}
+.md-typeset a.browse-chip:hover {
+  border-color: var(--md-primary-fg-color); color: var(--md-primary-fg-color);
+  transform: translateY(-1px);
+}
