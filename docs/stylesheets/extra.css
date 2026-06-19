@@ -470,13 +470,14 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 /* ─── Sub-section parents (Fundamentals, IaC, CI/CD, etc.) ─── */
 /* Targets: first-level nested items inside a tab's sidebar  */
 .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
-  font-weight: 700 !important;
-  font-size: 0.86rem !important;
-  color: var(--md-default-fg-color) !important;
-  letter-spacing: -0.01em;
-  padding: 0.5rem 0.6rem 0.45rem 0.6rem;
-  margin: 1rem 0.4rem 0.15rem 0;
-  text-transform: none;
+  font-family: var(--md-code-font) !important;   /* mockup .side h4 = mono */
+  font-weight: 600 !important;
+  font-size: 0.68rem !important;
+  color: var(--md-default-fg-color--lighter) !important;  /* #a1a1aa */
+  letter-spacing: 0.1em;
+  padding: 0.55rem 0.6rem 0.3rem 0.6rem;
+  margin: 1.4rem 0.4rem 0.05rem 0;
+  text-transform: uppercase;
 }
 
 .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link:hover {
@@ -522,7 +523,8 @@ a, button, .md-nav__link, .md-typeset .grid.cards > ul > li {
 }
 
 .md-nav--primary .md-nav { background-color: transparent !important; }
-.md-nav__icon { opacity: 0.55; }
+/* Flat sidebar like the mockup — no collapse arrows */
+.md-nav--primary .md-nav__icon { display: none; }
 
 /* ═══════════════════════════════════════════════════════════
    CONTENT AREA
