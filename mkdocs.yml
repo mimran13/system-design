@@ -142,8 +142,6 @@ nav:
         - Failure Modes Catalogue: fundamentals/failure-modes.md
         - Concurrency & Locking: fundamentals/concurrency.md
         - Concurrency Runtimes in Practice: fundamentals/concurrency-runtimes.md
-        - Partitioning Fundamentals: fundamentals/partitioning-fundamentals.md
-        - Hot Partitions & Hotspots: fundamentals/hot-partitions.md
 
     - Distributed Systems:
       - distributed/index.md
@@ -253,9 +251,11 @@ nav:
       - Cache Hierarchy & Architecture: caching/cache-hierarchy.md
 
     - Sharding, Replication & Data Patterns:
+      - Partitioning Fundamentals: fundamentals/partitioning-fundamentals.md
       - Sharding: patterns/sharding.md
       - Querying Sharded Data: patterns/querying-sharded-data.md
       - Sharding Best Practices: patterns/sharding-best-practices.md
+      - Hot Partitions & Hotspots: fundamentals/hot-partitions.md
       - Sharding Tooling (Vitess / Citus): patterns/sharding-tooling.md
       - Consistent Hashing: patterns/consistent-hashing.md
       - Replication: patterns/replication.md

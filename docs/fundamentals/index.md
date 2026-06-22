@@ -107,7 +107,6 @@ title: Fundamentals
     <a class="pcard" href="fault-tolerance/"><span class="t">Fault Tolerance &amp; Resilience</span><span class="d">Designing for failure</span></a>
     <a class="pcard" href="failure-modes/"><span class="t">Failure Modes Catalogue</span><span class="d">Crash, omission, gray failure, cascading</span></a>
     <a class="pcard" href="concurrency/"><span class="t">Concurrency &amp; Locking</span><span class="d">Mutexes, atomics, lock-free patterns</span></a>
-    <a class="pcard" href="hot-partitions/"><span class="t">Hot Partitions &amp; Hotspots</span><span class="d">When sharding doesn't help</span></a>
   </div>
 </div>
 
