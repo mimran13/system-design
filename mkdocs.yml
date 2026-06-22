@@ -252,6 +252,18 @@ nav:
       - Cache Patterns & Pitfalls: caching/cache-patterns.md
       - Cache Hierarchy & Architecture: caching/cache-hierarchy.md
 
+    - Sharding, Replication & Data Patterns:
+      - Sharding: patterns/sharding.md
+      - Querying Sharded Data: patterns/querying-sharded-data.md
+      - Sharding Best Practices: patterns/sharding-best-practices.md
+      - Sharding Tooling (Vitess / Citus): patterns/sharding-tooling.md
+      - Consistent Hashing: patterns/consistent-hashing.md
+      - Replication: patterns/replication.md
+      - Read Replicas: patterns/read-replicas.md
+      - Connection Pooling: patterns/connection-pooling.md
+      - CQRS: patterns/cqrs.md
+      - Event Sourcing: patterns/event-sourcing.md
+
   # ─── Communication ─────────────────────────────────────────
   - Communication:
     - Networking:
@@ -301,18 +313,6 @@ nav:
       - Durable Workflows (Temporal / Step Functions): patterns/durable-workflows.md
       - Unhappy-Path Engineering: patterns/unhappy-path-engineering.md
       - Boring Technology: patterns/boring-tech.md
-
-    - Data & Scaling Patterns:
-      - CQRS: patterns/cqrs.md
-      - Event Sourcing: patterns/event-sourcing.md
-      - Consistent Hashing: patterns/consistent-hashing.md
-      - Sharding: patterns/sharding.md
-      - Querying Sharded Data: patterns/querying-sharded-data.md
-      - Sharding Best Practices: patterns/sharding-best-practices.md
-      - Sharding Tooling (Vitess / Citus): patterns/sharding-tooling.md
-      - Replication: patterns/replication.md
-      - Read Replicas: patterns/read-replicas.md
-      - Connection Pooling: patterns/connection-pooling.md
 
     - Observability:
       - observability/index.md

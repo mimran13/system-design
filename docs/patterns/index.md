@@ -5,10 +5,10 @@
 Reusable solutions to recurring distributed systems problems. Unlike algorithms or data structures, these patterns address the messy realities of networked systems: partial failures, retries, consistency, and scale. Understanding them lets you compose complex systems from well-understood building blocks — and communicate design decisions with precision.
 </div>
 
-These split into two families, reflected in the navigation:
+These split into two families:
 
-- **Resilience patterns** — keeping a system *up* under failure and load: rate limiting, circuit breaker, retry/timeout, backoff, bulkhead, idempotency, saga, outbox, durable workflows.
-- **Data & scaling patterns** — making *data* scale and stay correct: CQRS, event sourcing, consistent hashing, sharding (and its tooling), replication, read replicas, connection pooling.
+- **Resilience patterns** *(this section)* — keeping a system *up* under failure and load: rate limiting, circuit breaker, retry/timeout, backoff, bulkhead, idempotency, saga, outbox, durable workflows.
+- **Sharding, replication & data patterns** — making *data* scale and stay correct: sharding (and its tooling), consistent hashing, replication, read replicas, connection pooling, CQRS, event sourcing. These live under [**Data**](../storage/index.md) alongside Storage and Caching.
 
 ## Roadmap
 
