@@ -8,6 +8,9 @@ The theory and mechanics behind systems that run across multiple nodes. This is 
 !!! info "Where this fits"
     This section covers distributed-systems **mechanisms** (consensus, leader election, locks, clocks, CRDTs). For the **properties** they provide — CAP, consistency models, ACID vs BASE, isolation — see [Reliability & Consistency Theory](../fundamentals/index.md#reliability-consistency-theory).
 
+!!! tip "Prefer a guided route? Take the leveled path"
+    These pages are organized below as a reference catalogue. For a **zero → hero learning order** — eight levels with checkpoints, from the fallacies up to FLP and Byzantine fault tolerance — follow **[Distributed Systems: Zero → Hero](../paths/distributed-systems.md)**.
+
 ## Roadmap
 
 <div class="roadmap">
@@ -67,9 +70,12 @@ How nodes reach agreement despite failures and network unreliability.
 <div class="pcards">
 <a class="pcard" href="consensus/"><span class="t">Consensus (Raft & Paxos)</span><span class="d">How nodes agree on a single value despite failures</span></a>
 <a class="pcard" href="leader-election/"><span class="t">Leader Election</span><span class="d">Picking one coordinator and handling its failure</span></a>
+<a class="pcard" href="flp-impossibility/"><span class="t">FLP Impossibility</span><span class="d">Why consensus can't be guaranteed — and the escape hatches</span></a>
+<a class="pcard" href="byzantine-fault-tolerance/"><span class="t">Byzantine Fault Tolerance</span><span class="d">When nodes lie, not just crash — 3f+1, PBFT, modern BFT</span></a>
 <a class="pcard" href="split-brain/"><span class="t">Split Brain & Fencing</span><span class="d">Two leaders both accepting writes — and fencing tokens to stop it</span></a>
 <a class="pcard" href="distributed-locks/"><span class="t">Distributed Locks</span><span class="d">Mutual exclusion across processes on different machines</span></a>
 <a class="pcard" href="quorum/"><span class="t">Quorum</span><span class="d">R+W>N — configuring consistency vs availability trade-off</span></a>
+<a class="pcard" href="chain-replication/"><span class="t">Chain Replication</span><span class="d">Head→tail chain: strong consistency and high throughput (+CRAQ)</span></a>
 <a class="pcard" href="two-phase-commit/"><span class="t">Two-Phase Commit</span><span class="d">Atomic commit across multiple participants (use sparingly)</span></a>
 </div>
 
@@ -79,6 +85,7 @@ Why distributed systems make time and ordering hard, and how to deal with it.
 
 <div class="pcards">
 <a class="pcard" href="clocks/"><span class="t">Clocks & Ordering</span><span class="d">Lamport clocks, vector clocks, why wall clocks lie</span></a>
+<a class="pcard" href="advanced-clocks/"><span class="t">Advanced Clocks: HLC & TrueTime</span><span class="d">Hybrid logical clocks, TrueTime, commit-wait, Spanner</span></a>
 <a class="pcard" href="distributed-transactions/"><span class="t">Distributed Transactions</span><span class="d">ACID across multiple services — the full picture</span></a>
 <a class="pcard" href="exactly-once/"><span class="t">Exactly-Once Semantics</span><span class="d">At-most-once / at-least-once / exactly-once trade-offs</span></a>
 <a class="pcard" href="crdts/"><span class="t">CRDTs</span><span class="d">Data structures that merge automatically without conflicts</span></a>

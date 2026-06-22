@@ -90,7 +90,8 @@ nav:
     - paths/index.md
     - Reading Paths:
       - "The Curriculum: Zero → Staff": paths/curriculum.md
-      - "The AI Engineer Path: Zero → Production": paths/ai-engineer.md
+      - "The AI Engineer Path: Backend → AI Engineer": paths/ai-engineer.md
+      - "Distributed Systems: Zero → Hero": paths/distributed-systems.md
       - Just the Essentials: paths/essentials.md
       - Interview Prep (1 Week): paths/interview-prep.md
       - Building a SaaS: paths/building-saas.md
@@ -148,10 +149,14 @@ nav:
       - The 8 Fallacies: distributed/fallacies.md
       - Consensus (Raft & Paxos): distributed/consensus.md
       - Leader Election: distributed/leader-election.md
+      - FLP Impossibility: distributed/flp-impossibility.md
+      - Byzantine Fault Tolerance: distributed/byzantine-fault-tolerance.md
       - Split Brain & Fencing: distributed/split-brain.md
       - Distributed Locks: distributed/distributed-locks.md
       - Quorum (R+W>N): distributed/quorum.md
+      - Chain Replication: distributed/chain-replication.md
       - Clocks & Ordering: distributed/clocks.md
+      - "Advanced Clocks: HLC & TrueTime": distributed/advanced-clocks.md
       - Distributed Transactions: distributed/distributed-transactions.md
       - Two-Phase Commit: distributed/two-phase-commit.md
       - Exactly-Once Semantics: distributed/exactly-once.md
