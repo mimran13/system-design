@@ -5,167 +5,47 @@ Every other page in this encyclopedia is a *reference* — organized for looking
 **How to use it**: follow the roadmap top to bottom. Every node is clickable — it takes you to that page. Finish a level's checkpoint before moving on; if a checkpoint question stumps you, the level isn't done. Skipping levels is how you end up memorizing "use Kafka" without knowing why.
 
 !!! tip "Interactive roadmap"
-    Click any node to open that page. Click the diagram background to zoom fullscreen — it's a big map.
-
-<div class="sd-mermaid-links" data-links='{
-  "Numbers to Know": "../../fundamentals/numbers-to-know/",
-  "Latency vs Throughput": "../../fundamentals/latency-throughput/",
-  "Networking Basics": "../../fundamentals/networking-basics/",
-  "OS Concepts": "../../fundamentals/os-concepts/",
-  "Memory Hierarchy": "../../fundamentals/memory-hierarchy/",
-  "Hashing": "../../fundamentals/hashing/",
-  "Relational Databases": "../../storage/relational-databases/",
-  "Database Indexes": "../../fundamentals/database-indexes/",
-  "Transactions and Isolation": "../../fundamentals/isolation-levels/",
-  "REST": "../../api/rest/",
-  "Estimation": "../../fundamentals/estimation/",
-  "SQL vs NoSQL": "../../storage/sql-vs-nosql/",
-  "Scalability": "../../fundamentals/scalability/",
-  "Load Balancing": "../../networking/load-balancing/",
-  "Caching Strategies": "../../caching/caching-strategies/",
-  "Redis Deep Dive": "../../caching/redis/",
-  "CDN": "../../networking/cdn/",
-  "Read Replicas": "../../patterns/read-replicas/",
-  "Connection Pooling": "../../patterns/connection-pooling/",
-  "DNS": "../../networking/dns/",
-  "CAP Theorem": "../../fundamentals/cap-theorem/",
-  "Consistency Models": "../../fundamentals/consistency-models/",
-  "Partitioning Fundamentals": "../../fundamentals/partitioning-fundamentals/",
-  "Sharding": "../../patterns/sharding/",
-  "Replication": "../../patterns/replication/",
-  "Message Queues": "../../messaging/message-queues/",
-  "Event Streaming": "../../messaging/event-streaming/",
-  "Kafka Deep Dive": "../../messaging/kafka/",
-  "Idempotency": "../../patterns/idempotency/",
-  "Consensus: Raft and Paxos": "../../distributed/consensus/",
-  "Clocks and Ordering": "../../distributed/clocks/",
-  "The 8 Fallacies": "../../distributed/fallacies/",
-  "Monolith vs Microservices": "../../architecture/monolith-vs-microservices/",
-  "Event-Driven Architecture": "../../architecture/event-driven/",
-  "Saga Pattern": "../../patterns/saga-pattern/",
-  "Outbox Pattern": "../../patterns/outbox/",
-  "Rate Limiting": "../../patterns/rate-limiting/",
-  "Circuit Breaker": "../../patterns/circuit-breaker/",
-  "Logging": "../../observability/logging/",
-  "Metrics": "../../observability/metrics/",
-  "SLI SLO SLA": "../../observability/slo-sla/",
-  "AuthN and AuthZ": "../../security/authn-authz/",
-  "OAuth and JWT": "../../security/oauth-jwt/",
-  "Containers": "../../infrastructure/containers/",
-  "Kubernetes": "../../infrastructure/kubernetes/",
-  "Deployment Strategies": "../../cicd/deployment-strategies/",
-  "DB Internals Deep Dive": "../../fundamentals/database-internals-deep-dive/",
-  "DB Operations at Scale": "../../fundamentals/database-operations-at-scale/",
-  "Performance Engineering": "../../observability/performance-engineering/",
-  "Incident Response Craft": "../../observability/incident-response-craft/",
-  "Unhappy-Path Engineering": "../../patterns/unhappy-path-engineering/",
-  "Durable Workflows": "../../patterns/durable-workflows/",
-  "Event Streaming Maturity": "../../messaging/event-streaming-maturity/",
-  "Sharding Tooling": "../../patterns/sharding-tooling/",
-  "Kubernetes in Production": "../../infrastructure/kubernetes-in-production/",
-  "Cost Engineering": "../../architecture/cost-engineering/",
-  "Architecture Politics": "../../architecture/architecture-politics/",
-  "Multi-Region Architecture": "../../architecture/multi-region/",
-  "Case Studies": "../../case-studies/",
-  "Interview Guide": "../../interview-guide/"
-}'></div>
+    Every node and chip below is a link — click to open that page. Levels jump to their detail section.
 
 ## The roadmap
 
-```mermaid
-graph TD
-    Start([Start here]) --> B1
-
-    subgraph L0 ["LEVEL 0 — Bedrock · how machines and networks actually work · ~1 week"]
-        B1[Numbers to Know] --> B2[Latency vs Throughput]
-        B2 --> B3[Networking Basics]
-        B3 --> B4[OS Concepts]
-        B4 --> B5[Memory Hierarchy]
-        B5 --> B6[Hashing]
-    end
-
-    B6 --> S1
-
-    subgraph L1 ["LEVEL 1 — One server, done well · ~1-2 weeks"]
-        S1[Relational Databases] --> S2[Database Indexes]
-        S2 --> S3[Transactions and Isolation]
-        S3 --> S4[REST]
-        S4 --> S5[Estimation]
-        S5 --> S6[SQL vs NoSQL]
-    end
-
-    S6 --> R1
-
-    subgraph L2 ["LEVEL 2 — Scaling reads · ~1-2 weeks"]
-        R1[Scalability] --> R2[DNS]
-        R2 --> R3[Load Balancing]
-        R3 --> R4[Caching Strategies]
-        R4 --> R5[Redis Deep Dive]
-        R5 --> R6[CDN]
-        R6 --> R7[Read Replicas]
-        R7 --> R8[Connection Pooling]
-    end
-
-    R8 --> D1
-
-    subgraph L3 ["LEVEL 3 — Going distributed · ~3-4 weeks · the hard one"]
-        D1[The 8 Fallacies] --> D2[CAP Theorem]
-        D2 --> D3[Consistency Models]
-        D3 --> D4[Partitioning Fundamentals]
-        D4 --> D5[Sharding]
-        D5 --> D6[Replication]
-        D6 --> D7[Message Queues]
-        D7 --> D8[Event Streaming]
-        D8 --> D9[Kafka Deep Dive]
-        D9 --> D10[Idempotency]
-        D10 --> D11[Clocks and Ordering]
-        D11 --> D12["Consensus: Raft and Paxos"]
-    end
-
-    D12 --> A1
-
-    subgraph L4 ["LEVEL 4 — Architecture and operations · ~3-4 weeks"]
-        A1[Monolith vs Microservices] --> A2[Event-Driven Architecture]
-        A2 --> A3[Saga Pattern]
-        A3 --> A4[Outbox Pattern]
-        A4 --> A5[Rate Limiting]
-        A5 --> A6[Circuit Breaker]
-        A6 --> A7[Logging]
-        A7 --> A8[Metrics]
-        A8 --> A9[SLI SLO SLA]
-        A9 --> A10[AuthN and AuthZ]
-        A10 --> A11[OAuth and JWT]
-        A11 --> A12[Containers]
-        A12 --> A13[Kubernetes]
-        A13 --> A14[Deployment Strategies]
-    end
-
-    A14 --> T1
-
-    subgraph L5 ["LEVEL 5 — Staff level · ongoing"]
-        T1[DB Internals Deep Dive] --> T2[DB Operations at Scale]
-        T2 --> T3[Performance Engineering]
-        T3 --> T4[Unhappy-Path Engineering]
-        T4 --> T5[Incident Response Craft]
-        T5 --> T6[Durable Workflows]
-        T6 --> T7[Event Streaming Maturity]
-        T7 --> T8[Sharding Tooling]
-        T8 --> T9[Kubernetes in Production]
-        T9 --> T10[Multi-Region Architecture]
-        T10 --> T11[Cost Engineering]
-        T11 --> T12[Architecture Politics]
-    end
-
-    T12 --> Apply
-
-    subgraph APPLY ["APPLY — prove it to yourself"]
-        Apply[Case Studies] --> Interview[Interview Guide]
-    end
-```
+<div class="roadmap">
+  <div class="rm-head">
+    <span class="h">🧭 Zero → Staff roadmap</span>
+    <span class="legend">
+      <i><span class="sw core"></span>level</i>
+      <i><span class="sw opt"></span>topic</i>
+    </span>
+  </div>
+  <p class="rm-sub">Six levels, bottom to top — each builds on the one below. Numbered nodes are the levels (click to jump to its detail + checkpoint); the chips are that level's topics (click to open the page).</p>
+  <div class="rm-track">
+    <div class="rm-stop">
+      <a class="rm-node" href="#level-0"><span class="n">0</span>Bedrock</a><div class="rm-branch right"><a class="rm-chip" href="../../fundamentals/numbers-to-know/">Numbers to Know</a><a class="rm-chip" href="../../fundamentals/latency-throughput/">Latency vs Throughput</a><a class="rm-chip" href="../../fundamentals/networking-basics/">Networking Basics</a><a class="rm-chip" href="../../fundamentals/os-concepts/">OS Concepts</a><a class="rm-chip" href="../../fundamentals/memory-hierarchy/">Memory Hierarchy</a><a class="rm-chip" href="../../fundamentals/hashing/">Hashing</a></div>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="../../storage/relational-databases/">Relational Databases</a><a class="rm-chip" href="../../fundamentals/database-indexes/">Database Indexes</a><a class="rm-chip" href="../../fundamentals/isolation-levels/">Transactions &amp; Isolation</a><a class="rm-chip" href="../../api/rest/">REST</a><a class="rm-chip" href="../../fundamentals/estimation/">Estimation</a><a class="rm-chip" href="../../storage/sql-vs-nosql/">SQL vs NoSQL</a></div><a class="rm-node" href="#level-1"><span class="n">1</span>One server, done well</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="#level-2"><span class="n">2</span>Scaling reads</a><div class="rm-branch right"><a class="rm-chip" href="../../fundamentals/scalability/">Scalability</a><a class="rm-chip" href="../../networking/dns/">DNS</a><a class="rm-chip" href="../../networking/load-balancing/">Load Balancing</a><a class="rm-chip" href="../../caching/caching-strategies/">Caching Strategies</a><a class="rm-chip" href="../../caching/redis/">Redis Deep Dive</a><a class="rm-chip" href="../../networking/cdn/">CDN</a><a class="rm-chip" href="../../patterns/read-replicas/">Read Replicas</a><a class="rm-chip" href="../../patterns/connection-pooling/">Connection Pooling</a></div>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="../../distributed/fallacies/">The 8 Fallacies</a><a class="rm-chip" href="../../fundamentals/cap-theorem/">CAP Theorem</a><a class="rm-chip" href="../../fundamentals/consistency-models/">Consistency Models</a><a class="rm-chip" href="../../fundamentals/partitioning-fundamentals/">Partitioning Fundamentals</a><a class="rm-chip" href="../../patterns/sharding/">Sharding</a><a class="rm-chip" href="../../patterns/replication/">Replication</a><a class="rm-chip" href="../../messaging/message-queues/">Message Queues</a><a class="rm-chip" href="../../messaging/event-streaming/">Event Streaming</a><a class="rm-chip" href="../../messaging/kafka/">Kafka Deep Dive</a><a class="rm-chip" href="../../patterns/idempotency/">Idempotency</a><a class="rm-chip" href="../../distributed/clocks/">Clocks &amp; Ordering</a><a class="rm-chip" href="../../distributed/consensus/">Consensus: Raft &amp; Paxos</a></div><a class="rm-node" href="#level-3"><span class="n">3</span>Going distributed</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="#level-4"><span class="n">4</span>Architecture &amp; operations</a><div class="rm-branch right"><a class="rm-chip" href="../../architecture/monolith-vs-microservices/">Monolith vs Microservices</a><a class="rm-chip" href="../../architecture/event-driven/">Event-Driven Architecture</a><a class="rm-chip" href="../../patterns/saga-pattern/">Saga Pattern</a><a class="rm-chip" href="../../patterns/outbox/">Outbox Pattern</a><a class="rm-chip" href="../../patterns/rate-limiting/">Rate Limiting</a><a class="rm-chip" href="../../patterns/circuit-breaker/">Circuit Breaker</a><a class="rm-chip" href="../../observability/logging/">Logging</a><a class="rm-chip" href="../../observability/metrics/">Metrics</a><a class="rm-chip" href="../../observability/slo-sla/">SLI / SLO / SLA</a><a class="rm-chip" href="../../security/authn-authz/">AuthN &amp; AuthZ</a><a class="rm-chip" href="../../security/oauth-jwt/">OAuth &amp; JWT</a><a class="rm-chip" href="../../infrastructure/containers/">Containers</a><a class="rm-chip" href="../../infrastructure/kubernetes/">Kubernetes</a><a class="rm-chip" href="../../cicd/deployment-strategies/">Deployment Strategies</a></div>
+    </div>
+    <div class="rm-stop">
+      <div class="rm-branch left"><a class="rm-chip" href="../../fundamentals/database-internals-deep-dive/">DB Internals Deep Dive</a><a class="rm-chip" href="../../fundamentals/database-operations-at-scale/">DB Operations at Scale</a><a class="rm-chip" href="../../observability/performance-engineering/">Performance Engineering</a><a class="rm-chip" href="../../patterns/unhappy-path-engineering/">Unhappy-Path Engineering</a><a class="rm-chip" href="../../observability/incident-response-craft/">Incident Response Craft</a><a class="rm-chip" href="../../patterns/durable-workflows/">Durable Workflows</a><a class="rm-chip" href="../../messaging/event-streaming-maturity/">Event Streaming Maturity</a><a class="rm-chip" href="../../patterns/sharding-tooling/">Sharding Tooling</a><a class="rm-chip" href="../../infrastructure/kubernetes-in-production/">Kubernetes in Production</a><a class="rm-chip" href="../../architecture/multi-region/">Multi-Region Architecture</a><a class="rm-chip" href="../../architecture/cost-engineering/">Cost Engineering</a><a class="rm-chip" href="../../architecture/architecture-politics/">Architecture Politics</a></div><a class="rm-node" href="#level-5"><span class="n">5</span>Staff level</a>
+    </div>
+    <div class="rm-stop">
+      <a class="rm-node" href="../../case-studies/">Apply it</a><div class="rm-branch right"><a class="rm-chip" href="../../case-studies/">Case Studies</a><a class="rm-chip" href="../../interview-guide/">Interview Guide</a></div>
+    </div>
+  </div>
+</div>
 
 ---
 
-## Level 0 — Bedrock *(~1 week)*
+## Level 0 — Bedrock *(~1 week)* { #level-0 }
 
 **The question this level answers**: what do the machines actually do, and how long does each thing take?
 
@@ -184,7 +64,7 @@ Everything above this level is built from these primitives. You cannot reason ab
     - Why can a system have great average latency and terrible throughput, or the reverse?
     - What happens, at the OS level, when a server "runs out of connections"?
 
-## Level 1 — One server, done well *(~1-2 weeks)*
+## Level 1 — One server, done well *(~1-2 weeks)* { #level-1 }
 
 **The question**: how does a single, boring, correct application work?
 
@@ -203,7 +83,7 @@ Distributed systems are what you do when one machine isn't enough. Most people r
     - What's the difference between Read Committed and Repeatable Read, and when does it bite?
     - 10M daily active users, 20 requests each — what's the average and peak QPS? (Do it in your head.)
 
-## Level 2 — Scaling reads *(~1-2 weeks)*
+## Level 2 — Scaling reads *(~1-2 weeks)* { #level-2 }
 
 **The question**: the single server is melting under read traffic — what's the cheapest fix, in order?
 
@@ -224,7 +104,7 @@ This level is one idea applied four ways: *put a copy of the data closer to the 
     - What is a cache stampede and two ways to prevent it?
     - A user writes a comment, refreshes, and doesn't see it. Which component in this level likely caused it and why?
 
-## Level 3 — Going distributed *(~3-4 weeks — the hard one)*
+## Level 3 — Going distributed *(~3-4 weeks — the hard one)* { #level-3 }
 
 **The question**: data no longer fits one machine, writes no longer fit one machine, and machines fail — now what?
 
@@ -250,7 +130,7 @@ This is the calculus of the course: everything before was preparation for this. 
     - You shard by user_id; an admin needs "find user by email." What broke, and what are your options?
     - Why can't you use wall-clock timestamps to order events from two servers?
 
-## Level 4 — Architecture & operations *(~3-4 weeks)*
+## Level 4 — Architecture & operations *(~3-4 weeks)* { #level-4 }
 
 **The question**: you can build the pieces — how do you compose, secure, observe, and ship a real system?
 
@@ -269,7 +149,7 @@ This is the calculus of the course: everything before was preparation for this. 
     - What's the difference between an SLI, SLO, and SLA — and why should error budgets change team behavior?
     - Why is "deploy" not the same as "release," and what mechanism separates them?
 
-## Level 5 — Staff level *(ongoing)*
+## Level 5 — Staff level *(ongoing)* { #level-5 }
 
 **The question**: how do systems behave under real load, real failure, real money, and real organizations?
 
