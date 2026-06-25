@@ -75,6 +75,7 @@ New to this topic? Read these in order — each builds on the previous:
 <a class="pcard" href="video-streaming/"><span class="t">Video Streaming</span><span class="d">CDN edge caching, HLS chunking, adaptive bitrate, blob storage</span></a>
 <a class="pcard" href="ride-sharing/"><span class="t">Ride-Sharing</span><span class="d">Geohashing, location update pipeline, ETA computation, dispatch matching</span></a>
 <a class="pcard" href="distributed-cache/"><span class="t">Distributed Cache</span><span class="d">LRU implementation, consistent hashing, hot key mitigation, stampede</span></a>
+<a class="pcard" href="cli-device-auth/"><span class="t">CLI Browser Login (gh / aws sso)</span><span class="d">OAuth device flow (RFC 8628), the user_code binding, polling, device-code phishing</span></a>
 </div>
 
 **Hard**

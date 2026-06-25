@@ -144,28 +144,6 @@ nav:
         - Concurrency & Locking: fundamentals/concurrency.md
         - Concurrency Runtimes in Practice: fundamentals/concurrency-runtimes.md
 
-    - Distributed Systems:
-      - distributed/index.md
-      - The 8 Fallacies: distributed/fallacies.md
-      - Consensus (Raft & Paxos): distributed/consensus.md
-      - Leader Election: distributed/leader-election.md
-      - FLP Impossibility: distributed/flp-impossibility.md
-      - Byzantine Fault Tolerance: distributed/byzantine-fault-tolerance.md
-      - Split Brain & Fencing: distributed/split-brain.md
-      - Distributed Locks: distributed/distributed-locks.md
-      - Quorum (R+W>N): distributed/quorum.md
-      - Chain Replication: distributed/chain-replication.md
-      - Clocks & Ordering: distributed/clocks.md
-      - "Advanced Clocks: HLC & TrueTime": distributed/advanced-clocks.md
-      - Distributed Transactions: distributed/distributed-transactions.md
-      - Two-Phase Commit: distributed/two-phase-commit.md
-      - Exactly-Once Semantics: distributed/exactly-once.md
-      - CRDTs: distributed/crdts.md
-      - Gossip Protocol: distributed/gossip.md
-      - Service Discovery: distributed/service-discovery.md
-      - Failure Detection: distributed/failure-detection.md
-      - Distributed Primitives: distributed/distributed-primitives.md
-
     - Software Design:
       - software-design/index.md
       - Clean Code Principles: software-design/clean-code-principles.md
@@ -177,6 +155,29 @@ nav:
       - Refactoring & Code Smells: software-design/refactoring.md
       - Error Handling Patterns: software-design/error-handling.md
       - Testing Strategies: software-design/testing-strategies.md
+
+  # ─── Distributed Systems ───────────────────────────────────
+  - Distributed Systems:
+    - distributed/index.md
+    - The 8 Fallacies: distributed/fallacies.md
+    - Consensus (Raft & Paxos): distributed/consensus.md
+    - Leader Election: distributed/leader-election.md
+    - FLP Impossibility: distributed/flp-impossibility.md
+    - Byzantine Fault Tolerance: distributed/byzantine-fault-tolerance.md
+    - Split Brain & Fencing: distributed/split-brain.md
+    - Distributed Locks: distributed/distributed-locks.md
+    - Quorum (R+W>N): distributed/quorum.md
+    - Chain Replication: distributed/chain-replication.md
+    - Clocks & Ordering: distributed/clocks.md
+    - "Advanced Clocks: HLC & TrueTime": distributed/advanced-clocks.md
+    - Distributed Transactions: distributed/distributed-transactions.md
+    - Two-Phase Commit: distributed/two-phase-commit.md
+    - Exactly-Once Semantics: distributed/exactly-once.md
+    - CRDTs: distributed/crdts.md
+    - Gossip Protocol: distributed/gossip.md
+    - Service Discovery: distributed/service-discovery.md
+    - Failure Detection: distributed/failure-detection.md
+    - Distributed Primitives: distributed/distributed-primitives.md
 
   # ─── Architecture ──────────────────────────────────────────
   - Architecture:
@@ -459,6 +460,7 @@ nav:
     - Payment System: case-studies/payment-system.md
     - Ad Click Tracking: case-studies/ad-click-tracking.md
     - Maps & Navigation (Google Maps): case-studies/google-maps.md
+    - CLI Browser Login (gh / aws sso): case-studies/cli-device-auth.md
 
   # ─── Reference (at the end) ────────────────────────────────
   - Reference:

@@ -29,6 +29,14 @@ You don't have to read 300 pages in order. Pick the lane that matches what you'r
 
     [:octicons-arrow-right-24: Start](ai-engineer.md)
 
+-   :material-lan:{ .lg .middle } **Distributed Systems: Zero → Hero**
+
+    ---
+
+    The hardest section, in learning order. 8 levels with a clickable roadmap and checkpoints — from the 8 fallacies up to FLP and Byzantine fault tolerance.
+
+    [:octicons-arrow-right-24: Start](distributed-systems.md)
+
 -   :material-school-outline:{ .lg .middle } **Just the Essentials**
 
     ---
