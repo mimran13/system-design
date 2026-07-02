@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CQRS &amp; Event Sourcing in NestJS — the complete guide</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --panel:#ffffff; --ink:#1a1f2b; --muted:#5b6472;
+    --line:#e5e8ee; --brand:#2563eb; --brand-ink:#1d4ed8;
+    --accent:#7c3aed; --ok:#0f9d58; --warn:#b45309; --warn-bg:#fff7ed;
+    --key-bg:#eef4ff; --code-bg:#0f172a; --code-ink:#e2e8f0; --code-dim:#94a3b8;
+    --code-key:#93c5fd; --code-str:#86efac; --code-com:#64748b;
+    --maxw:820px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand-ink);text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;font-size:.88em;
+    background:#eceff4;border-radius:4px;padding:.08em .38em}
+  /* layout */
+  .wrap{display:flex;gap:0;align-items:flex-start}
+  nav.toc{
+    position:sticky;top:0;height:100vh;overflow-y:auto;flex:0 0 288px;
+    background:var(--panel);border-right:1px solid var(--line);padding:26px 20px 60px}
+  nav.toc h2{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);
+    margin:22px 0 8px}
+  nav.toc a{display:block;color:var(--muted);padding:5px 10px;border-radius:7px;font-size:14px;
+    border-left:2px solid transparent}
+  nav.toc a:hover{background:#f2f5fb;text-decoration:none;color:var(--ink)}
+  nav.toc a.active{color:var(--brand-ink);background:var(--key-bg);border-left-color:var(--brand);font-weight:600}
+  nav.toc .brand{font-weight:800;font-size:16px;color:var(--ink);letter-spacing:-.01em;margin-bottom:2px}
+  nav.toc .sub{font-size:12px;color:var(--muted)}
+  main{flex:1 1 auto;min-width:0;display:flex;justify-content:center;padding:0 32px 120px}
+  article{max-width:var(--maxw);width:100%;padding-top:14px}
+  /* hero */
+  .hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border-radius:16px;
+    padding:34px 34px 30px;margin:26px 0 10px}
+  .hero h1{margin:0 0 8px;font-size:30px;line-height:1.2;letter-spacing:-.02em}
+  .hero p{margin:0;opacity:.94;font-size:16px;max-width:60ch}
+  .hero .pills{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+  .hero .pills span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+    padding:5px 11px;border-radius:999px;font-size:12.5px}
+  /* headings */
+  h2.sec{font-size:24px;letter-spacing:-.01em;margin:52px 0 4px;padding-top:14px;border-top:1px solid var(--line)}
+  h2.sec .n{color:var(--brand);font-weight:800;margin-right:10px}
+  h3{font-size:18px;margin:28px 0 6px}
+  h4{font-size:15px;margin:20px 0 4px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  p{margin:12px 0}
+  ul,ol{margin:12px 0;padding-left:22px}
+  li{margin:5px 0}
+  .lead{font-size:17px;color:var(--ink)}
+  hr{border:0;border-top:1px solid var(--line);margin:30px 0}
+  /* callouts */
+  .box{border-radius:12px;padding:15px 18px;margin:18px 0;border:1px solid var(--line);background:var(--panel)}
+  .box .t{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;
+    display:flex;align-items:center;gap:8px}
+  .key{background:var(--key-bg);border-color:#cfe0ff}
+  .key .t{color:var(--brand-ink)}
+  .warn{background:var(--warn-bg);border-color:#fed7aa}
+  .warn .t{color:var(--warn)}
+  .good{background:#f0fdf4;border-color:#bbf7d0}
+  .good .t{color:var(--ok)}
+  .analogy{background:#faf5ff;border-color:#e9d5ff}
+  .analogy .t{color:var(--accent)}
+  /* code */
+  pre{background:var(--code-bg);color:var(--code-ink);border-radius:12px;padding:16px 18px;overflow:auto;
+    font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:16px 0}
+  pre .c{color:var(--code-com);font-style:italic}
+  pre .k{color:var(--code-key)}
+  pre .s{color:var(--code-str)}
+  pre .d{color:var(--code-dim)}
+  .file{display:inline-block;font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12px;
+    background:#0f172a;color:#93c5fd;border-radius:6px 6px 0 0;padding:5px 12px;margin:16px 0 -16px;border:1px solid #1e293b;border-bottom:none}
+  .file + pre{border-top-left-radius:0}
+  /* tables */
+  table{border-collapse:collapse;width:100%;margin:18px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  th{background:#f2f5fb;font-weight:700}
+  tr:nth-child(even) td{background:#fafbfd}
+  /* diagrams */
+  .diagram{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:18px 0;overflow:auto}
+  .diagram pre{background:transparent;color:var(--ink);padding:0;margin:0;font-size:12.5px;line-height:1.5}
+  .cols{display:flex;gap:16px;flex-wrap:wrap;margin:18px 0}
+  .col{flex:1 1 300px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .col h4{margin-top:0}
+  .col.write{border-top:3px solid var(--brand)}
+  .col.read{border-top:3px solid var(--accent)}
+  /* quiz */
+  details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0}
+  details[open]{background:#fbfcfe}
+  summary{cursor:pointer;font-weight:600;color:var(--ink)}
+  summary::marker{color:var(--brand)}
+  details p{margin:10px 0 2px}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;vertical-align:middle}
+  .tag.s1{background:var(--key-bg);color:var(--brand-ink)}
+  .tag.s2{background:#faf5ff;color:var(--accent)}
+  footer{max-width:var(--maxw);margin:60px auto 0;color:var(--muted);font-size:13px;text-align:center}
+  @media(max-width:960px){
+    nav.toc{display:none}
+    main{padding:0 18px 80px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="toc" id="toc">
+  <div class="brand">CQRS &amp; Event Sourcing</div>
+  <div class="sub">a NestJS masterclass</div>
+  <h2>Foundations</h2>
+  <a href="#why">1 · Why CQRS exists</a>
+  <a href="#vocab">2 · The vocabulary</a>
+  <a href="#picture">3 · The big picture</a>
+  <h2>Stage 1 — Pure CQRS</h2>
+  <a href="#s1-model">4 · Write vs read models</a>
+  <a href="#s1-flow">5 · A command, end to end</a>
+  <a href="#s1-query">6 · The query path</a>
+  <a href="#eventual">7 · Eventual consistency</a>
+  <h2>Stage 2 — Event Sourcing</h2>
+  <a href="#es-why">8 · The leap: events as truth</a>
+  <a href="#aggregate">9 · The aggregate</a>
+  <a href="#store">10 · The event store</a>
+  <a href="#replay">11 · Replay &amp; rebuilds</a>
+  <a href="#saga">12 · Sagas &amp; transfers</a>
+  <h2>Judgement</h2>
+  <a href="#separate">13 · CQRS ≠ Event Sourcing</a>
+  <a href="#when">14 · When (not) to use it</a>
+  <a href="#antipatterns">15 · Anti-patterns</a>
+  <a href="#glossary">16 · Glossary</a>
+  <a href="#quiz">17 · Test yourself</a>
+</nav>
+
+<main>
+<article>
+
+  <div class="hero">
+    <h1>CQRS &amp; Event Sourcing, from zero to mastery</h1>
+    <p>A complete, code-first walkthrough built on a runnable NestJS bank. Read top
+    to bottom and you'll understand not just <em>how</em> these patterns work, but
+    <em>why</em> they exist and — just as importantly — when to walk away from them.</p>
+    <div class="pills">
+      <span>🏦 Bank-account domain</span>
+      <span>🧩 NestJS <code style="background:none;color:#dbeafe">@nestjs/cqrs</code></span>
+      <span>🧪 Runs in-memory</span>
+      <span>📈 Staged: CQRS → +Event Sourcing</span>
+    </div>
+  </div>
+
+  <p class="lead">Every concept below points at a real file in <code>src/</code>. Keep
+  the code open beside this page. The fastest way to learn this is to read a
+  paragraph here, then go read the file it names — the files are commented to be
+  read as a lesson, not just run.</p>
+
+  <div class="box key">
+    <div class="t">🎯 How this guide is staged</div>
+    We build the same bank twice. <strong>Stage 1</strong> is <em>pure CQRS</em>:
+    it stores the account balance directly, like a normal app, but splits reads
+    from writes. <strong>Stage 2</strong> keeps the CQRS split but throws away
+    stored state entirely — it stores <em>events</em> and rebuilds state by
+    replaying them. Doing it twice is the point: you'll feel exactly what Event
+    Sourcing adds, and what it costs.
+  </div>
+
+  <!-- ─────────────────────────── 1 ─────────────────────────── -->
+  <h2 class="sec" id="why"><span class="n">1</span>Why CQRS exists</h2>
+
+  <p>Start with the pain it solves. In a typical CRUD app there is <strong>one
+  model</strong> — say an <code>Account</code> entity — and it does everything:
+  it enforces business rules on writes, and it's also the thing you serialise
+  onto a screen. That one model is pulled in two opposite directions:</p>
+
+  <ul>
+    <li><strong>Writes want a rich, rule-enforcing model.</strong> "You can't
+    overdraw." "You can't ship a cancelled order." Writes care about invariants
+    and consistency, and want a small, tightly-guarded object.</li>
+    <li><strong>Reads want wide, denormalised, fast shapes.</strong> A dashboard
+    wants an account plus its last 10 transactions plus a running total — often
+    joined across many tables, shaped for one specific screen.</li>
+  </ul>
+
+  <p>Serve both from one model and you get the classic mess: entities bloated
+  with display fields, N+1 queries, read concerns leaking into your domain,
+  caching bolted on awkwardly, and every change risking both paths at once.</p>
+
+  <p><strong>CQRS</strong> — Command Query Responsibility Segregation — is the
+  decision to stop compromising. <em>Split the model in two.</em> One model for
+  changing state (the <strong>command</strong> side), a different model for
+  answering questions (the <strong>query</strong> side). They can have different
+  shapes, live in different stores, and scale independently.</p>
+
+  <div class="box analogy">
+    <div class="t">🍽️ An analogy</div>
+    A restaurant kitchen has an <em>order ticket</em> flow (commands: "table 4
+    wants the salmon") and a <em>menu / specials board</em> (queries: what
+    diners read). You wouldn't force the chef to cook off the laminated menu, or
+    ask diners to read the greasy order tickets. Same information, two
+    representations, each shaped for its job. CQRS is that separation, in code.
+  </div>
+
+  <p>That's the <em>whole</em> core idea. Everything else — buses, handlers,
+  projections, event sourcing — is machinery in service of that one split. Hold
+  onto it.</p>
+
+  <!-- ─────────────────────────── 2 ─────────────────────────── -->
+  <h2 class="sec" id="vocab"><span class="n">2</span>The vocabulary</h2>
+
+  <p>Six words carry the whole pattern. Learn them precisely — sloppiness here is
+  why CQRS confuses people.</p>
+
+  <table>
+    <tr><th>Term</th><th>What it is</th><th>Golden rule</th></tr>
+    <tr><td><strong>Command</strong></td><td>An imperative message expressing
+      intent: <code>OpenAccount</code>, <code>Withdraw</code>.</td>
+      <td>Named as an order. <em>May be rejected.</em> Changes state. Exactly one handler.</td></tr>
+    <tr><td><strong>Query</strong></td><td>A request for data:
+      <code>GetAccount</code>.</td>
+      <td>Never changes state. No side effects. Exactly one handler.</td></tr>
+    <tr><td><strong>Handler</strong></td><td>The code that processes one command
+      or query type.</td>
+      <td>Thin. Orchestrates; holds no business rules itself.</td></tr>
+    <tr><td><strong>Bus</strong></td><td>A dispatcher that routes a message to its
+      one handler (<code>CommandBus</code>, <code>QueryBus</code>, <code>EventBus</code>).</td>
+      <td>Decouples the sender from the handler. The caller never imports the handler.</td></tr>
+    <tr><td><strong>Event</strong></td><td>A fact that already happened:
+      <code>MoneyWithdrawn</code>.</td>
+      <td>Past tense. Immutable. Cannot be rejected — it's history.</td></tr>
+    <tr><td><strong>Projection</strong></td><td>An event handler that updates a
+      read model.</td>
+      <td>The only writer to the read model. Turns events into query-ready shapes.</td></tr>
+  </table>
+
+  <div class="box warn">
+    <div class="t">⚠️ The single trap</div>
+    <strong>Command vs Event = intent vs fact.</strong> <code>Withdraw</code> (command)
+    is a <em>request</em> that might be refused (insufficient funds).
+    <code>MoneyWithdrawn</code> (event) is the <em>record</em> that it succeeded.
+    One is future and rejectable; the other is past and permanent. Name commands
+    as imperatives, events as past-tense. Mixing them up muddles everything downstream.
+  </div>
+
+  <!-- ─────────────────────────── 3 ─────────────────────────── -->
+  <h2 class="sec" id="picture"><span class="n">3</span>The big picture</h2>
+
+  <p>Here is the entire architecture on one diagram. Both stages of this repo
+  follow it; only what sits inside "domain" and how it's persisted changes.</p>
+
+  <div class="diagram">
+<pre>
+        ┌──────────────────────────── WRITE SIDE ────────────────────────────┐
+ HTTP   │                                                                     │
+ POST ─►│  Controller ─► <b>CommandBus</b> ─► CommandHandler ─► <b>Domain model</b>          │
+        │   (thin)          (routes)         (orchestrates)    (enforces rules)│
+        │                                          │                 │         │
+        │                                          │            emits <b>Event</b>   │
+        └──────────────────────────────────────────┼─────────────────┼────────┘
+                                                    │                 ▼
+                                              persists          ┌──────────┐
+                                                    │           │ EventBus │
+                                                    ▼           └────┬─────┘
+                                            [ write store ]          │ publishes
+                                                                     ▼
+        ┌──────────────────────────── READ SIDE ─────────────────────────────┐
+        │                                                    <b>Projection</b>        │
+ HTTP   │  Controller ─► <b>QueryBus</b> ─► QueryHandler ─► [ read store ] ◄──updates│
+ GET  ◄─│   (thin)         (routes)      (reads only)      (denormalised views)│
+        └─────────────────────────────────────────────────────────────────────┘
+</pre>
+  </div>
+
+  <p>Trace the two paths and notice they <strong>never share a model</strong>:</p>
+  <ul>
+    <li><strong>Write path</strong> (blue in the code): request → command → domain
+    model → persistence → event. The domain model is the gatekeeper; nothing
+    changes state without going through it.</li>
+    <li><strong>Read path</strong> (purple): request → query → read store. It
+    skips the domain entirely. It can't accidentally break a rule because it
+    never touches the rule-holder.</li>
+    <li><strong>The bridge</strong>: events flow from write to read via the
+    <code>EventBus</code>, and a projection turns them into read-ready shapes.
+    This is the only connection between the two sides.</li>
+  </ul>
+
+  <div class="box key">
+    <div class="t">🧭 In NestJS specifically</div>
+    <code>@nestjs/cqrs</code> gives you <code>CommandBus</code>,
+    <code>QueryBus</code> and <code>EventBus</code> out of the box. You write
+    plain classes and tag them with <code>@CommandHandler(X)</code>,
+    <code>@QueryHandler(X)</code>, <code>@EventsHandler(X)</code>. Nest wires each
+    handler to its message type automatically — you just list them as providers
+    in the module. See <span class="file" style="margin:0;padding:2px 8px">src/stage1-cqrs/cqrs.module.ts</span>.
+  </div>
+
+  <!-- ─────────────────────────── 4 ─────────────────────────── -->
+  <h2 class="sec" id="s1-model"><span class="n">4</span><span class="tag s1">STAGE 1</span> &nbsp;Write vs read models</h2>
+
+  <p>This is where CQRS earns its keep, so go slow. In Stage 1 we have
+  <em>two different objects</em> representing an account, on purpose.</p>
+
+  <h3>The write model — guardian of the rules</h3>
+  <p><span class="file">src/stage1-cqrs/domain/account.ts</span></p>
+  <pre><span class="k">export class</span> Account {
+  <span class="c">// No public setters. The ONLY way to change the balance</span>
+  <span class="c">// is through a method that enforces the rules.</span>
+  withdraw(amount: Money): <span class="k">void</span> {
+    <span class="k">if</span> (amount.isZeroOrLess()) <span class="k">throw new</span> InvalidAmountError();
+    <span class="c">// the invariant, enforced at the only place it can break:</span>
+    <span class="k">if</span> (amount.isGreaterThan(<span class="k">this</span>.balance))
+      <span class="k">throw new</span> InsufficientFundsError(<span class="k">this</span>.id);
+    <span class="k">this</span>.balance = <span class="k">this</span>.balance.subtract(amount);
+  }
+}</pre>
+
+  <p>Notice: <strong>no getters-and-setters data bag.</strong> The rule "an
+  account may never go negative" lives <em>inside</em> the model, at the one place
+  it could be violated. No controller, handler, or future teammate can forget it,
+  because there's no other door into the balance. This is a <em>rich domain
+  model</em>, and it's the heart of the write side. (The <code>Money</code> type
+  it uses — <span class="file" style="margin:0;padding:2px 8px">src/shared/domain/money.ts</span> —
+  is a value object that stores integer pence so floating-point rounding can never
+  lose you a penny.)</p>
+
+  <h3>The read model — shaped for the screen</h3>
+  <p><span class="file">src/stage1-cqrs/read-model/account-view.ts</span></p>
+  <pre><span class="k">export interface</span> AccountView {
+  accountId: <span class="k">string</span>;
+  owner: <span class="k">string</span>;
+  balance: <span class="k">number</span>;          <span class="c">// major units, ready to display</span>
+  transactionCount: <span class="k">number</span>; <span class="c">// denormalised — write model never stores this</span>
+  lastActivityAt: <span class="k">string</span>;
+}</pre>
+
+  <p>The read model looks <em>nothing</em> like the write model, and that's
+  allowed — encouraged, even. It carries a display-friendly balance and a
+  pre-computed <code>transactionCount</code> the write side never tracks. It has
+  no methods and no rules, because its only job is to be read. In production this
+  might live in a totally different database (Elasticsearch, a materialised view,
+  a cache) tuned purely for reads.</p>
+
+  <div class="cols">
+    <div class="col write">
+      <h4>Write model (<code>Account</code>)</h4>
+      <ul>
+        <li>Behaviour, not data</li>
+        <li>Enforces invariants</li>
+        <li>Loaded one at a time, mutated, saved</li>
+        <li>Optimised for <em>correctness</em></li>
+      </ul>
+    </div>
+    <div class="col read">
+      <h4>Read model (<code>AccountView</code>)</h4>
+      <ul>
+        <li>Data, no behaviour</li>
+        <li>Denormalised for one screen</li>
+        <li>Queried in bulk, never mutated by queries</li>
+        <li>Optimised for <em>fast reads</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────── 5 ─────────────────────────── -->
+  <h2 class="sec" id="s1-flow"><span class="n">5</span><span class="tag s1">STAGE 1</span> &nbsp;A command, end to end</h2>
+
+  <p>Let's follow a single <code>POST /stage1/accounts/:id/deposit</code> through
+  every layer. This is the write path made concrete.</p>
+
+  <div class="diagram">
+<pre>
+ 1. Controller     receives HTTP, validates the DTO, builds a command,
+    (api/)         hands it to the CommandBus. Knows nothing else.
+                        │
+ 2. CommandBus     routes DepositCommand ─► the one @CommandHandler(DepositCommand)
+                        │
+ 3. Handler        loads the Account from the repository,
+    (commands/)     calls account.deposit(...), saves it,
+                    then publishes a MoneyDeposited event.
+                        │
+ 4. Domain model   validates the amount, updates its balance. Rules live here.
+                        │
+ 5. EventBus       carries MoneyDeposited ─► the projection
+                        │
+ 6. Projection     updates the AccountView + appends a ledger row.
+    (read-model/)   The read side is now current.
+</pre>
+  </div>
+
+  <h4>Step 1 — the controller is deliberately dumb</h4>
+  <p><span class="file">src/stage1-cqrs/api/accounts.controller.ts</span></p>
+  <pre>@Post(<span class="s">':id/deposit'</span>)
+<span class="k">async</span> deposit(@Param(<span class="s">'id'</span>) id: <span class="k">string</span>, @Body() dto: AmountDto) {
+  <span class="k">await this</span>.commandBus.execute(<span class="k">new</span> DepositCommand(id, dto.amountMinor));
+  <span class="k">return</span> { ok: <span class="k">true</span> };
+}</pre>
+  <p>Look how little it does: validate input, build a message, dispatch it. It
+  imports no repository, no domain object — only the bus. That's the segregation
+  showing up right at the front door.</p>
+
+  <h4>Steps 3–4 — the handler orchestrates, the model decides</h4>
+  <p><span class="file">src/stage1-cqrs/commands/deposit.command.ts</span></p>
+  <pre>@CommandHandler(DepositCommand)
+<span class="k">export class</span> DepositHandler <span class="k">implements</span> ICommandHandler&lt;DepositCommand&gt; {
+  <span class="k">async</span> execute(command: DepositCommand) {
+    <span class="k">const</span> account = <span class="k">await this</span>.repository.findById(command.accountId);
+    <span class="k">if</span> (!account) <span class="k">throw new</span> AccountNotFoundError(command.accountId);
+
+    account.deposit(Money.fromMinor(command.amountMinor)); <span class="c">// ← model enforces rules</span>
+    <span class="k">await this</span>.repository.save(account);
+
+    <span class="k">this</span>.eventBus.publish(<span class="c">/* MoneyDeposited */</span>);        <span class="c">// ← tell the read side</span>
+  }
+}</pre>
+
+  <div class="box key">
+    <div class="t">💡 The handler stays thin</div>
+    The handler never checks "is there enough money?" — that's the model's job.
+    It just loads, delegates, saves, announces. Keeping business logic in the
+    model (not the handler) is what lets you unit-test the rules with no NestJS,
+    no bus, no database. See <span class="file" style="margin:0;padding:2px 8px">src/stage1-cqrs/domain/account.spec.ts</span>.
+  </div>
+
+  <h4>Step 6 — the projection bridges write to read</h4>
+  <p><span class="file">src/stage1-cqrs/read-model/account.projection.ts</span></p>
+  <pre>@EventsHandler(MoneyDeposited)
+<span class="k">export class</span> MoneyDepositedProjection <span class="k">implements</span> IEventHandler&lt;MoneyDeposited&gt; {
+  handle(event: MoneyDeposited) {
+    <span class="k">const</span> view = <span class="k">this</span>.store.getAccount(event.accountId);
+    <span class="c">// recompute the denormalised view and append a ledger row</span>
+    <span class="k">this</span>.store.upsertAccount({ ...view, balance: newBalance, ... });
+    <span class="k">this</span>.store.appendTransaction({ type: <span class="s">'DEPOSIT'</span>, ... });
+  }
+}</pre>
+
+  <div class="box warn">
+    <div class="t">⚠️ In Stage 1, events are just notifications</div>
+    Critically: by the time we publish <code>MoneyDeposited</code>, the write
+    model has <em>already saved the new balance</em>. The event exists only to
+    let the read side catch up. If it were lost, the write model would still be
+    correct — only the read model would drift. <strong>Remember this</strong>,
+    because in Stage 2 the very same-looking event becomes the source of truth,
+    and losing it would lose data. Same shape, completely different role.
+  </div>
+
+  <!-- ─────────────────────────── 6 ─────────────────────────── -->
+  <h2 class="sec" id="s1-query"><span class="n">6</span><span class="tag s1">STAGE 1</span> &nbsp;The query path</h2>
+
+  <p>The read path is refreshingly boring — which is the point. A query skips the
+  domain model entirely and reads a pre-built shape.</p>
+
+  <p><span class="file">src/stage1-cqrs/queries/get-account.query.ts</span></p>
+  <pre>@QueryHandler(GetAccountQuery)
+<span class="k">export class</span> GetAccountHandler <span class="k">implements</span> IQueryHandler&lt;GetAccountQuery&gt; {
+  <span class="k">async</span> execute(query: GetAccountQuery): Promise&lt;AccountView&gt; {
+    <span class="k">const</span> view = <span class="k">this</span>.store.getAccount(query.accountId); <span class="c">// straight to read store</span>
+    <span class="k">if</span> (!view) <span class="k">throw new</span> AccountNotFoundError(query.accountId);
+    <span class="k">return</span> view;
+  }
+}</pre>
+
+  <p>No <code>Account</code> is loaded. No rules run. There's nothing to compute —
+  the projection already did that work when the event arrived. This is why CQRS
+  reads are fast: <strong>the expensive shaping happens on write, once, not on
+  every read.</strong> The "list my transactions" query is the clearest example —
+  it serves a ledger the write model doesn't even store.</p>
+
+  <!-- ─────────────────────────── 7 ─────────────────────────── -->
+  <h2 class="sec" id="eventual"><span class="n">7</span>Eventual consistency — the tax you pay</h2>
+
+  <p>CQRS's power comes with a bill, and you must understand it before you use
+  the pattern in anger.</p>
+
+  <p>The read model is updated <em>after</em> the write, by a separate step (the
+  projection). In this demo the <code>EventBus</code> is <strong>synchronous</strong>,
+  so the read model updates before the HTTP response returns — reads are instantly
+  consistent. But in production, projections usually run <strong>asynchronously</strong>:
+  events flow through a broker (Kafka, SQS, a queue), and the read model lags the
+  write model by milliseconds to seconds.</p>
+
+  <div class="diagram">
+<pre>
+  t0  POST /withdraw 30   ──► write model updated (balance now 120), event queued
+  t1  200 OK returned to the client
+  t2  ...event still in flight through the broker...
+  t3  GET /account       ──► read model still says 150  ← STALE for a moment
+  t4  projection catches up ──► read model now says 120  ← consistent again
+</pre>
+  </div>
+
+  <p>That window between t1 and t4 is <strong>eventual consistency</strong>. It's
+  not a bug; it's the deal. The consequences you must design for:</p>
+  <ul>
+    <li><strong>Read-your-own-writes:</strong> a user who just made a change may
+    not see it immediately. Mitigate with UI tricks (optimistically show the new
+    value), by reading from the write model for that one screen, or by versioned reads.</li>
+    <li><strong>Never validate a command against the read model.</strong> The read
+    model can be stale, so decisions (like "is there enough money?") must be made
+    against the freshly-loaded write model — which is exactly what the handler does.</li>
+  </ul>
+
+  <div class="box good">
+    <div class="t">✅ What you buy for that tax</div>
+    Independent scaling (throw read replicas at queries without touching writes),
+    read models tuned per-use-case, and a write side kept clean of display
+    concerns. If your app is read-heavy and the domain is complex, that's often a
+    great trade. If it isn't — see §14 before you reach for this.
+  </div>
+
+  <!-- ─────────────────────────── 8 ─────────────────────────── -->
+  <h2 class="sec" id="es-why"><span class="n">8</span><span class="tag s2">STAGE 2</span> &nbsp;The leap: events as the source of truth</h2>
+
+  <p>Everything so far was pure CQRS: we split reads from writes, but the write
+  side still stored <em>current state</em> — a row that says <code>balance =
+  150</code>. Event Sourcing makes one radical change:</p>
+
+  <div class="box key">
+    <div class="t">🔑 The one idea of Event Sourcing</div>
+    <strong>Don't store the current state. Store the sequence of events that
+    produced it, and derive state by replaying them.</strong> The event log is
+    the database of record; the balance is just a running total you compute.
+  </div>
+
+  <p>Instead of a row, an account <em>is</em> its history:</p>
+  <div class="diagram">
+<pre>
+  CRUD / Stage 1 stores:          Event Sourcing / Stage 2 stores:
+  ┌───────────────────┐           ┌────────────────────────────────┐
+  │ balance = 150      │           │ #0 AccountOpened(100)           │
+  └───────────────────┘           │ #1 MoneyDeposited(80)           │
+   (the "after" photo)            │ #2 MoneyWithdrawn(30)           │
+   history is lost                └────────────────────────────────┘
+                                    balance = 100 + 80 − 30 = 150
+                                    (replay the facts to get state)
+</pre>
+  </div>
+
+  <p>Why on earth would you do this? Because the log <em>is</em> the feature:</p>
+  <ul>
+    <li><strong>Perfect audit trail.</strong> You don't <em>bolt on</em> history —
+    history is all there is. Every change, in order, with its cause, forever.
+    (Banks, healthcare, anything regulated loves this.)</li>
+    <li><strong>Time travel.</strong> Replay the first N events and you know the
+    exact state at any past moment. "What was the balance last Tuesday, and why?"
+    is answerable. A CRUD system overwrote that.</li>
+    <li><strong>Rebuildable read models.</strong> Because state is derived, you can
+    invent a brand-new read model next year and back-fill it from day-one history
+    (see §11). Read models become disposable.</li>
+    <li><strong>Debugging &amp; correction.</strong> Reproduce any bug by replaying
+    the exact events that caused it. Fix a projection bug, replay, and the bad
+    data is simply gone.</li>
+  </ul>
+
+  <p>Try it live — this endpoint shows an account's raw truth:</p>
+  <pre><span class="d">$</span> curl localhost:3000/stage2/accounts/&lt;id&gt;/events
+[ {"sequence":0,"type":<span class="s">"AccountOpened"</span>, ...},
+  {"sequence":1,"type":<span class="s">"MoneyDeposited"</span>, ...},
+  {"sequence":2,"type":<span class="s">"MoneyWithdrawn"</span>, "payload":{... "transfer":{...}}} ]</pre>
+
+  <!-- ─────────────────────────── 9 ─────────────────────────── -->
+  <h2 class="sec" id="aggregate"><span class="n">9</span><span class="tag s2">STAGE 2</span> &nbsp;The aggregate: deciding vs applying</h2>
+
+  <p>The event-sourced write model — the <strong>aggregate</strong> — is where the
+  magic lives, and it has a beautiful split personality. Compare it to Stage 1's
+  <code>Account.withdraw()</code>, which mutated state directly. The aggregate
+  never mutates state directly. It has two kinds of methods:</p>
+
+  <p><span class="file">src/stage2-event-sourcing/domain/account.aggregate.ts</span></p>
+  <pre><span class="k">export class</span> AccountAggregate <span class="k">extends</span> AggregateRoot {
+  <span class="k">private</span> balance: Money = Money.zero();
+  <span class="k">public</span> version = <span class="s">0</span>;
+
+  <span class="c">// ── 1. COMMAND METHOD: decides WHETHER it's allowed, then emits an event.</span>
+  <span class="c">//        It validates against current state but does NOT change state.</span>
+  withdraw(amount: Money): <span class="k">void</span> {
+    <span class="k">if</span> (amount.isGreaterThan(<span class="k">this</span>.balance))
+      <span class="k">throw new</span> InsufficientFundsError(<span class="k">this</span>.accountId);
+    <span class="k">this</span>.apply(<span class="k">new</span> MoneyWithdrawn(<span class="k">this</span>.accountId, amount.toMinor(), ...));
+  }
+
+  <span class="c">// ── 2. APPLY METHOD: the ONLY place state changes. Asks no questions —</span>
+  <span class="c">//        the event already happened, so it just folds it into state.</span>
+  <span class="c">//        NestJS calls on&lt;EventName&gt; automatically from apply()/replay.</span>
+  onMoneyWithdrawn(event: MoneyWithdrawn): <span class="k">void</span> {
+    <span class="k">this</span>.balance = <span class="k">this</span>.balance.subtract(Money.fromMinor(event.amountMinor));
+    <span class="k">this</span>.version++;
+  }
+}</pre>
+
+  <p>Sit with why this split matters:</p>
+  <ul>
+    <li><strong>Command methods</strong> (<code>withdraw</code>) hold the rules.
+    They run <em>once</em>, when the action first happens, and can reject it.</li>
+    <li><strong>Apply methods</strong> (<code>onMoneyWithdrawn</code>) hold no
+    rules — they trust the event as a done deal. They run every time the event is
+    seen: once when it's created, and again on every future <em>replay</em>.</li>
+  </ul>
+
+  <div class="box key">
+    <div class="t">💡 Why validation must NOT be in the apply method</div>
+    History is never re-judged. If <code>onMoneyWithdrawn</code> re-checked "enough
+    funds?", then replaying an old, perfectly-valid withdrawal could throw years
+    later just because the rule changed. Events are facts; you replay them, you
+    don't re-litigate them. Decisions happen once, in the command method; folding
+    happens forever, in the apply method.
+  </div>
+
+  <p>NestJS's <code>AggregateRoot.apply(event)</code> does two things at once: it
+  records the event as "uncommitted" (to be saved &amp; published later) <em>and</em>
+  immediately calls the matching <code>on&lt;Event&gt;</code> method so in-memory
+  state stays live. Replaying history via <code>loadFromHistory(events)</code>
+  calls the same <code>on&lt;Event&gt;</code> methods — but marks nothing
+  uncommitted, because it's already saved.</p>
+
+  <!-- ─────────────────────────── 10 ─────────────────────────── -->
+  <h2 class="sec" id="store"><span class="n">10</span><span class="tag s2">STAGE 2</span> &nbsp;The event store &amp; loading by replay</h2>
+
+  <p>There is no <code>UPDATE accounts SET balance = ?</code> anywhere in Stage 2.
+  There's an <strong>append-only log</strong> and two operations against it.</p>
+
+  <h4>Loading = read the stream + replay it</h4>
+  <p><span class="file">src/stage2-event-sourcing/infrastructure/account.repository.ts</span></p>
+  <pre><span class="k">async</span> findById(id: <span class="k">string</span>): Promise&lt;AccountAggregate | <span class="k">null</span>&gt; {
+  <span class="k">const</span> stored = <span class="k">await this</span>.eventStore.readStream(id); <span class="c">// every event, in order</span>
+  <span class="k">if</span> (stored.length === <span class="s">0</span>) <span class="k">return null</span>;
+
+  <span class="k">const</span> aggregate = <span class="k">this</span>.publisher.mergeObjectContext(<span class="k">new</span> AccountAggregate());
+  aggregate.loadFromHistory(stored.map(e =&gt; <span class="k">this</span>.deserialize(e))); <span class="c">// fold the facts</span>
+  <span class="k">return</span> aggregate;
+}</pre>
+  <p>To load an account we fetch its entire event history and replay it into a
+  fresh aggregate. The final in-memory balance is the sum of its facts. This is
+  the cost of event sourcing — a load is a replay — and it's why real systems add
+  <em>snapshots</em> (periodically save state and replay only events after it).</p>
+
+  <h4>Saving = append the new events (with a concurrency check)</h4>
+  <p><span class="file">src/stage2-event-sourcing/infrastructure/event-store.ts</span></p>
+  <pre><span class="k">async</span> append(streamId, events, expectedVersion) {
+  <span class="k">const</span> stream = <span class="k">this</span>.streams.get(streamId) ?? [];
+  <span class="c">// Optimistic concurrency: is the stream exactly where we left it?</span>
+  <span class="k">if</span> (stream.length !== expectedVersion)
+    <span class="k">throw new</span> ConcurrencyError(streamId, expectedVersion, stream.length);
+  <span class="c">// append-only — never update, never delete</span>
+  <span class="k">for</span> (<span class="k">const</span> event <span class="k">of</span> events) stream.push(serialise(event));
+}</pre>
+
+  <div class="box key">
+    <div class="t">🔒 Optimistic concurrency instead of locks</div>
+    Two requests load the same account (both at version 3), both try to withdraw,
+    both try to append expecting version 3. The first wins and moves the stream to
+    4; the second's "expected 3" no longer matches, so it's rejected with a
+    <code>ConcurrencyError</code> — reload and retry. No row locks, no lost
+    updates. The stream version <em>is</em> the concurrency token.
+  </div>
+
+  <p>One honest detail worth reading in the code: events are stored as plain
+  <code>{ type, payload }</code> rows, so to replay them we must rebuild the right
+  event <em>class</em> (replay keys off <code>event.constructor.name</code>).
+  That's the <code>deserialize()</code> method — and in a real system it's where
+  <strong>event versioning / upcasting</strong> lives, because events written
+  years ago must still replay after their shape has evolved.</p>
+
+  <!-- ─────────────────────────── 11 ─────────────────────────── -->
+  <h2 class="sec" id="replay"><span class="n">11</span><span class="tag s2">STAGE 2</span> &nbsp;Replay &amp; rebuilding projections</h2>
+
+  <p>This is the payoff that makes event sourcing feel like a superpower. Because
+  the read models are <em>derived</em> from the log, you can throw them away and
+  rebuild them from scratch — any time, with a guarantee they'll be correct.</p>
+
+  <p><span class="file">src/stage2-event-sourcing/projections/projection-rebuilder.ts</span></p>
+  <pre><span class="k">async</span> rebuild() {
+  <span class="k">this</span>.readModel.reset();                       <span class="c">// wipe every view</span>
+  <span class="k">const</span> events = <span class="k">await this</span>.eventStore.readAll(); <span class="c">// the whole log, global order</span>
+  <span class="k">for</span> (<span class="k">const</span> stored <span class="k">of</span> events)
+    <span class="k">this</span>.projector.project(deserialise(stored));  <span class="c">// same projector as live</span>
+  <span class="k">return</span> { eventsReplayed: events.length };
+}</pre>
+
+  <p>The same projector code runs live (fed by the <code>EventBus</code>) and in
+  bulk (fed by the log). That's what makes rebuilds boring and safe. See it work:</p>
+
+  <pre><span class="d"># do a few operations, note the balance, then:</span>
+<span class="d">$</span> curl -X POST localhost:3000/stage2/admin/rebuild-projections
+{"eventsReplayed": 5}
+<span class="d"># GET the account again → identical balance, reconstructed from nothing but the log</span></pre>
+
+  <table>
+    <tr><th>You want to…</th><th>With stored state (Stage 1)</th><th>With event sourcing (Stage 2)</th></tr>
+    <tr><td>Fix a projection bug</td><td>Write a data migration, hope you got it right</td><td>Fix code, replay, bad data vanishes</td></tr>
+    <tr><td>Add a new report/view</td><td>Only has data from "now" onward</td><td>Back-fill from day-one history</td></tr>
+    <tr><td>Recover a corrupted read DB</td><td>Restore from backup, lose recent data</td><td>Rebuild it — the truth was never in there</td></tr>
+    <tr><td>Answer "state last Tuesday?"</td><td>Impossible — overwritten</td><td>Replay events up to Tuesday</td></tr>
+  </table>
+
+  <!-- ─────────────────────────── 12 ─────────────────────────── -->
+  <h2 class="sec" id="saga"><span class="n">12</span><span class="tag s2">STAGE 2</span> &nbsp;Sagas: coordinating across aggregates</h2>
+
+  <p>A money <strong>transfer</strong> touches two accounts. But a core DDD rule
+  says <em>one command changes one aggregate</em> — the aggregate is the
+  consistency boundary, and you don't get an ACID transaction spanning two of
+  them. So how do we move money from Alice to Bob?</p>
+
+  <p>With a <strong>saga</strong> (a.k.a. process manager): a long-running process
+  built from single-aggregate steps, coordinated by events.</p>
+
+  <div class="diagram">
+<pre>
+  TransferCommand(Alice→Bob, £70)
+        │
+        ▼
+  [Alice] withdraw(£70, transferId) ──► MoneyWithdrawn { transfer: {to: Bob} }
+                                              │
+                                    TransferSaga sees it on the EventBus
+                                              │
+                                              ▼
+                              DepositCommand(Bob, £70) ──► [Bob] MoneyDeposited
+</pre>
+  </div>
+
+  <p><span class="file">src/stage2-event-sourcing/sagas/transfer.saga.ts</span></p>
+  <pre>@Saga()
+moneyTransferred = (events$: Observable&lt;IEvent&gt;): Observable&lt;ICommand&gt; =&gt;
+  events$.pipe(
+    ofType(MoneyWithdrawn),                 <span class="c">// only withdrawals…</span>
+    filter(e =&gt; !!e.transfer),               <span class="c">// …that belong to a transfer</span>
+    map(e =&gt; <span class="k">new</span> DepositCommand(e.transfer.toAccountId, e.amountMinor, e.transfer)),
+  );</pre>
+
+  <p>A NestJS saga is a method that receives the <em>stream of all events</em> (an
+  RxJS Observable) and returns a <em>stream of commands</em>; the framework
+  dispatches them for you. Read it plainly: "whenever money is withdrawn as part
+  of a transfer, deposit the same amount into the destination." Two separate
+  transactions on two aggregates, stitched together by one rule.</p>
+
+  <div class="box warn">
+    <div class="t">⚠️ The honest caveat: compensation</div>
+    Our saga implements the <em>happy path</em>. If the deposit failed (Bob's
+    account was closed), money would have left Alice with nowhere to land. A
+    production saga also listens for failure and emits a <strong>compensating
+    command</strong> — here, deposit the £70 back into Alice to undo leg 1. That's
+    "eventual consistency with compensation": the distributed-systems substitute
+    for the single ACID transaction you can't have across aggregates. The code
+    comments mark exactly where that logic goes.
+  </div>
+
+  <!-- ─────────────────────────── 13 ─────────────────────────── -->
+  <h2 class="sec" id="separate"><span class="n">13</span>CQRS ≠ Event Sourcing (the confusion that trips everyone)</h2>
+
+  <p>The single most common misunderstanding: people assume CQRS <em>requires</em>
+  Event Sourcing, or that they're the same thing. They are <strong>independent</strong>.
+  This repo proves it — Stage 1 is CQRS with zero event sourcing.</p>
+
+  <table>
+    <tr><th></th><th>CQRS</th><th>Event Sourcing</th></tr>
+    <tr><td>Answers the question</td><td>How do I <em>structure</em> reads vs writes?</td><td>How do I <em>store</em> state?</td></tr>
+    <tr><td>Core move</td><td>Two models: command side + query side</td><td>Store events, not current state</td></tr>
+    <tr><td>Can exist without the other?</td><td>Yes (Stage 1)</td><td>Yes — you can event-source without splitting reads (though it's rare)</td></tr>
+    <tr><td>Source of truth</td><td>Whatever you store (a state row)</td><td>The event log</td></tr>
+  </table>
+
+  <p>They're combined so often because they fit like a glove: event sourcing makes
+  your writes a stream of events, and CQRS gives your reads their own model so
+  they don't pay the replay cost on every query. The events that ES produces are
+  exactly what CQRS's projections want to consume. Great together — but choose
+  them <em>separately</em>, for their own reasons.</p>
+
+  <!-- ─────────────────────────── 14 ─────────────────────────── -->
+  <h2 class="sec" id="when"><span class="n">14</span>When to use it — and when to run away</h2>
+
+  <p>This is the most important section for a senior engineer, and the one
+  interviews probe hardest. These patterns are <strong>powerful and expensive</strong>.
+  Reaching for them by default is a classic over-engineering trap.</p>
+
+  <div class="cols">
+    <div class="col good" style="border-top:3px solid var(--ok)">
+      <h4 style="color:var(--ok)">✅ Reach for CQRS when</h4>
+      <ul>
+        <li>Read and write loads are wildly different and must scale separately</li>
+        <li>The read shapes differ a lot from the write model (many screens/reports)</li>
+        <li>The write side has genuinely complex domain rules worth isolating</li>
+        <li>You already tolerate (or want) eventual consistency</li>
+      </ul>
+    </div>
+    <div class="col" style="border-top:3px solid var(--warn)">
+      <h4 style="color:var(--warn)">✅ Add Event Sourcing when</h4>
+      <ul>
+        <li>A full audit trail is a real requirement (finance, healthcare, legal)</li>
+        <li>You need temporal queries ("state as of…") or replay for debugging</li>
+        <li>The business naturally thinks in events (a ledger, a workflow)</li>
+        <li>You'll want to derive new read models from history later</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box warn">
+    <div class="t">🚫 Do NOT use these when…</div>
+    <ul style="margin:6px 0 0">
+      <li>It's a simple CRUD app. A boring Postgres table and a REST controller
+      will out-ship and out-maintain any CQRS setup. <strong>Most apps are here.</strong></li>
+      <li>Your team hasn't internalised eventual consistency — the bugs are subtle
+      and land in production.</li>
+      <li>You'd apply it to the <em>whole</em> system. These patterns belong to
+      specific <em>bounded contexts</em> with real complexity, not everywhere.
+      Mixing a CQRS/ES core with plain CRUD elsewhere is normal and healthy.</li>
+      <li>You're doing it "to be scalable" with no measured need. That's the
+      over-engineering smell.</li>
+    </ul>
+  </div>
+
+  <div class="box key">
+    <div class="t">🎙️ The interview-grade answer</div>
+    "CQRS and Event Sourcing are separate tools. I'd apply CQRS to a bounded
+    context where read and write concerns genuinely diverge and I can accept
+    eventual consistency. I'd add Event Sourcing only where an audit log or
+    temporal queries are real requirements — the ledger, say — and keep the rest
+    of the system plain CRUD. The costs are eventual-consistency complexity,
+    event versioning, and replay/snapshot management, so I don't reach for them
+    by default." Saying <em>when not to</em> is what signals seniority.
+  </div>
+
+  <!-- ─────────────────────────── 15 ─────────────────────────── -->
+  <h2 class="sec" id="antipatterns"><span class="n">15</span>Anti-patterns to avoid</h2>
+  <table>
+    <tr><th>Anti-pattern</th><th>Why it hurts</th><th>Better</th></tr>
+    <tr><td>Business logic in the command handler</td><td>Rules scatter; can't unit-test the domain in isolation; invariants get duplicated</td><td>Keep rules in the aggregate/model; handlers just orchestrate</td></tr>
+    <tr><td>Validating a command against the read model</td><td>The read model is (eventually) stale — you'll authorise bad writes</td><td>Load the write model fresh and decide against it</td></tr>
+    <tr><td>Fat, generic events (<code>AccountChanged</code>)</td><td>Ambiguous history; projections can't tell what actually happened</td><td>Specific, past-tense events: <code>MoneyWithdrawn</code></td></tr>
+    <tr><td>Mutating or deleting stored events</td><td>Destroys the audit trail and breaks replay — the whole premise</td><td>Append a compensating event; the log is immutable</td></tr>
+    <tr><td>Validation logic inside <code>on&lt;Event&gt;</code> apply methods</td><td>Replaying old valid events can suddenly throw when rules change</td><td>Validate in command methods only; apply methods just fold</td></tr>
+    <tr><td>CQRS/ES across the entire system</td><td>Massive accidental complexity where plain CRUD would do</td><td>Apply per bounded context, only where complexity justifies it</td></tr>
+    <tr><td>One aggregate spanning a whole transaction (e.g. both transfer accounts)</td><td>Breaks the consistency boundary; huge lock contention</td><td>One aggregate per command; coordinate with a saga</td></tr>
+  </table>
+
+  <!-- ─────────────────────────── 16 ─────────────────────────── -->
+  <h2 class="sec" id="glossary"><span class="n">16</span>Glossary</h2>
+  <table>
+    <tr><th>Term</th><th>Meaning</th></tr>
+    <tr><td><strong>CQRS</strong></td><td>Command Query Responsibility Segregation — separate models for writing vs reading.</td></tr>
+    <tr><td><strong>Command</strong></td><td>An imperative, rejectable request to change state. One handler.</td></tr>
+    <tr><td><strong>Query</strong></td><td>A side-effect-free request for data. One handler.</td></tr>
+    <tr><td><strong>Event</strong></td><td>An immutable, past-tense fact that something happened.</td></tr>
+    <tr><td><strong>Aggregate</strong></td><td>A cluster of domain objects treated as one unit for changes; the consistency boundary; guardian of invariants.</td></tr>
+    <tr><td><strong>Aggregate root</strong></td><td>The single entry point to an aggregate. In NestJS, extends <code>AggregateRoot</code>.</td></tr>
+    <tr><td><strong>Invariant</strong></td><td>A rule that must always hold (e.g. balance ≥ 0).</td></tr>
+    <tr><td><strong>Value object</strong></td><td>An immutable, identity-less value compared by its contents (e.g. <code>Money</code>).</td></tr>
+    <tr><td><strong>Projection</strong></td><td>Code that turns events into a read model; also the read model itself.</td></tr>
+    <tr><td><strong>Read model / view</strong></td><td>A denormalised shape built for querying, not for enforcing rules.</td></tr>
+    <tr><td><strong>Event store</strong></td><td>Append-only database of events; the source of truth in event sourcing.</td></tr>
+    <tr><td><strong>Replay</strong></td><td>Rebuilding state (or a read model) by re-processing events in order.</td></tr>
+    <tr><td><strong>Snapshot</strong></td><td>A saved aggregate state at version N, so you replay only events after N.</td></tr>
+    <tr><td><strong>Optimistic concurrency</strong></td><td>Detecting conflicting writes via an expected version instead of locks.</td></tr>
+    <tr><td><strong>Saga / process manager</strong></td><td>Coordinates a multi-step process across aggregates by reacting to events with commands.</td></tr>
+    <tr><td><strong>Compensating action</strong></td><td>An event/command that undoes a previous step when a later one fails.</td></tr>
+    <tr><td><strong>Eventual consistency</strong></td><td>The read model catches up to the write model after a short delay.</td></tr>
+    <tr><td><strong>Bounded context</strong></td><td>A boundary within which a model and its language are consistent; where you decide to apply CQRS/ES.</td></tr>
+    <tr><td><strong>Upcasting</strong></td><td>Transforming old event versions into the current shape during replay.</td></tr>
+  </table>
+
+  <!-- ─────────────────────────── 17 ─────────────────────────── -->
+  <h2 class="sec" id="quiz"><span class="n">17</span>Test yourself</h2>
+  <p>If you can answer these without peeking, you've got it. Click to reveal.</p>
+
+  <details>
+    <summary>1. What is the single core idea of CQRS, in one sentence?</summary>
+    <p>Use <strong>separate models</strong> for changing state (commands) and for
+    reading state (queries), instead of forcing one model to do both. Everything
+    else is machinery serving that split.</p>
+  </details>
+  <details>
+    <summary>2. Command vs event — what's the precise difference?</summary>
+    <p>A <strong>command</strong> is an imperative request that expresses intent and
+    <em>may be rejected</em> (<code>Withdraw</code>). An <strong>event</strong> is
+    a past-tense, immutable <em>fact</em> that already happened and cannot be
+    rejected (<code>MoneyWithdrawn</code>). Intent vs record; future vs history.</p>
+  </details>
+  <details>
+    <summary>3. In Stage 1, if a <code>MoneyDeposited</code> event were lost, is the balance wrong?</summary>
+    <p>The <strong>write model</strong> is still correct — it saved the new balance
+    before publishing. Only the <strong>read model</strong> would drift, because in
+    pure CQRS the event is just a notification. In Stage 2 the answer flips: the
+    event <em>is</em> the truth, so losing it loses data.</p>
+  </details>
+  <details>
+    <summary>4. Why must validation live in the aggregate's command method, not its <code>on&lt;Event&gt;</code> method?</summary>
+    <p>Because <code>on&lt;Event&gt;</code> runs on every <strong>replay</strong>, and
+    history must never be re-judged. If it validated, replaying an old (valid)
+    event could throw after the rules changed. Command methods decide once; apply
+    methods fold facts forever without questioning them.</p>
+  </details>
+  <details>
+    <summary>5. How does the event store prevent two concurrent withdrawals from both succeeding?</summary>
+    <p><strong>Optimistic concurrency.</strong> Each append states the
+    <em>expected</em> stream version. Both loaded at version 3; the first append
+    moves the stream to 4; the second still expects 3, no longer matches, and is
+    rejected with a <code>ConcurrencyError</code> — reload and retry. No locks.</p>
+  </details>
+  <details>
+    <summary>6. Why can you safely delete and rebuild the read model in Stage 2 but not (easily) in Stage 1?</summary>
+    <p>In Stage 2 the read model is <em>derived</em> from the event log (the source
+    of truth), so replaying the log reproduces it exactly. In Stage 1 the read
+    model isn't derivable from anything more authoritative — the write state is
+    just a row, with no history to replay — so a rebuild has nothing to rebuild from.</p>
+  </details>
+  <details>
+    <summary>7. A transfer spans two accounts. Why not do it in one command handler with a transaction?</summary>
+    <p>Because an aggregate is the consistency boundary and one command should
+    change one aggregate; there's no ACID transaction across two. You use a
+    <strong>saga</strong>: withdraw from the source (leg 1), and on that event fire
+    a deposit command to the destination (leg 2), with a compensating refund if
+    leg 2 fails. Eventual consistency with compensation.</p>
+  </details>
+  <details>
+    <summary>8. You're asked to add CQRS + ES to a small internal CRUD tool. What do you say?</summary>
+    <p>Push back. For simple CRUD, a plain table and REST controller ship faster
+    and are easier to maintain. CQRS/ES pay off in specific bounded contexts with
+    complex rules, divergent read/write loads, or real audit/temporal
+    requirements — and they cost you eventual-consistency complexity, event
+    versioning, and replay management. Knowing when <em>not</em> to use them is the
+    senior signal.</p>
+  </details>
+
+  <hr />
+  <h3>Now go read the code</h3>
+  <p>You've got the map. Open <code>src/</code> and read one full slice: start at a
+  controller, follow a command down to the aggregate, then follow the event out to
+  the projection. Run the server (<code>npm start</code>), poke the endpoints in
+  the README, and watch <code>/stage2/accounts/:id/events</code> grow. That loop —
+  read, run, inspect — is how the map becomes territory.</p>
+
+  <footer>
+    A teaching repo · CQRS &amp; Event Sourcing in NestJS · in-memory, runnable, over-commented.<br/>
+    Read it, run it, break it, rebuild it from the log.
+  </footer>
+
+</article>
+</main>
+</div>
+
+<script>
+  // Sidebar active-section highlighting via scroll position.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el) map[id] = a;
+    });
+    var ids = Object.keys(map);
+    function onScroll() {
+      var pos = window.scrollY + 120;
+      var current = ids[0];
+      ids.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el && el.offsetTop <= pos) current = id;
+      });
+      links.forEach(function (a) { a.classList.remove('active'); });
+      if (map[current]) map[current].classList.add('active');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+</body>
+</html>

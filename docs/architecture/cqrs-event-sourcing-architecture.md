@@ -5,6 +5,14 @@ CQRS (Command Query Responsibility Segregation) and Event Sourcing are often int
 !!! abstract "Scope of this page"
     This is the **architecture-level** view — when CQRS/Event Sourcing reshape a whole system. For the pattern mechanics in isolation, see [CQRS](../patterns/cqrs.md) and [Event Sourcing](../patterns/event-sourcing.md).
 
+!!! example "Runnable example + hands-on guide (in this repo)"
+    A complete, working **NestJS** implementation lives at the repo root under **`cqrs/`** (a sibling of `domain-driven-design/`):
+
+    - **`cqrs/bank-account-cqrs/`** — a runnable bank built in two stages: **Stage 1** pure CQRS, **Stage 2** CQRS + Event Sourcing (event store, replay, projection rebuild, and a transfer **saga**). Runs fully in-memory: `npm install && npm start`.
+    - **`cqrs/cqrs-guide.html`** — a standalone, zero-to-mastery teaching guide (open it directly in a browser) that walks every concept and maps each one to the exact source file.
+
+    Read this page for the *why and when*; use the example to see the *how* in code.
+
 ---
 
 ## You'll see this when...
